@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors - Light Theme */
+  --bg-warm: #FAF8F5;
+  --text-charcoal: #191919;
+  --text-secondary: #65605C;
+  --border-light: #E5E2D9;
+  --accent-rust: #CC785C;
+  --accent-rust-hover: #B55F43;
+  --highlight-selection: rgba(204, 120, 92, 0.2);
+  --card-bg: #F5F2EA;
+  --card-hover-bg: #EDE9DE;
+  
+  --font-serif: var(--font-newsreader), 'Newsreader', Georgia, serif;
+  --font-sans: var(--font-instrument-sans), 'Instrument Sans', Inter, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+html.dark {
+  /* Colors - Dark Theme */
+  --bg-warm: #121110;
+  --text-charcoal: #FAF8F5;
+  --text-secondary: #A09A95;
+  --border-light: #2D2B29;
+  --accent-rust: #E08D70;
+  --accent-rust-hover: #EAA38B;
+  --highlight-selection: rgba(224, 141, 112, 0.25);
+  --card-bg: #1A1917;
+  --card-hover-bg: #22201E;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+::selection {
+  background: var(--highlight-selection);
+  color: inherit;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-warm);
+  color: var(--text-charcoal);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  overflow-x: hidden;
 }
+
+/* Custom Typography and Utilities */
+.font-serif-anthropic {
+  font-family: var(--font-serif);
+}
+
+.font-sans-anthropic {
+  font-family: var(--font-sans);
+}
+
+.font-mono-anthropic {
+  font-family: var(--font-mono);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-warm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Section divider lines */
+.border-divider {
+  border-color: var(--border-light);
+}
+
+/* Animated links & buttons */
+.underline-hover {
+  position: relative;
+  text-decoration: none;
+}
+
+.underline-hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.underline-hover:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
