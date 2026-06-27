@@ -340,9 +340,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="md:col-span-7 flex flex-col border border-[var(--border-light)] rounded-lg overflow-hidden bg-black text-[#FAF8F5] font-mono-anthropic text-xs p-6 justify-between min-h-[300px]">
+            <div className="md:col-span-7 flex flex-col border border-[var(--border-light)] rounded-lg overflow-hidden bg-slate-950 dark:bg-[#070b13] text-slate-200 font-mono-anthropic text-xs p-6 justify-between min-h-[300px]">
               <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-zinc-800 pb-3 text-zinc-500">
+                <div className="flex items-center justify-between border-b border-slate-800/80 pb-3 text-slate-500">
                   <div className="flex space-x-2">
                     <span className="w-3 h-3 rounded-full bg-red-500/80"></span>
                     <span className="w-3 h-3 rounded-full bg-yellow-500/80"></span>
@@ -351,18 +351,18 @@ export default function Home() {
                   <span>Slate.swift // Agent Command</span>
                 </div>
                 <div className="space-y-2">
-                  <span className="text-zinc-500"># System Instruction Template loaded...</span>
-                  <p className="text-orange-300 font-semibold">
+                  <span className="text-slate-500"># System Instruction Template loaded...</span>
+                  <p className="text-blue-400 font-semibold">
                     {`>>> Executing with temp=${slatePresets[activeSlatePreset].temp}`}
                   </p>
-                  <p className="text-zinc-300 leading-relaxed pt-2">
-                    <span className="text-emerald-400 font-bold">$ prompt --input</span>: &quot;{slatePresets[activeSlatePreset].prompt}&quot;
+                  <p className="text-slate-300 leading-relaxed pt-2">
+                    <span className="text-indigo-400 font-bold">$ prompt --input</span>: &quot;{slatePresets[activeSlatePreset].prompt}&quot;
                   </p>
                 </div>
               </div>
-              <div className="mt-8 text-zinc-500 border-t border-zinc-800 pt-3 flex justify-between">
+              <div className="mt-8 text-slate-500 border-t border-slate-800/80 pt-3 flex justify-between">
                 <span>Memory Cache: OK</span>
-                <span className="text-emerald-400">FPS: 60 (Hardware Accelerated)</span>
+                <span className="text-blue-400">FPS: 60 (Hardware Accelerated)</span>
               </div>
             </div>
           </div>

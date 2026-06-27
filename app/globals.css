@@ -1,34 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors - Light Theme */
-  --bg-warm: #FAF8F5;
-  --text-charcoal: #191919;
-  --text-secondary: #65605C;
-  --border-light: #E5E2D9;
-  --accent-rust: #CC785C;
-  --accent-rust-hover: #B55F43;
-  --highlight-selection: rgba(204, 120, 92, 0.2);
-  --card-bg: #F5F2EA;
-  --card-hover-bg: #EDE9DE;
+  /* Colors - Light Theme (Cool Slate Blue) */
+  --bg-warm: #F8FAFC;
+  --text-charcoal: #0F172A;
+  --text-secondary: #475569;
+  --border-light: #E2E8F0;
+  --accent-rust: #2563EB;
+  --accent-rust-hover: #1D4ED8;
+  --highlight-selection: rgba(37, 99, 235, 0.12);
+  --card-bg: #FFFFFF;
+  --card-hover-bg: #F1F5F9;
   
   --font-serif: var(--font-newsreader), 'Newsreader', Georgia, serif;
   --font-sans: var(--font-instrument-sans), 'Instrument Sans', Inter, sans-serif;
   --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
 }
 
-
 html.dark {
-  /* Colors - Dark Theme */
-  --bg-warm: #121110;
-  --text-charcoal: #FAF8F5;
-  --text-secondary: #A09A95;
-  --border-light: #2D2B29;
-  --accent-rust: #E08D70;
-  --accent-rust-hover: #EAA38B;
-  --highlight-selection: rgba(224, 141, 112, 0.25);
-  --card-bg: #1A1917;
-  --card-hover-bg: #22201E;
+  /* Colors - Dark Theme (Midnight Slate) */
+  --bg-warm: #090D16;
+  --text-charcoal: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --border-light: #1E293B;
+  --accent-rust: #3B82F6;
+  --accent-rust-hover: #60A5FA;
+  --highlight-selection: rgba(59, 130, 246, 0.22);
+  --card-bg: #0F172A;
+  --card-hover-bg: #1E293B;
 }
 
 ::selection {
