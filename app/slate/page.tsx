@@ -15,6 +15,11 @@ export default function SlatePage() {
     if (savedTheme) {
       setTheme(savedTheme);
     }
+    const params = new URLSearchParams(window.location.search);
+    const v = params.get("v");
+    if (v === "origin" || v === "agentic") {
+      setActiveVersion(v);
+    }
   }, []);
 
   // Apply theme and persist

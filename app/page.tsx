@@ -10,6 +10,9 @@ interface Project {
   role: string;
   tech: string[];
   description: string;
+  longDescription?: string;
+  repoStatus: "public" | "private" | "none";
+  repoUrl?: string;
   link?: string;
   featured?: boolean;
 }
@@ -18,6 +21,7 @@ export default function Home() {
   const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("all");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -59,6 +63,8 @@ export default function Home() {
       role: "Freelance Software Engineer",
       tech: ["Flutter", "Dart", "Python", "Flask", "PostgreSQL", "WebSockets", "Redis"],
       description: "Backend and Mobile engineer for a multi-platform sports app (NBA, WNBA, NFL, NCAA). Refactored key modules, built real-time WebSocket messaging and scores, and integrated NFC 'Baller Band' support.",
+      longDescription: "Collaborated on building a real-time sports ecosystem supporting a massive US fanbase across multiple sports. Focused on implementing low-latency features including live score boards and chatrooms via WebSockets, refactoring modular components in Flutter, and developing REST APIs using Flask. High-volume database workflows were optimized using PostgreSQL and Redis caching. Source code is restricted under commercial IP protections.",
+      repoStatus: "private",
       featured: true
     },
     {
@@ -66,6 +72,8 @@ export default function Home() {
       role: "Lead Backend Developer",
       tech: ["PHP", "Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "MySQL"],
       description: "Centralized e-commerce inventory and order management system for a Dutch retail platform. Automated legacy workflows, synchronized real-time stocks across external APIs, and designed filament-driven V2 interfaces.",
+      longDescription: "As the lead developer, I refactored the core logistics and inventory tracking system of a large Dutch e-commerce storefront. The platform integrates with external vendor shipping APIs and local retail inventory networks, automating processes that previously required hours of manual labor. Built entirely on Laravel with Livewire and Filament panels to manage high-throughput operations. The source code is commercial IP and closed for proprietary protection.",
+      repoStatus: "private",
       featured: true
     },
     {
@@ -73,6 +81,8 @@ export default function Home() {
       role: "Associate Software Engineer",
       tech: ["PHP", "Laravel", "Flutter", "Dart", "MySQL", "REST APIs"],
       description: "Enterprise system for BetonStorten.nl automating concrete order logistics, heavy machinery, work orders, and personnel planning with custom algorithmic tracking and real-time syncing.",
+      longDescription: "An end-to-end automation application handling logistics, driver routing, concrete volume calculations, and personnel workflow schedules. Built the core web portals using Laravel and matching mobile components in Flutter to support remote transit tracking. To safeguard intellectual property, the active repository remains set to private status.",
+      repoStatus: "private",
       featured: true
     },
     {
@@ -80,13 +90,19 @@ export default function Home() {
       role: "Full-Stack Web Developer",
       tech: ["PHP", "Laravel", "TailwindCSS", "MySQL"],
       description: "Responsive consultancy business application optimizing customer onboarding, digital document filing, and workflow query processing.",
+      longDescription: "Built a custom responsive web application for a business consultancy firm to replace manual paper filing systems. Features a dynamic workflow engine that streamlines client onboarding, digital document uploads, and secure query management. Developed in Laravel with a TailwindCSS frontend and MySQL database. The source code is publicly hosted and open-source.",
+      repoStatus: "public",
+      repoUrl: "https://github.com/sheharanayanananda/BAMC_Website",
       featured: false
     },
     {
-      title: "Pubudhu Pharmacy System",
-      role: "C# Desktop Developer",
-      tech: ["C#", ".NET Framework", "SQL Server"],
-      description: "Bespoke desktop application managing inventory, expiration warnings, and real-time sales reporting for a high-volume pharmaceutical pharmacy.",
+      title: "Aura Notes",
+      role: "Android Native Developer",
+      tech: ["Kotlin", "Jetpack Compose", "Room Database", "Coroutines", "Flow", "Material 3"],
+      description: "A lightweight, native Android notes application built using Kotlin and Jetpack Compose. Focuses on local storage with Room, offline-first checklist support, and clean material aesthetics.",
+      longDescription: "A native Android note-taking application designed with Material Design 3 guidelines. Aura Notes leverages Jetpack Compose for declarative layouts, Room DB for local-first database persistence, and Kotlin Flow/Coroutines for asynchronous event processing. Features structured formatting, inline checks, and lightning-fast local search functions. The source code is public and open-source.",
+      repoStatus: "public",
+      repoUrl: "https://github.com/sheharanayanananda/Aura-Notes",
       featured: false
     },
     {
@@ -94,6 +110,9 @@ export default function Home() {
       role: "Full-Stack Web Developer",
       tech: ["PHP", "MySQL", "TailwindCSS", "JavaScript"],
       description: "Bespoke content management portfolio featuring dynamic media galleries and a self-managed admin portal optimized for high-resolution images.",
+      longDescription: "Designed and implemented a lightweight portfolio system for professional photographers. Features a custom CMS admin panel to upload, organize, and serve high-resolution media galleries. Optimized for rendering performance and loading times through static file serving and MySQL queries. The source code is open-source and publicly hosted.",
+      repoStatus: "public",
+      repoUrl: "https://github.com/sheharanayanananda/Photographer-Portfolio",
       featured: false
     }
   ];
@@ -307,52 +326,91 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SLATE TEASER — links to /slate */}
-        <section id="slate" className="pt-12 md:pt-24">
-          <a
-            href="/slate"
-            className="group flex flex-col md:flex-row items-center md:items-stretch gap-8 border border-[var(--border-light)] rounded-2xl p-8 md:p-12 bg-[var(--card-bg)] hover:bg-[var(--card-hover-bg)] transition-all duration-300"
-          >
-            {/* App image — 1:1 */}
-            <div className="relative w-48 h-48 md:w-56 md:h-56 flex-shrink-0 rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}>
-              <Image src="/slate.png" alt="Slate iOS App" fill className="object-cover" />
+        {/* PROJECTS SECTION */}
+        <section id="projects" className="pt-12 md:pt-24 space-y-12">
+          {/* Header */}
+          <div className="space-y-4 text-center max-w-3xl mx-auto">
+            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
+              Projects
+            </h2>
+            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+              Selected Works
+            </div>
+          </div>
+
+          {/* Combined Slate V1 & V2 Banner */}
+          <div className="border border-[var(--border-light)] rounded-3xl p-6 md:p-10 bg-[var(--card-bg)] flex flex-col lg:flex-row gap-8 items-center lg:items-stretch">
+            {/* App Image — 1:1 */}
+            <div className="relative w-full max-w-[280px] aspect-square flex-shrink-0 rounded-2xl overflow-hidden shadow-xs">
+              <Image src="/slate.png" alt="Slate iOS App Showcase" fill className="object-cover" />
             </div>
 
-            {/* Text */}
-            <div className="flex flex-col justify-center gap-4 text-left">
-              <div className="font-mono-anthropic text-xs tracking-widest uppercase text-[var(--accent-rust)]">
-                iOS · Swift / SwiftUI
+            {/* Info Column */}
+            <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
+              <div className="space-y-4">
+                <div>
+                  <span className="text-xs font-mono-anthropic uppercase text-[var(--accent-rust)] font-semibold">Flagship Project</span>
+                  <h3 className="font-serif-anthropic text-4xl md:text-5xl font-medium text-[var(--text-charcoal)] mt-1">
+                    Slate Note Ecosystem
+                  </h3>
+                </div>
+
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans max-w-2xl">
+                  A high-fidelity note-taking ecosystem for iPhone. Separated into two distinct architectural tracks, Slate blends advanced manual markdown environments with autonomous local/cloud AI agents.
+                </p>
+
+                {/* Sub-grid comparing V1 & V2 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-[var(--border-light)]/50">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Origin (V1)</span>
+                      <span className="text-[9px] font-mono border border-[var(--border-light)] px-1.5 py-0.5 rounded text-[var(--text-secondary)] bg-[var(--bg-warm)]">MIT Open Source</span>
+                    </div>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      Features a custom Markdown checklist text editor, smart background file exports, and local OCR document scanning.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Agentic (V2)</span>
+                      <span className="text-[9px] font-mono border border-[var(--accent-rust)] text-[var(--accent-rust)] px-1.5 py-0.5 rounded bg-[var(--accent-rust)]/5">Free Software</span>
+                    </div>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      Introduces an interactive AI chat workspace, fine-tuned cloud LLM presets, dynamic LaTeX scripting, and background async pipelines.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h2 className="font-serif-anthropic text-4xl md:text-5xl font-medium tracking-tight text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                Slate
-              </h2>
-              <p className="font-sans text-base text-[var(--text-secondary)] leading-relaxed max-w-xl">
-                A notes application for iPhone. Slate Origin brings rich formatting and on-device AI tools. Slate Agentic adds a conversational AI agent, cloud LLM presets, and file attachments.
+
+              {/* Action button */}
+              <div className="flex pt-4 border-t border-[var(--border-light)]/50">
+                <a
+                  href="/slate"
+                  className="inline-flex items-center gap-1.5 bg-[#1E1E1E] hover:bg-[#333] text-[#FAF8F5] px-5 py-3 rounded-xl font-sans font-medium text-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Explore Slate
+                  <svg className="w-3.5 h-3.5 fill-none stroke-current" strokeWidth={2.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Subheading & Filter Switcher */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[var(--border-light)] pt-12">
+            <div className="text-center md:text-left space-y-1">
+              <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                More Solutions
+              </h3>
+              <p className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">
+                Commercial & Freelance Codebases
               </p>
-              <div className="inline-flex items-center gap-2 font-sans font-medium text-sm text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                Explore Slate
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </div>
-            </div>
-          </a>
-        </section>
-
-        {/* PROJECTS DIRECTORY */}
-        <section id="projects" className="pt-12 md:pt-24 space-y-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <h2 className="font-serif-anthropic text-3xl font-medium tracking-tight text-[var(--accent-rust)]">
-                Project Directory
-              </h2>
-              <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] mt-1">
-                COMMERCIAL & FREELANCE SOLUTIONS
-              </div>
             </div>
 
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-2 text-xs font-mono-anthropic">
+            {/* Filter switcher capsule */}
+            <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--bg-warm)]">
               {[
                 { id: "all", label: "All Work" },
                 { id: "featured", label: "Featured" },
@@ -362,7 +420,11 @@ export default function Home() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-3 py-1.5 rounded-md border transition-all ${activeTab === tab.id ? "bg-[var(--text-charcoal)] text-[var(--bg-warm)] border-transparent" : "border-[var(--border-light)] hover:bg-[var(--card-bg)]"}`}
+                  className={`px-4 py-1.5 rounded-full font-sans font-medium text-xs transition-all duration-200 ${
+                    activeTab === tab.id
+                      ? "bg-[var(--text-charcoal)] text-[var(--bg-warm)]"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
+                  }`}
                 >
                   {tab.label}
                 </button>
@@ -371,42 +433,72 @@ export default function Home() {
           </div>
 
           {/* Grid layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-            {filteredProjects.map(proj => (
-              <div
-                key={proj.title}
-                className="group border border-[var(--border-light)] rounded-lg p-6 bg-[var(--bg-warm)] hover:bg-[var(--card-bg)] transition-all flex flex-col justify-between space-y-6"
-              >
-                <div className="space-y-4">
-                  <div className="flex justify-between items-start gap-4">
-                    <h3 className="font-serif-anthropic text-2xl font-medium group-hover:text-[var(--accent-rust)] transition-colors">
-                      {proj.title}
-                    </h3>
-                    {proj.featured && (
-                      <span className="text-[10px] font-mono-anthropic border border-[var(--accent-rust)] text-[var(--accent-rust)] px-2 py-0.5 rounded uppercase">
-                        Core System
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {filteredProjects.map(proj => {
+              const isClickable = proj.repoStatus !== "none";
+              return (
+                <div
+                  key={proj.title}
+                  onClick={() => {
+                    if (isClickable) {
+                      setSelectedProject(proj);
+                    }
+                  }}
+                  className={`group flex flex-col justify-between border border-[var(--border-light)] rounded-2xl p-6 bg-[var(--card-bg)] transition-all duration-300 space-y-6 ${
+                    isClickable
+                      ? "cursor-pointer hover:bg-[var(--card-hover-bg)] hover:border-[var(--accent-rust)]"
+                      : ""
+                  }`}
+                >
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-start gap-4">
+                      <h4 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                        {proj.title}
+                      </h4>
+                      <span className={`text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${
+                        proj.repoStatus === "public"
+                          ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--accent-rust)]/5"
+                          : proj.repoStatus === "private"
+                          ? "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
+                          : "border-[var(--border-light)] text-[var(--text-secondary)] bg-[var(--bg-warm)]"
+                      }`}>
+                        {proj.repoStatus === "public"
+                          ? "Public Repo"
+                          : proj.repoStatus === "private"
+                          ? "Private Repo"
+                          : "Proprietary"}
+                      </span>
+                    </div>
+
+                    <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] tracking-tight">
+                      {proj.role}
+                    </div>
+
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                      {proj.description}
+                    </p>
+                  </div>
+
+                  <div className="flex justify-between items-center pt-4 border-t border-[var(--border-light)]/50">
+                    <div className="flex flex-wrap gap-1.5">
+                      {proj.tech.map(t => (
+                        <span key={t} className="text-[10px] font-mono-anthropic bg-[var(--bg-warm)] border border-[var(--border-light)] px-2 py-0.5 rounded text-[var(--text-secondary)]">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    {isClickable && (
+                      <span className="text-xs font-sans text-[var(--text-secondary)] group-hover:text-[var(--accent-rust)] transition-colors flex items-center gap-1">
+                        Details
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
                       </span>
                     )}
                   </div>
-
-                  <div className="text-xs font-mono-anthropic text-[var(--text-secondary)]">
-                    {proj.role}
-                  </div>
-
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {proj.description}
-                  </p>
                 </div>
-
-                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[var(--border-light)]/50">
-                  {proj.tech.map(t => (
-                    <span key={t} className="text-[10px] font-mono-anthropic bg-[var(--bg-warm)] border border-[var(--border-light)] px-2 py-0.5 rounded text-[var(--text-secondary)]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -630,6 +722,99 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Modal Popup for Project Details */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs transition-opacity" onClick={() => setSelectedProject(null)}>
+          <div
+            className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-3xl p-8 space-y-6 shadow-2xl transition-transform animate-in fade-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-6 right-6 p-2 rounded-full border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-all"
+              aria-label="Close modal"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Header */}
+            <div className="space-y-2 pr-12">
+              <div className="flex items-center gap-3">
+                <span className={`text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${
+                  selectedProject.repoStatus === "public"
+                    ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--accent-rust)]/5"
+                    : "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
+                }`}>
+                  {selectedProject.repoStatus === "public" ? "Public Repo" : "Private Repo"}
+                </span>
+                <span className="text-xs font-mono-anthropic text-[var(--text-secondary)]">{selectedProject.role}</span>
+              </div>
+              <h3 className="font-serif-anthropic text-3xl md:text-4xl font-medium text-[var(--text-charcoal)]">
+                {selectedProject.title}
+              </h3>
+            </div>
+
+            {/* Detailed Description */}
+            <div className="space-y-4 font-sans text-base text-[var(--text-secondary)] leading-relaxed max-h-[300px] overflow-y-auto">
+              <p>{selectedProject.longDescription || selectedProject.description}</p>
+            </div>
+
+            {/* Tech Stack */}
+            <div className="space-y-2">
+              <div className="text-[10px] font-mono-anthropic uppercase text-[var(--text-secondary)]">Technologies Used</div>
+              <div className="flex flex-wrap gap-1.5">
+                {selectedProject.tech.map(t => (
+                  <span key={t} className="text-[10px] font-mono-anthropic bg-[var(--card-bg)] border border-[var(--border-light)] px-2 py-0.5 rounded text-[var(--text-secondary)]">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Action Bar */}
+            <div className="pt-4 border-t border-[var(--border-light)]/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                {selectedProject.repoStatus === "private" && (
+                  <p className="text-xs text-[var(--text-secondary)] italic">
+                    * This repository is private to protect proprietary codebase/IP.
+                  </p>
+                )}
+              </div>
+              
+              <div className="flex items-center gap-3 ml-auto">
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="px-5 py-2.5 rounded-xl border border-[var(--border-light)] text-sm font-medium hover:bg-[var(--card-hover-bg)] transition-colors"
+                >
+                  Close
+                </button>
+                {selectedProject.repoStatus === "public" ? (
+                  <a
+                    href={selectedProject.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-5 py-2.5 rounded-xl font-sans font-medium text-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                    View on GitHub
+                  </a>
+                ) : (
+                  <button
+                    disabled
+                    className="inline-flex items-center gap-2 bg-[var(--text-secondary)]/20 text-[var(--text-secondary)]/50 px-5 py-2.5 rounded-xl font-sans font-medium text-sm cursor-not-allowed"
+                  >
+                    Private Repository
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
