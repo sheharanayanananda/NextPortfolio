@@ -241,15 +241,15 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                 </svg>
-                <span className="font-mono-anthropic text-sm md:text-base tracking-tight">Tampere, Finland</span>
+                <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>
               </div>
 
-              <div className="inline-flex w-fit items-center space-x-2.5 bg-[#1E1E1E] text-[#FAF8F5] px-5 py-3 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]">
+              <div className="inline-flex w-fit items-center gap-4 bg-[#1E1E1E] text-[#FAF8F5] px-5 py-3 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF1E] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00FF1E]"></span>
                 </span>
-                <span className="tracking-tight">Open To Work</span>
+                <span className="tracking-tight font-mono-anthropic">Open To Work</span>
               </div>
             </div>
           </div>
@@ -263,7 +263,7 @@ export default function Home() {
               {/* Email Me */}
               <a
                 href="mailto:sheharanayanananda@gmail.com"
-                className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-[13px] transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
+                className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
                 style={{ width: "112px", height: "50px", bottom: "300px", left: "-160px", transform: "rotate(25deg)", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="Email Me"
               >
@@ -275,7 +275,7 @@ export default function Home() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-[13px] transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
+                className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
                 style={{ width: "108px", height: "50px", bottom: "170px", left: "-230px", transform: "rotate(0deg)", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="LinkedIn Profile"
               >
@@ -287,7 +287,7 @@ export default function Home() {
                 href="https://github.com/sheharanayanananda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-[13px] transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
+                className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
                 style={{ width: "96px", height: "50px", bottom: "50px", left: "-145px", transform: "rotate(-30deg)", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="GitHub Profile"
               >
