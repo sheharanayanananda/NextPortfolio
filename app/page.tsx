@@ -2,15 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
-// Custom type for Slate V2 Presets
-interface Preset {
-  name: string;
-  description: string;
-  contextSize: string;
-  temp: number;
-  prompt: string;
-}
+import Link from "next/link";
 
 // Custom type for projects
 interface Project {
@@ -24,81 +16,41 @@ interface Project {
 
 export default function Home() {
   const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
+  const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("all");
-  const [activeSlatePreset, setActiveSlatePreset] = useState<number>(0);
 
-  // Slate V2 presets for the interactive preset viewer
-  const slatePresets: Preset[] = [
-    {
-      name: "Balanced Assistant",
-      description: "Optimized for general reasoning and daily note synthesis.",
-      contextSize: "8k tokens",
-      temp: 0.7,
-      prompt: "Synthesize the highlights of today's lecture on Data Structures, focusing on binary search tree runtimes."
-    },
-    {
-      name: "Deep Reasoning",
-      description: "Maximum context window and precision logic parsing.",
-      contextSize: "32k tokens",
-      temp: 0.2,
-      prompt: "Analyze these 5 PDF research papers regarding actor-isolated state machines and compile a unified memory model."
-    },
-    {
-      name: "Creative Drafts",
-      description: "High temperature settings for brainstorming UI flows.",
-      contextSize: "8k tokens",
-      temp: 0.9,
-      prompt: "Brainstorm 5 alternative micro-interactions for a physics-based slider that responds to haptic feedback."
-    },
-    {
-      name: "Quick Fixes",
-      description: "Low latency preset for code styling and syntax corrections.",
-      contextSize: "4k tokens",
-      temp: 0.3,
-      prompt: "Refactor this SwiftUI view to prevent layout jumps in iOS 17 when editing non-text blocks."
-    }
-  ];
-
-  // Theme application logic
   useEffect(() => {
-    // Initial theme load
+    setMounted(true);
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | "system" | null;
     if (savedTheme) {
-      Promise.resolve().then(() => {
-        setTheme(savedTheme);
-      });
+      setTheme(savedTheme);
     }
   }, []);
 
+  // Apply theme and persist
   useEffect(() => {
+    if (!mounted) return;
     const root = window.document.documentElement;
-
-    const applyTheme = (currentTheme: "light" | "dark" | "system") => {
-      if (currentTheme === "system") {
-        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (systemPrefersDark) {
-          root.classList.add("dark");
-        } else {
-          root.classList.remove("dark");
-        }
-      } else if (currentTheme === "dark") {
+    const applyTheme = (t: "light" | "dark" | "system") => {
+      if (t === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? root.classList.add("dark")
+          : root.classList.remove("dark");
+      } else if (t === "dark") {
         root.classList.add("dark");
       } else {
         root.classList.remove("dark");
       }
     };
-
     applyTheme(theme);
     localStorage.setItem("theme", theme);
-
-    // Watch for system theme changes if on system setting
     if (theme === "system") {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-      const handleChange = () => applyTheme("system");
-      mediaQuery.addEventListener("change", handleChange);
-      return () => mediaQuery.removeEventListener("change", handleChange);
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+      const handler = () => applyTheme("system");
+      mq.addEventListener("change", handler);
+      return () => mq.removeEventListener("change", handler);
     }
-  }, [theme]);
+  }, [theme, mounted]);
 
   // Project List
   const projects: Project[] = [
@@ -164,8 +116,9 @@ export default function Home() {
           </a>
 
           <nav className="hidden md:flex items-center space-x-8 text-sm font-medium tracking-tight">
+            <a href="#hero" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Home</a>
             <a href="#about" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">About</a>
-            <a href="#slate" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Slate V2</a>
+            <a href="/slate" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Slate</a>
             <a href="#projects" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Projects</a>
             <a href="#experience" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Experience</a>
             <a href="#education" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Education</a>
@@ -354,120 +307,36 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FEATURED WORK: SLATE V2 */}
-        <section id="slate" className="pt-12 md:pt-24 space-y-12">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-4 space-y-2">
-              <span className="text-xs font-mono-anthropic uppercase text-[var(--accent-rust)] border border-[var(--accent-rust)] px-2 py-0.5 rounded">Solo Project Showcase</span>
-              <h2 className="font-serif-anthropic text-4xl font-normal tracking-tight pt-2">
-                Slate V2
+        {/* SLATE TEASER — links to /slate */}
+        <section id="slate" className="pt-12 md:pt-24">
+          <a
+            href="/slate"
+            className="group flex flex-col md:flex-row items-center md:items-stretch gap-8 border border-[var(--border-light)] rounded-2xl p-8 md:p-12 bg-[var(--card-bg)] hover:bg-[var(--card-hover-bg)] transition-all duration-300"
+          >
+            {/* App image — 1:1 */}
+            <div className="relative w-48 h-48 md:w-56 md:h-56 flex-shrink-0 rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}>
+              <Image src="/slate.png" alt="Slate iOS App" fill className="object-cover" />
+            </div>
+
+            {/* Text */}
+            <div className="flex flex-col justify-center gap-4 text-left">
+              <div className="font-mono-anthropic text-xs tracking-widest uppercase text-[var(--accent-rust)]">
+                iOS · Swift / SwiftUI
+              </div>
+              <h2 className="font-serif-anthropic text-4xl md:text-5xl font-medium tracking-tight text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                Slate
               </h2>
-              <div className="text-xs font-mono-anthropic text-[var(--text-secondary)]">
-                THE AGENTIC NOTES PLATFORM
+              <p className="font-sans text-base text-[var(--text-secondary)] leading-relaxed max-w-xl">
+                A notes application for iPhone. Slate Origin brings rich formatting and on-device AI tools. Slate Agentic adds a conversational AI agent, cloud LLM presets, and file attachments.
+              </p>
+              <div className="inline-flex items-center gap-2 font-sans font-medium text-sm text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                Explore Slate
+                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </div>
             </div>
-
-            <div className="md:col-span-8 space-y-6">
-              <p className="font-serif-anthropic text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed">
-                A commercial note-taking environment for iOS that transitions notes from passive storage to an <span className="text-[var(--text-charcoal)] font-normal italic">active, context-aware AI agent workspace</span>.
-              </p>
-              <p className="text-[var(--text-secondary)] leading-relaxed">
-                Built natively with Swift and SwiftUI, Slate V2 leverages on-device LLM hosting via the Ollama API, utilizing local context databases. It replaces static editor fields with an asynchronous workflow command deck that processes multi-file attachments (PDF, DOCX, ZIP, media) and handles math typesetting effortlessly.
-              </p>
-            </div>
-          </div>
-
-          {/* Interactive Preset Viewer */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch pt-4">
-            <div className="md:col-span-5 flex flex-col justify-between border border-[var(--border-light)] rounded-lg p-6 bg-[var(--card-bg)] transition-colors">
-              <div className="space-y-4">
-                <div className="text-xs font-mono-anthropic uppercase text-[var(--text-secondary)]">
-                  iOS Agent Presets
-                </div>
-                <h3 className="font-serif-anthropic text-2xl font-medium">
-                  {slatePresets[activeSlatePreset].name}
-                </h3>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {slatePresets[activeSlatePreset].description}
-                </p>
-                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[var(--border-light)] text-xs font-mono-anthropic">
-                  <div>
-                    <span className="block text-[var(--text-secondary)]">Context Size</span>
-                    <span className="font-semibold text-[var(--text-charcoal)]">{slatePresets[activeSlatePreset].contextSize}</span>
-                  </div>
-                  <div>
-                    <span className="block text-[var(--text-secondary)]">Temperature</span>
-                    <span className="font-semibold text-[var(--text-charcoal)]">{slatePresets[activeSlatePreset].temp}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mt-8">
-                {slatePresets.map((preset, idx) => (
-                  <button
-                    key={preset.name}
-                    onClick={() => setActiveSlatePreset(idx)}
-                    className={`px-3 py-1.5 rounded-md text-xs font-mono-anthropic border transition-all ${activeSlatePreset === idx ? "bg-[var(--text-charcoal)] text-[var(--bg-warm)] border-transparent" : "border-[var(--border-light)] hover:bg-[var(--card-hover-bg)]"}`}
-                  >
-                    {preset.name.split(" ")[0]}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="md:col-span-7 flex flex-col border border-[var(--border-light)] rounded-lg overflow-hidden bg-slate-950 dark:bg-[#070b13] text-slate-200 font-mono-anthropic text-xs p-6 justify-between min-h-[300px]">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800/80 pb-3 text-slate-500">
-                  <div className="flex space-x-2">
-                    <span className="w-3 h-3 rounded-full bg-red-500/80"></span>
-                    <span className="w-3 h-3 rounded-full bg-yellow-500/80"></span>
-                    <span className="w-3 h-3 rounded-full bg-green-500/80"></span>
-                  </div>
-                  <span>Slate.swift // Agent Command</span>
-                </div>
-                <div className="space-y-2">
-                  <span className="text-slate-500"># System Instruction Template loaded...</span>
-                  <p className="text-blue-400 font-semibold">
-                    {`>>> Executing with temp=${slatePresets[activeSlatePreset].temp}`}
-                  </p>
-                  <p className="text-slate-300 leading-relaxed pt-2">
-                    <span className="text-indigo-400 font-bold">$ prompt --input</span>: &quot;{slatePresets[activeSlatePreset].prompt}&quot;
-                  </p>
-                </div>
-              </div>
-              <div className="mt-8 text-slate-500 border-t border-slate-800/80 pt-3 flex justify-between">
-                <span>Memory Cache: OK</span>
-                <span className="text-blue-400">FPS: 60 (Hardware Accelerated)</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Core Codebase Highlights */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-            <div className="border border-[var(--border-light)] rounded-lg p-6 space-y-3 hover:bg-[var(--card-bg)] transition-all">
-              <div className="font-mono-anthropic text-xs text-[var(--accent-rust)]">01 / PERSISTENT TASK</div>
-              <h4 className="font-serif-anthropic text-xl font-medium">Asynchronous Generation</h4>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Integrated iOS background state processing via UIBackgroundTaskIdentifier. Tasks run off the main thread and notify users on completion via local push alerts.
-              </p>
-            </div>
-
-            <div className="border border-[var(--border-light)] rounded-lg p-6 space-y-3 hover:bg-[var(--card-bg)] transition-all">
-              <div className="font-mono-anthropic text-xs text-[var(--accent-rust)]">02 / PHYSICS INTERACTION</div>
-              <h4 className="font-serif-anthropic text-xl font-medium">Liquid Glass Capsule</h4>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                A custom floating capsule featuring dynamic rubber-band spring physics and continuous soft haptic feedbacks on touch offsets.
-              </p>
-            </div>
-
-            <div className="border border-[var(--border-light)] rounded-lg p-6 space-y-3 hover:bg-[var(--card-bg)] transition-all">
-              <div className="font-mono-anthropic text-xs text-[var(--accent-rust)]">03 / MATH RENDERING</div>
-              <h4 className="font-serif-anthropic text-xl font-medium">LaTeX & MathJax Cache</h4>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Maintains thread-safe layouts and regex parsers to render complex scientific blocks inside native iOS views, running smoothly at 60 FPS.
-              </p>
-            </div>
-          </div>
+          </a>
         </section>
 
         {/* PROJECTS DIRECTORY */}
