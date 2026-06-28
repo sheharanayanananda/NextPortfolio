@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import HeroSection from "./components/HeroSection";
 
 // Custom type for Slate V2 Presets
 interface Preset {
@@ -209,94 +210,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* HERO / WELCOME SECTION */}
-      <section id="hero" className="flex-1 min-h-[calc(100vh-69px)] flex items-center pt-6 pb-12 w-full px-12 md:px-24">
-        <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:items-center">
-          <div className="md:col-span-7 space-y-6">
-            <div className="space-y-1">
-              <div className="font-sans text-2xl font-medium tracking-tight text-[var(--text-secondary)]">
-                Thineth
-              </div>
-              <h1 className="font-serif-anthropic text-6xl md:text-8xl font-normal leading-[1.05] tracking-tight">
-                Shehara
-              </h1>
-            </div>
-
-            <p className="font-sans text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed font-light max-w-2xl">
-              Designing and shipping mobile apps that handle real-time data, platform integrations, and smooth offline-to-online workflows, backed by clean architecture and APIs built to support them.
-            </p>
-
-            <div className="space-y-4 pt-4">
-              <div className="flex items-center space-x-3 text-[var(--text-secondary)]">
-                <div className="relative w-[14px] h-[18px]">
-                  <Image
-                    src="/location_icon.svg"
-                    alt="Location Pin"
-                    fill
-                    className="object-contain dark:invert opacity-80"
-                  />
-                </div>
-                <span className="font-mono-anthropic text-sm md:text-base tracking-tight">Tampere, Finland</span>
-              </div>
-
-              <div className="inline-flex items-center space-x-2.5 bg-[#1E1E1E] text-[#FAF8F5] px-5 py-3 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF1E] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00FF1E]"></span>
-                </span>
-                <span className="tracking-tight">Open To Work</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:col-span-5 flex justify-center md:justify-end">
-            <div className="relative w-full max-w-[320px] md:max-w-[380px] aspect-[2/3]">
-              <Image
-                src="/arc_card.svg"
-                alt="Arc Card"
-                fill
-                priority
-                className="object-contain drop-shadow-xl animate-fade-in"
-              />
-
-              {/* Floating Contact/Social Buttons (CSS Recreated) */}
-              {/* Email Me Button */}
-              <a
-                href="mailto:thinethshehara@gmail.com"
-                className="absolute left-[-45px] md:left-[-65px] top-[40%] -translate-y-1/2 rotate-[-12deg] transition-all duration-300 hover:rotate-[-6deg] hover:scale-105 active:scale-95 z-10 flex items-center justify-center bg-white dark:bg-slate-900 text-[#1E1E1E] dark:text-[#F8FAFC] border border-slate-200/50 dark:border-slate-800/80 rounded-[15px] font-sans font-medium text-[13px] md:text-sm shadow-[0_4px_9px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.16)] dark:shadow-[0_4px_9px_rgba(0,0,0,0.4)]"
-                style={{ width: "112px", height: "50px" }}
-                aria-label="Email Me"
-              >
-                Email Me
-              </a>
-
-              {/* LinkedIn Button */}
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute left-[-75px] md:left-[-100px] top-[58%] -translate-y-1/2 rotate-[6deg] transition-all duration-300 hover:rotate-[2deg] hover:scale-105 active:scale-95 z-10 flex items-center justify-center bg-white dark:bg-slate-900 text-[#1E1E1E] dark:text-[#F8FAFC] border border-slate-200/50 dark:border-slate-800/80 rounded-[15px] font-sans font-medium text-[13px] md:text-sm shadow-[0_4px_9px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.16)] dark:shadow-[0_4px_9px_rgba(0,0,0,0.4)]"
-                style={{ width: "108px", height: "50px" }}
-                aria-label="LinkedIn Profile"
-              >
-                LinkedIn
-              </a>
-
-              {/* GitHub Button */}
-              <a
-                href="https://github.com/sheharanayanananda"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute left-[-50px] md:left-[-70px] top-[76%] -translate-y-1/2 rotate-[-16deg] transition-all duration-300 hover:rotate-[-8deg] hover:scale-105 active:scale-95 z-10 flex items-center justify-center bg-white dark:bg-slate-900 text-[#1E1E1E] dark:text-[#F8FAFC] border border-slate-200/50 dark:border-slate-800/80 rounded-[15px] font-sans font-medium text-[13px] md:text-sm shadow-[0_4px_9px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.16)] dark:shadow-[0_4px_9px_rgba(0,0,0,0.4)]"
-                style={{ width: "96px", height: "50px" }}
-                aria-label="GitHub Profile"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Main Container */}
       <main className="w-full px-12 md:px-24 py-12 md:py-24 space-y-24 md:space-y-36">
