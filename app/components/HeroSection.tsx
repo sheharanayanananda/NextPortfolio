@@ -2,124 +2,100 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="flex-1 min-h-[calc(100vh-69px)] flex items-center pt-6 pb-12 w-full px-12 md:px-24">
-      <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:items-center">
-        <div className="md:col-span-7 space-y-3">
-          <div className="flex flex-col gap-10">
-            <div className="font-mono-anthropic text-5xl font-medium tracking-tight text-[var(--text-secondary)]">
-              Thineth
-            </div>
-            <h1 className="font-serif-anthropic text-[14rem] font-medium leading-[1.05] tracking-tight">
+    <section
+      id="hero"
+      className="flex-1 min-h-[calc(100vh-69px)] flex items-center px-12 md:px-24 py-12"
+    >
+      {/* Two-column flex layout */}
+      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-16">
+
+        {/* LEFT — Content */}
+        <div className="flex flex-col gap-6 flex-1">
+
+          {/* Name */}
+          <div className="flex flex-col gap-2">
+            <span className="font-mono-anthropic text-2xl text-[var(--text-secondary)]">Thineth</span>
+            <h1 className="font-serif-anthropic text-8xl md:text-[10rem] font-normal leading-none tracking-tight">
               Shehara
             </h1>
           </div>
 
-          <p className="font-serif-anthropic text-xl text-[var(--text-secondary)] leading-relaxed font-normal max-w-2xl">
-            Designing and shipping mobile apps that handle real-time data, platform integrations, and smooth 
-            offline-to-online workflows, backed by clean architecture and APIs built to support them.
+          {/* Description */}
+          <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed max-w-lg">
+            Designing and shipping mobile apps that handle real-time data, platform integrations,
+            and smooth offline-to-online workflows, backed by clean architecture and APIs built to support them.
           </p>
 
-          <div className="space-y-4 pt-4">
-            <div className="flex items-center space-x-3 text-[var(--text-secondary)]">
-              <div className="relative w-[14px] h-[18px]">
-                <Image
-                  src="/location_icon.svg"
-                  alt="Location Pin"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <span className="font-mono-anthropic text-sm md:text-base tracking-tight">Tampere, Finland</span>
+          {/* Location */}
+          <div className="flex items-center gap-2 text-[var(--text-secondary)]">
+            <div className="relative w-4 h-5 shrink-0">
+              <Image src="/location_icon.svg" alt="Location" fill className="object-contain" />
             </div>
+            <span className="font-mono-anthropic text-sm">Tampere, Finland</span>
+          </div>
 
-            <div className="inline-flex items-center space-x-2.5 bg-[#1E1E1E] text-[#FAF8F5] px-5 py-3 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF1E] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00FF1E]"></span>
-              </span>
-              <span className="tracking-tight">Open To Work</span>
-            </div>
+          {/* Open To Work */}
+          <div className="inline-flex items-center gap-2.5 bg-[#1E1E1E] text-[#FAF8F5] px-5 py-3 rounded-[15px] font-sans font-medium text-sm w-fit transition-transform hover:scale-[1.02] active:scale-[0.98]">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF1E] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00FF1E]" />
+            </span>
+            Open To Work
           </div>
         </div>
 
-        <div className="md:col-span-5 flex justify-center md:justify-end self-stretch h-full">
-          <div className="relative flex justify-end items-stretch h-full w-full max-w-[500px]">
+        {/* RIGHT — Arc Card + Floating Buttons */}
+        <div className="relative shrink-0 flex items-center justify-center" style={{ width: "340px", height: "480px" }}>
 
-            {/* Email Me Button */}
-            <a
-              href="mailto:sheharanayanananda@gmail.com"
-              className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-[13px] md:text-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
-              style={{
-                width: "112px",
-                height: "50px",
-                bottom: "160px",
-                left: "35px",
-                transform: "rotate(25deg)",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.13)",
-              }}
-              aria-label="Email Me"
-            >
-              Email Me
-            </a>
+          {/* Email Me */}
+          <a
+            href="mailto:thinethshehara@gmail.com"
+            aria-label="Email Me"
+            className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] font-sans font-medium text-sm rounded-[15px] transition-transform hover:scale-105 active:scale-95"
+            style={{ width: 112, height: 50, bottom: 150, left: -60, rotate: "-12deg", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
+          >
+            Email Me
+          </a>
 
-            {/* LinkedIn Button */}
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-[13px] md:text-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
-              style={{
-                width: "108px",
-                height: "50px",
-                bottom: "95px",
-                left: "0px",
-                transform: "rotate(0deg)",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.13)",
-              }}
-              aria-label="LinkedIn Profile"
-            >
-              LinkedIn
-            </a>
+          {/* LinkedIn */}
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] font-sans font-medium text-sm rounded-[15px] transition-transform hover:scale-105 active:scale-95"
+            style={{ width: 108, height: 50, bottom: 88, left: -90, rotate: "6deg", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
+          >
+            LinkedIn
+          </a>
 
-            {/* GitHub Button */}
-            <a
-              href="https://github.com/sheharanayanananda"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-[13px] md:text-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
-              style={{
-                width: "96px",
-                height: "50px",
-                bottom: "30px",
-                left: "40px",
-                transform: "rotate(-25deg)",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.13)",
-              }}
-              aria-label="GitHub Profile"
-            >
-              GitHub
-            </a>
+          {/* GitHub */}
+          <a
+            href="https://github.com/sheharanayanananda"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] font-sans font-medium text-sm rounded-[15px] transition-transform hover:scale-105 active:scale-95"
+            style={{ width: 96, height: 50, bottom: 26, left: -65, rotate: "-16deg", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
+          >
+            GitHub
+          </a>
 
-            {/* Arc Card */}
-            <div
-              className="relative overflow-hidden h-full max-h-[500px]"
-              style={{
-                width: "auto",
-                aspectRatio: "2/3",
-                borderRadius: "24px",
-                boxShadow: "0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.08)",
-              }}
-            >
-              <Image
-                src="/arc_card.svg"
-                alt="Arc Card — Thineth Shehara, Software Engineer"
-                fill
-                priority
-                className="object-cover"
-              />
-            </div>
+          {/* Arc Card */}
+          <div
+            className="relative overflow-hidden w-full h-full"
+            style={{ borderRadius: 24, boxShadow: "0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.07)" }}
+          >
+            <Image
+              src="/arc_card.svg"
+              alt="Thineth Shehara — Software Engineer card"
+              fill
+              priority
+              className="object-cover"
+            />
           </div>
         </div>
+
       </div>
     </section>
   );
