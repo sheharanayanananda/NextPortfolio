@@ -314,31 +314,48 @@ export default function Home() {
       </section>
 
       {/* Main Container */}
-      <main className="w-full px-12 md:px-24 py-12 md:py-24 space-y-24 md:space-y-36">
+      <main className="flex flex-col w-full px-45 gap-25">
 
         {/* ABOUT SECTION */}
-        <section id="about" className="border-t border-[var(--border-light)] pt-12 md:pt-16 grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
-            <h2 className="font-serif-anthropic text-3xl font-medium tracking-tight text-[var(--accent-rust)]">
+        <section id="about" className="pb-12 flex flex-col items-center justify-center text-center max-w-5xl mx-auto space-y-12">
+          <div className="space-y-4">
+            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Background
             </h2>
-            <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] mt-1">
+            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
               PHILOSOPHY & STACK
             </div>
           </div>
 
-          <div className="md:col-span-8 space-y-6 text-base md:text-lg leading-relaxed text-[var(--text-secondary)]">
+          <div className="space-y-8 text-lg md:text-xl leading-relaxed text-[var(--text-secondary)] font-serif-anthropic max-w-3xl mx-auto font-normal">
             <p>
-              I build software with high ownership and strict attention to detail. My background spans commercial e-commerce inventory backends, company logistics platforms, and mobile sports apps. I lean towards tools that offer power and rapid feedback, developing primarily with <span className="text-[var(--text-charcoal)] font-semibold">PHP / Laravel</span>, <span className="text-[var(--text-charcoal)] font-semibold">Flutter (Dart)</span>, <span className="text-[var(--text-charcoal)] font-semibold">Swift/SwiftUI</span>, and relational database systems.
+              I specialize in engineering mobile applications with a focus on fluid animations, modular systems, and robust offline architectures. Whether developing natively or leveraging cross-platform frameworks, my focus is on bridging platform capabilities with high-fidelity, intuitive interfaces.
             </p>
             <p>
-              Currently, I am expanding my theoretical and practical scope by pursuing a Bachelor of Engineering in Software Engineering at the <span className="text-[var(--text-charcoal)] font-semibold">Tampere University of Applied Sciences (TAMK)</span> in Finland. I enjoy resolving architectural bottlenecks, bridging complex database states to snappy user interfaces, and exploring autonomous AI integrations.
+              Beyond mobile architectures, I design web applications and backend infrastructures. By organizing relational databases, optimizing APIs, and assembling responsive interfaces, I build scalable systems that handle high data volumes and support clean, modern user workflows.
             </p>
+
+            <blockquote className="border-l-4 border-[var(--accent-rust)] pl-6 py-2 my-8 text-left italic text-xl md:text-2xl font-serif-anthropic text-[var(--text-charcoal)]/80 max-w-2xl mx-auto">
+              &ldquo;Success is not a destination, It’s a journey that most don’t realize.&rdquo;
+            </blockquote>
+
+            <div className="pt-4 flex justify-center">
+              <a
+                href="/resume.pdf"
+                download
+                className="inline-flex items-center space-x-2 bg-[#1E1E1E] hover:bg-[#333] text-[#FAF8F5] px-6 py-3.5 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>Download Resume</span>
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path d="M13 8V2H7v6H2l8 8 8-8h-5zM2 18h16v2H2v-2z" />
+                </svg>
+              </a>
+            </div>
           </div>
         </section>
 
         {/* FEATURED WORK: SLATE V2 */}
-        <section id="slate" className="border-t border-[var(--border-light)] pt-12 md:pt-16 space-y-12">
+        <section id="slate" className="pt-12 md:pt-24 space-y-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-4 space-y-2">
               <span className="text-xs font-mono-anthropic uppercase text-[var(--accent-rust)] border border-[var(--accent-rust)] px-2 py-0.5 rounded">Solo Project Showcase</span>
@@ -454,7 +471,7 @@ export default function Home() {
         </section>
 
         {/* PROJECTS DIRECTORY */}
-        <section id="projects" className="border-t border-[var(--border-light)] pt-12 md:pt-16 space-y-8">
+        <section id="projects" className="pt-12 md:pt-24 space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <h2 className="font-serif-anthropic text-3xl font-medium tracking-tight text-[var(--accent-rust)]">
@@ -525,7 +542,7 @@ export default function Home() {
         </section>
 
         {/* EXPERIENCE TIMELINE */}
-        <section id="experience" className="border-t border-[var(--border-light)] pt-12 md:pt-16 grid grid-cols-1 md:grid-cols-12 gap-8">
+        <section id="experience" className="pt-12 md:pt-24 grid grid-cols-1 md:grid-cols-12 gap-8">
           <div className="md:col-span-4">
             <h2 className="font-serif-anthropic text-3xl font-medium tracking-tight text-[var(--accent-rust)]">
               Experience
@@ -611,7 +628,7 @@ export default function Home() {
         </section>
 
         {/* EDUCATION SECTION */}
-        <section id="education" className="border-t border-[var(--border-light)] pt-12 md:pt-16 grid grid-cols-1 md:grid-cols-12 gap-8">
+        <section id="education" className="pt-12 md:pt-24 grid grid-cols-1 md:grid-cols-12 gap-8">
           <div className="md:col-span-4">
             <h2 className="font-serif-anthropic text-3xl font-medium tracking-tight text-[var(--accent-rust)]">
               Education
@@ -687,7 +704,7 @@ export default function Home() {
         </section>
 
         {/* UPDATES SECTION */}
-        <section id="updates" className="border-t border-[var(--border-light)] pt-12 md:pt-16 grid grid-cols-1 md:grid-cols-12 gap-8">
+        <section id="updates" className="pt-12 md:pt-24 grid grid-cols-1 md:grid-cols-12 gap-8">
           <div className="md:col-span-4">
             <h2 className="font-serif-anthropic text-3xl font-medium tracking-tight text-[var(--accent-rust)]">
               Updates
