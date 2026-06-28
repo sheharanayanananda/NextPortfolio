@@ -61,7 +61,7 @@ export default function Home() {
     {
       title: "UNiFY Sports Ecosystem",
       role: "Freelance Software Engineer",
-      tech: ["Flutter", "Dart", "Python", "Flask", "PostgreSQL", "WebSockets", "Redis"],
+      tech: ["Flutter", "Dart", "Python", "Flask", "PostgreSQL", "WebSockets", "Redis", "AWS", "Stripe", "NFC"],
       description: "Backend and Mobile engineer for a multi-platform sports app (NBA, WNBA, NFL, NCAA). Refactored key modules, built real-time WebSocket messaging and scores, and integrated NFC 'Baller Band' support.",
       longDescription: "Collaborated on building a real-time sports ecosystem supporting a massive US fanbase across multiple sports. Focused on implementing low-latency features including live score boards and chatrooms via WebSockets, refactoring modular components in Flutter, and developing REST APIs using Flask. High-volume database workflows were optimized using PostgreSQL and Redis caching. Source code is restricted under commercial IP protections.",
       repoStatus: "private",
@@ -86,33 +86,53 @@ export default function Home() {
       featured: true
     },
     {
-      title: "Bright Achievers Migration",
+      title: "BAMC Website",
       role: "Full-Stack Web Developer",
-      tech: ["PHP", "Laravel", "TailwindCSS", "MySQL"],
-      description: "Responsive consultancy business application optimizing customer onboarding, digital document filing, and workflow query processing.",
-      longDescription: "Built a custom responsive web application for a business consultancy firm to replace manual paper filing systems. Features a dynamic workflow engine that streamlines client onboarding, digital document uploads, and secure query management. Developed in Laravel with a TailwindCSS frontend and MySQL database. The source code is publicly hosted and open-source.",
+      tech: ["HTML5", "CSS3", "JavaScript"],
+      description: "Frontend website for Bright Achievers Migration Consultants — a real Sri Lankan consultancy firm. Custom UI/UX, responsive design, and client inquiry forms.",
+      longDescription: "Designed and built the official frontend website for Bright Achievers Migration Consultants (BAMC), a professional Sri Lankan consultancy firm. Focuses on custom responsive layouts, interactive migration consultation booking flows, and client inquiry forms. Developed with HTML5, CSS3, and JavaScript, publicly hosted as an open-source project.",
       repoStatus: "public",
       repoUrl: "https://github.com/sheharanayanananda/BAMC_Website",
       featured: false
     },
     {
-      title: "Aura Notes",
-      role: "Android Native Developer",
+      title: "Notes — Android",
+      role: "Android Developer",
       tech: ["Kotlin", "Jetpack Compose", "Room Database", "Coroutines", "Flow", "Material 3"],
-      description: "A lightweight, native Android notes application built using Kotlin and Jetpack Compose. Focuses on local storage with Room, offline-first checklist support, and clean material aesthetics.",
+      description: "Android note-taking app built with Jetpack Compose and Room Database. Clean MVVM architecture with an aesthetic, minimal UI.",
       longDescription: "A native Android note-taking application designed with Material Design 3 guidelines. Aura Notes leverages Jetpack Compose for declarative layouts, Room DB for local-first database persistence, and Kotlin Flow/Coroutines for asynchronous event processing. Features structured formatting, inline checks, and lightning-fast local search functions. The source code is public and open-source.",
       repoStatus: "public",
-      repoUrl: "https://github.com/sheharanayanananda/Aura-Notes",
+      repoUrl: "https://github.com/sheharanayanananda/Notes",
       featured: false
     },
     {
-      title: "Photographer Portfolio Engine",
+      title: "Malcolm Lismore Portfolio",
       role: "Full-Stack Web Developer",
-      tech: ["PHP", "MySQL", "TailwindCSS", "JavaScript"],
-      description: "Bespoke content management portfolio featuring dynamic media galleries and a self-managed admin portal optimized for high-resolution images.",
-      longDescription: "Designed and implemented a lightweight portfolio system for professional photographers. Features a custom CMS admin panel to upload, organize, and serve high-resolution media galleries. Optimized for rendering performance and loading times through static file serving and MySQL queries. The source code is open-source and publicly hosted.",
+      tech: ["PHP", "MySQL", "Tailwind CSS", "JavaScript"],
+      description: "Full-stack responsive website with a PHP backend. Covers front-end design, server-side logic, and dynamic content delivery.",
+      longDescription: "Designed and implemented a lightweight photographer portfolio system for professional photographers. Features a custom CMS admin panel to upload, organize, and serve high-resolution media galleries. Optimized for rendering performance and loading times through static file serving and MySQL queries. The source code is open-source and publicly hosted.",
       repoStatus: "public",
-      repoUrl: "https://github.com/sheharanayanananda/Photographer-Portfolio",
+      repoUrl: "https://github.com/sheharanayanananda/Malcolm-Lismore",
+      featured: false
+    },
+    {
+      title: "Voice Assistant",
+      role: "Desktop Software Engineer",
+      tech: ["C#", ".NET Framework", "SQL", "Git"],
+      description: "Desktop voice command app using .NET speech synthesis and recognition. Responds to natural language voice inputs with system actions.",
+      longDescription: "Developed a native desktop voice command helper application using the .NET speech engines. Able to process spoken natural language prompts, match them against system commands, trigger OS operations, and respond with automated audio text-to-speech synthesis.",
+      repoStatus: "public",
+      repoUrl: "https://github.com/sheharanayanananda/Voice_Assistant",
+      featured: false
+    },
+    {
+      title: "TaskFlow",
+      role: "Full-Stack Web Developer",
+      tech: ["PHP", "Laravel", "MySQL", "Tailwind CSS"],
+      description: "Modern task management web app with auth, CRUD, and full task organization by status, priority, due date, and category.",
+      longDescription: "A full-stack collaborative tasks manager platform. Includes user registration and access controls, interactive task boards (Kanban-style categorization), prioritization weights, target deadlines, and category sorting. Developed with PHP Laravel on backend and MySQL.",
+      repoStatus: "public",
+      repoUrl: "https://github.com/sheharanayanananda/TaskFlow",
       featured: false
     }
   ];
@@ -286,10 +306,10 @@ export default function Home() {
       </section>
 
       {/* Main Container */}
-      <main className="flex flex-col w-full px-45 gap-25">
+      <main className="flex flex-col w-full px-45 pt-20 gap-25">
 
         {/* ABOUT SECTION */}
-        <section id="about" className="pb-12 flex flex-col items-center justify-center text-center max-w-5xl mx-auto space-y-12">
+        <section id="about" className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto gap-12">
           <div className="space-y-4">
             <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Background
@@ -604,78 +624,124 @@ export default function Home() {
         </section>
 
         {/* EDUCATION SECTION */}
-        <section id="education" className="pt-12 md:pt-24 grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
-            <h2 className="font-serif-anthropic text-3xl font-medium tracking-tight text-[var(--accent-rust)]">
+        <section id="education" className="pt-12 md:pt-24 space-y-16">
+          {/* Header */}
+          <div className="space-y-4 text-center max-w-3xl mx-auto">
+            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Education
             </h2>
-            <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] mt-1">
-              ACADEMIC QUALIFICATIONS
+            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+              Academic Qualifications
             </div>
           </div>
 
-          <div className="md:col-span-8 space-y-12">
-            <div className="space-y-6">
-
-              <div className="space-y-2">
-                <span className="text-xs font-mono-anthropic text-[var(--accent-rust)]">AUTUMN 2026 — PRESENT</span>
-                <h3 className="font-serif-anthropic text-2xl font-medium">
-                  Bachelor of Engineering in Software Engineering
-                </h3>
-                <div className="text-sm text-[var(--text-secondary)]">
-                  Tampere University of Applied Sciences (TAMK) — Tampere, Finland
+          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)] pl-8 space-y-16 py-4">
+            
+            {/* Degree 1 */}
+            <div className="relative space-y-3">
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] shadow-xs transition-colors duration-300" />
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                <div className="space-y-1">
+                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                    Bachelor of Engineering in Software Engineering
+                  </h3>
+                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    Tampere University of Applied Sciences (TAMK) &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Tampere, Finland</span>
+                  </div>
                 </div>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  Focusing on modern software architecture, project-based engineering models, and Nordic technology frameworks.
-                </p>
-              </div>
-
-              <div className="h-px bg-[var(--border-light)]/50" />
-
-              <div className="space-y-2">
-                <span className="text-xs font-mono-anthropic text-[var(--text-secondary)]">2023 — 2025</span>
-                <h3 className="font-serif-anthropic text-2xl font-medium">
-                  Pearson BTEC Level 5 HND in Computing
-                </h3>
-                <div className="text-sm text-[var(--text-secondary)]">
-                  ESOFT Metro Campus — Gampaha, Sri Lanka
+                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                  08/2026 &mdash; Present
                 </div>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  Specialized in Software Engineering. Graduated with a Merit. Focus areas included data structures, database algorithms, and systems analysis.
-                </p>
               </div>
-
-              <div className="h-px bg-[var(--border-light)]/50" />
-
-              <div className="space-y-2">
-                <span className="text-xs font-mono-anthropic text-[var(--text-secondary)]">2022 — 2023</span>
-                <h3 className="font-serif-anthropic text-2xl font-medium">
-                  Diploma in Information Technology (DiTEC) & English (DiE)
-                </h3>
-                <div className="text-sm text-[var(--text-secondary)]">
-                  ESOFT Metro Campus — Gampaha, Sri Lanka
-                </div>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  Dual assured diplomas covering IT systems fundamentals, object-oriented concepts, and advanced business english communications.
-                </p>
-              </div>
-
-              <div className="h-px bg-[var(--border-light)]/50" />
-
-              <div className="space-y-2">
-                <span className="text-xs font-mono-anthropic text-[var(--text-secondary)]">2022</span>
-                <h3 className="font-serif-anthropic text-2xl font-medium">
-                  General Certificate of Education (G.C.E.) Ordinary Level
-                </h3>
-                <div className="text-sm text-[var(--text-secondary)]">
-                  Henegama Central College — Gampaha, Sri Lanka
-                </div>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  Completed secondary education with strong results, including top grade (A) passes in Information & Communication Technology and English.
-                </p>
-              </div>
-
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                A 240-ECTS, four-year programme focused on modern software development, web and mobile applications, and practical, project-based learning for international software engineering roles.
+              </p>
             </div>
+
+            {/* Degree 2 */}
+            <div className="relative space-y-3">
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                <div className="space-y-1">
+                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                    Pearson BTEC Level 5 HND in Computing
+                  </h3>
+                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    ESOFT Metro Campus &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Gampaha, LK</span>
+                  </div>
+                </div>
+                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                  02/2023 &mdash; 02/2025
+                </div>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                Specialized in Software Engineering. Graduated with a <strong>Merit</strong>. Covered programming, databases, networking, security, software development lifecycles (SDLC), data structures and algorithms (DSA), web development, and UX/UI. Ofqual-regulated qualification (QN 603/7596/6).
+              </p>
+            </div>
+
+            {/* Degree 3 */}
+            <div className="relative space-y-3">
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                <div className="space-y-1">
+                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                    Pearson Assured Level 3 Diploma in IT (DiTEC)
+                  </h3>
+                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    ESOFT Metro Campus &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Gampaha, LK</span>
+                  </div>
+                </div>
+                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                  07/2022 &mdash; 08/2023
+                </div>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                Graduated with a <strong>Merit</strong>. A 1,200-hour programme covering IT concepts, computer hardware, networking, internet and web design, graphics and multimedia, Python, SQL databases, C# programming, and a final practical project.
+              </p>
+            </div>
+
+            {/* Degree 4 */}
+            <div className="relative space-y-3">
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                <div className="space-y-1">
+                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                    Pearson Assured Level 3 Diploma in English (DiE)
+                  </h3>
+                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    ESOFT Metro Campus &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Gampaha, LK</span>
+                  </div>
+                </div>
+                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                  07/2022 &mdash; 08/2023
+                </div>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                Completed with a <strong>Pass</strong> grade. A communicative, skills-based programme covering grammar, vocabulary, reading, writing, listening, speaking, presentations, and viva.
+              </p>
+            </div>
+
+            {/* Degree 5 */}
+            <div className="relative space-y-3">
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                <div className="space-y-1">
+                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                    G.C.E. Ordinary Level Examination
+                  </h3>
+                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    Henegama Central College &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Gampaha, LK</span>
+                  </div>
+                </div>
+                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                  2022
+                </div>
+              </div>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                Passed with top distinctions: A in Information &amp; Communication Technology, A in English, B in Mathematics, B in Science, and B in Sinhala.
+              </p>
+            </div>
+
           </div>
         </section>
 
