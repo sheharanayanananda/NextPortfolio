@@ -503,85 +503,100 @@ export default function Home() {
         </section>
 
         {/* EXPERIENCE TIMELINE */}
-        <section id="experience" className="pt-12 md:pt-24 grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
-            <h2 className="font-serif-anthropic text-3xl font-medium tracking-tight text-[var(--accent-rust)]">
+        <section id="experience" className="pt-12 md:pt-24 space-y-16">
+          {/* Header */}
+          <div className="space-y-4 text-center max-w-3xl mx-auto">
+            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Experience
             </h2>
-            <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] mt-1">
-              PROFESSIONAL CHRONOLOGY
+            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+              Professional Chronology
             </div>
           </div>
 
-          <div className="md:col-span-8 space-y-12">
-
-            {/* Job 1 */}
-            <div className="relative pl-6 border-l-2 border-[var(--border-light)] space-y-3">
-              <div className="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--accent-rust)]" />
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-                <div>
-                  <h3 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)]">
-                    Associate Software Engineer
+          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)] pl-8 space-y-16 py-4">
+            
+            {/* Job 1 (Freelance Software Engineer) */}
+            <div className="relative space-y-4">
+              {/* Timeline Dot */}
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] shadow-xs transition-colors duration-300" />
+              
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                <div className="space-y-1">
+                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                    Freelance Software Engineer
                   </h3>
-                  <div className="text-sm text-[var(--text-secondary)] font-medium">
-                    DayZ Solutions (Pvt.) Ltd.
+                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    Upwork &amp; Private Contracts &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Remote</span>
                   </div>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] sm:text-right">
-                  05/2025 — Present <br className="hidden sm:inline" />
-                  <span className="text-[10px]">Nittambuwa, LK</span>
+                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                  01/2026 &mdash; Present
                 </div>
               </div>
-              <ul className="text-sm text-[var(--text-secondary)] space-y-2 list-disc pl-4 leading-relaxed">
-                <li>Served as Lead Developer for inventory system versions, managing live integrations across retail platform APIs.</li>
-                <li>Automated e-commerce sync procedures, replacing manuals and lowering synchronization drift.</li>
-                <li>Structured BetonStorten automation features utilizing Laravel backend services and Flutter layouts.</li>
+              <ul className="text-sm text-[var(--text-secondary)] space-y-4 leading-relaxed list-disc pl-4 font-sans">
+                <li>
+                  <strong>UNiFY Sports Ecosystem:</strong> Stabilized and extended a multi-platform Flutter app for NBA, WNBA, NFL, and NCAA fanbases. Engineered real-time WebSocket chatrooms and scoreboards, rich push notifications, and custom NFC &ldquo;Baller Band&rdquo; integrations connected to a Python/Flask API.
+                </li>
+                <li>
+                  <strong>Upwork &amp; Client Engagements:</strong> Delivering custom software solutions directly to global clients on Upwork and personal networks, specializing in native/cross-platform mobile apps and scalable web services.
+                </li>
               </ul>
             </div>
 
-            {/* Job 2 */}
-            <div className="relative pl-6 border-l-2 border-[var(--border-light)] space-y-3">
-              <div className="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--border-light)]" />
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-                <div>
-                  <h3 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)]">
-                    Freelance Software Engineer
+            {/* Job 2 (Associate Software Engineer) */}
+            <div className="relative space-y-4">
+              {/* Timeline Dot */}
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                <div className="space-y-1">
+                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                    Associate Software Engineer
                   </h3>
-                  <div className="text-sm text-[var(--text-secondary)] font-medium">
-                    UNiFY Sports Platform
+                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    DayZ Solutions (Pvt.) Ltd. &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Nittambuwa, LK</span>
                   </div>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] sm:text-right">
-                  01/2026 — Present <br className="hidden sm:inline" />
-                  <span className="text-[10px]">Remote (US Fanbase)</span>
+                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                  05/2025 &mdash; 07/2026
                 </div>
               </div>
-              <ul className="text-sm text-[var(--text-secondary)] space-y-2 list-disc pl-4 leading-relaxed">
-                <li>Inherited, stabilized, and refactored modular Flutter applications and Python/Flask APIs.</li>
-                <li>Implemented real-time features using WebSockets (chatrooms, score boards) and custom NFC integration.</li>
+              <ul className="text-sm text-[var(--text-secondary)] space-y-4 leading-relaxed list-disc pl-4 font-sans">
+                <li>
+                  <strong>Deurbeslag Gigant (Lead Engineer):</strong> Acted as lead engineer for an e-commerce inventory management system. Automated order synchronizations across external platform APIs using Laravel, Livewire, Alpine.js, and MySQL. Rebuilding V2 panels using Filament tables and Flux UI.
+                </li>
+                <li>
+                  <strong>ECore Web &amp; Mobile:</strong> Implemented concrete transit calculations, driver routing, and resource logging for BetonStorten.nl using Laravel backends. Designed real-time APIs consumed by a Flutter mobile interface for synchronizing orders and driver coordinates.
+                </li>
               </ul>
             </div>
 
             {/* Job 3 */}
-            <div className="relative pl-6 border-l-2 border-[var(--border-light)] space-y-3">
-              <div className="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--border-light)]" />
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-                <div>
-                  <h3 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)]">
+            <div className="relative space-y-4">
+              {/* Timeline Dot */}
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                <div className="space-y-1">
+                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
                     Web & Desktop Developer
                   </h3>
-                  <div className="text-sm text-[var(--text-secondary)] font-medium">
-                    Freelance Solutions
+                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    Freelance Solutions &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Hybrid</span>
                   </div>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] sm:text-right">
-                  10/2022 — 06/2025 <br className="hidden sm:inline" />
-                  <span className="text-[10px]">Hybrid</span>
+                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                  10/2022 &mdash; 06/2025
                 </div>
               </div>
-              <ul className="text-sm text-[var(--text-secondary)] space-y-2 list-disc pl-4 leading-relaxed">
-                <li>Designed, developed, and deployed custom C# inventory systems for regional pharmacies.</li>
-                <li>Built custom full-stack galleries for professional photographers with customized administrative panels.</li>
+              <ul className="text-sm text-[var(--text-secondary)] space-y-4 leading-relaxed list-disc pl-4 font-sans">
+                <li>
+                  <strong>Web Portals:</strong> Created the Bright Achievers Migration platform and Photographer Portfolio CMS engines using Laravel, TailwindCSS, and MySQL to automate client onboarding and showcase galleries.
+                </li>
+                <li>
+                  <strong>Desktop Engineering:</strong> Developed pharmacy inventory trackers (Pubudhu System) and supermarket cashier systems utilizing C#, the .NET Framework, and SQL databases.
+                </li>
               </ul>
             </div>
 
