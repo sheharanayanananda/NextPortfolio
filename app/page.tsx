@@ -746,35 +746,61 @@ export default function Home() {
         </section>
 
         {/* UPDATES SECTION */}
-        <section id="updates" className="pt-12 md:pt-24 grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
-            <h2 className="font-serif-anthropic text-3xl font-medium tracking-tight text-[var(--accent-rust)]">
+        <section id="updates" className="pt-12 md:pt-24 space-y-16">
+          {/* Header */}
+          <div className="space-y-4 text-center max-w-3xl mx-auto">
+            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Updates
             </h2>
-            <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] mt-1">
-              LOGS & CURRENT ENDEAVORS
+            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+              Current Endeavors
             </div>
           </div>
 
-          <div className="md:col-span-8 space-y-6 text-sm md:text-base leading-relaxed text-[var(--text-secondary)]">
-            <div className="space-y-2 border-l border-[var(--accent-rust)] pl-4">
-              <span className="text-[10px] font-mono-anthropic uppercase text-[var(--accent-rust)] font-semibold">Life & Academic Focus</span>
-              <p className="text-[var(--text-charcoal)] font-semibold font-serif-anthropic text-lg leading-tight">
-                Studying Software Engineering at TAMK in Finland.
-              </p>
-              <p>
-                Relocated to Finland for undergraduate studies in Software Engineering. Currently adapting to the local academic system, developing projects, and studying Finnish conversational language.
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto pt-6 items-stretch">
+            {/* Card 1: iOS & Swift (Left) */}
+            <div className="flex flex-col justify-between border border-[var(--border-light)] bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl hover:border-[var(--accent-rust)] hover:bg-[var(--card-hover-bg)] transition-all duration-300 group">
+              <div className="space-y-4">
+                <span className="text-[10px] font-mono-anthropic uppercase text-[var(--text-secondary)] tracking-wider font-semibold">
+                  iOS &amp; Swift
+                </span>
+                <h3 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                  Slate Notes Application
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                  Designing Slate V1 and V2 notes engines, implementing autonomous context-aware note processing, high-fidelity markdown/LaTeX render passes, and offline local-first database models.
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-2 border-l border-[var(--border-light)] pl-4">
-              <span className="text-[10px] font-mono-anthropic uppercase text-[var(--text-secondary)]">Professional Goals</span>
-              <p className="text-[var(--text-charcoal)] font-semibold font-serif-anthropic text-lg leading-tight">
-                Open to Junior Software Engineering & Freelance roles.
-              </p>
-              <p>
-                Actively applying for software development positions. Ready to contribute full-stack Laravel backend architecture, Alpine.js frontends, and Flutter mobile systems to active codebases.
-              </p>
+            {/* Card 2: TAMK / Finland (Center - Highlighted) */}
+            <div className="flex flex-col justify-between border-2 border-[var(--accent-rust)] bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl shadow-xl shadow-[var(--accent-rust)]/10 md:scale-105 z-10 transition-all duration-300 group">
+              <div className="space-y-4">
+                <span className="text-[10px] font-mono-anthropic uppercase text-[var(--accent-rust)] tracking-wider font-semibold">
+                  TAMK / Finland
+                </span>
+                <h3 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                  Academic Relocation
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                  Commencing undergraduate studies in the Bachelor of Engineering in Software Engineering at Tampere University of Applied Sciences (TAMK) in Tampere, Finland.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3: Open to Gigs (Right) */}
+            <div className="flex flex-col justify-between border border-[var(--border-light)] bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl hover:border-[var(--accent-rust)] hover:bg-[var(--card-hover-bg)] transition-all duration-300 group">
+              <div className="space-y-4">
+                <span className="text-[10px] font-mono-anthropic uppercase text-[var(--text-secondary)] tracking-wider font-semibold">
+                  Open to Gigs
+                </span>
+                <h3 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                  Freelance &amp; Remote Projects
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                  Actively accepting contracts for backend integrations (Laravel/PHP) and cross-platform native apps (Flutter/Swift/Dart) globally.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -783,24 +809,87 @@ export default function Home() {
 
       {/* Footer */}
       <footer id="footer" className="border-t border-[var(--border-light)] bg-[var(--card-bg)] transition-colors duration-300 mt-24">
-        <div className="w-full px-12 md:px-24 py-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-[var(--text-secondary)]">
-          <div className="font-serif-anthropic text-lg font-medium text-[var(--text-charcoal)]">
-            Thineth Shehara
+        <div className="w-full px-8 md:px-24 py-16 md:py-20 max-w-7xl mx-auto space-y-12">
+          
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            {/* Branding Column */}
+            <div className="md:col-span-6 space-y-4">
+              <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                Thineth Shehara
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-sm font-sans">
+                Associate Software Engineer specializing in building full-stack platforms with Laravel and cross-platform mobile apps with Flutter and Swift.
+              </p>
+            </div>
+
+            {/* Navigation Column */}
+            <div className="md:col-span-3 space-y-4">
+              <div className="text-[10px] font-mono-anthropic uppercase tracking-wider text-[var(--text-secondary)] font-semibold">
+                Navigation
+              </div>
+              <ul className="space-y-2 text-sm font-sans">
+                <li>
+                  <a href="#hero" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#about" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#projects" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                    Projects
+                  </a>
+                </li>
+                <li>
+                  <a href="#experience" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                    Experience
+                  </a>
+                </li>
+                <li>
+                  <a href="#education" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                    Education
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Connect Column */}
+            <div className="md:col-span-3 space-y-4">
+              <div className="text-[10px] font-mono-anthropic uppercase tracking-wider text-[var(--text-secondary)] font-semibold">
+                Connect
+              </div>
+              <ul className="space-y-2 text-sm font-sans">
+                <li>
+                  <a href="https://github.com/sheharanayanananda" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a href="https://linkedin.com/in/thineth-nayanananda-54815b228/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:sheharanayanananda@gmail.com" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                    Email
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div className="flex space-x-6">
-            <a href="https://github.com/sheharanayanananda" target="_blank" rel="noopener noreferrer" className="underline-hover hover:text-[var(--text-charcoal)]">
-              GitHub
-            </a>
-            <span className="text-[var(--border-light)]">|</span>
-            <a href="mailto:thinethshehara@gmail.com" className="underline-hover hover:text-[var(--text-charcoal)]">
-              Email
-            </a>
+          <div className="border-t border-[var(--border-light)]/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[var(--text-secondary)] font-mono-anthropic">
+            <div>
+              © 2026 Thineth Shehara. All rights reserved.
+            </div>
+            <div>
+              Designed &amp; engineered with Next.js &amp; CSS.
+            </div>
           </div>
 
-          <div className="text-xs font-mono-anthropic">
-            © 2026 Thineth Shehara. Built with Next.js & Vanilla CSS.
-          </div>
         </div>
       </footer>
 
