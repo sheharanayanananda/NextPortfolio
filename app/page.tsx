@@ -72,7 +72,7 @@ export default function Home() {
 
   useEffect(() => {
     const root = window.document.documentElement;
-    
+
     const applyTheme = (currentTheme: "light" | "dark" | "system") => {
       if (currentTheme === "system") {
         const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -162,7 +162,7 @@ export default function Home() {
           <a href="#hero" className="font-serif-anthropic text-xl font-semibold tracking-tight hover:text-[var(--accent-rust)] transition-colors">
             Thineth Shehara
           </a>
-          
+
           <nav className="hidden md:flex items-center space-x-8 text-sm font-medium tracking-tight">
             <a href="#about" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">About</a>
             <a href="#slate" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Slate V2</a>
@@ -211,19 +211,19 @@ export default function Home() {
 
       {/* Main Container */}
       <main className="max-w-6xl mx-auto px-6 py-12 md:py-24 space-y-24 md:space-y-36">
-        
+
         {/* HERO / WELCOME SECTION */}
-        <section id="hero" className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start pt-6">
+        <section id="hero" className="grid grid-cols-1 md:grid-cols-12 gap-8 md:items-stretch pt-6">
           <div className="md:col-span-8 space-y-6">
             <div className="inline-flex items-center space-x-2 border border-[var(--border-light)] px-3 py-1 rounded-full text-xs font-mono-anthropic uppercase text-[var(--accent-rust)]">
               <span>●</span>
               <span>Software Engineer & Builder</span>
             </div>
-            
+
             <h1 className="font-serif-anthropic text-5xl md:text-7xl font-normal leading-[1.08] tracking-tight">
               Thineth Shehara
             </h1>
-            
+
             <p className="font-serif-anthropic text-2xl md:text-3xl text-[var(--text-secondary)] leading-relaxed font-light">
               Crafting robust web systems in <span className="text-[var(--text-charcoal)] font-normal">Laravel</span>, engineering high-performance cross-platform apps in <span className="text-[var(--text-charcoal)] font-normal">Flutter</span>, and studying Software Engineering at Tampere University of Applied Sciences (<span className="text-[var(--text-charcoal)] font-normal">TAMK</span>) in Finland.
             </p>
@@ -238,21 +238,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="md:col-span-4 flex justify-center md:justify-end">
-            <div className="relative group">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent-rust)] to-[var(--border-light)] rounded-lg blur opacity-10 group-hover:opacity-20 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative border border-[var(--border-light)] p-2 rounded-lg bg-[var(--bg-warm)] overflow-hidden max-w-[280px]">
+          <div className="md:col-span-4 flex justify-center md:justify-end h-full w-full">
+            <div className="relative w-full h-full">
+              <div className="relative w-full h-full min-h-[350px] md:min-h-0 flex-1">
                 <Image
-                  src="/me.jpg"
-                  alt="Thineth Shehara"
-                  width={280}
-                  height={320}
+                  src="/arc_card.svg"
+                  alt="Arc Card"
+                  fill
                   priority
-                  className="rounded-md object-cover filter grayscale contrast-115 hover:grayscale-0 transition-all duration-700"
+                  className="object-contain"
                 />
-                <div className="mt-3 text-center text-xs font-mono-anthropic text-[var(--text-secondary)]">
-                  Thineth Shehara — Tampere, 2026
-                </div>
               </div>
             </div>
           </div>
@@ -268,7 +263,7 @@ export default function Home() {
               PHILOSOPHY & STACK
             </div>
           </div>
-          
+
           <div className="md:col-span-8 space-y-6 text-base md:text-lg leading-relaxed text-[var(--text-secondary)]">
             <p>
               I build software with high ownership and strict attention to detail. My background spans commercial e-commerce inventory backends, company logistics platforms, and mobile sports apps. I lean towards tools that offer power and rapid feedback, developing primarily with <span className="text-[var(--text-charcoal)] font-semibold">PHP / Laravel</span>, <span className="text-[var(--text-charcoal)] font-semibold">Flutter (Dart)</span>, <span className="text-[var(--text-charcoal)] font-semibold">Swift/SwiftUI</span>, and relational database systems.
@@ -376,7 +371,7 @@ export default function Home() {
                 Integrated iOS background state processing via UIBackgroundTaskIdentifier. Tasks run off the main thread and notify users on completion via local push alerts.
               </p>
             </div>
-            
+
             <div className="border border-[var(--border-light)] rounded-lg p-6 space-y-3 hover:bg-[var(--card-bg)] transition-all">
               <div className="font-mono-anthropic text-xs text-[var(--accent-rust)]">02 / PHYSICS INTERACTION</div>
               <h4 className="font-serif-anthropic text-xl font-medium">Liquid Glass Capsule</h4>
@@ -384,7 +379,7 @@ export default function Home() {
                 A custom floating capsule featuring dynamic rubber-band spring physics and continuous soft haptic feedbacks on touch offsets.
               </p>
             </div>
-            
+
             <div className="border border-[var(--border-light)] rounded-lg p-6 space-y-3 hover:bg-[var(--card-bg)] transition-all">
               <div className="font-mono-anthropic text-xs text-[var(--accent-rust)]">03 / MATH RENDERING</div>
               <h4 className="font-serif-anthropic text-xl font-medium">LaTeX & MathJax Cache</h4>
@@ -444,7 +439,7 @@ export default function Home() {
                       </span>
                     )}
                   </div>
-                  
+
                   <div className="text-xs font-mono-anthropic text-[var(--text-secondary)]">
                     {proj.role}
                   </div>
@@ -478,7 +473,7 @@ export default function Home() {
           </div>
 
           <div className="md:col-span-8 space-y-12">
-            
+
             {/* Job 1 */}
             <div className="relative pl-6 border-l-2 border-[var(--border-light)] space-y-3">
               <div className="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--accent-rust)]" />
@@ -565,7 +560,7 @@ export default function Home() {
 
           <div className="md:col-span-8 space-y-12">
             <div className="space-y-6">
-              
+
               <div className="space-y-2">
                 <span className="text-xs font-mono-anthropic text-[var(--accent-rust)]">AUTUMN 2026 — PRESENT</span>
                 <h3 className="font-serif-anthropic text-2xl font-medium">
@@ -670,7 +665,7 @@ export default function Home() {
           <div className="font-serif-anthropic text-lg font-medium text-[var(--text-charcoal)]">
             Thineth Shehara
           </div>
-          
+
           <div className="flex space-x-6">
             <a href="https://github.com/sheharanayanananda" target="_blank" rel="noopener noreferrer" className="underline-hover hover:text-[var(--text-charcoal)]">
               GitHub
