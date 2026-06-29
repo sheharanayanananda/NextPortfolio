@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AtSign, Linkedin, Github } from "lucide-react";
 
 // Custom type for projects
 interface Project {
@@ -149,12 +150,12 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-[var(--bg-warm)] text-[var(--text-charcoal)] font-sans transition-colors duration-300 selection:bg-[var(--highlight-selection)] selection:text-[var(--text-charcoal)]">
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-[var(--bg-warm)]/80 border-b border-[var(--border-light)] transition-colors duration-300">
-        <div className="w-full px-45 py-4 flex items-center justify-between">
+        <div className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-4 flex items-center justify-between">
           <a href="#hero" className="font-sans text-xl font-semibold tracking-tight hover:text-[var(--accent-rust)] transition-colors ease-in-out duration-300">
             Shehara
           </a>
 
-          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium tracking-tight">
+          <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium tracking-tight">
             <a href="#hero" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Home</a>
             <a href="#about" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">About</a>
             <a href="/slate" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Slate</a>
@@ -202,24 +203,54 @@ export default function Home() {
       </header>
 
       {/* HERO / WELCOME SECTION */}
-      <section id="hero" className="flex-1 min-h-[calc(100vh-69px)] flex items-center w-full px-45">
+      <section id="hero" className="flex-1 min-h-[calc(100vh-69px)] flex items-center w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32">
         <div className="w-full flex flex-col md:flex-row items-center gap-8">
 
           {/* Left — Content */}
           <div className="flex-1 gap-3">
             <div className="flex flex-col gap-10">
-              <div className="font-mono-anthropic text-[2.5rem] font-medium tracking-tight text-[var(--text-secondary)]">
+              <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-medium tracking-tight text-[var(--text-secondary)]">
                 Thineth
               </div>
-              <h1 className="font-serif-anthropic text-[13rem] font-medium leading-[1.05] tracking-tight">
+              <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-medium leading-[1.05] tracking-tight">
                 Shehara
               </h1>
             </div>
 
-            <p className="font-serif-anthropic text-xl text-[var(--text-secondary)] leading-relaxed font-normal max-w-2xl">
+            <p className="font-serif-anthropic text-base md:text-lg xl:text-xl text-[var(--text-secondary)] leading-relaxed font-normal max-w-xl xl:max-w-2xl">
               Designing and shipping mobile apps that handle real-time data, platform integrations, and smooth
               offline-to-online workflows, backed by clean architecture and APIs built to support them.
             </p>
+
+            {/* Inline contact icons — shown on md/lg/xl, hidden on 2xl+ where floating buttons appear */}
+            <div className="flex 2xl:hidden items-center gap-6 mt-6 text-[var(--text-charcoal)]">
+              <a
+                href="mailto:sheharanayanananda@gmail.com"
+                className="hover:opacity-70 transition-all duration-300 hover:scale-110 active:scale-95"
+                aria-label="Email Me"
+              >
+                <AtSign className="w-6 h-6" strokeWidth={2} />
+              </a>
+              <a
+                href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-70 transition-all duration-300 hover:scale-110 active:scale-95"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="w-[22px] h-[22px]" strokeWidth={2} />
+              </a>
+              <a
+                href="https://github.com/sheharanayanananda"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-70 transition-all duration-300 hover:scale-110 active:scale-95"
+                aria-label="GitHub Profile"
+              >
+                <Github className="w-6 h-6" strokeWidth={2} />
+              </a>
+            </div>
+
             <div className="flex flex-col gap-10 pt-14">
               <div className="flex items-center gap-2 text-[var(--text-secondary)]">
                 <svg
@@ -247,15 +278,16 @@ export default function Home() {
           </div>
 
           {/* Right — Arc Card + floating buttons */}
-          <div className="relative self-stretch flex-shrink-0 flex items-center justify-end w-full md:w-auto pl-24 md:pl-32" style={{ minWidth: "320px" }}>
+          <div className="relative self-stretch flex-shrink-0 flex items-center justify-end w-full md:w-auto md:pl-4 lg:pl-8 xl:pl-12 2xl:pl-28" style={{ minWidth: "200px" }}>
 
             {/* Wrapper for Card and Buttons (relative to card boundaries) */}
             <div className="relative h-full" style={{ width: "auto", aspectRatio: "2/3" }}>
 
+              {/* Floating buttons — 2xl and above only */}
               {/* Email Me */}
               <a
                 href="mailto:sheharanayanananda@gmail.com"
-                className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
+                className="hidden 2xl:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
                 style={{ width: "112px", height: "50px", bottom: "300px", left: "-160px", transform: "rotate(25deg)", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="Email Me"
               >
@@ -264,10 +296,10 @@ export default function Home() {
 
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
+                className="hidden 2xl:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
                 style={{ width: "108px", height: "50px", bottom: "170px", left: "-230px", transform: "rotate(0deg)", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="LinkedIn Profile"
               >
@@ -279,7 +311,7 @@ export default function Home() {
                 href="https://github.com/sheharanayanananda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute z-10 flex items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
+                className="hidden 2xl:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
                 style={{ width: "96px", height: "50px", bottom: "50px", left: "-145px", transform: "rotate(-30deg)", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="GitHub Profile"
               >
@@ -306,7 +338,7 @@ export default function Home() {
       </section>
 
       {/* Main Container */}
-      <main className="flex flex-col w-full px-45 pt-20 gap-25">
+      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-20 gap-25">
 
         {/* ABOUT SECTION */}
         <section id="about" className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto gap-12">
