@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AtSign, Linkedin, Github } from "lucide-react";
+import { AtSign, Linkedin, Github, Sun, Moon, Monitor, MapPin, Download, ArrowRight, ChevronRight, X } from "lucide-react";
 
 // Custom type for projects
 interface Project {
@@ -172,10 +172,7 @@ export default function Home() {
               title="Light theme"
               aria-label="Use light theme"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <circle cx="12" cy="12" r="4" strokeLinecap="round" strokeLinejoin="round" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-              </svg>
+              <Sun className="w-4 h-4" />
             </button>
             <button
               onClick={() => setTheme("dark")}
@@ -183,9 +180,7 @@ export default function Home() {
               title="Dark theme"
               aria-label="Use dark theme"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-              </svg>
+              <Moon className="w-4 h-4" />
             </button>
             <button
               onClick={() => setTheme("system")}
@@ -193,10 +188,7 @@ export default function Home() {
               title="Follow system settings"
               aria-label="Use system settings theme"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <rect x="3" y="4" width="18" height="12" rx="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 20h6M12 16v4" />
-              </svg>
+              <Monitor className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -217,13 +209,13 @@ export default function Home() {
               </h1>
             </div>
 
-            <p className="font-serif-anthropic text-base md:text-lg xl:text-xl text-[var(--text-secondary)] leading-relaxed font-normal max-w-xl xl:max-w-2xl">
+            <p className="font-serif-anthropic text-base md:text-lg xl:text-xl text-[var(--text-secondary)] leading-relaxed font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
               Designing and shipping mobile apps that handle real-time data, platform integrations, and smooth
               offline-to-online workflows, backed by clean architecture and APIs built to support them.
             </p>
 
-            {/* Inline contact icons — shown on md/lg/xl, hidden on 2xl+ where floating buttons appear */}
-            <div className="flex 2xl:hidden items-center gap-6 mt-6 text-[var(--text-charcoal)]">
+            {/* Inline contact icons — shown below lg, hidden on lg+ where floating buttons appear */}
+            <div className="flex lg:hidden items-center gap-6 mt-6 text-[var(--text-charcoal)]">
               <a
                 href="mailto:sheharanayanananda@gmail.com"
                 className="hover:opacity-70 transition-all duration-300 hover:scale-110 active:scale-95"
@@ -253,17 +245,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-10 pt-14">
               <div className="flex items-center gap-2 text-[var(--text-secondary)]">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 flex-shrink-0"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                </svg>
+                <MapPin className="w-5 h-5 flex-shrink-0" />
                 <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>
               </div>
 
@@ -283,12 +265,12 @@ export default function Home() {
             {/* Wrapper for Card and Buttons (relative to card boundaries) */}
             <div className="relative h-full" style={{ width: "auto", aspectRatio: "2/3" }}>
 
-              {/* Floating buttons — 2xl and above only */}
+              {/* Floating buttons — lg and above */}
               {/* Email Me */}
               <a
                 href="mailto:sheharanayanananda@gmail.com"
-                className="hidden 2xl:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
-                style={{ width: "112px", height: "50px", bottom: "300px", left: "-160px", transform: "rotate(25deg)", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
+                style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="Email Me"
               >
                 Email Me
@@ -299,8 +281,8 @@ export default function Home() {
                 href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden 2xl:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
-                style={{ width: "108px", height: "50px", bottom: "170px", left: "-230px", transform: "rotate(0deg)", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
+                style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="LinkedIn Profile"
               >
                 LinkedIn
@@ -311,8 +293,8 @@ export default function Home() {
                 href="https://github.com/sheharanayanananda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden 2xl:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)]"
-                style={{ width: "96px", height: "50px", bottom: "50px", left: "-145px", transform: "rotate(-30deg)", boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
+                style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="GitHub Profile"
               >
                 GitHub
@@ -370,9 +352,7 @@ export default function Home() {
                 className="inline-flex items-center space-x-2 bg-[#1E1E1E] hover:bg-[#333] text-[#FAF8F5] px-6 py-3.5 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Download Resume</span>
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                  <path d="M13 8V2H7v6H2l8 8 8-8h-5zM2 18h16v2H2v-2z" />
-                </svg>
+                <Download className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -442,9 +422,7 @@ export default function Home() {
                   className="inline-flex items-center gap-1.5 bg-[#1E1E1E] hover:bg-[#333] text-[#FAF8F5] px-5 py-3 rounded-xl font-sans font-medium text-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Explore Slate
-                  <svg className="w-3.5 h-3.5 fill-none stroke-current" strokeWidth={2.5} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>
@@ -542,9 +520,7 @@ export default function Home() {
                     {isClickable && (
                       <span className="text-xs font-sans text-[var(--text-secondary)] group-hover:text-[var(--accent-rust)] transition-colors flex items-center gap-1">
                         Details
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
+                        <ChevronRight className="w-3 h-3" />
                       </span>
                     )}
                   </div>
@@ -938,9 +914,7 @@ export default function Home() {
               className="absolute top-6 right-6 p-2 rounded-full border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-all"
               aria-label="Close modal"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
+              <X className="w-4 h-4" />
             </button>
 
             {/* Header */}
@@ -1001,7 +975,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-5 py-2.5 rounded-xl font-sans font-medium text-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                    <Github className="w-4 h-4" />
                     View on GitHub
                   </a>
                 ) : (
