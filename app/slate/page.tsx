@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Github, Sun, Moon, Monitor } from "lucide-react";
 
 export default function SlatePage() {
   const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
@@ -109,7 +110,7 @@ export default function SlatePage() {
 
       {/* ─── Header (shared with portfolio) ─── */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-[var(--bg-warm)]/80 border-b border-[var(--border-light)] transition-colors duration-300">
-        <div className="w-full px-12 md:px-24 py-4 flex items-center justify-between">
+        <div className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-4 flex items-center justify-between">
           <Link
             href="/"
             className="font-sans text-xl font-semibold tracking-tight hover:text-[var(--accent-rust)] transition-colors ease-in-out duration-300"
@@ -117,7 +118,7 @@ export default function SlatePage() {
             Shehara
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium tracking-tight">
+          <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium tracking-tight">
             <Link href="/#hero" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Home</Link>
             <Link href="/#about" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">About</Link>
             <Link href="/slate" className="underline-hover text-[var(--text-charcoal)] transition-colors">Slate</Link>
@@ -134,29 +135,21 @@ export default function SlatePage() {
               className={`p-2 rounded-full transition-all duration-200 ${theme === "light" ? "bg-[var(--accent-rust)] text-[#FAF8F5]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
               aria-label="Use light theme"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <circle cx="12" cy="12" r="4" strokeLinecap="round" strokeLinejoin="round" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-              </svg>
+              <Sun className="w-4 h-4" />
             </button>
             <button
               onClick={() => setTheme("dark")}
               className={`p-2 rounded-full transition-all duration-200 ${theme === "dark" ? "bg-[var(--accent-rust)] text-[#FAF8F5]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
               aria-label="Use dark theme"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-              </svg>
+              <Moon className="w-4 h-4" />
             </button>
             <button
               onClick={() => setTheme("system")}
               className={`p-2 rounded-full transition-all duration-200 ${theme === "system" ? "bg-[var(--accent-rust)] text-[#FAF8F5]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
               aria-label="Use system theme"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <rect x="3" y="4" width="18" height="12" rx="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 20h6M12 16v4" />
-              </svg>
+              <Monitor className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -165,7 +158,7 @@ export default function SlatePage() {
       <main className="flex-1">
 
         {/* ─── Hero ─── */}
-        <section className="min-h-[calc(100vh-69px)] flex flex-col items-center justify-center text-center px-12 md:px-24 gap-8">
+        <section className="min-h-[calc(100vh-69px)] flex flex-col items-center justify-center text-center px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 gap-8">
           <div className="space-y-2">
             <div className="font-mono-anthropic text-xs tracking-widest uppercase text-[var(--text-secondary)]">
               For iPhone · Swift / SwiftUI
@@ -173,10 +166,10 @@ export default function SlatePage() {
           </div>
 
           <div className="space-y-4">
-            <h1 className="font-serif-anthropic text-[10rem] md:text-[14rem] font-medium leading-none tracking-tight text-[var(--text-charcoal)]">
+            <h1 className="font-serif-anthropic text-[5rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] 2xl:text-[14rem] font-medium leading-none tracking-tight text-[var(--text-charcoal)]">
               Slate
             </h1>
-            <p className="font-mono-anthropic text-xl md:text-2xl text-[var(--text-secondary)] tracking-tight">
+            <p className="font-mono-anthropic text-base sm:text-lg md:text-xl xl:text-2xl text-[var(--text-secondary)] tracking-tight">
               Notes, but intelligent.
             </p>
           </div>
@@ -188,7 +181,7 @@ export default function SlatePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-6 py-3 rounded-[15px] font-sans font-medium text-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+              <Github className="w-4 h-4" />
               View Origin on GitHub
             </a>
             <a
@@ -197,7 +190,7 @@ export default function SlatePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-[var(--border-light)] text-[var(--text-charcoal)] px-6 py-3 rounded-[15px] font-sans font-medium text-sm transition-all hover:scale-[1.02] active:scale-[0.98] hover:bg-[var(--card-bg)]"
             >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+              <Github className="w-4 h-4" />
               View Agentic on GitHub
             </a>
           </div>
@@ -230,7 +223,7 @@ export default function SlatePage() {
         </div>
 
         {/* ─── App Image ─── */}
-        <section className="flex flex-col items-center justify-center px-12 md:px-24 py-20 md:py-32 gap-6">
+        <section className="flex flex-col items-center justify-center px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-16 lg:py-24 gap-6">
           <div className="relative w-full max-w-[520px] aspect-square">
             <div className="relative w-full h-full rounded-3xl overflow-hidden" style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06)" }}>
               <Image
@@ -246,7 +239,7 @@ export default function SlatePage() {
                   <div className="font-mono-anthropic text-xs tracking-widest uppercase text-[var(--text-secondary)]">
                     In Development
                   </div>
-                  <div className="font-serif-anthropic text-3xl md:text-4xl font-medium text-[var(--text-charcoal)]">
+                  <div className="font-serif-anthropic text-2xl lg:text-3xl xl:text-4xl font-medium text-[var(--text-charcoal)]">
                     Coming Soon
                   </div>
                   <p className="font-sans text-sm text-[var(--text-secondary)] text-center max-w-xs leading-relaxed">
@@ -269,7 +262,7 @@ export default function SlatePage() {
         </section>
 
         {/* ─── Feature Grid ─── */}
-        <section className="px-12 md:px-24 pb-24 md:pb-36">
+        <section className="px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pb-20 lg:pb-28">
           <div className="max-w-5xl mx-auto space-y-16">
 
             {/* Section header */}
@@ -277,7 +270,7 @@ export default function SlatePage() {
               <div className="font-mono-anthropic text-xs tracking-widest uppercase text-[var(--text-secondary)]">
                 {activeVersion === "origin" ? "Core Features" : "Agentic Capabilities"}
               </div>
-              <h2 className="font-serif-anthropic text-4xl md:text-5xl font-medium tracking-tight text-[var(--text-charcoal)]">
+              <h2 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-medium tracking-tight text-[var(--text-charcoal)]">
                 {activeVersion === "origin"
                   ? "Intelligent notes, built for clarity."
                   : "Your notes. Now with an AI agent."}
@@ -307,9 +300,9 @@ export default function SlatePage() {
         </section>
 
         {/* ─── Bottom CTA ─── */}
-        <section className="border-t border-[var(--border-light)] py-24 md:py-32 flex flex-col items-center justify-center text-center px-12 md:px-24 gap-10">
+        <section className="border-t border-[var(--border-light)] py-20 lg:py-28 flex flex-col items-center justify-center text-center px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 gap-10">
           <div className="space-y-4 max-w-2xl">
-            <h2 className="font-serif-anthropic text-4xl md:text-5xl font-medium tracking-tight text-[var(--text-charcoal)]">
+            <h2 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-medium tracking-tight text-[var(--text-charcoal)]">
               Built for iOS. Open to everyone.
             </h2>
             <p className="font-sans text-base text-[var(--text-secondary)] leading-relaxed">
@@ -339,7 +332,7 @@ export default function SlatePage() {
 
       {/* ─── Footer ─── */}
       <footer className="border-t border-[var(--border-light)] bg-[var(--card-bg)]">
-        <div className="w-full px-12 md:px-24 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--text-secondary)]">
+        <div className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--text-secondary)]">
           <div className="font-serif-anthropic text-base font-medium text-[var(--text-charcoal)]">Slate</div>
           <div className="font-mono-anthropic text-xs">A Thineth Shehara project · iOS · Swift/SwiftUI</div>
         </div>

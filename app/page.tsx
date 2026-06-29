@@ -320,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* Main Container */}
-      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-20 gap-25">
+      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-16 lg:pt-20 gap-16 lg:gap-20 xl:gap-24 2xl:gap-25">
 
         {/* ABOUT SECTION */}
         <section id="about" className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto gap-12">
@@ -328,12 +328,12 @@ export default function Home() {
             <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Background
             </h2>
-            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
               PHILOSOPHY & STACK
             </div>
           </div>
 
-          <div className="space-y-8 text-lg md:text-xl leading-relaxed text-[var(--text-secondary)] font-serif-anthropic max-w-3xl mx-auto font-normal">
+          <div className="space-y-8 text-base lg:text-lg xl:text-xl leading-relaxed text-[var(--text-secondary)] font-serif-anthropic max-w-3xl mx-auto font-normal">
             <p>
               I specialize in engineering mobile applications with a focus on fluid animations, modular systems, and robust offline architectures. Whether developing natively or leveraging cross-platform frameworks, my focus is on bridging platform capabilities with high-fidelity, intuitive interfaces.
             </p>
@@ -341,7 +341,7 @@ export default function Home() {
               Beyond mobile architectures, I design web applications and backend infrastructures. By organizing relational databases, optimizing APIs, and assembling responsive interfaces, I build scalable systems that handle high data volumes and support clean, modern user workflows.
             </p>
 
-            <blockquote className="border-l-4 border-[var(--accent-rust)] pl-6 py-2 my-8 text-left italic text-xl md:text-2xl font-serif-anthropic text-[var(--text-charcoal)]/80 max-w-2xl mx-auto">
+            <blockquote className="border-l-4 border-[var(--accent-rust)] pl-6 py-2 my-8 text-left italic text-lg lg:text-xl xl:text-2xl font-serif-anthropic text-[var(--text-charcoal)]/80 max-w-2xl mx-auto">
               &ldquo;Success is not a destination, It’s a journey that most don’t realize.&rdquo;
             </blockquote>
 
@@ -365,7 +365,7 @@ export default function Home() {
             <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Projects
             </h2>
-            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
               Selected Works
             </div>
           </div>
@@ -382,7 +382,7 @@ export default function Home() {
               <div className="space-y-4">
                 <div>
                   <span className="text-xs font-mono-anthropic uppercase text-[var(--accent-rust)] font-semibold">Flagship Project</span>
-                  <h3 className="font-serif-anthropic text-4xl md:text-5xl font-medium text-[var(--text-charcoal)] mt-1">
+                  <h3 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-medium text-[var(--text-charcoal)] mt-1">
                     Slate Note Ecosystem
                   </h3>
                 </div>
@@ -537,7 +537,7 @@ export default function Home() {
             <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Experience
             </h2>
-            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
               Professional Chronology
             </div>
           </div>
@@ -551,7 +551,7 @@ export default function Home() {
               
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Freelance Software Engineer
                   </h3>
                   <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
@@ -579,7 +579,7 @@ export default function Home() {
               
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Associate Software Engineer
                   </h3>
                   <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
@@ -607,7 +607,7 @@ export default function Home() {
               
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Web & Desktop Developer
                   </h3>
                   <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
@@ -638,7 +638,7 @@ export default function Home() {
             <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Education
             </h2>
-            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
               Academic Qualifications
             </div>
           </div>
@@ -650,7 +650,7 @@ export default function Home() {
               <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] shadow-xs transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Bachelor of Engineering in Software Engineering
                   </h3>
                   <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
@@ -671,7 +671,7 @@ export default function Home() {
               <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Pearson BTEC Level 5 HND in Computing
                   </h3>
                   <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
@@ -692,7 +692,7 @@ export default function Home() {
               <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Pearson Assured Level 3 Diploma in IT (DiTEC)
                   </h3>
                   <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
@@ -713,7 +713,7 @@ export default function Home() {
               <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Pearson Assured Level 3 Diploma in English (DiE)
                   </h3>
                   <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
@@ -734,7 +734,7 @@ export default function Home() {
               <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     G.C.E. Ordinary Level Examination
                   </h3>
                   <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
@@ -760,12 +760,12 @@ export default function Home() {
             <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
               Updates
             </h2>
-            <div className="font-serif-anthropic text-5xl md:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
               Current Endeavors
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto pt-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-6xl mx-auto pt-6 items-stretch">
             {/* Card 1: iOS & Swift (Left) */}
             <div className="flex flex-col justify-between border border-[var(--border-light)] bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl hover:border-[var(--accent-rust)] hover:bg-[var(--card-hover-bg)] transition-all duration-300 group">
               <div className="space-y-4">
@@ -782,7 +782,7 @@ export default function Home() {
             </div>
 
             {/* Card 2: TAMK / Finland (Center - Highlighted) */}
-            <div className="flex flex-col justify-between border-2 border-[var(--accent-rust)] bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl shadow-xl shadow-[var(--accent-rust)]/10 md:scale-105 z-10 transition-all duration-300 group">
+            <div className="flex flex-col justify-between border-2 border-[var(--accent-rust)] bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl shadow-xl shadow-[var(--accent-rust)]/10 lg:scale-102 xl:scale-105 z-10 transition-all duration-300 group">
               <div className="space-y-4">
                 <span className="text-[10px] font-mono-anthropic uppercase text-[var(--accent-rust)] tracking-wider font-semibold">
                   TAMK / Finland
