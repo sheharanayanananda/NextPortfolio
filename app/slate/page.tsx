@@ -6,14 +6,14 @@ import Link from "next/link";
 import { Github, Sun, Moon, Monitor } from "lucide-react";
 
 export default function SlatePage() {
-  const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
   const [activeVersion, setActiveVersion] = useState<"origin" | "agentic">("origin");
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | "system" | null;
-    if (savedTheme) {
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    if (savedTheme === "light" || savedTheme === "dark") {
       setTheme(savedTheme);
     }
     const params = new URLSearchParams(window.location.search);
@@ -27,12 +27,8 @@ export default function SlatePage() {
   useEffect(() => {
     if (!mounted) return;
     const root = window.document.documentElement;
-    const applyTheme = (t: "light" | "dark" | "system") => {
-      if (t === "system") {
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? root.classList.add("dark")
-          : root.classList.remove("dark");
-      } else if (t === "dark") {
+    const applyTheme = (t: "light" | "dark") => {
+      if (t === "dark") {
         root.classList.add("dark");
       } else {
         root.classList.remove("dark");
@@ -40,13 +36,6 @@ export default function SlatePage() {
     };
     applyTheme(theme);
     localStorage.setItem("theme", theme);
-    if (theme === "system") {
-      const mq = window.matchMedia("(prefers-color-scheme: dark)");
-      const handler = (e: MediaQueryListEvent) =>
-        e.matches ? root.classList.add("dark") : root.classList.remove("dark");
-      mq.addEventListener("change", handler);
-      return () => mq.removeEventListener("change", handler);
-    }
   }, [theme, mounted]);
 
   const originFeatures = [
@@ -132,24 +121,17 @@ export default function SlatePage() {
           <div className="flex items-center space-x-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--bg-warm)]">
             <button
               onClick={() => setTheme("light")}
-              className={`p-2 rounded-full transition-all duration-200 ${theme === "light" ? "bg-[var(--accent-rust)] text-[#FAF8F5]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
+              className={`p-2 rounded-full transition-all duration-200 ${theme === "light" ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
               aria-label="Use light theme"
             >
               <Sun className="w-4 h-4" />
             </button>
             <button
               onClick={() => setTheme("dark")}
-              className={`p-2 rounded-full transition-all duration-200 ${theme === "dark" ? "bg-[var(--accent-rust)] text-[#FAF8F5]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
+              className={`p-2 rounded-full transition-all duration-200 ${theme === "dark" ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
               aria-label="Use dark theme"
             >
               <Moon className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setTheme("system")}
-              className={`p-2 rounded-full transition-all duration-200 ${theme === "system" ? "bg-[var(--accent-rust)] text-[#FAF8F5]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
-              aria-label="Use system theme"
-            >
-              <Monitor className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -227,9 +209,10 @@ export default function SlatePage() {
           <div className="relative w-full max-w-[520px] aspect-square">
             <div className="relative w-full h-full rounded-3xl overflow-hidden" style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06)" }}>
               <Image
-                src="/slate.png"
+                src="/slate_origin.png"
                 alt={activeVersion === "origin" ? "Slate Origin — iOS App" : "Slate Agentic — iOS App"}
                 fill
+                sizes="(max-width: 768px) 100vw, 520px"
                 className="object-cover"
                 priority
               />

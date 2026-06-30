@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Override Tailwind v4 dark: variant to use .dark class instead of prefers-color-scheme */
+@variant dark (&:where(.dark, .dark *));
+
 :root {
   /* Colors - Light Theme (Cool Slate Blue) */
   --bg-warm: #F8FAFC;

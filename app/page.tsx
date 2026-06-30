@@ -19,15 +19,15 @@ interface Project {
 }
 
 export default function Home() {
-  const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | "system" | null;
-    if (savedTheme) {
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    if (savedTheme === "light" || savedTheme === "dark") {
       setTheme(savedTheme);
     }
   }, []);
@@ -36,12 +36,8 @@ export default function Home() {
   useEffect(() => {
     if (!mounted) return;
     const root = window.document.documentElement;
-    const applyTheme = (t: "light" | "dark" | "system") => {
-      if (t === "system") {
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? root.classList.add("dark")
-          : root.classList.remove("dark");
-      } else if (t === "dark") {
+    const applyTheme = (t: "light" | "dark") => {
+      if (t === "dark") {
         root.classList.add("dark");
       } else {
         root.classList.remove("dark");
@@ -49,12 +45,6 @@ export default function Home() {
     };
     applyTheme(theme);
     localStorage.setItem("theme", theme);
-    if (theme === "system") {
-      const mq = window.matchMedia("(prefers-color-scheme: dark)");
-      const handler = () => applyTheme("system");
-      mq.addEventListener("change", handler);
-      return () => mq.removeEventListener("change", handler);
-    }
   }, [theme, mounted]);
 
   // Project List
@@ -168,7 +158,7 @@ export default function Home() {
           <div className="flex items-center space-x-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--bg-warm)]">
             <button
               onClick={() => setTheme("light")}
-              className={`p-2 rounded-full transition-all duration-200 ${theme === "light" ? "bg-[var(--accent-rust)] text-[#FAF8F5]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
+              className={`p-2 rounded-full transition-all duration-200 ${theme === "light" ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
               title="Light theme"
               aria-label="Use light theme"
             >
@@ -176,19 +166,11 @@ export default function Home() {
             </button>
             <button
               onClick={() => setTheme("dark")}
-              className={`p-2 rounded-full transition-all duration-200 ${theme === "dark" ? "bg-[var(--accent-rust)] text-[#FAF8F5]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
+              className={`p-2 rounded-full transition-all duration-200 ${theme === "dark" ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
               title="Dark theme"
               aria-label="Use dark theme"
             >
               <Moon className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setTheme("system")}
-              className={`p-2 rounded-full transition-all duration-200 ${theme === "system" ? "bg-[var(--accent-rust)] text-[#FAF8F5]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
-              title="Follow system settings"
-              aria-label="Use system settings theme"
-            >
-              <Monitor className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -200,7 +182,7 @@ export default function Home() {
 
           {/* Left — Content */}
           <div className="flex-1 gap-3">
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-8">
               <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-medium tracking-tight text-[var(--text-secondary)]">
                 Thineth
               </div>
@@ -249,7 +231,7 @@ export default function Home() {
                 <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>
               </div>
 
-              <div className="inline-flex w-fit items-center gap-4 bg-[#1E1E1E] text-[#FAF8F5] px-5 py-3 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]">
+              <div className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] dark:bg-[var(--card-bg)] dark:text-[var(--text-charcoal)] dark:border dark:border-[var(--border-light)] px-5 py-3 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF1E] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00FF1E]"></span>
@@ -269,7 +251,7 @@ export default function Home() {
               {/* Email Me */}
               <a
                 href="mailto:sheharanayanananda@gmail.com"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
                 style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="Email Me"
               >
@@ -281,7 +263,7 @@ export default function Home() {
                 href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
                 style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="LinkedIn Profile"
               >
@@ -293,7 +275,7 @@ export default function Home() {
                 href="https://github.com/sheharanayanananda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-white text-[#1E1E1E] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
                 style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
                 aria-label="GitHub Profile"
               >
@@ -303,14 +285,23 @@ export default function Home() {
               {/* Arc Card */}
               <div
                 className="absolute inset-0 overflow-hidden border border-[var(--border-light)]"
-                style={{ borderRadius: "24px", boxShadow: "0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.08)" }}
+                style={{ borderRadius: "15px", boxShadow: "0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.08)" }}
               >
                 <Image
                   src="/arc_card.svg"
                   alt="Arc Card — Thineth Shehara, Software Engineer"
                   fill
                   priority
-                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover dark:hidden"
+                />
+                <Image
+                  src="/arc_card_dark.svg"
+                  alt="Arc Card — Thineth Shehara, Software Engineer (Dark Theme)"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover hidden dark:block"
                 />
               </div>
             </div>
@@ -349,7 +340,7 @@ export default function Home() {
               <a
                 href="/resume.pdf"
                 download
-                className="inline-flex items-center space-x-2 bg-[#1E1E1E] hover:bg-[#333] text-[#FAF8F5] px-6 py-3.5 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center space-x-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] hover:opacity-90 px-6 py-3.5 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Download Resume</span>
                 <Download className="w-4 h-4" />
@@ -374,7 +365,7 @@ export default function Home() {
           <div className="border border-[var(--border-light)] rounded-3xl p-6 md:p-10 bg-[var(--card-bg)] flex flex-col lg:flex-row gap-8 items-center lg:items-stretch">
             {/* App Image — 1:1 */}
             <div className="relative w-full max-w-[280px] aspect-square flex-shrink-0 rounded-2xl overflow-hidden shadow-xs">
-              <Image src="/slate.png" alt="Slate iOS App Showcase" fill className="object-cover" />
+              <Image src="/slate_origin.png" alt="Slate iOS App Showcase" fill sizes="(max-width: 768px) 100vw, 280px" className="object-cover" />
             </div>
 
             {/* Info Column */}
@@ -419,7 +410,7 @@ export default function Home() {
               <div className="flex pt-4 border-t border-[var(--border-light)]/50">
                 <a
                   href="/slate"
-                  className="inline-flex items-center gap-1.5 bg-[#1E1E1E] hover:bg-[#333] text-[#FAF8F5] px-5 py-3 rounded-xl font-sans font-medium text-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="inline-flex items-center gap-1.5 bg-[var(--text-charcoal)] text-[var(--bg-warm)] hover:opacity-90 px-5 py-3 rounded-xl font-sans font-medium text-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Explore Slate
                   <ArrowRight className="w-3.5 h-3.5" />
