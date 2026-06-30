@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Github, Sun, Moon, Monitor } from "lucide-react";
+import Footer from "../components/Footer";
 
 export default function SlatePage() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -313,13 +314,7 @@ export default function SlatePage() {
 
       </main>
 
-      {/* ─── Footer ─── */}
-      <footer className="border-t border-[var(--border-light)] bg-[var(--card-bg)]">
-        <div className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--text-secondary)]">
-          <div className="font-serif-anthropic text-base font-medium text-[var(--text-charcoal)]">Slate</div>
-          <div className="font-mono-anthropic text-xs">A Thineth Shehara project · iOS · Swift/SwiftUI</div>
-        </div>
-      </footer>
+      <Footer />
 
     </div>
   );

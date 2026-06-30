@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { AtSign, Linkedin, Github, Sun, Moon, Monitor, MapPin, Download, ArrowRight, ChevronRight, X } from "lucide-react";
+import Footer from "./components/Footer";
 
 // Custom type for projects
 interface Project {
   title: string;
-  role: string;
   tech: string[];
   description: string;
   longDescription?: string;
@@ -90,7 +89,6 @@ export default function Home() {
   const projects: Project[] = [
     {
       title: "UNiFY Sports Ecosystem",
-      role: "Freelance Software Engineer",
       tech: ["Flutter", "Dart", "Python", "Flask", "PostgreSQL", "WebSockets", "Redis", "AWS", "Stripe", "NFC"],
       description: "Backend and Mobile engineer for a multi-platform sports app (NBA, WNBA, NFL, NCAA). Refactored key modules, built real-time WebSocket messaging and scores, and integrated NFC 'Baller Band' support.",
       longDescription: "Collaborated on building a real-time sports ecosystem supporting a massive US fanbase across multiple sports. Focused on implementing low-latency features including live score boards and chatrooms via WebSockets, refactoring modular components in Flutter, and developing REST APIs using Flask. High-volume database workflows were optimized using PostgreSQL and Redis caching. Source code is restricted under commercial IP protections.",
@@ -99,7 +97,6 @@ export default function Home() {
     },
     {
       title: "Deurbeslag Gigant E-Commerce",
-      role: "Lead Backend Developer",
       tech: ["PHP", "Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "MySQL"],
       description: "Centralized e-commerce inventory and order management system for a Dutch retail platform. Automated legacy workflows, synchronized real-time stocks across external APIs, and designed filament-driven V2 interfaces.",
       longDescription: "As the lead developer, I refactored the core logistics and inventory tracking system of a large Dutch e-commerce storefront. The platform integrates with external vendor shipping APIs and local retail inventory networks, automating processes that previously required hours of manual labor. Built entirely on Laravel with Livewire and Filament panels to manage high-throughput operations. The source code is commercial IP and closed for proprietary protection.",
@@ -108,7 +105,6 @@ export default function Home() {
     },
     {
       title: "ECore Web & Mobile Automation",
-      role: "Associate Software Engineer",
       tech: ["PHP", "Laravel", "Flutter", "Dart", "MySQL", "REST APIs"],
       description: "Enterprise system for BetonStorten.nl automating concrete order logistics, heavy machinery, work orders, and personnel planning with custom algorithmic tracking and real-time syncing.",
       longDescription: "An end-to-end automation application handling logistics, driver routing, concrete volume calculations, and personnel workflow schedules. Built the core web portals using Laravel and matching mobile components in Flutter to support remote transit tracking. To safeguard intellectual property, the active repository remains set to private status.",
@@ -117,7 +113,6 @@ export default function Home() {
     },
     {
       title: "BAMC Website",
-      role: "Full-Stack Web Developer",
       tech: ["HTML5", "CSS3", "JavaScript"],
       description: "Frontend website for Bright Achievers Migration Consultants — a real Sri Lankan consultancy firm. Custom UI/UX, responsive design, and client inquiry forms.",
       longDescription: "Designed and built the official frontend website for Bright Achievers Migration Consultants (BAMC), a professional Sri Lankan consultancy firm. Focuses on custom responsive layouts, interactive migration consultation booking flows, and client inquiry forms. Developed with HTML5, CSS3, and JavaScript, publicly hosted as an open-source project.",
@@ -126,8 +121,7 @@ export default function Home() {
       featured: false
     },
     {
-      title: "Notes — Android",
-      role: "Android Developer",
+      title: "Notes - Android",
       tech: ["Kotlin", "Jetpack Compose", "Room Database", "Coroutines", "Flow", "Material 3"],
       description: "Android note-taking app built with Jetpack Compose and Room Database. Clean MVVM architecture with an aesthetic, minimal UI.",
       longDescription: "A native Android note-taking application designed with Material Design 3 guidelines. Aura Notes leverages Jetpack Compose for declarative layouts, Room DB for local-first database persistence, and Kotlin Flow/Coroutines for asynchronous event processing. Features structured formatting, inline checks, and lightning-fast local search functions. The source code is public and open-source.",
@@ -137,7 +131,6 @@ export default function Home() {
     },
     {
       title: "Malcolm Lismore Portfolio",
-      role: "Full-Stack Web Developer",
       tech: ["PHP", "MySQL", "Tailwind CSS", "JavaScript"],
       description: "Full-stack responsive website with a PHP backend. Covers front-end design, server-side logic, and dynamic content delivery.",
       longDescription: "Designed and implemented a lightweight photographer portfolio system for professional photographers. Features a custom CMS admin panel to upload, organize, and serve high-resolution media galleries. Optimized for rendering performance and loading times through static file serving and MySQL queries. The source code is open-source and publicly hosted.",
@@ -147,7 +140,6 @@ export default function Home() {
     },
     {
       title: "Voice Assistant",
-      role: "Desktop Software Engineer",
       tech: ["C#", ".NET Framework", "SQL", "Git"],
       description: "Desktop voice command app using .NET speech synthesis and recognition. Responds to natural language voice inputs with system actions.",
       longDescription: "Developed a native desktop voice command helper application using the .NET speech engines. Able to process spoken natural language prompts, match them against system commands, trigger OS operations, and respond with automated audio text-to-speech synthesis.",
@@ -157,7 +149,6 @@ export default function Home() {
     },
     {
       title: "TaskFlow",
-      role: "Full-Stack Web Developer",
       tech: ["PHP", "Laravel", "MySQL", "Tailwind CSS"],
       description: "Modern task management web app with auth, CRUD, and full task organization by status, priority, due date, and category.",
       longDescription: "A full-stack collaborative tasks manager platform. Includes user registration and access controls, interactive task boards (Kanban-style categorization), prioritization weights, target deadlines, and category sorting. Developed with PHP Laravel on backend and MySQL.",
@@ -248,8 +239,7 @@ export default function Home() {
             </div>
 
             <p className="font-serif-anthropic text-base md:text-lg xl:text-xl text-[var(--text-secondary)] leading-relaxed font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
-              Designing and shipping mobile apps that handle real-time data, platform integrations, and smooth
-              offline-to-online workflows, backed by clean architecture and APIs built to support them.
+              Freelance Software Engineer and Software Engineering student at TAMK designing and shipping high-performance mobile apps, full-stack systems, and real-time APIs.
             </p>
 
             {/* Inline contact icons — shown below lg, hidden on lg+ where floating buttons appear */}
@@ -287,10 +277,10 @@ export default function Home() {
                 <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>
               </div>
 
-              <div className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] dark:bg-[var(--card-bg)] dark:text-[var(--text-charcoal)] dark:border dark:border-[var(--border-light)] px-5 py-3 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]">
-                <span className="relative flex h-2.5 w-2.5">
+              <div className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] dark:bg-[var(--card-bg)] dark:text-[var(--text-charcoal)] dark:border dark:border-[var(--border-light)] px-6 py-4 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]">
+                <span className="relative items-center justify-center flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF1E] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00FF1E]"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00FF1E]"></span>
                 </span>
                 <span className="tracking-tight font-mono-anthropic">Open To Work</span>
               </div>
@@ -418,58 +408,58 @@ export default function Home() {
           </div>
 
           {/* Combined Slate V1 & V2 Banner */}
-          <div className="border border-[var(--border-light)] rounded-3xl p-6 md:p-10 bg-[var(--card-bg)] flex flex-col lg:flex-row gap-8 items-center lg:items-stretch">
+          <div className="border border-[var(--border-light)] rounded-3xl p-6 md:p-10 bg-[var(--card-bg)] grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 items-center lg:items-stretch">
             {/* App Image — 1:1 */}
-            <div className="relative w-full max-w-[280px] aspect-square flex-shrink-0 rounded-2xl overflow-hidden shadow-xs">
-              <Image src="/slate_origin.png" alt="Slate iOS App Showcase" fill sizes="(max-width: 768px) 100vw, 280px" className="object-cover" />
+            <div className="relative aspect-square h-full w-full max-w-[280px] lg:max-w-none lg:w-auto flex-shrink-0 rounded-2xl overflow-hidden">
+              <Image src="/slate_origin.png" alt="Slate iOS App Showcase" fill className="object-cover" />
             </div>
 
             {/* Info Column */}
             <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
               <div className="space-y-4">
-                <div>
-                  <span className="text-xs font-mono-anthropic uppercase text-[var(--accent-rust)] font-semibold">Flagship Project</span>
+                <div className="flex flex-col gap-3">
                   <h3 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-medium text-[var(--text-charcoal)] mt-1">
-                    Slate Note Ecosystem
+                    Slate App
                   </h3>
+                  <span className="text-xs font-mono-anthropic uppercase text-[var(--text-charcoal)] font-semibold tracking-[2px]">Notes, but intelligent.</span>
                 </div>
 
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans max-w-2xl">
-                  A high-fidelity note-taking ecosystem for iPhone. Separated into two distinct architectural tracks, Slate blends advanced manual markdown environments with autonomous local/cloud AI agents.
-                </p>
+                {/* <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans max-w-2xl">
+                  The new way of interacting with notes, 
+                </p> */}
 
                 {/* Sub-grid comparing V1 & V2 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-[var(--border-light)]/50">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Origin (V1)</span>
-                      <span className="text-[9px] font-mono border border-[var(--border-light)] px-1.5 py-0.5 rounded text-[var(--text-secondary)] bg-[var(--bg-warm)]">MIT Open Source</span>
+                      <span className="text-lg font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Origin (V1)</span>
+                      <span className="text-xs font-mono border border-[var(--border-light)] px-1.5 py-0.5 rounded text-[var(--text-secondary)] bg-[var(--bg-warm)]">Open Source</span>
                     </div>
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                      Features a custom Markdown checklist text editor, smart background file exports, and local OCR document scanning.
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                      The same generic notes app you know with AI powered features to summerize docs, transcribe meetings, study note creation, and many more.
                     </p>
                   </div>
 
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Agentic (V2)</span>
-                      <span className="text-[9px] font-mono border border-[var(--accent-rust)] text-[var(--accent-rust)] px-1.5 py-0.5 rounded bg-[var(--accent-rust)]/5">Free Software</span>
+                      <span className="text-lg font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Agentic (V2)</span>
+                      <span className="text-xs font-mono border border-[var(--accent-rust)] text-[var(--accent-rust)] px-1.5 py-0.5 rounded bg-[var(--accent-rust)]/5">Proprietary</span>
                     </div>
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                      Introduces an interactive AI chat workspace, fine-tuned cloud LLM presets, dynamic LaTeX scripting, and background async pipelines.
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                      Successor of Slate Origin with advance agentic features to think more and write less, while keeping the high quality notes, everyone loves.
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* Action button */}
-              <div className="flex pt-4 border-t border-[var(--border-light)]/50">
+              <div className="flex pt-4">
                 <a
                   href="/slate"
-                  className="inline-flex items-center gap-1.5 bg-[var(--text-charcoal)] text-[var(--bg-warm)] hover:opacity-90 px-5 py-3 rounded-xl font-sans font-medium text-xs transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="inline-flex items-center gap-1.5 bg-[var(--text-charcoal)] text-[var(--bg-warm)] hover:opacity-90 px-6 py-4 rounded-2xl font-sans font-medium text-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Explore Slate
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ChevronRight className="w-auto h-4" />
                 </a>
               </div>
             </div>
@@ -482,7 +472,7 @@ export default function Home() {
                 More Solutions
               </h3>
               <p className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">
-                Commercial & Freelance Codebases
+                Commercial & Freelance Projects
               </p>
             </div>
 
@@ -547,10 +537,6 @@ export default function Home() {
                       </span>
                     </div>
 
-                    <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] tracking-tight">
-                      {proj.role}
-                    </div>
-
                     <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
                       {proj.description}
                     </p>
@@ -601,9 +587,9 @@ export default function Home() {
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Freelance Software Engineer
                   </h3>
-                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
-                    Upwork &amp; Private Contracts &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Remote</span>
-                  </div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    Upwork &amp; Private Contracts &nbsp; &middot; &nbsp; Remote
+                  </p>
                 </div>
                 <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
                   01/2026 &mdash; Present
@@ -612,10 +598,7 @@ export default function Home() {
               <ul className="text-sm text-[var(--text-secondary)] space-y-4 leading-relaxed list-disc pl-4 font-sans">
                 <li>
                   <strong>UNiFY Sports Ecosystem:</strong> Stabilized and extended a multi-platform Flutter app for NBA, WNBA, NFL, and NCAA fanbases. Engineered real-time WebSocket chatrooms and scoreboards, rich push notifications, and custom NFC &ldquo;Baller Band&rdquo; integrations connected to a Python/Flask API.
-                </li>
-                <li>
-                  <strong>Upwork &amp; Client Engagements:</strong> Delivering custom software solutions directly to global clients on Upwork and personal networks, specializing in native/cross-platform mobile apps and scalable web services.
-                </li>
+                </li> 
               </ul>
             </div>
 
@@ -629,9 +612,9 @@ export default function Home() {
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Associate Software Engineer
                   </h3>
-                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
-                    DayZ Solutions (Pvt.) Ltd. &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Nittambuwa, LK</span>
-                  </div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    DayZ Solutions (Pvt.) Ltd. &nbsp; &middot; &nbsp; Nittambuwa, Sri Lanka
+                  </p>
                 </div>
                 <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
                   05/2025 &mdash; 07/2026
@@ -657,9 +640,9 @@ export default function Home() {
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Web & Desktop Developer
                   </h3>
-                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
-                    Freelance Solutions &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Hybrid</span>
-                  </div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    Freelance Solutions &nbsp; &middot; &nbsp; Hybrid
+                  </p>
                 </div>
                 <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
                   10/2022 &mdash; 06/2025
@@ -700,9 +683,9 @@ export default function Home() {
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Bachelor of Engineering in Software Engineering
                   </h3>
-                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
-                    Tampere University of Applied Sciences (TAMK) &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Tampere, Finland</span>
-                  </div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    Tampere University of Applied Sciences (TAMK) &nbsp; &middot; &nbsp; Tampere, Finland
+                  </p>
                 </div>
                 <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
                   08/2026 &mdash; Present
@@ -721,9 +704,9 @@ export default function Home() {
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Pearson BTEC Level 5 HND in Computing
                   </h3>
-                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
-                    ESOFT Metro Campus &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Gampaha, LK</span>
-                  </div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    ESOFT Metro Campus &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
+                  </p>
                 </div>
                 <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
                   02/2023 &mdash; 02/2025
@@ -742,9 +725,9 @@ export default function Home() {
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Pearson Assured Level 3 Diploma in IT (DiTEC)
                   </h3>
-                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
-                    ESOFT Metro Campus &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Gampaha, LK</span>
-                  </div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    ESOFT Metro Campus &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
+                  </p>
                 </div>
                 <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
                   07/2022 &mdash; 08/2023
@@ -763,9 +746,9 @@ export default function Home() {
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     Pearson Assured Level 3 Diploma in English (DiE)
                   </h3>
-                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
-                    ESOFT Metro Campus &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Gampaha, LK</span>
-                  </div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    ESOFT Metro Campus &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
+                  </p>
                 </div>
                 <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
                   07/2022 &mdash; 08/2023
@@ -784,9 +767,9 @@ export default function Home() {
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
                     G.C.E. Ordinary Level Examination
                   </h3>
-                  <div className="text-sm font-medium text-[var(--text-secondary)] font-sans">
-                    Henegama Central College &middot; <span className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">Gampaha, LK</span>
-                  </div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                    Henegama Central College &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
+                  </p>
                 </div>
                 <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
                   2022
@@ -862,91 +845,7 @@ export default function Home() {
 
       </main>
 
-      {/* Footer */}
-      <footer id="footer" className="border-t border-[var(--border-light)] bg-[var(--card-bg)] transition-colors duration-300 mt-24">
-        <div className="w-full px-8 md:px-24 py-16 md:py-20 max-w-7xl mx-auto space-y-12">
-          
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-            {/* Branding Column */}
-            <div className="md:col-span-6 space-y-4">
-              <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
-                Thineth Shehara
-              </h3>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-sm font-sans">
-                Associate Software Engineer specializing in building full-stack platforms with Laravel and cross-platform mobile apps with Flutter and Swift.
-              </p>
-            </div>
-
-            {/* Navigation Column */}
-            <div className="md:col-span-3 space-y-4">
-              <div className="text-[10px] font-mono-anthropic uppercase tracking-wider text-[var(--text-secondary)] font-semibold">
-                Navigation
-              </div>
-              <ul className="space-y-2 text-sm font-sans">
-                <li>
-                  <a href="#hero" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#about" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#projects" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                    Projects
-                  </a>
-                </li>
-                <li>
-                  <a href="#experience" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                    Experience
-                  </a>
-                </li>
-                <li>
-                  <a href="#education" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                    Education
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Connect Column */}
-            <div className="md:col-span-3 space-y-4">
-              <div className="text-[10px] font-mono-anthropic uppercase tracking-wider text-[var(--text-secondary)] font-semibold">
-                Connect
-              </div>
-              <ul className="space-y-2 text-sm font-sans">
-                <li>
-                  <a href="https://github.com/sheharanayanananda" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a href="https://linkedin.com/in/thineth-nayanananda-54815b228/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                    LinkedIn
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:sheharanayanananda@gmail.com" className="text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                    Email
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-[var(--border-light)]/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[var(--text-secondary)] font-mono-anthropic">
-            <div>
-              © 2026 Thineth Shehara. All rights reserved.
-            </div>
-            <div>
-              Designed &amp; engineered with Next.js &amp; CSS.
-            </div>
-          </div>
-
-        </div>
-      </footer>
+      <Footer />
 
       {/* Modal Popup for Project Details */}
       {selectedProject && (
@@ -974,7 +873,6 @@ export default function Home() {
                 }`}>
                   {selectedProject.repoStatus === "public" ? "Public Repo" : "Private Repo"}
                 </span>
-                <span className="text-xs font-mono-anthropic text-[var(--text-secondary)]">{selectedProject.role}</span>
               </div>
               <h3 className="font-serif-anthropic text-3xl md:text-4xl font-medium text-[var(--text-charcoal)]">
                 {selectedProject.title}
