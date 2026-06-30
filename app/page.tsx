@@ -24,6 +24,11 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<string>("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  const [typingText, setTypingText] = useState("Hello!");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(2000);
+
   useEffect(() => {
     setMounted(true);
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
@@ -31,6 +36,40 @@ export default function Home() {
       setTheme(savedTheme);
     }
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    const words = ["Hello!", "Moi!"];
+    const i = loopNum % words.length;
+    const fullText = words[i];
+
+    const handleType = () => {
+      if (!isDeleting) {
+        setTypingText(fullText.substring(0, typingText.length + 1));
+        // Soft organic typing delay (100ms to 180ms)
+        setTypingSpeed(100 + Math.random() * 80);
+
+        if (typingText === fullText) {
+          setTypingSpeed(2500); // Wait on completed word
+          setIsDeleting(true);
+        }
+      } else {
+        setTypingText(fullText.substring(0, typingText.length - 1));
+        // Faster organic deletion delay (50ms to 80ms)
+        setTypingSpeed(50 + Math.random() * 30);
+
+        if (typingText === "") {
+          setIsDeleting(false);
+          setLoopNum(loopNum + 1);
+          setTypingSpeed(700); // Pause before starting next word
+        }
+      }
+    };
+
+    const timer = setTimeout(handleType, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [typingText, isDeleting, loopNum, typingSpeed, mounted]);
 
   // Apply theme and persist
   useEffect(() => {
@@ -183,8 +222,25 @@ export default function Home() {
           {/* Left — Content */}
           <div className="flex-1 gap-3">
             <div className="flex flex-col gap-8">
-              <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-medium tracking-tight text-[var(--text-secondary)]">
-                Thineth
+              <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-medium tracking-tight text-[var(--text-secondary)] flex items-center flex-wrap">
+                <style>{`
+                  @keyframes cursor-blink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.15; }
+                  }
+                  .custom-cursor-blink {
+                    animation: cursor-blink 1.2s ease-in-out infinite !important;
+                  }
+                `}</style>
+                {!mounted ? (
+                  <span>Hello!</span>
+                ) : (
+                  <span className="flex items-center">
+                    {typingText}
+                    <span className="inline-block w-[2px] md:w-[3px] h-[0.95em] rounded-full bg-current ml-[2px] custom-cursor-blink" />
+                  </span>
+                )}
+                <span className="ml-3">I'm</span>
               </div>
               <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-medium leading-[1.05] tracking-tight">
                 Shehara
@@ -342,7 +398,7 @@ export default function Home() {
                 download
                 className="inline-flex items-center space-x-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] hover:opacity-90 px-6 py-3.5 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span>Download Resume</span>
+                <span>Get Resume</span>
                 <Download className="w-4 h-4" />
               </a>
             </div>
