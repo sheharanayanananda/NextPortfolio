@@ -328,9 +328,15 @@ export default function Home() {
                 GitHub
               </a>
 
+              {/* Arc Card Glow behind it (Dark Theme) */}
+              <div 
+                className="absolute -inset-2 bg-gradient-to-br from-[#7A99ED] via-[#5B8DEE] to-[#2E4365] rounded-[20px] opacity-0 dark:opacity-40 blur-[40px] pointer-events-none transition-opacity duration-300 z-0" 
+                aria-hidden="true"
+              />
+
               {/* Arc Card */}
               <div
-                className="absolute inset-0 overflow-hidden border border-[var(--border-light)]"
+                className="absolute inset-0 overflow-hidden border border-[var(--border-light)] bg-[var(--card-bg)] dark:bg-[#0B0F19] z-10"
                 style={{ borderRadius: "15px", boxShadow: "0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.08)" }}
               >
                 <Image
