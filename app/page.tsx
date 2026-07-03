@@ -408,61 +408,73 @@ export default function Home() {
           </div>
 
           {/* Combined Slate V1 & V2 Banner */}
-          <div className="border border-[var(--border-light)] rounded-3xl p-6 md:p-10 bg-[var(--card-bg)] grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 items-center lg:items-stretch">
-            {/* App Image — 1:1 */}
-            <div className="relative aspect-square h-full w-full max-w-[280px] lg:max-w-none lg:w-auto flex-shrink-0 rounded-2xl overflow-hidden">
-              <Image src="/slate_origin.png" alt="Slate iOS App Showcase" fill className="object-cover" />
-            </div>
+          <div className="border border-[var(--border-light)] rounded-3xl p-6 md:p-10 lg:p-12 bg-[var(--card-bg)] grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-12 items-stretch transition-all duration-300 hover:border-[var(--text-secondary)]/20 hover:shadow-lg">
 
             {/* Info Column */}
-            <div className="flex-1 flex flex-col justify-between space-y-6 text-left">
+            <div className="flex flex-col justify-between space-y-6 text-left order-2 lg:order-1">
               <div className="space-y-4">
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-1">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-mono-anthropic uppercase text-[var(--accent-rust)] font-semibold tracking-[2px] mb-1">
+                    Featured Project
+                  </div>
                   <h3 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-medium text-[var(--text-charcoal)] mt-1">
                     Slate App
                   </h3>
-                  <span className="text-xs font-mono-anthropic uppercase text-[var(--text-charcoal)] font-semibold tracking-[2px]">Notes, but intelligent.</span>
+                  <span className="text-xs font-mono-anthropic uppercase text-[var(--text-secondary)] font-semibold tracking-[2px]">Notes, but intelligent.</span>
                 </div>
 
-                {/* <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans max-w-2xl">
-                  The new way of interacting with notes, 
-                </p> */}
+                <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed font-sans max-w-2xl">
+                  An intelligent note-taking application designed for iOS, bridging local-first markdown editing with advanced agentic AI capabilities. Built natively for iOS, Slate offers seamless transcription, study guides, and visual OCR.
+                </p>
 
                 {/* Sub-grid comparing V1 & V2 */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-[var(--border-light)]/50">
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Origin (V1)</span>
-                      <span className="text-xs font-mono border border-[var(--border-light)] px-1.5 py-0.5 rounded text-[var(--text-secondary)] bg-[var(--bg-warm)]">Open Source</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-[var(--border-light)]/50">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Origin (V1)</span>
+                      <span className="text-[10px] text-[var(--text-secondary)] font-mono">· Open Source</span>
                     </div>
-                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                      The same generic notes app you know with AI powered features to summerize docs, transcribe meetings, study note creation, and many more.
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      AI-powered tools to summarize documents, transcribe meetings, study note creation, and on-device OCR visual extraction.
                     </p>
                   </div>
 
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Agentic (V2)</span>
-                      <span className="text-xs font-mono border border-[var(--accent-rust)] text-[var(--accent-rust)] px-1.5 py-0.5 rounded bg-[var(--accent-rust)]/5">Proprietary</span>
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Agentic (V2)</span>
+                      <span className="text-[10px] text-[var(--accent-rust)] font-mono">· Proprietary</span>
                     </div>
-                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                      Successor of Slate Origin with advance agentic features to think more and write less, while keeping the high quality notes, everyone loves.
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      Advanced autonomous agentic thinking, model presets, math LaTeX typesetting, file attachments, and intelligent chat workspace.
                     </p>
                   </div>
                 </div>
               </div>
-
+              
               {/* Action button */}
-              <div className="flex pt-4">
+              <div className="flex pt-2">
                 <a
                   href="/slate"
-                  className="inline-flex items-center gap-1.5 bg-[var(--text-charcoal)] text-[var(--bg-warm)] hover:opacity-90 px-6 py-4 rounded-2xl font-sans font-medium text-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="group/btn inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] hover:opacity-95 px-6 py-3.5 rounded-xl font-sans font-medium text-sm transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm"
                 >
-                  Explore Slate
-                  <ChevronRight className="w-auto h-4" />
+                  <span>Explore Slate</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 duration-200" />
                 </a>
               </div>
             </div>
+
+            {/* App Image Showcase — matches left-side height and keeps aspect-square */}
+            <div className="relative aspect-square h-full w-auto max-w-[340px] md:max-w-[400px] lg:max-w-none mx-auto lg:mx-0 lg:ml-auto rounded-2xl overflow-hidden bg-[var(--bg-warm)] border border-[var(--border-light)]/50 shadow-[0_20px_50px_rgba(15,23,42,0.08)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] group/img order-1 lg:order-2 transition-all duration-300 hover:border-[var(--text-secondary)]/30">
+              <Image
+                src="/slate_origin.png"
+                alt="Slate iOS App Showcase"
+                fill
+                className="object-cover transition-transform duration-700 ease-out group-hover/img:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 400px, 460px"
+                priority
+              />
+            </div>
+
           </div>
 
           {/* Subheading & Filter Switcher */}
@@ -487,11 +499,10 @@ export default function Home() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 py-1.5 rounded-full font-sans font-medium text-xs transition-all duration-200 ${
-                    activeTab === tab.id
+                  className={`px-4 py-1.5 rounded-full font-sans font-medium text-xs transition-all duration-200 ${activeTab === tab.id
                       ? "bg-[var(--text-charcoal)] text-[var(--bg-warm)]"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
-                  }`}
+                    }`}
                 >
                   {tab.label}
                 </button>
@@ -500,7 +511,7 @@ export default function Home() {
           </div>
 
           {/* Grid layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredProjects.map(proj => {
               const isClickable = proj.repoStatus !== "none";
               return (
@@ -511,29 +522,27 @@ export default function Home() {
                       setSelectedProject(proj);
                     }
                   }}
-                  className={`group flex flex-col justify-between border border-[var(--border-light)] rounded-2xl p-6 bg-[var(--card-bg)] transition-all duration-300 space-y-6 ${
-                    isClickable
+                  className={`group flex flex-col justify-between border border-[var(--border-light)] rounded-2xl p-6 bg-[var(--card-bg)] transition-all duration-300 space-y-6 ${isClickable
                       ? "cursor-pointer hover:bg-[var(--card-hover-bg)] hover:border-[var(--accent-rust)]"
                       : ""
-                  }`}
+                    }`}
                 >
                   <div className="space-y-4">
                     <div className="flex justify-between items-start gap-4">
                       <h4 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                         {proj.title}
                       </h4>
-                      <span className={`text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${
-                        proj.repoStatus === "public"
+                      <span className={`text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${proj.repoStatus === "public"
                           ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--accent-rust)]/5"
                           : proj.repoStatus === "private"
-                          ? "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
-                          : "border-[var(--border-light)] text-[var(--text-secondary)] bg-[var(--bg-warm)]"
-                      }`}>
+                            ? "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
+                            : "border-[var(--border-light)] text-[var(--text-secondary)] bg-[var(--bg-warm)]"
+                        }`}>
                         {proj.repoStatus === "public"
                           ? "Public Repo"
                           : proj.repoStatus === "private"
-                          ? "Private Repo"
-                          : "Proprietary"}
+                            ? "Private Repo"
+                            : "Proprietary"}
                       </span>
                     </div>
 
@@ -576,12 +585,12 @@ export default function Home() {
           </div>
 
           <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)] pl-8 space-y-16 py-4">
-            
+
             {/* Job 1 (Freelance Software Engineer) */}
             <div className="relative space-y-4">
               {/* Timeline Dot */}
               <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] shadow-xs transition-colors duration-300" />
-              
+
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
@@ -598,7 +607,7 @@ export default function Home() {
               <ul className="text-sm text-[var(--text-secondary)] space-y-4 leading-relaxed list-disc pl-4 font-sans">
                 <li>
                   <strong>UNiFY Sports Ecosystem:</strong> Stabilized and extended a multi-platform Flutter app for NBA, WNBA, NFL, and NCAA fanbases. Engineered real-time WebSocket chatrooms and scoreboards, rich push notifications, and custom NFC &ldquo;Baller Band&rdquo; integrations connected to a Python/Flask API.
-                </li> 
+                </li>
               </ul>
             </div>
 
@@ -606,7 +615,7 @@ export default function Home() {
             <div className="relative space-y-4">
               {/* Timeline Dot */}
               <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
-              
+
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
@@ -634,7 +643,7 @@ export default function Home() {
             <div className="relative space-y-4">
               {/* Timeline Dot */}
               <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
-              
+
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
                   <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
@@ -674,7 +683,7 @@ export default function Home() {
           </div>
 
           <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)] pl-8 space-y-16 py-4">
-            
+
             {/* Degree 1 */}
             <div className="relative space-y-3">
               <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] shadow-xs transition-colors duration-300" />
@@ -866,11 +875,10 @@ export default function Home() {
             {/* Header */}
             <div className="space-y-2 pr-12">
               <div className="flex items-center gap-3">
-                <span className={`text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${
-                  selectedProject.repoStatus === "public"
+                <span className={`text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${selectedProject.repoStatus === "public"
                     ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--accent-rust)]/5"
                     : "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
-                }`}>
+                  }`}>
                   {selectedProject.repoStatus === "public" ? "Public Repo" : "Private Repo"}
                 </span>
               </div>
@@ -905,7 +913,7 @@ export default function Home() {
                   </p>
                 )}
               </div>
-              
+
               <div className="flex items-center gap-3 ml-auto">
                 <button
                   onClick={() => setSelectedProject(null)}
