@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { AtSign, Linkedin, Github, Sun, Moon, Monitor, MapPin, Download, ArrowRight, ChevronRight, X } from "lucide-react";
+import { AtSign, Linkedin, Github, MapPin, Download, ArrowRight, ChevronRight, X } from "lucide-react";
 import Footer from "./components/Footer";
 
 // Custom type for projects
@@ -18,8 +18,8 @@ interface Project {
 }
 
 export default function Home() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -30,10 +30,11 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (savedTheme === "light" || savedTheme === "dark") {
-      setTheme(savedTheme);
-    }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -70,20 +71,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [typingText, isDeleting, loopNum, typingSpeed, mounted]);
 
-  // Apply theme and persist
-  useEffect(() => {
-    if (!mounted) return;
-    const root = window.document.documentElement;
-    const applyTheme = (t: "light" | "dark") => {
-      if (t === "dark") {
-        root.classList.add("dark");
-      } else {
-        root.classList.remove("dark");
-      }
-    };
-    applyTheme(theme);
-    localStorage.setItem("theme", theme);
-  }, [theme, mounted]);
+  
 
   // Project List
   const projects: Project[] = [
@@ -167,42 +155,25 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg-warm)] text-[var(--text-charcoal)] font-sans transition-colors duration-300 selection:bg-[var(--highlight-selection)] selection:text-[var(--text-charcoal)]">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-warm)] text-[var(--text-charcoal)] font-sans-anthropic selection:bg-[var(--highlight-selection)] selection:text-[var(--text-charcoal)]">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-[var(--bg-warm)]/80 border-b border-[var(--border-light)] transition-colors duration-300">
+      <header className="sticky top-0 z-50 bg-[var(--bg-warm)] border-b border-[var(--border-light)]">
         <div className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-4 flex items-center justify-between">
-          <a href="#hero" className="font-sans text-xl font-semibold tracking-tight hover:text-[var(--accent-rust)] transition-colors ease-in-out duration-300">
+          <a href="#hero" className="font-sans-anthropic text-xs font-bold tracking-widest uppercase hover:text-[var(--accent-rust)] transition-colors ease-in-out duration-300">
             Shehara
           </a>
 
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium tracking-tight">
-            <a href="#hero" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Home</a>
-            <a href="#about" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">About</a>
-            <a href="/slate" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Slate</a>
-            <a href="#projects" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Projects</a>
-            <a href="#experience" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Experience</a>
-            <a href="#education" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Education</a>
-            <a href="#updates" className="underline-hover text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Updates</a>
+            <a href="#hero" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Home</a>
+            <a href="#about" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">About</a>
+            <a href="/slate" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Slate</a>
+            <a href="#projects" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Projects</a>
+            <a href="#experience" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Experience</a>
+            <a href="#education" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Education</a>
+            <a href="#updates" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Updates</a>
           </nav>
 
-          <div className="flex items-center space-x-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--bg-warm)]">
-            <button
-              onClick={() => setTheme("light")}
-              className={`p-2 rounded-full transition-all duration-200 ${theme === "light" ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
-              title="Light theme"
-              aria-label="Use light theme"
-            >
-              <Sun className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setTheme("dark")}
-              className={`p-2 rounded-full transition-all duration-200 ${theme === "dark" ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]" : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"}`}
-              title="Dark theme"
-              aria-label="Use dark theme"
-            >
-              <Moon className="w-4 h-4" />
-            </button>
-          </div>
+          
         </div>
       </header>
 
@@ -213,7 +184,7 @@ export default function Home() {
           {/* Left — Content */}
           <div className="flex-1 gap-3">
             <div className="flex flex-col gap-8">
-              <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-medium tracking-tight text-[var(--text-secondary)] flex items-center flex-wrap">
+              <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold tracking-tight text-[var(--text-secondary)] flex items-center flex-wrap">
                 <style>{`
                   @keyframes cursor-blink {
                     0%, 100% { opacity: 1; }
@@ -233,12 +204,12 @@ export default function Home() {
                 )}
                 <span className="ml-3">I'm</span>
               </div>
-              <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-medium leading-[1.05] tracking-tight">
+              <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-normal leading-[1.05]">
                 Shehara
               </h1>
             </div>
 
-            <p className="font-serif-anthropic text-base md:text-lg xl:text-xl text-[var(--text-secondary)] leading-relaxed font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
+            <p className="font-serif-anthropic text-[20px] text-[var(--text-charcoal)] leading-[1.4] font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
               Freelance Software Engineer and Software Engineering student at TAMK designing and shipping high-performance mobile apps, full-stack systems, and real-time APIs.
             </p>
 
@@ -277,10 +248,10 @@ export default function Home() {
                 <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>
               </div>
 
-              <div className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] dark:bg-[var(--card-bg)] dark:text-[var(--text-charcoal)] dark:border dark:border-[var(--border-light)] px-6 py-4 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]">
+              <div className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-6 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]">
                 <span className="relative items-center justify-center flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF1E] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00FF1E]"></span>
+                  <span className="status-pulse-dot absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-rust)]"></span>
                 </span>
                 <span className="tracking-tight font-mono-anthropic">Open To Work</span>
               </div>
@@ -297,8 +268,8 @@ export default function Home() {
               {/* Email Me */}
               <a
                 href="mailto:sheharanayanananda@gmail.com"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
-                style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
+                
                 aria-label="Email Me"
               >
                 Email Me
@@ -309,8 +280,8 @@ export default function Home() {
                 href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
-                style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
+                
                 aria-label="LinkedIn Profile"
               >
                 LinkedIn
@@ -321,41 +292,17 @@ export default function Home() {
                 href="https://github.com/sheharanayanananda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-[15px] font-sans font-medium text-sm transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
-                style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.13)" }}
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
+                
                 aria-label="GitHub Profile"
               >
                 GitHub
               </a>
 
-              {/* Arc Card Glow behind it (Dark Theme) */}
-              <div 
-                className="absolute -inset-2 bg-gradient-to-br from-[#7A99ED] via-[#5B8DEE] to-[#2E4365] rounded-[20px] opacity-0 dark:opacity-40 blur-[40px] pointer-events-none transition-opacity duration-300 z-0" 
-                aria-hidden="true"
-              />
+              
 
               {/* Arc Card */}
-              <div
-                className="absolute inset-0 overflow-hidden border border-[var(--border-light)] bg-[var(--card-bg)] dark:bg-[#0B0F19] z-10"
-                style={{ borderRadius: "15px", boxShadow: "0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.08)" }}
-              >
-                <Image
-                  src="/arc_card.svg"
-                  alt="Arc Card — Thineth Shehara, Software Engineer"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover dark:hidden"
-                />
-                <Image
-                  src="/arc_card_dark.svg"
-                  alt="Arc Card — Thineth Shehara, Software Engineer (Dark Theme)"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover hidden dark:block"
-                />
-              </div>
+              <div className="absolute inset-0 overflow-hidden border border-[var(--border-light)] bg-[var(--card-bg)] z-10" style={{ borderRadius: "16px" }}><Image src="/arc_card.svg" alt="Arc Card — Thineth Shehara, Software Engineer" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" /></div>
             </div>
           </div>
 
@@ -368,15 +315,15 @@ export default function Home() {
         {/* ABOUT SECTION */}
         <section id="about" className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto gap-12">
           <div className="space-y-4">
-            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
+            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Background
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               PHILOSOPHY & STACK
             </div>
           </div>
 
-          <div className="space-y-8 text-base lg:text-lg xl:text-xl leading-relaxed text-[var(--text-secondary)] font-serif-anthropic max-w-3xl mx-auto font-normal">
+          <div className="space-y-8 text-[20px] leading-[1.4] text-[var(--text-charcoal)] font-serif-anthropic max-w-3xl mx-auto font-normal">
             <p>
               I specialize in engineering mobile applications with a focus on fluid animations, modular systems, and robust offline architectures. Whether developing natively or leveraging cross-platform frameworks, my focus is on bridging platform capabilities with high-fidelity, intuitive interfaces.
             </p>
@@ -384,7 +331,7 @@ export default function Home() {
               Beyond mobile architectures, I design web applications and backend infrastructures. By organizing relational databases, optimizing APIs, and assembling responsive interfaces, I build scalable systems that handle high data volumes and support clean, modern user workflows.
             </p>
 
-            <blockquote className="border-l-4 border-[var(--accent-rust)] pl-6 py-2 my-8 text-left italic text-lg lg:text-xl xl:text-2xl font-serif-anthropic text-[var(--text-charcoal)]/80 max-w-2xl mx-auto">
+            <blockquote className="border-l-2 border-[var(--accent-rust)] pl-6 py-2 my-8 text-left italic text-2xl font-serif-anthropic text-[var(--text-charcoal)]/80 max-w-2xl mx-auto">
               &ldquo;Success is not a destination, It’s a journey that most don’t realize.&rdquo;
             </blockquote>
 
@@ -392,7 +339,7 @@ export default function Home() {
               <a
                 href="/resume.pdf"
                 download
-                className="inline-flex items-center space-x-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] hover:opacity-90 px-6 py-3.5 rounded-[15px] font-sans font-medium text-sm transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center space-x-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-8 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Get Resume</span>
                 <Download className="w-4 h-4" />
@@ -405,16 +352,16 @@ export default function Home() {
         <section id="projects" className="pt-12 md:pt-24 space-y-12">
           {/* Header */}
           <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
+            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Projects
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               Selected Works
             </div>
           </div>
 
           {/* Combined Slate V1 & V2 Banner */}
-          <div className="border border-[var(--border-light)] rounded-3xl p-6 md:p-10 lg:p-12 bg-[var(--card-bg)] grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-12 items-stretch transition-all duration-300 hover:border-[var(--text-secondary)]/20 hover:shadow-lg">
+          <div className="rounded-3xl p-6 md:p-10 lg:p-12 bg-[var(--color-manilla)] grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-12 items-stretch transition-all duration-300">
 
             {/* Info Column */}
             <div className="flex flex-col justify-between space-y-6 text-left order-2 lg:order-1">
@@ -423,7 +370,7 @@ export default function Home() {
                   <div className="inline-flex items-center gap-1.5 text-xs font-mono-anthropic uppercase text-[var(--accent-rust)] font-semibold tracking-[2px] mb-1">
                     Featured Project
                   </div>
-                  <h3 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-medium text-[var(--text-charcoal)] mt-1">
+                  <h3 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] mt-1">
                     Slate App
                   </h3>
                   <span className="text-xs font-mono-anthropic uppercase text-[var(--text-secondary)] font-semibold tracking-[2px]">Notes, but intelligent.</span>
@@ -461,7 +408,7 @@ export default function Home() {
               <div className="flex pt-2">
                 <a
                   href="/slate"
-                  className="group/btn inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] hover:opacity-95 px-6 py-3.5 rounded-xl font-sans font-medium text-sm transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+                  className="group/btn inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-6 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span>Explore Slate</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 duration-200" />
@@ -486,16 +433,16 @@ export default function Home() {
           {/* Subheading & Filter Switcher */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[var(--border-light)] pt-12">
             <div className="text-center md:text-left space-y-1">
-              <h3 className="font-serif-anthropic text-2xl font-medium text-[var(--text-charcoal)]">
+              <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">
                 More Solutions
               </h3>
-              <p className="text-xs font-mono-anthropic text-[var(--text-secondary)] uppercase">
+              <p className="text-[10px] font-sans-anthropic font-bold tracking-widest uppercase text-[var(--text-secondary)]">
                 Commercial & Freelance Projects
               </p>
             </div>
 
             {/* Filter switcher capsule */}
-            <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--bg-warm)]">
+            <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--card-bg)]">
               {[
                 { id: "all", label: "All Work" },
                 { id: "featured", label: "Featured" },
@@ -505,8 +452,8 @@ export default function Home() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 py-1.5 rounded-full font-sans font-medium text-xs transition-all duration-200 ${activeTab === tab.id
-                      ? "bg-[var(--text-charcoal)] text-[var(--bg-warm)]"
+                  className={`px-4 py-1.5 rounded-full font-sans-anthropic font-semibold text-xs transition-all duration-200 ${activeTab === tab.id
+                      ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
                     }`}
                 >
@@ -528,18 +475,18 @@ export default function Home() {
                       setSelectedProject(proj);
                     }
                   }}
-                  className={`group flex flex-col justify-between border border-[var(--border-light)] rounded-2xl p-6 bg-[var(--card-bg)] transition-all duration-300 space-y-6 ${isClickable
-                      ? "cursor-pointer hover:bg-[var(--card-hover-bg)] hover:border-[var(--accent-rust)]"
+                  className={`group flex flex-col justify-between border border-[var(--border-light)] rounded-3xl p-6 bg-[var(--card-bg)] transition-all duration-300 space-y-6 ${isClickable
+                      ? "cursor-pointer hover:border-[var(--accent-rust)]"
                       : ""
                     }`}
                 >
                   <div className="space-y-4">
                     <div className="flex justify-between items-start gap-4">
-                      <h4 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      <h4 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                         {proj.title}
                       </h4>
-                      <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${proj.repoStatus === "public"
-                          ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--accent-rust)]/5"
+                      <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-none uppercase font-semibold border ${proj.repoStatus === "public"
+                          ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--highlight-selection)]"
                           : proj.repoStatus === "private"
                             ? "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
                             : "border-[var(--border-light)] text-[var(--text-secondary)] bg-[var(--bg-warm)]"
@@ -552,7 +499,7 @@ export default function Home() {
                       </span>
                     </div>
 
-                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                    <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                       {proj.description}
                     </p>
                   </div>
@@ -560,7 +507,7 @@ export default function Home() {
                   <div className="flex justify-between items-center pt-4 border-t border-[var(--border-light)]/50">
                     <div className="flex flex-wrap gap-1.5">
                       {proj.tech.map(t => (
-                        <span key={t} className="text-[10px] font-mono-anthropic bg-[var(--bg-warm)] border border-[var(--border-light)] px-2 py-0.5 rounded text-[var(--text-secondary)]">
+                        <span key={t} className="text-[10px] font-sans-anthropic bg-[var(--bg-warm)] border border-[var(--border-light)] px-2 py-0.5 rounded-none text-[var(--text-charcoal)]">
                           {t}
                         </span>
                       ))}
@@ -582,10 +529,10 @@ export default function Home() {
         <section id="experience" className="pt-12 md:pt-24 space-y-16">
           {/* Header */}
           <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
+            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Experience
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               Professional Chronology
             </div>
           </div>
@@ -595,22 +542,22 @@ export default function Home() {
             {/* Job 1 (Freelance Software Engineer) */}
             <div className="relative space-y-4">
               {/* Timeline Dot */}
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] shadow-xs transition-colors duration-300" />
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] transition-colors duration-300" />
 
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
                     Freelance Software Engineer
                   </h3>
-                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
                     Upwork &amp; Private Contracts &nbsp; &middot; &nbsp; Remote
                   </p>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
                   01/2026 &mdash; Present
                 </div>
               </div>
-              <ul className="text-sm text-[var(--text-secondary)] space-y-4 leading-relaxed list-disc pl-4 font-sans">
+              <ul className="text-sm text-[var(--text-charcoal)] space-y-4 leading-relaxed list-disc pl-4 font-sans-anthropic">
                 <li>
                   <strong>UNiFY Sports Ecosystem:</strong> Stabilized and extended a multi-platform Flutter app for NBA, WNBA, NFL, and NCAA fanbases. Engineered real-time WebSocket chatrooms and scoreboards, rich push notifications, and custom NFC &ldquo;Baller Band&rdquo; integrations connected to a Python/Flask API.
                 </li>
@@ -620,22 +567,22 @@ export default function Home() {
             {/* Job 2 (Associate Software Engineer) */}
             <div className="relative space-y-4">
               {/* Timeline Dot */}
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
 
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
                     Associate Software Engineer
                   </h3>
-                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
                     DayZ Solutions (Pvt.) Ltd. &nbsp; &middot; &nbsp; Nittambuwa, Sri Lanka
                   </p>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
                   05/2025 &mdash; 07/2026
                 </div>
               </div>
-              <ul className="text-sm text-[var(--text-secondary)] space-y-4 leading-relaxed list-disc pl-4 font-sans">
+              <ul className="text-sm text-[var(--text-charcoal)] space-y-4 leading-relaxed list-disc pl-4 font-sans-anthropic">
                 <li>
                   <strong>Deurbeslag Gigant (Lead Engineer):</strong> Acted as lead engineer for an e-commerce inventory management system. Automated order synchronizations across external platform APIs using Laravel, Livewire, Alpine.js, and MySQL. Rebuilding V2 panels using Filament tables and Flux UI.
                 </li>
@@ -648,22 +595,22 @@ export default function Home() {
             {/* Job 3 */}
             <div className="relative space-y-4">
               {/* Timeline Dot */}
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
 
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
                     Web & Desktop Developer
                   </h3>
-                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
                     Freelance Solutions &nbsp; &middot; &nbsp; Hybrid
                   </p>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
                   10/2022 &mdash; 06/2025
                 </div>
               </div>
-              <ul className="text-sm text-[var(--text-secondary)] space-y-4 leading-relaxed list-disc pl-4 font-sans">
+              <ul className="text-sm text-[var(--text-charcoal)] space-y-4 leading-relaxed list-disc pl-4 font-sans-anthropic">
                 <li>
                   <strong>Web Portals:</strong> Created the Bright Achievers Migration platform and Photographer Portfolio CMS engines using Laravel, TailwindCSS, and MySQL to automate client onboarding and showcase galleries.
                 </li>
@@ -680,10 +627,10 @@ export default function Home() {
         <section id="education" className="pt-12 md:pt-24 space-y-16">
           {/* Header */}
           <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
+            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Education
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               Academic Qualifications
             </div>
           </div>
@@ -692,105 +639,105 @@ export default function Home() {
 
             {/* Degree 1 */}
             <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] shadow-xs transition-colors duration-300" />
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
                     Bachelor of Engineering in Software Engineering
                   </h3>
-                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
                     Tampere University of Applied Sciences (TAMK) &nbsp; &middot; &nbsp; Tampere, Finland
                   </p>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
                   08/2026 &mdash; Present
                 </div>
               </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                 A 240-ECTS, four-year programme focused on modern software development, web and mobile applications, and practical, project-based learning for international software engineering roles.
               </p>
             </div>
 
             {/* Degree 2 */}
             <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
                     Pearson BTEC Level 5 HND in Computing
                   </h3>
-                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
                     ESOFT Metro Campus &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
                   </p>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
                   02/2023 &mdash; 02/2025
                 </div>
               </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                 Specialized in Software Engineering. Graduated with a <strong>Merit</strong>. Covered programming, databases, networking, security, software development lifecycles (SDLC), data structures and algorithms (DSA), web development, and UX/UI. Ofqual-regulated qualification (QN 603/7596/6).
               </p>
             </div>
 
             {/* Degree 3 */}
             <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
                     Pearson Assured Level 3 Diploma in IT (DiTEC)
                   </h3>
-                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
                     ESOFT Metro Campus &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
                   </p>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
                   07/2022 &mdash; 08/2023
                 </div>
               </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                 Graduated with a <strong>Merit</strong>. A 1,200-hour programme covering IT concepts, computer hardware, networking, internet and web design, graphics and multimedia, Python, SQL databases, C# programming, and a final practical project.
               </p>
             </div>
 
             {/* Degree 4 */}
             <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
                     Pearson Assured Level 3 Diploma in English (DiE)
                   </h3>
-                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
                     ESOFT Metro Campus &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
                   </p>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
                   07/2022 &mdash; 08/2023
                 </div>
               </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                 Completed with a <strong>Pass</strong> grade. A communicative, skills-based programme covering grammar, vocabulary, reading, writing, listening, speaking, presentations, and viva.
               </p>
             </div>
 
             {/* Degree 5 */}
             <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] shadow-xs transition-colors duration-300" />
+              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                 <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-medium text-[var(--text-charcoal)]">
+                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
                     G.C.E. Ordinary Level Examination
                   </h3>
-                  <p className="text-sm font-medium text-[var(--text-secondary)] font-sans">
+                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
                     Henegama Central College &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
                   </p>
                 </div>
-                <div className="text-xs font-mono-anthropic text-[var(--text-secondary)] whitespace-nowrap">
+                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
                   2022
                 </div>
               </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                 Passed with top distinctions: A in Information &amp; Communication Technology, A in English, B in Mathematics, B in Science, and B in Sinhala.
               </p>
             </div>
@@ -802,55 +749,55 @@ export default function Home() {
         <section id="updates" className="pt-12 md:pt-24 space-y-16">
           {/* Header */}
           <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="font-mono-anthropic text-3xl md:text-4xl font-medium tracking-tight text-[var(--text-secondary)]">
+            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Updates
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-medium tracking-tight text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               Current Endeavors
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-6xl mx-auto pt-6 items-stretch">
             {/* Card 1: iOS & Swift (Left) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)] bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl hover:border-[var(--accent-rust)] hover:bg-[var(--card-hover-bg)] transition-all duration-300 group">
+            <div className="flex flex-col justify-between border border-[var(--border-light)] bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--accent-rust)] transition-all duration-300 group">
               <div className="space-y-4">
-                <span className="text-[10px] font-mono-anthropic uppercase text-[var(--text-secondary)] tracking-wider font-semibold">
+                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
                   iOS &amp; Swift
                 </span>
-                <h3 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Slate Notes Application
                 </h3>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                   Designing Slate V1 and V2 notes engines, implementing autonomous context-aware note processing, high-fidelity markdown/LaTeX render passes, and offline local-first database models.
                 </p>
               </div>
             </div>
 
             {/* Card 2: TAMK / Finland (Center - Highlighted) */}
-            <div className="flex flex-col justify-between border-2 border-[var(--accent-rust)] bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl shadow-xl shadow-[var(--accent-rust)]/10 lg:scale-102 xl:scale-105 z-10 transition-all duration-300 group">
+            <div className="flex flex-col justify-between border-2 border-[var(--accent-rust)] bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl z-10 transition-all duration-300 group">
               <div className="space-y-4">
-                <span className="text-[10px] font-mono-anthropic uppercase text-[var(--accent-rust)] tracking-wider font-semibold">
+                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--accent-rust)] tracking-widest font-bold">
                   TAMK / Finland
                 </span>
-                <h3 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Academic Relocation
                 </h3>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                   Commencing undergraduate studies in the Bachelor of Engineering in Software Engineering at Tampere University of Applied Sciences (TAMK) in Tampere, Finland.
                 </p>
               </div>
             </div>
 
             {/* Card 3: Open to Gigs (Right) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)] bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl hover:border-[var(--accent-rust)] hover:bg-[var(--card-hover-bg)] transition-all duration-300 group">
+            <div className="flex flex-col justify-between border border-[var(--border-light)] bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--accent-rust)] transition-all duration-300 group">
               <div className="space-y-4">
-                <span className="text-[10px] font-mono-anthropic uppercase text-[var(--text-secondary)] tracking-wider font-semibold">
+                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
                   Open to Gigs
                 </span>
-                <h3 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Freelance &amp; Remote Projects
                 </h3>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                   Actively accepting contracts for backend integrations (Laravel/PHP) and cross-platform native apps (Flutter/Swift/Dart) globally.
                 </p>
               </div>
@@ -866,13 +813,13 @@ export default function Home() {
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs transition-opacity" onClick={() => setSelectedProject(null)}>
           <div
-            className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-3xl p-8 space-y-6 shadow-2xl transition-transform animate-in fade-in zoom-in-95 duration-200"
+            className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-3xl p-8 space-y-6 transition-transform animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-6 p-2 rounded-full border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-all"
+              className="absolute top-6 right-6 p-2 rounded-[12px] border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-all"
               aria-label="Close modal"
             >
               <X className="w-4 h-4" />
@@ -881,8 +828,8 @@ export default function Home() {
             {/* Header */}
             <div className="space-y-2 pr-12">
               <div className="flex items-center gap-3">
-                <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${selectedProject.repoStatus === "public"
-                    ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--accent-rust)]/5"
+                <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-none uppercase font-semibold border ${selectedProject.repoStatus === "public"
+                    ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--highlight-selection)]"
                     : "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
                   }`}>
                   {selectedProject.repoStatus === "public" ? "Public" : "Private"}
@@ -903,7 +850,7 @@ export default function Home() {
               <div className="text-[10px] font-mono-anthropic uppercase text-[var(--text-secondary)]">Technologies Used</div>
               <div className="flex flex-wrap gap-1.5">
                 {selectedProject.tech.map(t => (
-                  <span key={t} className="text-[10px] font-mono-anthropic bg-[var(--card-bg)] border border-[var(--border-light)] px-2 py-0.5 rounded text-[var(--text-secondary)]">
+                  <span key={t} className="text-[10px] font-sans-anthropic bg-[var(--card-bg)] border border-[var(--border-light)] px-2 py-0.5 rounded-none text-[var(--text-charcoal)]">
                     {t}
                   </span>
                 ))}
@@ -923,7 +870,7 @@ export default function Home() {
               <div className="flex items-center gap-3 ml-auto">
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-5 py-2.5 rounded-xl border border-[var(--border-light)] text-sm font-medium hover:bg-[var(--card-hover-bg)] transition-colors"
+                  className="px-5 py-2.5 rounded-[12px] border border-[var(--border-light)] text-sm font-sans-anthropic font-semibold uppercase tracking-tight hover:bg-[var(--card-hover-bg)] transition-colors"
                 >
                   Close
                 </button>
@@ -932,7 +879,7 @@ export default function Home() {
                     href={selectedProject.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-5 py-2.5 rounded-xl font-sans font-medium text-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    className="inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-5 py-2.5 rounded-b-lg rounded-t-none font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <Github className="w-4 h-4" />
                     View on GitHub

@@ -1,36 +1,78 @@
 @import "tailwindcss";
 
-/* Override Tailwind v4 dark: variant to use .dark class instead of prefers-color-scheme */
-@variant dark (&:where(.dark, .dark *));
-
-:root {
-  /* Colors - Light Theme (Cool Slate Blue) */
-  --bg-warm: #F8FAFC;
-  --text-charcoal: #0F172A;
-  --text-secondary: #475569;
-  --border-light: #E2E8F0;
-  --accent-rust: #2563EB;
-  --accent-rust-hover: #1D4ED8;
-  --highlight-selection: rgba(37, 99, 235, 0.12);
-  --card-bg: #FFFFFF;
-  --card-hover-bg: #F1F5F9;
-  
-  --font-serif: var(--font-newsreader), 'Newsreader', Georgia, serif;
-  --font-sans: var(--font-instrument-sans), 'Instrument Sans', Inter, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+/* Anthropic Custom Web Fonts */
+@font-face {
+  font-family: 'Anthropic Sans';
+  src: url('/fonts/AnthropicSans-Roman-Web.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
 }
 
-html.dark {
-  /* Colors - Dark Theme (Midnight Slate) */
-  --bg-warm: #090D16;
-  --text-charcoal: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --border-light: #1E293B;
-  --accent-rust: #3B82F6;
-  --accent-rust-hover: #60A5FA;
-  --highlight-selection: rgba(59, 130, 246, 0.22);
-  --card-bg: #0F172A;
-  --card-hover-bg: #1E293B;
+@font-face {
+  font-family: 'Anthropic Sans';
+  src: url('/fonts/AnthropicSans-Italic-Web.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Anthropic Serif';
+  src: url('/fonts/AnthropicSerif-Roman-Web.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Anthropic Serif';
+  src: url('/fonts/AnthropicSerif-Italic-Web.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Anthropic Mono';
+  src: url('/fonts/AnthropicMono-Roman-Web.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Anthropic Mono';
+  src: url('/fonts/AnthropicMono-Italic-Web.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Custom';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Colors - Anthropic Light Theme (Warm Parchment) */
+  --bg-warm: #f0eee6;
+  --text-charcoal: #141413;
+  --text-secondary: #b0aea5;
+  --border-light: #cccbc8;
+  --accent-rust: #d97757;
+  --accent-rust-hover: #c6613f;
+  --highlight-selection: rgba(217, 119, 87, 0.12);
+  --card-bg: #faf9f5;
+  --card-hover-bg: #f0eee6;
+
+  /* Font Families */
+  --font-serif: 'Anthropic Serif', Georgia, ui-serif, serif;
+  --font-sans: 'Anthropic Sans', Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Anthropic Mono', 'JetBrains Mono Custom', ui-monospace, monospace;
 }
 
 ::selection {
@@ -44,6 +86,8 @@ body {
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom Typography and Utilities */
@@ -83,7 +127,7 @@ body {
   border-color: var(--border-light);
 }
 
-/* Animated links & buttons */
+/* Persistent Underline on Hover/Always (Editorial print convention) */
 .underline-hover {
   position: relative;
   text-decoration: none;
@@ -107,6 +151,13 @@ body {
   transform-origin: bottom left;
 }
 
+/* Persistent editorial underline */
+.underline-persistent {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
 /* Infinite horizontal scroll marquee animation */
 @keyframes marquee {
   0% {
@@ -127,5 +178,22 @@ body {
   animation-play-state: paused;
 }
 
+/* Status dot orange pulsing animation */
+@keyframes status-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(217, 119, 87, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(217, 119, 87, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(217, 119, 87, 0);
+  }
+}
 
-
+.status-pulse-dot {
+  animation: status-pulse 2s infinite;
+}
