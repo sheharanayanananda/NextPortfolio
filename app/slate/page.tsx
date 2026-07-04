@@ -179,9 +179,8 @@ export default function SlatePage() {
           </div>
         </section>
 
-        {/* ─── Sticky Tab Switcher ─── */}
-        <div className="sticky top-[69px] z-40 flex justify-center py-4 bg-[var(--bg-warm)]/90 backdrop-blur-md border-b border-[var(--border-light)]">
-          <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--bg-warm)]">
+        <div className="sticky top-[69px] z-40 flex justify-center py-4 pointer-events-none">
+          <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--bg-warm)]/90 backdrop-blur-md pointer-events-auto shadow-sm hover:shadow-md transition-shadow duration-300">
             <button
               onClick={() => setActiveVersion("origin")}
               className={`px-6 py-2 rounded-full font-sans font-medium text-sm transition-all duration-200 ${
