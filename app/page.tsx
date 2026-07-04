@@ -88,7 +88,7 @@ export default function Home() {
   // Project List
   const projects: Project[] = [
     {
-      title: "UNiFY Sports Ecosystem",
+      title: "UNiFY",
       tech: ["Flutter", "Dart", "Python", "Flask", "PostgreSQL", "WebSockets", "Redis", "AWS", "Stripe", "NFC"],
       description: "Backend and Mobile engineer for a multi-platform sports app (NBA, WNBA, NFL, NCAA). Refactored key modules, built real-time WebSocket messaging and scores, and integrated NFC 'Baller Band' support.",
       longDescription: "Collaborated on building a real-time sports ecosystem supporting a massive US fanbase across multiple sports. Focused on implementing low-latency features including live score boards and chatrooms via WebSockets, refactoring modular components in Flutter, and developing REST APIs using Flask. High-volume database workflows were optimized using PostgreSQL and Redis caching. Source code is restricted under commercial IP protections.",
@@ -96,7 +96,7 @@ export default function Home() {
       featured: true
     },
     {
-      title: "Deurbeslag Gigant E-Commerce",
+      title: "Deurbeslag Gigant",
       tech: ["PHP", "Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "MySQL"],
       description: "Centralized e-commerce inventory and order management system for a Dutch retail platform. Automated legacy workflows, synchronized real-time stocks across external APIs, and designed filament-driven V2 interfaces.",
       longDescription: "As the lead developer, I refactored the core logistics and inventory tracking system of a large Dutch e-commerce storefront. The platform integrates with external vendor shipping APIs and local retail inventory networks, automating processes that previously required hours of manual labor. Built entirely on Laravel with Livewire and Filament panels to manage high-throughput operations. The source code is commercial IP and closed for proprietary protection.",
@@ -538,16 +538,16 @@ export default function Home() {
                       <h4 className="font-serif-anthropic text-xl font-medium text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                         {proj.title}
                       </h4>
-                      <span className={`text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${proj.repoStatus === "public"
+                      <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${proj.repoStatus === "public"
                           ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--accent-rust)]/5"
                           : proj.repoStatus === "private"
                             ? "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
                             : "border-[var(--border-light)] text-[var(--text-secondary)] bg-[var(--bg-warm)]"
                         }`}>
                         {proj.repoStatus === "public"
-                          ? "Public Repo"
+                          ? "Public"
                           : proj.repoStatus === "private"
-                            ? "Private Repo"
+                            ? "Private"
                             : "Proprietary"}
                       </span>
                     </div>
@@ -881,11 +881,11 @@ export default function Home() {
             {/* Header */}
             <div className="space-y-2 pr-12">
               <div className="flex items-center gap-3">
-                <span className={`text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${selectedProject.repoStatus === "public"
+                <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-md uppercase font-semibold border ${selectedProject.repoStatus === "public"
                     ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--accent-rust)]/5"
                     : "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
                   }`}>
-                  {selectedProject.repoStatus === "public" ? "Public Repo" : "Private Repo"}
+                  {selectedProject.repoStatus === "public" ? "Public" : "Private"}
                 </span>
               </div>
               <h3 className="font-serif-anthropic text-3xl md:text-4xl font-medium text-[var(--text-charcoal)]">
