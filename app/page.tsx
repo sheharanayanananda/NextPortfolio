@@ -248,7 +248,7 @@ export default function Home() {
                 <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>
               </div>
 
-              <div className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-6 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]">
+              <div className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]">
                 <span className="relative items-center justify-center flex h-3 w-3">
                   <span className="status-pulse-dot absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-rust)]"></span>
@@ -268,7 +268,7 @@ export default function Home() {
               {/* Email Me */}
               <a
                 href="mailto:sheharanayanananda@gmail.com"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
                 
                 aria-label="Email Me"
               >
@@ -280,7 +280,7 @@ export default function Home() {
                 href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
                 
                 aria-label="LinkedIn Profile"
               >
@@ -292,7 +292,7 @@ export default function Home() {
                 href="https://github.com/sheharanayanananda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
                 
                 aria-label="GitHub Profile"
               >
@@ -339,7 +339,7 @@ export default function Home() {
               <a
                 href="/resume.pdf"
                 download
-                className="inline-flex items-center space-x-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-8 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center space-x-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-8 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Get Resume</span>
                 <Download className="w-4 h-4" />
@@ -408,7 +408,7 @@ export default function Home() {
               <div className="flex pt-2">
                 <a
                   href="/slate"
-                  className="group/btn inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-6 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="group/btn inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span>Explore Slate</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 duration-200" />
@@ -442,7 +442,7 @@ export default function Home() {
             </div>
 
             {/* Filter switcher capsule */}
-            <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--card-bg)]">
+            <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-2xl bg-[var(--card-bg)]">
               {[
                 { id: "all", label: "All Work" },
                 { id: "featured", label: "Featured" },
@@ -452,7 +452,7 @@ export default function Home() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 py-1.5 rounded-full font-sans-anthropic font-semibold text-xs transition-all duration-200 ${activeTab === tab.id
+                  className={`px-4 py-1.5 rounded-xl font-sans-anthropic font-semibold text-xs transition-all duration-200 ${activeTab === tab.id
                       ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
                     }`}
@@ -879,7 +879,7 @@ export default function Home() {
                     href={selectedProject.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-5 py-2.5 rounded-b-lg rounded-t-none font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    className="inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-5 py-2.5 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <Github className="w-4 h-4" />
                     View on GitHub

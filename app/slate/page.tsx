@@ -134,7 +134,7 @@ export default function SlatePage() {
               href="https://github.com/sheharanayanananda/Slate"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-6 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <Github className="w-4 h-4" />
               View Origin on GitHub
@@ -143,7 +143,7 @@ export default function SlatePage() {
               href="https://github.com/sheharanayanananda/Slate-V2"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-[var(--border-light)] text-[var(--text-charcoal)] px-6 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98] hover:bg-[var(--card-bg)]"
+              className="inline-flex items-center gap-2 border border-[var(--border-light)] text-[var(--text-charcoal)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98] hover:bg-[var(--card-bg)]"
             >
               <Github className="w-4 h-4" />
               View Agentic on GitHub
@@ -152,10 +152,10 @@ export default function SlatePage() {
         </section>
 
         <div className="sticky top-[69px] z-40 flex justify-center py-4 pointer-events-none">
-          <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--card-bg)] pointer-events-auto transition-shadow duration-300">
+          <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-2xl bg-[var(--card-bg)] pointer-events-auto transition-shadow duration-300">
             <button
               onClick={() => setActiveVersion("origin")}
-              className={`px-6 py-2 rounded-full font-sans-anthropic font-semibold text-xs transition-all duration-200 ${
+              className={`px-6 py-2 rounded-xl font-sans-anthropic font-semibold text-xs transition-all duration-200 ${
                 activeVersion === "origin"
                   ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
@@ -165,7 +165,7 @@ export default function SlatePage() {
             </button>
             <button
               onClick={() => setActiveVersion("agentic")}
-              className={`px-6 py-2 rounded-full font-sans-anthropic font-semibold text-xs transition-all duration-200 ${
+              className={`px-6 py-2 rounded-xl font-sans-anthropic font-semibold text-xs transition-all duration-200 ${
                 activeVersion === "agentic"
                   ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
@@ -270,13 +270,13 @@ export default function SlatePage() {
               href="https://github.com/sheharanayanananda/Slate"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-6 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               Slate Origin — GitHub
             </a>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 border border-[var(--border-light)] text-[var(--text-secondary)] px-6 py-4 rounded-full font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98] hover:text-[var(--text-charcoal)]"
+              className="inline-flex items-center gap-2 border border-[var(--border-light)] text-[var(--text-secondary)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98] hover:text-[var(--text-charcoal)]"
             >
               ← Back to Portfolio
             </Link>
