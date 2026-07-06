@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AtSign, Linkedin, Github, MapPin, Download, ArrowRight, ChevronRight, X } from "lucide-react";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 // Custom type for projects
 interface Project {
@@ -157,25 +158,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-warm)] text-[var(--text-charcoal)] font-sans-anthropic selection:bg-[var(--highlight-selection)] selection:text-[var(--text-charcoal)]">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 bg-[var(--bg-warm)] border-b border-[var(--border-light)]">
-        <div className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-4 flex items-center justify-between">
-          <a href="#hero" className="font-sans-anthropic text-xs font-bold tracking-widest uppercase hover:text-[var(--accent-rust)] transition-colors ease-in-out duration-300">
-            Shehara
-          </a>
-
-          <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium tracking-tight">
-            <a href="#hero" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Home</a>
-            <a href="#about" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">About</a>
-            <a href="/slate" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Slate</a>
-            <a href="#projects" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Projects</a>
-            <a href="#experience" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Experience</a>
-            <a href="#education" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Education</a>
-            <a href="#updates" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Updates</a>
-          </nav>
-
-          
-        </div>
-      </header>
+      <Header />
 
       {/* HERO / WELCOME SECTION */}
       <section id="hero" className="flex-1 min-h-[calc(100vh-69px)] flex items-center w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32">
@@ -209,7 +192,7 @@ export default function Home() {
               </h1>
             </div>
 
-            <p className="font-serif-anthropic text-[20px] text-[var(--text-charcoal)] leading-[1.4] font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
+            <p className="font-sans-anthropic text-xl text-[var(--text-charcoal)] leading-[1.7] font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mt-7">
               Freelance Software Engineer and Software Engineering student at TAMK designing and shipping high-performance mobile apps, full-stack systems, and real-time APIs.
             </p>
 
@@ -268,7 +251,7 @@ export default function Home() {
               {/* Email Me */}
               <a
                 href="mailto:sheharanayanananda@gmail.com"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
                 
                 aria-label="Email Me"
               >
@@ -280,7 +263,7 @@ export default function Home() {
                 href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
                 
                 aria-label="LinkedIn Profile"
               >
@@ -292,7 +275,7 @@ export default function Home() {
                 href="https://github.com/sheharanayanananda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
+                className="hidden lg:flex absolute z-10 items-center justify-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
                 
                 aria-label="GitHub Profile"
               >
@@ -314,16 +297,16 @@ export default function Home() {
 
         {/* ABOUT SECTION */}
         <section id="about" className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto gap-12">
-          <div className="space-y-4">
-            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
+          <div className="flex flex-col items-center gap-4 mb-4">
+            <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Background
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               PHILOSOPHY & STACK
             </div>
           </div>
 
-          <div className="space-y-8 text-[20px] leading-[1.4] text-[var(--text-charcoal)] font-serif-anthropic max-w-3xl mx-auto font-normal">
+          <div className="space-y-8 text-xl leading-[1.7] text-[var(--text-secondary)]/80 font-sans-anthropic max-w-3xl mx-auto font-normal">
             <p>
               I specialize in engineering mobile applications with a focus on fluid animations, modular systems, and robust offline architectures. Whether developing natively or leveraging cross-platform frameworks, my focus is on bridging platform capabilities with high-fidelity, intuitive interfaces.
             </p>
@@ -331,7 +314,7 @@ export default function Home() {
               Beyond mobile architectures, I design web applications and backend infrastructures. By organizing relational databases, optimizing APIs, and assembling responsive interfaces, I build scalable systems that handle high data volumes and support clean, modern user workflows.
             </p>
 
-            <blockquote className="border-l-2 border-[var(--accent-rust)] pl-6 py-2 my-8 text-left italic text-2xl font-serif-anthropic text-[var(--text-charcoal)]/80 max-w-2xl mx-auto">
+            <blockquote className="border-l-3 border-[var(--accent-rust)] pl-6 py-2 my-10 text-left italic font-serif-anthropic font-medium text-[var(--text-charcoal)]/80 max-w-2xl mx-auto">
               &ldquo;Success is not a destination, It’s a journey that most don’t realize.&rdquo;
             </blockquote>
 
@@ -339,7 +322,7 @@ export default function Home() {
               <a
                 href="/resume.pdf"
                 download
-                className="inline-flex items-center space-x-2 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-8 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-3 bg-[var(--accent-rust)] text-[var(--bg-warm)] hover:bg-[var(--accent-rust-hover)] px-5 py-4 rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Get Resume</span>
                 <Download className="w-4 h-4" />
@@ -355,7 +338,7 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Projects
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-3xl md:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               Selected Works
             </div>
           </div>
@@ -532,7 +515,7 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Experience
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-3xl md:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               Professional Chronology
             </div>
           </div>
@@ -630,7 +613,7 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Education
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-3xl md:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               Academic Qualifications
             </div>
           </div>
@@ -752,7 +735,7 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Updates
             </h2>
-            <div className="font-serif-anthropic text-4xl md:text-5xl xl:text-6xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-3xl md:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               Current Endeavors
             </div>
           </div>
@@ -897,6 +880,6 @@ export default function Home() {
           </div>
         </div>
       )}
-    </div>
+q    </div>
   );
 }

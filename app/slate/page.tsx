@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Github } from "lucide-react";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 export default function SlatePage() {
   const [mounted, setMounted] = useState(false);
@@ -87,28 +88,7 @@ export default function SlatePage() {
     <div className="min-h-screen flex flex-col bg-[var(--bg-warm)] text-[var(--text-charcoal)] font-sans-anthropic">
 
       {/* ─── Header (shared with portfolio) ─── */}
-      <header className="sticky top-0 z-50 bg-[var(--bg-warm)] border-b border-[var(--border-light)]">
-        <div className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-sans-anthropic text-xs font-bold tracking-widest uppercase hover:text-[var(--accent-rust)] transition-colors ease-in-out duration-300"
-          >
-            Shehara
-          </Link>
-
-          <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium tracking-tight">
-            <Link href="/#hero" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Home</Link>
-            <Link href="/#about" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">About</Link>
-            <Link href="/slate" className="underline-hover text-[var(--text-charcoal)] transition-colors">Slate</Link>
-            <Link href="/#projects" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Projects</Link>
-            <Link href="/#experience" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Experience</Link>
-            <Link href="/#education" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Education</Link>
-            <Link href="/#updates" className="underline-hover text-xs font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-colors">Updates</Link>
-          </nav>
-
-          
-        </div>
-      </header>
+      <Header />
 
       <main className="flex-1">
 
@@ -225,7 +205,7 @@ export default function SlatePage() {
               <div className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
                 {activeVersion === "origin" ? "Core Features" : "Agentic Capabilities"}
               </div>
-              <h2 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)]">
+              <h2 className="font-serif-anthropic text-2xl lg:text-3xl xl:text-4xl font-normal text-[var(--text-charcoal)]">
                 {activeVersion === "origin"
                   ? "Intelligent notes, built for clarity."
                   : "Your notes. Now with an AI agent."}
@@ -257,7 +237,7 @@ export default function SlatePage() {
         {/* ─── Bottom CTA ─── */}
         <section className="border-t border-[var(--border-light)] py-20 lg:py-28 flex flex-col items-center justify-center text-center px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 gap-10">
           <div className="space-y-4 max-w-2xl">
-            <h2 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)]">
+            <h2 className="font-serif-anthropic text-2xl lg:text-3xl xl:text-4xl font-normal text-[var(--text-charcoal)]">
               Built for iOS. Open to everyone.
             </h2>
             <p className="font-sans-anthropic text-base text-[var(--text-charcoal)] leading-relaxed">
