@@ -217,16 +217,16 @@ export default function SlateShowcase() {
       `}</style>
 
       {/* FULL-SCREEN SLATE SHOWCASE */}
-      <section id="projects-slate" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-12 md:pt-18 pb-0 relative">
-        <div className="w-full min-h-[calc(100vh-160px)] bg-[#f5e6ce] rounded-[32px] p-8 md:p-16 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
+      <section id="projects-slate" className="w-full py-40 flex flex-col items-center">
+        <div className="w-[80%] bg-[#f5e6ce] rounded-3xl p-15 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
           
           {/* Left Column — Editorial Info */}
-          <div className="flex flex-col justify-center items-center text-center gap-5 z-10 max-w-md w-full">
+          <div className="flex flex-col justify-center items-center text-center gap-10 z-10 w-full">
             <h1 className="font-serif-anthropic text-6xl font-normal text-[var(--text-charcoal)] leading-[1.2]">
               Announcing <br />
-              Slate App
+              Slate Agentic
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
+            <p className="text-lg text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
               Revolutionize the way you take notes
             </p>
             {/* <p className="text-sm text-[var(--text-charcoal)]/80 leading-relaxed font-sans-anthropic">
@@ -236,7 +236,7 @@ export default function SlateShowcase() {
             <div className="pt-4">
               <a
                 href="/slate"
-                className="flex items-center justify-center bg-black text-white hover:bg-black/90 px-5 py-3 rounded-lg font-sans-anthropic text-sm transition-all duration-200"
+                className="flex items-center justify-center bg-black text-white hover:bg-black/90 px-5 py-3 rounded-lg font-sans-anthropic transition-all duration-200"
               >
                 Explore Slate
               </a>
@@ -244,7 +244,7 @@ export default function SlateShowcase() {
           </div>
 
           {/* Right Column — Animated Butterflies "S" Shape */}
-          <div className="relative w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[340px] xl:max-w-[380px] aspect-[696/1024] mx-auto z-10 justify-self-center">
+          <div className="relative w-full max-w-[500px] aspect-[696/1024] mx-auto z-10 justify-self-center">
             {butterflies.map((b) => {
               const assetPath = `/butterflies/butterfly_${b.assetId}.png`;
               

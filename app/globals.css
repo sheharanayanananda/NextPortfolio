@@ -197,3 +197,38 @@ body {
 .status-pulse-dot {
   animation: status-pulse 2s infinite;
 }
+
+/* Tab switching motion-blur and slide animations */
+@keyframes slide-blur-right {
+  0% {
+    opacity: 0;
+    transform: translateX(30px) scale(0.99);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes slide-blur-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.99);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-slide-blur-right {
+  animation: slide-blur-right 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-slide-blur-left {
+  animation: slide-blur-left 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}

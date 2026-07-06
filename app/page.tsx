@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { AtSign, Linkedin, Github, MapPin, Download, ArrowRight, ChevronRight, X } from "lucide-react";
 import Footer from "./components/Footer";
@@ -23,7 +23,10 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("all");
+  const [prevTab, setPrevTab] = useState<string>("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const [activeRect, setActiveRect] = useState({ left: 0, width: 0 });
 
   const [typingText, setTypingText] = useState("Hello!");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -38,6 +41,18 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (mounted && tabsContainerRef.current) {
+      const activeEl = tabsContainerRef.current.querySelector('[data-active="true"]') as HTMLElement;
+      if (activeEl) {
+        setActiveRect({
+          left: activeEl.offsetLeft,
+          width: activeEl.offsetWidth,
+        });
+      }
+    }
+  }, [activeTab, mounted]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -155,6 +170,11 @@ export default function Home() {
     if (activeTab === "flutter") return proj.tech.includes("Flutter");
     return true;
   });
+
+  const tabList = ["all", "featured", "laravel", "flutter"];
+  const activeIndex = tabList.indexOf(activeTab);
+  const prevIndex = tabList.indexOf(prevTab);
+  const direction = activeIndex >= prevIndex ? "right" : "left";
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-warm)] text-[var(--text-charcoal)] font-sans-anthropic selection:bg-[var(--highlight-selection)] selection:text-[var(--text-charcoal)]">
@@ -343,7 +363,7 @@ export default function Home() {
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-18 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
-              Projects
+              Proudly
             </h2>
             <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               SELECTED WORKS
@@ -351,18 +371,26 @@ export default function Home() {
           </div>
 
           {/* Subheading & Filter Switcher */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[var(--border-light)] pt-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12">
             <div className="flex flex-col items-center md:items-start gap-1 text-center md:text-left">
-              <p className="text-[10px] font-sans-anthropic font-bold tracking-widest uppercase text-[var(--text-secondary)]">
-                Commercial & Freelance Projects
-              </p>
               <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">
-                More Solutions
+                Commercial & Freelance Projects
               </h3>
             </div>
 
             {/* Filter switcher capsule */}
-            <div className="flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-2xl bg-[var(--card-bg)]">
+            <div 
+              ref={tabsContainerRef}
+              className="relative flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--card-bg)]"
+            >
+              {/* Sliding Background Pill */}
+              <div 
+                className="absolute top-1 bottom-1 bg-[var(--accent-rust)] rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+                style={{
+                  left: `${activeRect.left}px`,
+                  width: `${activeRect.width}px`
+                }}
+              />
               {[
                 { id: "all", label: "All Work" },
                 { id: "featured", label: "Featured" },
@@ -371,11 +399,16 @@ export default function Home() {
               ].map(tab => (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 py-1.5 rounded-xl font-sans-anthropic font-semibold text-xs transition-all duration-200 ${activeTab === tab.id
-                      ? "bg-[var(--accent-rust)] text-[var(--bg-warm)]"
+                  data-active={activeTab === tab.id}
+                  onClick={() => {
+                    setPrevTab(activeTab);
+                    setActiveTab(tab.id);
+                  }}
+                  className={`relative z-10 px-4 py-1.5 rounded-full font-sans-anthropic font-semibold text-xs transition-colors duration-300 ${
+                    activeTab === tab.id
+                      ? "text-[var(--bg-warm)]"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
-                    }`}
+                  }`}
                 >
                   {tab.label}
                 </button>
@@ -383,8 +416,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Grid layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {/* Grid layout with motion blur transition */}
+          <div 
+            key={activeTab}
+            className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 ${
+              direction === "right" ? "animate-slide-blur-right" : "animate-slide-blur-left"
+            }`}
+          >
             {filteredProjects.map(proj => {
               const isClickable = proj.repoStatus !== "none";
               return (
