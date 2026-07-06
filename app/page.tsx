@@ -314,7 +314,7 @@ export default function Home() {
               Beyond mobile architectures, I design web applications and backend infrastructures. By organizing relational databases, optimizing APIs, and assembling responsive interfaces, I build scalable systems that handle high data volumes and support clean, modern user workflows.
             </p>
 
-            <blockquote className="border-l-3 border-[var(--accent-rust)] pl-6 py-2 my-10 text-left italic font-serif-anthropic font-medium text-[var(--text-charcoal)]/80 max-w-2xl mx-auto">
+            <blockquote className="border-l-3 border-[var(--accent-rust)] pl-6 py-2 my-10 text-left italic font-serif-anthropic font-medium text-[var(--text-charcoal)] max-w-2xl mx-auto">
               &ldquo;Success is not a destination, It’s a journey that most don’t realize.&rdquo;
             </blockquote>
 
@@ -334,57 +334,34 @@ export default function Home() {
         {/* PROJECTS SECTION */}
         <section id="projects" className="pt-12 md:pt-24 space-y-12">
           {/* Header */}
-          <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
+          <div className="flex flex-col items-center gap-4 mb-18 text-center max-w-3xl mx-auto">
+            <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Projects
             </h2>
-            <div className="font-serif-anthropic text-3xl md:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
-              Selected Works
+            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+              SELECTED WORKS
             </div>
           </div>
 
-          {/* Combined Slate V1 & V2 Banner */}
-          <div className="rounded-3xl p-6 md:p-10 lg:p-12 bg-[var(--color-manilla)] grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-12 items-stretch transition-all duration-300">
+          {/* Slate Banner */}
+          <div className="rounded-2xl p-10 bg-[var(--card-bg)] border border-[var(--border-light)] grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-12 items-center transition-all duration-300">
 
             {/* Info Column */}
-            <div className="flex flex-col justify-between space-y-6 text-left order-2 lg:order-1">
-              <div className="space-y-4">
+            <div className="flex flex-col justify-between space-y-8 text-left order-2 lg:order-1">
+              <div className="space-y-6">
                 <div className="flex flex-col gap-1">
-                  <div className="inline-flex items-center gap-1.5 text-xs font-mono-anthropic uppercase text-[var(--accent-rust)] font-semibold tracking-[2px] mb-1">
+                  <p className="inline-flex items-center gap-1.5 text-xs font-mono-anthropic uppercase text-[var(--accent-rust)] font-semibold tracking-[2px] mb-1">
                     Featured Project
-                  </div>
-                  <h3 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] mt-1">
+                  </p>
+                  <h3 className="font-serif-anthropic text-3xl lg:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] mt-2 mb-2">
                     Slate App
                   </h3>
-                  <span className="text-xs font-mono-anthropic uppercase text-[var(--text-secondary)] font-semibold tracking-[2px]">Notes, but intelligent.</span>
+                  <span className="text-xs font-sans-anthropic uppercase text-[var(--text-secondary)] font-semibold tracking-[2.6px]">Notes, but intelligent.</span>
                 </div>
 
-                <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed font-sans max-w-2xl">
+                <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed font-sans-anthropic max-w-xl">
                   An intelligent note-taking application designed for iOS, bridging local-first markdown editing with advanced agentic AI capabilities. Built natively for iOS, Slate offers seamless transcription, study guides, and visual OCR.
                 </p>
-
-                {/* Sub-grid comparing V1 & V2 */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-[var(--border-light)]/50">
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Origin (V1)</span>
-                      <span className="text-[10px] text-[var(--text-secondary)] font-mono">· Open Source</span>
-                    </div>
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                      AI-powered tools to summarize documents, transcribe meetings, study note creation, and on-device OCR visual extraction.
-                    </p>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-mono-anthropic font-semibold text-[var(--text-charcoal)]">Slate Agentic (V2)</span>
-                      <span className="text-[10px] text-[var(--accent-rust)] font-mono">· Proprietary</span>
-                    </div>
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                      Advanced autonomous agentic thinking, model presets, math LaTeX typesetting, file attachments, and intelligent chat workspace.
-                    </p>
-                  </div>
-                </div>
               </div>
               
               {/* Action button */}
@@ -400,7 +377,7 @@ export default function Home() {
             </div>
 
             {/* App Image Showcase — matches left-side height and keeps aspect-square */}
-            <div className="relative aspect-square h-full w-auto max-w-[340px] md:max-w-[400px] lg:max-w-none mx-auto lg:mx-0 lg:ml-auto rounded-2xl overflow-hidden bg-[var(--bg-warm)] border border-[var(--border-light)]/50 shadow-[0_20px_50px_rgba(15,23,42,0.08)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] group/img order-1 lg:order-2 transition-all duration-300 hover:border-[var(--text-secondary)]/30">
+            <div className="relative aspect-square h-full w-auto max-w-[340px] md:max-w-[400px] lg:max-w-none mx-auto lg:mx-0 lg:ml-auto rounded-xl overflow-hidden bg-[var(--bg-warm)] border border-[var(--border-light)] group/img order-1 lg:order-2 transition-all duration-300 hover:border-[var(--text-charcoal)]">
               <Image
                 src="/slate_origin.png"
                 alt="Slate iOS App Showcase"
@@ -415,13 +392,13 @@ export default function Home() {
 
           {/* Subheading & Filter Switcher */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[var(--border-light)] pt-12">
-            <div className="text-center md:text-left space-y-1">
-              <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">
-                More Solutions
-              </h3>
+            <div className="flex flex-col items-center md:items-start gap-1 text-center md:text-left">
               <p className="text-[10px] font-sans-anthropic font-bold tracking-widest uppercase text-[var(--text-secondary)]">
                 Commercial & Freelance Projects
               </p>
+              <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">
+                More Solutions
+              </h3>
             </div>
 
             {/* Filter switcher capsule */}
@@ -458,8 +435,8 @@ export default function Home() {
                       setSelectedProject(proj);
                     }
                   }}
-                  className={`group flex flex-col justify-between border border-[var(--border-light)] rounded-3xl p-6 bg-[var(--card-bg)] transition-all duration-300 space-y-6 ${isClickable
-                      ? "cursor-pointer hover:border-[var(--accent-rust)]"
+                  className={`group flex flex-col justify-between border border-[var(--border-light)] rounded-2xl p-6 bg-[var(--card-bg)] transition-all duration-300 space-y-6 ${isClickable
+                      ? "cursor-pointer hover:bg-[var(--card-hover-bg)] hover:border-[var(--text-charcoal)]"
                       : ""
                     }`}
                 >
@@ -468,11 +445,11 @@ export default function Home() {
                       <h4 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                         {proj.title}
                       </h4>
-                      <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-none uppercase font-semibold border ${proj.repoStatus === "public"
-                          ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--highlight-selection)]"
+                      <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-none uppercase font-semibold border bg-transparent ${proj.repoStatus === "public"
+                          ? "border-[var(--accent-rust)] text-[var(--accent-rust)]"
                           : proj.repoStatus === "private"
-                            ? "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
-                            : "border-[var(--border-light)] text-[var(--text-secondary)] bg-[var(--bg-warm)]"
+                            ? "border-[var(--text-secondary)] text-[var(--text-secondary)]"
+                            : "border-[var(--border-light)] text-[var(--text-secondary)]"
                         }`}>
                         {proj.repoStatus === "public"
                           ? "Public"
@@ -496,7 +473,7 @@ export default function Home() {
                       ))}
                     </div>
                     {isClickable && (
-                      <span className="text-xs font-sans text-[var(--text-secondary)] group-hover:text-[var(--accent-rust)] transition-colors flex items-center gap-1">
+                      <span className="text-xs font-sans-anthropic text-[var(--text-secondary)] group-hover:text-[var(--accent-rust)] transition-colors flex items-center gap-1">
                         Details
                         <ChevronRight className="w-3 h-3" />
                       </span>
@@ -796,13 +773,13 @@ export default function Home() {
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs transition-opacity" onClick={() => setSelectedProject(null)}>
           <div
-            className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-3xl p-8 space-y-6 transition-transform animate-in fade-in zoom-in-95 duration-200"
+            className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-2xl p-8 space-y-6 transition-transform animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-6 p-2 rounded-[12px] border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-all"
+              className="absolute top-6 right-6 p-2 rounded-xl border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-all"
               aria-label="Close modal"
             >
               <X className="w-4 h-4" />
@@ -811,9 +788,9 @@ export default function Home() {
             {/* Header */}
             <div className="space-y-2 pr-12">
               <div className="flex items-center gap-3">
-                <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-none uppercase font-semibold border ${selectedProject.repoStatus === "public"
-                    ? "border-[var(--accent-rust)] text-[var(--accent-rust)] bg-[var(--highlight-selection)]"
-                    : "border-[var(--text-secondary)] text-[var(--text-secondary)] bg-[var(--text-secondary)]/5"
+                <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-none uppercase font-semibold border bg-transparent ${selectedProject.repoStatus === "public"
+                    ? "border-[var(--accent-rust)] text-[var(--accent-rust)]"
+                    : "border-[var(--text-secondary)] text-[var(--text-secondary)]"
                   }`}>
                   {selectedProject.repoStatus === "public" ? "Public" : "Private"}
                 </span>
@@ -824,7 +801,7 @@ export default function Home() {
             </div>
 
             {/* Detailed Description */}
-            <div className="space-y-4 font-sans text-base text-[var(--text-secondary)] leading-relaxed max-h-[300px] overflow-y-auto">
+            <div className="space-y-4 font-sans-anthropic text-base text-[var(--text-secondary)] leading-relaxed max-h-[300px] overflow-y-auto">
               <p>{selectedProject.longDescription || selectedProject.description}</p>
             </div>
 
@@ -853,7 +830,7 @@ export default function Home() {
               <div className="flex items-center gap-3 ml-auto">
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-5 py-2.5 rounded-[12px] border border-[var(--border-light)] text-sm font-sans-anthropic font-semibold uppercase tracking-tight hover:bg-[var(--card-hover-bg)] transition-colors"
+                  className="px-5 py-2.5 rounded-xl border border-[var(--border-light)] text-sm font-sans-anthropic font-semibold uppercase tracking-tight hover:bg-[var(--card-hover-bg)] transition-colors"
                 >
                   Close
                 </button>
@@ -870,7 +847,7 @@ export default function Home() {
                 ) : (
                   <button
                     disabled
-                    className="inline-flex items-center gap-2 bg-[var(--text-secondary)]/20 text-[var(--text-secondary)]/50 px-5 py-2.5 rounded-xl font-sans font-medium text-sm cursor-not-allowed"
+                    className="inline-flex items-center gap-2 bg-[var(--text-secondary)]/10 text-[var(--text-secondary)]/40 border border-[var(--border-light)] px-5 py-2.5 rounded-xl font-sans-anthropic font-semibold text-xs uppercase tracking-tight cursor-not-allowed"
                   >
                     Private Repository
                   </button>
@@ -880,6 +857,6 @@ export default function Home() {
           </div>
         </div>
       )}
-q    </div>
+    </div>
   );
 }
