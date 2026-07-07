@@ -471,14 +471,14 @@ export default function Home() {
                       setSelectedProject(proj);
                     }
                   }}
-                  className={`group flex flex-col justify-between border border-[var(--border-light)]/40 rounded-3xl p-7 bg-[var(--card-bg)] transition-all duration-300 ease-out space-y-6 ${isClickable
+                  className={`group flex flex-col justify-between border border-[var(--border-light)]/40 rounded-3xl p-6 md:p-8 lg:p-10 bg-[var(--card-bg)] transition-all duration-300 ease-out space-y-8 ${isClickable
                       ? "cursor-pointer hover:bg-[var(--card-hover-bg)] hover:border-[var(--text-secondary)]/60 hover:-translate-y-1"
                       : ""
                     }`}
                 >
-                  <div className="space-y-4">
+                  <div className="space-y-5">
                     <div className="flex justify-between items-start gap-4">
-                      <h4 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      <h4 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                         {proj.title}
                       </h4>
                       <span className={`shrink-0 whitespace-nowrap text-[9px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-medium border ${proj.repoStatus === "public"
@@ -495,7 +495,7 @@ export default function Home() {
                       </span>
                     </div>
 
-                    <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
+                    <p className="text-base text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
                       {proj.description}
                     </p>
                   </div>
@@ -527,7 +527,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
+          <div className="max-w-3xl lg:max-w-5xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
             {/* Job 1 (Freelance Software Engineer) */}
             <div className="relative group">
@@ -542,7 +542,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--accent-rust)] font-bold">
+                    <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--accent-rust)] font-bold">
                       Upwork & Private Contracts
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
@@ -575,7 +575,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                    <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
                       DayZ Solutions (Pvt.) Ltd.
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
@@ -614,7 +614,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                    <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
                       Freelance Development
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
@@ -660,7 +660,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
+          <div className="max-w-3xl lg:max-w-5xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
             {/* Degree 1 (TAMK - Current) */}
             <div className="relative group">
@@ -675,7 +675,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--accent-rust)] font-bold">
+                    <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--accent-rust)] font-bold">
                       Tampere University of Applied Sciences (TAMK)
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
@@ -705,7 +705,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                    <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
@@ -738,7 +738,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                    <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
                       IDP IELTS Test Center
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
@@ -771,7 +771,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                    <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
@@ -804,7 +804,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                    <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
@@ -837,7 +837,7 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
-                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                    <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
                       Henegama Central College
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
@@ -874,47 +874,47 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-6xl mx-auto pt-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto pt-6 items-stretch">
             {/* Card 1: iOS & Swift (Left) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
-              <div className="space-y-4">
+            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
+              <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
                   iOS &amp; Swift
                 </span>
-                <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Slate Notes Application
                 </h3>
-                <p className="text-sm text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
+                <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
                   Designing Slate V1 and V2 notes engines, implementing autonomous context-aware note processing, high-fidelity markdown/LaTeX render passes, and offline local-first database models.
                 </p>
               </div>
             </div>
 
             {/* Card 2: TAMK / Finland (Center - Highlighted) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[#f5e3c7] p-6 md:p-8 rounded-3xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--text-secondary)]/30 group">
-              <div className="space-y-4">
+            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[#f5e3c7] p-6 md:p-8 lg:p-10 rounded-3xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--text-secondary)]/30 group">
+              <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--accent-rust-hover)] tracking-widest font-bold">
                   TAMK / Finland
                 </span>
-                <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Academic Relocation
                 </h3>
-                <p className="text-sm text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
+                <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
                   Commencing undergraduate studies in the Bachelor of Engineering in Software Engineering at Tampere University of Applied Sciences (TAMK) in Tampere, Finland.
                 </p>
               </div>
             </div>
 
             {/* Card 3: Open to Gigs (Right) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
-              <div className="space-y-4">
+            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
+              <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
                   Open to Gigs
                 </span>
-                <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Freelance &amp; Remote Projects
                 </h3>
-                <p className="text-sm text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
+                <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
                   Actively accepting contracts for backend integrations (Laravel/PHP) and cross-platform native apps (Flutter/Swift/Dart) globally.
                 </p>
               </div>
