@@ -156,7 +156,7 @@ export default function SlatePage() {
               href="https://github.com/sheharanayanananda/Slate"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] border border-[var(--text-charcoal)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 hover:bg-transparent hover:text-[var(--text-charcoal)] rounded-lg"
+              className="inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] border border-[var(--text-charcoal)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 hover:bg-transparent hover:text-[var(--text-charcoal)] rounded-xl"
             >
               <Github className="w-3.5 h-3.5" />
               View Origin
@@ -165,7 +165,7 @@ export default function SlatePage() {
               href="https://github.com/sheharanayanananda/Slate-V2"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-[var(--text-charcoal)] text-[var(--text-charcoal)] bg-transparent px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 hover:bg-[var(--text-charcoal)] hover:text-[var(--bg-warm)] rounded-lg"
+              className="inline-flex items-center gap-2 border border-[var(--text-charcoal)] text-[var(--text-charcoal)] bg-transparent px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 hover:bg-[var(--text-charcoal)] hover:text-[var(--bg-warm)] rounded-xl"
             >
               <Github className="w-3.5 h-3.5" />
               View Agentic
@@ -430,7 +430,7 @@ export default function SlatePage() {
                 href="https://github.com/sheharanayanananda/Slate"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[var(--accent-rust)] hover:bg-[var(--accent-rust-hover)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-white transition-colors rounded-lg"
+                className="inline-flex items-center gap-2 bg-[var(--accent-rust)] hover:bg-[var(--accent-rust-hover)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-white transition-colors rounded-xl"
               >
                 <Github className="w-3.5 h-3.5" />
                 Slate Origin on GitHub

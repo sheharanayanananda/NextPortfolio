@@ -144,7 +144,7 @@ export default function SlateShowcase() {
       `}</style>
 
       {/* FULL-SCREEN SLATE SHOWCASE */}
-      <section id="projects-slate" className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20 pt-6 pb-12 md:pt-12 lg:pb-25 relative">
+      <section id="projects-slate" className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20 py-16 md:py-28 lg:py-36 relative">
         <div className="w-full lg:min-h-[500px] xl:min-h-[600px] bg-[#f5e6ce] rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
           
           {/* Left Column | Editorial Info */}
@@ -222,7 +222,7 @@ export default function SlateShowcase() {
             <div className="pt-2">
               <a
                 href="/slate"
-                className="flex items-center justify-center bg-black text-white hover:bg-black/90 px-5 py-3 rounded-lg font-sans-anthropic text-sm transition-all duration-200"
+                className="flex items-center justify-center bg-black text-white hover:bg-black/90 px-5 py-3 rounded-xl font-sans-anthropic text-sm transition-all duration-200"
               >
                 Explore Slate
               </a>

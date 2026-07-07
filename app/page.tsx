@@ -212,7 +212,7 @@ export default function Home() {
       <Header />
 
       {/* HERO / WELCOME SECTION */}
-      <section id="hero" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-16 md:py-28 lg:py-36 scroll-mt-[69px]">
+      <section id="hero" className="flex-1 min-h-[calc(100vh-69px)] flex items-center w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 scroll-mt-[69px]">
         <div className="w-full flex flex-col md:flex-row items-center gap-8">
 
           {/* Left | Content */}
@@ -345,7 +345,7 @@ export default function Home() {
       </section>
 
       {/* Main Container */}
-      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-5 pb-16 gap-16 lg:gap-20 xl:gap-24 2xl:gap-25">
+      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-0">
 
         {/* ABOUT SECTION */}
         <section id="about" className="flex flex-col items-center text-center max-w-5xl mx-auto gap-12 py-16 md:py-28 lg:py-36 scroll-mt-[69px]">
@@ -387,10 +387,10 @@ export default function Home() {
       <SlateShowcase />
 
       {/* Main Container for rest of projects & experience */}
-      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-6 md:pt-8 gap-16 lg:gap-20 xl:gap-24 2xl:gap-25">
+      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-0 gap-0">
         
         {/* PROJECTS SECTION */}
-        <section id="projects" className="pt-12 md:pt-24 space-y-12 scroll-mt-[69px]">
+        <section id="projects" className="py-16 md:py-28 lg:py-36 space-y-12 scroll-mt-[69px]">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-10 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -516,7 +516,7 @@ export default function Home() {
         </section>
 
         {/* EXPERIENCE TIMELINE */}
-        <section id="experience" className="pt-12 md:pt-24 space-y-16 scroll-mt-[69px]">
+        <section id="experience" className="py-16 md:py-28 lg:py-36 space-y-16 scroll-mt-[69px]">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -649,7 +649,7 @@ export default function Home() {
         </section>
 
         {/* EDUCATION SECTION */}
-        <section id="education" className="pt-12 md:pt-24 space-y-16 scroll-mt-[69px]">
+        <section id="education" className="py-16 md:py-28 lg:py-36 space-y-16 scroll-mt-[69px]">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -863,7 +863,7 @@ export default function Home() {
         </section>
 
         {/* UPDATES SECTION */}
-        <section id="updates" className="pt-12 md:pt-24 space-y-16 scroll-mt-[69px]">
+        <section id="updates" className="py-16 md:py-28 lg:py-36 space-y-16 scroll-mt-[69px]">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
