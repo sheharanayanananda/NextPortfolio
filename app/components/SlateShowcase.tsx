@@ -148,10 +148,10 @@ export default function SlateShowcase() {
         <div className="w-full lg:min-h-[500px] xl:min-h-[600px] bg-[#f5e6ce] rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
           
           {/* Left Column | Editorial Info */}
-          <div className="flex flex-col justify-center items-center text-center gap-5 z-10 max-w-md lg:max-w-lg xl:max-w-xl w-full">
-            <h1 className="font-serif-anthropic font-normal leading-[1.1] text-center text-[var(--text-charcoal)]">
-              <span className="text-3xl md:text-4xl lg:text-5xl block mb-2 opacity-90">Announcing</span>
-              <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl block font-normal leading-[1.05]">Slate Agentic</span>
+          <div className="flex flex-col justify-center items-center text-center gap-5 z-10 max-w-md w-full">
+            <h1 className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[2] text-center">
+              Announcing <br />
+              <span className='text-6xl'>Slate Agentic</span>
             </h1>
 
             {/* Mobile/Tablet Butterflies "S" Shape (shown under heading, hidden on lg+) */}
@@ -216,7 +216,7 @@ export default function SlateShowcase() {
               })}
             </div>
 
-            <p className="text-sm md:text-base lg:text-lg text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
+            <p className="text-sm text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
               Revolutionize the way you take notes
             </p>
             <div className="pt-2">

@@ -396,7 +396,7 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Proudly
             </h2>
-            <div className="font-serif-anthropic text-2xl sm:text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               SELECTED WORKS
             </div>
           </div>
@@ -522,12 +522,12 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               CHRONOLOGY
             </h2>
-            <div className="font-serif-anthropic text-2xl sm:text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               PROFESSIONAL PATH
             </div>
           </div>
 
-          <div className="max-w-3xl lg:max-w-5xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
+          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
             {/* Job 1 (Freelance Software Engineer) */}
             <div className="relative group">
@@ -655,12 +655,12 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               ACADEMIA
             </h2>
-            <div className="font-serif-anthropic text-2xl sm:text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               STUDIES &amp; DEGREES
             </div>
           </div>
 
-          <div className="max-w-3xl lg:max-w-5xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
+          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
             {/* Degree 1 (TAMK - Current) */}
             <div className="relative group">
@@ -869,12 +869,12 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               CURRENTLY
             </h2>
-            <div className="font-serif-anthropic text-2xl sm:text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               ONGOING ENDEAVORS
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto pt-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-6xl mx-auto pt-6 items-stretch">
             {/* Card 1: iOS & Swift (Left) */}
             <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
               <div className="space-y-4">
