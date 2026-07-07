@@ -22,8 +22,8 @@ interface Project {
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeTab, setActiveTab] = useState<string>("all");
-  const [prevTab, setPrevTab] = useState<string>("all");
+  const [activeTab, setActiveTab] = useState<string>("featured");
+  const [prevTab, setPrevTab] = useState<string>("featured");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const tabsContainerRef = useRef<HTMLDivElement>(null);
   const [activeRect, setActiveRect] = useState({ left: 0, width: 0 });
@@ -119,7 +119,7 @@ export default function Home() {
     {
       title: "BAMC Website",
       tech: ["HTML5", "CSS3", "JavaScript"],
-      description: "Frontend website for Bright Achievers Migration Consultants — a real Sri Lankan consultancy firm. Custom UI/UX, responsive design, and client inquiry forms.",
+      description: "Frontend website for Bright Achievers Migration Consultants, a real Sri Lankan consultancy firm. Custom UI/UX, responsive design, and client inquiry forms.",
       longDescription: "Designed and built the official frontend website for Bright Achievers Migration Consultants (BAMC), a professional Sri Lankan consultancy firm. Focuses on custom responsive layouts, interactive migration consultation booking flows, and client inquiry forms. Developed with HTML5, CSS3, and JavaScript, publicly hosted as an open-source project.",
       repoStatus: "public",
       repoUrl: "https://github.com/sheharanayanananda/BAMC_Website",
@@ -160,6 +160,22 @@ export default function Home() {
       repoStatus: "public",
       repoUrl: "https://github.com/sheharanayanananda/TaskFlow",
       featured: false
+    },
+    {
+      title: "Pubudhu Pharmacy System",
+      tech: ["C#", ".NET Framework", "SQL Server", "Git"],
+      description: "Custom desktop pharmacy inventory management system. Handles real-time stock levels, billing, and sales analytics.",
+      longDescription: "Developed for a local retail pharmacy client. Built a desktop UI in C# using .NET Framework with an MS SQL Server database backend. Supports granular stock counts, batch tracking, automated expiry notifications, invoice billing, and end-of-day sales reports. The repository is private to protect proprietary client business layouts.",
+      repoStatus: "private",
+      featured: false
+    },
+    {
+      title: "Supermarket POS & Inventory",
+      tech: ["C#", ".NET Framework", "SQL Server", "Git"],
+      description: "A two-part desktop software suite (cashier POS + manager dashboard) sharing a single SQL database for real-time stock synchronization.",
+      longDescription: "Engineered a high-performance retail solution. Divided into a cashier point-of-sale application for rapid barcode scanning and customer checkout, and a manager dashboard for bulk inventory intake and visual sales analytics. Both components sync in real time over a shared SQL database for instant stock accuracy. Closed source under client commercial agreement.",
+      repoStatus: "private",
+      featured: false
     }
   ];
 
@@ -185,7 +201,7 @@ export default function Home() {
       <section id="hero" className="flex-1 min-h-[calc(100vh-69px)] flex items-center w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 scroll-mt-[69px]">
         <div className="w-full flex flex-col md:flex-row items-center gap-8">
 
-          {/* Left — Content */}
+          {/* Left | Content */}
           <div className="flex-1 gap-3">
             <div className="flex flex-col gap-8">
               <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold tracking-tight text-[var(--text-secondary)] flex items-center flex-wrap">
@@ -227,7 +243,7 @@ export default function Home() {
                 <AtSign className="w-6 h-6" strokeWidth={2} />
               </a>
               <a
-                href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
+                href="https://www.linkedin.com/in/thineth-nayanananda-54815b228/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:opacity-70 transition-all duration-300 hover:scale-110 active:scale-95"
@@ -253,27 +269,26 @@ export default function Home() {
               </div>
 
               <div className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]">
-                <span className="relative items-center justify-center flex h-3 w-3">
-                  <span className="status-pulse-dot absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-rust)]"></span>
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-blinker-glow absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent-rust)]"></span>
                 </span>
                 <span className="tracking-tight font-mono-anthropic">Open To Work</span>
               </div>
             </div>
           </div>
 
-          {/* Right — Arc Card + floating buttons */}
-          <div className="relative self-stretch flex-shrink-0 flex items-center justify-end w-full md:w-auto md:pl-4 lg:pl-8 xl:pl-12 2xl:pl-28" style={{ minWidth: "200px" }}>
+          {/* Right | Arc Card + floating buttons */}
+          <div className="relative self-stretch flex-shrink-0 flex items-center justify-center md:justify-end w-full md:w-auto md:pl-4 lg:pl-8 xl:pl-12 2xl:pl-28 mt-8 md:mt-0" style={{ minWidth: "200px" }}>
 
             {/* Wrapper for Card and Buttons (relative to card boundaries) */}
-            <div className="relative h-full" style={{ width: "auto", aspectRatio: "2/3" }}>
+            <div className="relative w-[240px] h-[360px] lg:w-auto lg:h-full mx-auto lg:mx-0" style={{ aspectRatio: "2/3" }}>
 
-              {/* Floating buttons — lg and above */}
+              {/* Floating buttons | Desktop (lg and above) */}
               {/* Email Me */}
               <a
                 href="mailto:sheharanayanananda@gmail.com"
                 className="hidden lg:flex absolute z-10 items-center justify-center text-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
-                
                 aria-label="Email Me"
               >
                 Email Me
@@ -285,7 +300,6 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden lg:flex absolute z-10 items-center justify-center text-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
-                
                 aria-label="LinkedIn Profile"
               >
                 LinkedIn
@@ -297,16 +311,17 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden lg:flex absolute z-10 items-center justify-center text-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
-                
                 aria-label="GitHub Profile"
               >
                 GitHub
               </a>
 
-              
+
 
               {/* Arc Card */}
-              <div className="absolute inset-0 overflow-hidden border border-[var(--border-light)] bg-[var(--card-bg)] z-10" style={{ borderRadius: "16px" }}><Image src="/arc_card.svg" alt="Arc Card — Thineth Shehara, Software Engineer" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" /></div>
+              <div className="absolute inset-0 overflow-hidden border border-[var(--border-light)] bg-[var(--card-bg)] z-10" style={{ borderRadius: "16px" }}>
+                <Image src="/arc_card.svg" alt="Arc Card, Thineth Shehara, Software Engineer" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+              </div>
             </div>
           </div>
 
@@ -374,14 +389,20 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12">
             <div className="flex flex-col items-center md:items-start gap-1 text-center md:text-left">
               <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">
-                Commercial & Freelance Projects
+                {activeTab === "featured"
+                  ? "Featured Deployments"
+                  : activeTab === "laravel"
+                  ? "PHP & Laravel Systems"
+                  : activeTab === "flutter"
+                  ? "Flutter Mobile Apps"
+                  : "Curated Applications"}
               </h3>
             </div>
 
             {/* Filter switcher capsule */}
             <div 
               ref={tabsContainerRef}
-              className="relative flex items-center gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--card-bg)]"
+              className="relative flex items-center gap-0.5 sm:gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--card-bg)]"
             >
               {/* Sliding Background Pill */}
               <div 
@@ -392,10 +413,10 @@ export default function Home() {
                 }}
               />
               {[
-                { id: "all", label: "All Work" },
-                { id: "featured", label: "Featured" },
-                { id: "laravel", label: "Laravel/PHP" },
-                { id: "flutter", label: "Flutter" }
+                { id: "all", label: "All Work", mobileLabel: "All" },
+                { id: "featured", label: "Featured", mobileLabel: "Featured" },
+                { id: "laravel", label: "Laravel/PHP", mobileLabel: "Laravel" },
+                { id: "flutter", label: "Flutter", mobileLabel: "Flutter" }
               ].map(tab => (
                 <button
                   key={tab.id}
@@ -404,13 +425,14 @@ export default function Home() {
                     setPrevTab(activeTab);
                     setActiveTab(tab.id);
                   }}
-                  className={`relative z-10 px-4 py-1.5 rounded-full font-sans-anthropic font-semibold text-xs transition-colors duration-300 ${
+                  className={`relative z-10 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full font-sans-anthropic font-semibold text-xs transition-colors duration-300 ${
                     activeTab === tab.id
                       ? "text-[var(--bg-warm)]"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
                   }`}
                 >
-                  {tab.label}
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="inline sm:hidden">{tab.mobileLabel}</span>
                 </button>
               ))}
             </div>
@@ -494,33 +516,35 @@ export default function Home() {
             {/* Job 1 (Freelance Software Engineer) */}
             <div className="relative group">
               {/* Timeline Dot (Blinking Orange Button for Current) */}
-              <div className="absolute -left-[40px] top-2 flex items-center justify-center h-4 w-4">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75 animate-ping" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-rust)]" />
+              <div className="absolute -left-[40px] top-2.5 flex items-center justify-center w-[16px] h-[16px]">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-blinker-glow absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent-rust)]"></span>
+                </span>
               </div>
 
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
                     <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--accent-rust)] font-bold">
-                      Upwork &amp; Private Contracts
+                      Upwork & Private Contracts
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                       Freelance Software Engineer
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Hybrid, Finland
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    01/2026 &mdash; Present
+                    01/2026 - Present
                   </div>
                 </div>
                 <div className="space-y-3 pt-2">
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY Sports Ecosystem:</strong> Stabilized and extended a multi-platform Flutter app for NBA, WNBA, NFL, and NCAA fanbases. Engineered real-time WebSocket chatrooms and scoreboards, rich push notifications, and custom NFC &ldquo;Baller Band&rdquo; integrations connected to a Python/Flask API.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY Sports Ecosystem:</strong> Stabilized, refactored, and optimized a multi-platform sports application (catering to NBA, WNBA, NFL, and NCAA fans) built on Flutter and Python/Flask. Leveraged Provider and go_router for modular app state and navigation, implemented WebSockets live scoreboards and chat systems, integrated media streaming and push notifications, optimized PostgreSQL queries and Redis caching under high load, and integrated Stripe secure payment flows.
                     </p>
                   </div>
                 </div>
@@ -546,27 +570,27 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    05/2025 &mdash; 07/2026
+                    05/2025 - 07/2026
                   </div>
                 </div>
-                <div className="space-y-3 pt-2">
+                <div className="space-y-4 pt-2">
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Acted as lead engineer for an e-commerce inventory management system. Automated order synchronizations across external platform APIs using Laravel, Livewire, Alpine.js, and MySQL. Rebuilding V2 panels using Filament tables and Flux UI.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Led development of a PHP/Laravel-based inventory management platform for a Dutch retailer, syncing stock, pricing, and orders for 50,000+ products across 5+ WooCommerce stores in real time using REST APIs with rate-limiting and retry logic. Stabilized and refactored the buggy legacy codebase around best practices (service classes, repositories, and thin controllers), replaced SQL search with Meilisearch for typo-tolerant full-text indexing, and automated fulfillment workflows by integrating DHL/GLS shipping APIs and Dropbox cloud document printing to warehouse devices, working in a strict staging/production PR testing workflow.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore Web &amp; Mobile:</strong> Implemented concrete transit calculations, driver routing, and resource logging for BetonStorten.nl using Laravel backends. Designed real-time APIs consumed by a Flutter mobile interface for synchronizing orders and driver coordinates.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore (Web &amp; Mobile):</strong> Engineered a backend automation and logistics platform (BetonStorten.nl) managing orders, machinery, personnel routing, and inventory tracking. Developed the core business logic and concrete computations using PHP and Laravel with database schema optimizations for heavy query load, alongside WebSocket-powered real-time sync. Built the complete companion mobile application from scratch with Flutter and Dart, integrating real-time work order handling, client updates, and fluid mobile workflows while keeping core business rules server-side.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Job 3 (Web & Desktop Developer) */}
+            {/* Job 3 (Freelance Software Developer) */}
             <div className="relative group">
               {/* Timeline Dot */}
               <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
@@ -575,30 +599,30 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
                     <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
-                      Freelance Solutions
+                      Freelance Development
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Web &amp; Desktop Developer
+                      Freelance Software Developer
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Hybrid
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Hybrid, Sri Lanka
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    10/2022 &mdash; 06/2025
+                    08/2022 - 06/2025
                   </div>
                 </div>
                 <div className="space-y-3 pt-2">
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Portals:</strong> Created the Bright Achievers Migration platform and Photographer Portfolio CMS engines using Laravel, TailwindCSS, and MySQL to automate client onboarding and showcase galleries.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Portals:</strong> Architected and developed responsive database-driven web platforms using PHP, Laravel, MySQL, Tailwind CSS, and JavaScript. Notable deliveries include the Bright Achievers migration consultancy site, which streamlined client intake and inquiry routing, and a photographer portfolio featuring a custom content management admin panel for client-managed media galleries.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Engineering:</strong> Developed pharmacy inventory trackers (Pubudhu System) and supermarket cashier systems utilizing C#, the .NET Framework, and SQL databases.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Engineering:</strong> Engineered custom business management desktop systems in C# and the .NET Framework, including the Pubudhu Pharmacy inventory control system and a dual-application supermarket solution (cashier interface and manager portal) sharing a unified SQL database to maintain real-time inventory synchronization.
                     </p>
                   </div>
                 </div>
@@ -625,9 +649,11 @@ export default function Home() {
             {/* Degree 1 (TAMK - Current) */}
             <div className="relative group">
               {/* Timeline Dot (Blinking Orange Button for Current) */}
-              <div className="absolute -left-[40px] top-2 flex items-center justify-center h-4 w-4">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75 animate-ping" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-rust)]" />
+              <div className="absolute -left-[40px] top-2.5 flex items-center justify-center w-[16px] h-[16px]">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-blinker-glow absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent-rust)]"></span>
+                </span>
               </div>
 
               <div className="space-y-3">
@@ -644,12 +670,12 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    08/2026 &mdash; Present
+                    08/2026 - Present
                   </div>
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    A 240-ECTS, four-year programme focused on modern software development, web and mobile applications, and practical, project-based learning for international software engineering roles.
+                    Admitted to the B.Eng. in Software Engineering, a 240-ECTS professional engineering degree programme starting in August 2026. The curriculum begins with core engineering mathematics, physics, and programming fundamentals (Java, Python, Javascript), progressing into web and cross-platform mobile architectures. Advanced modules focus on cloud systems (AWS/Azure), DevOps automation, REST/GraphQL API design, cybersecurity foundations, big data analytics, and artificial intelligence/machine learning integrations, concluding with practical software projects and a final engineering thesis.
                   </p>
                 </div>
               </div>
@@ -674,18 +700,54 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    02/2023 &mdash; 02/2025
+                    02/2023 - 02/2025
                   </div>
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Specialized in Software Engineering. Graduated with a <strong>Merit</strong>. Covered programming, databases, networking, security, software development lifecycles (SDLC), data structures and algorithms (DSA), web development, and UX/UI. Ofqual-regulated qualification (QN 603/7596/6).
+                    Completed the Pearson BTEC Level 5 Higher National Diploma in Computing with a specialization in Software Engineering, graduating with an overall Merit grade. The intensive curriculum covered core computer science topics including software development lifecycles, data structures, discrete mathematics, and database design, achieving final course Distinctions in Website Design &amp; Development and User Experience &amp; Interface Design.
+                  </p>
+                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
+                    QN: 603/7596/6 &middot; Registration No: RG 10904
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Degree 3 (Diploma IT) */}
+            {/* Degree 3 (IELTS Academic) */}
+            <div className="relative group">
+              {/* Timeline Dot */}
+              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+
+              <div className="space-y-3">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                      IDP IELTS Test Center
+                    </span>
+                    <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      IELTS Academic Test
+                    </h3>
+                    <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Colombo, Sri Lanka
+                    </p>
+                  </div>
+                  <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
+                    01/2026
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                    Completed the IELTS Academic examination, achieving an overall band score of 6.5 (CEFR B2 level). This certifies full english language proficiency, with individual band scores of 7.5 in Listening, 7.0 in Reading, 6.0 in Writing, and 5.5 in Speaking.
+                  </p>
+                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
+                    TRF Number: 25LK505172HEWT012A
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Degree 4 (Diploma IT) */}
             <div className="relative group">
               {/* Timeline Dot */}
               <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
@@ -704,18 +766,21 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    07/2022 &mdash; 08/2023
+                    07/2022 - 08/2023
                   </div>
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Graduated with a <strong>Merit</strong>. A 1,200-hour programme (DiTEC) covering IT concepts, computer hardware, networking, internet and web design, graphics and multimedia, Python, SQL databases, C# programming, and a final practical project.
+                    Completed the 1,200-hour Pearson Assured Level 3 Diploma in Information Technology (DiTEC), graduating with an overall Merit grade. The curriculum provided a solid technical foundation, covering computer hardware, networking, database design with SQL, Python programming, and C# development, concluding with a final practical software project.
+                  </p>
+                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
+                    Pearson ID: SF96401 &middot; ESOFT ID: E176422
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Degree 4 (Diploma English) */}
+            {/* Degree 5 (Diploma English) */}
             <div className="relative group">
               {/* Timeline Dot */}
               <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
@@ -734,18 +799,21 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    07/2022 &mdash; 08/2023
+                    07/2022 - 08/2023
                   </div>
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Completed with a <strong>Pass</strong> grade. A communicative, skills-based programme (DiE) covering grammar, vocabulary, reading, writing, listening, speaking, presentations, and viva.
+                    Completed the Level 3 Diploma in English (DiE), a communicative skills-based programme focused on advanced grammar, professional writing, and public speaking, culminating in a presentation and viva voce examination.
+                  </p>
+                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
+                    Registration ID: 00148929 &middot; Reference No: GAM0170214
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Degree 5 (O/L) */}
+            {/* Degree 6 (O/L) */}
             <div className="relative group">
               {/* Timeline Dot */}
               <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
@@ -764,12 +832,12 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    2022
+                    05/2022
                   </div>
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Passed with top distinctions: A in Information &amp; Communication Technology, A in English, B in Mathematics, B in Science, and B in Sinhala.
+                    Passed the G.C.E. Ordinary Level examination with top distinctions, including an A grade in Information &amp; Communication Technology and an A grade in English, alongside B grades in Mathematics, Science, and Sinhala.
                   </p>
                 </div>
               </div>

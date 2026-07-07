@@ -147,7 +147,7 @@ export default function SlateShowcase() {
       <section id="projects-slate" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-12 md:pt-18 pb-25 relative">
         <div className="w-full min-h-[calc(100vh-160px)] bg-[#f5e6ce] rounded-[32px] p-8 md:p-16 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
           
-          {/* Left Column — Editorial Info */}
+          {/* Left Column | Editorial Info */}
           <div className="flex flex-col justify-center items-center text-center gap-5 z-10 max-w-md w-full">
             <h1 className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[2]">
               Announcing <br />
@@ -166,7 +166,7 @@ export default function SlateShowcase() {
             </div>
           </div>
 
-          {/* Right Column — Animated Butterflies "S" Shape */}
+          {/* Right Column | Animated Butterflies "S" Shape */}
           <div className="relative w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[340px] xl:max-w-[380px] aspect-[696/1024] mx-auto z-10 justify-self-center" style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}>
             {butterflies.map((b) => {
               // Distribute behavior types randomly/sequentially

@@ -201,6 +201,25 @@ body {
   animation: status-pulse 2s infinite;
 }
 
+/* Realistic Breathing Status Indicator Animation */
+@keyframes breathing-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.1;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.animate-blinker-glow {
+  animation: breathing-pulse 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
 /* Tab switching motion-blur and slide animations */
 @keyframes slide-blur-right {
   0% {
