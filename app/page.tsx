@@ -353,7 +353,7 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Background
             </h2>
-            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               PHILOSOPHY & STACK
             </div>
           </div>
@@ -402,7 +402,7 @@ export default function Home() {
           </div>
 
           {/* Subheading & Filter Switcher */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6 md:pt-12">
             <div className="hidden md:flex flex-col items-center md:items-start gap-1 text-center md:text-left">
               <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">
                 {activeTab === "featured"
@@ -481,7 +481,7 @@ export default function Home() {
                       <h4 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                         {proj.title}
                       </h4>
-                      <span className={`shrink-0 whitespace-nowrap text-[9px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-medium border ${proj.repoStatus === "public"
+                      <span className={`shrink-0 whitespace-nowrap text-[9px] md:text-[10px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-medium border ${proj.repoStatus === "public"
                           ? "bg-[var(--accent-rust)]/5 border-[var(--accent-rust)]/30 text-[var(--accent-rust)]"
                           : proj.repoStatus === "private"
                             ? "bg-[var(--text-secondary)]/5 border-[var(--text-secondary)]/30 text-[var(--text-secondary)]"
@@ -503,7 +503,7 @@ export default function Home() {
                   <div className="pt-2">
                     <div className="flex flex-wrap gap-1.5 w-full">
                       {proj.tech.map(t => (
-                        <span key={t} className="text-[10px] font-sans-anthropic bg-[var(--bg-warm)]/40 border border-[var(--border-light)]/30 px-2.5 py-0.5 rounded-full text-[var(--text-secondary)] transition-colors group-hover:bg-[var(--card-bg)] group-hover:border-[var(--border-light)]/70">
+                        <span key={t} className="text-[10px] md:text-[11px] font-sans-anthropic bg-[var(--bg-warm)]/40 border border-[var(--border-light)]/30 px-2.5 py-0.5 rounded-full text-[var(--text-secondary)] transition-colors group-hover:bg-[var(--card-bg)] group-hover:border-[var(--border-light)]/70">
                           {t}
                         </span>
                       ))}
@@ -532,7 +532,7 @@ export default function Home() {
             {/* Job 1 (Freelance Software Engineer) */}
             <div className="relative group">
               {/* Timeline Dot (Blinking Orange Button for Current) */}
-              <div className="absolute -left-[40px] top-2.5 flex items-center justify-center w-[16px] h-[16px]">
+              <div className="absolute -left-[32px] md:-left-[40px] top-2.5 flex items-center justify-center w-[16px] h-[16px]">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-blinker-glow absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent-rust)]"></span>
@@ -570,7 +570,7 @@ export default function Home() {
             {/* Job 2 (Associate Software Engineer) */}
             <div className="relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+              <div className="absolute -left-[28px] md:-left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
@@ -609,7 +609,7 @@ export default function Home() {
             {/* Job 3 (Freelance Software Developer) */}
             <div className="relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+              <div className="absolute -left-[28px] md:-left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
@@ -665,7 +665,7 @@ export default function Home() {
             {/* Degree 1 (TAMK - Current) */}
             <div className="relative group">
               {/* Timeline Dot (Blinking Orange Button for Current) */}
-              <div className="absolute -left-[40px] top-2.5 flex items-center justify-center w-[16px] h-[16px]">
+              <div className="absolute -left-[32px] md:-left-[40px] top-2.5 flex items-center justify-center w-[16px] h-[16px]">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-blinker-glow absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent-rust)]"></span>
@@ -700,7 +700,7 @@ export default function Home() {
             {/* Degree 2 (HND) */}
             <div className="relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+              <div className="absolute -left-[28px] md:-left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
@@ -733,7 +733,7 @@ export default function Home() {
             {/* Degree 3 (IELTS Academic) */}
             <div className="relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+              <div className="absolute -left-[28px] md:-left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
@@ -766,7 +766,7 @@ export default function Home() {
             {/* Degree 4 (Diploma IT) */}
             <div className="relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+              <div className="absolute -left-[28px] md:-left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
@@ -799,7 +799,7 @@ export default function Home() {
             {/* Degree 5 (Diploma English) */}
             <div className="relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+              <div className="absolute -left-[28px] md:-left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
@@ -832,7 +832,7 @@ export default function Home() {
             {/* Degree 6 (O/L) */}
             <div className="relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+              <div className="absolute -left-[28px] md:-left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
               <div className="space-y-3">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
@@ -945,7 +945,7 @@ export default function Home() {
             {/* Header */}
             <div className="space-y-2 pr-12">
               <div className="flex items-center gap-3">
-                <span className={`shrink-0 whitespace-nowrap text-[9px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-medium border ${selectedProject.repoStatus === "public"
+                <span className={`shrink-0 whitespace-nowrap text-[9px] md:text-[10px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-medium border ${selectedProject.repoStatus === "public"
                     ? "bg-[var(--accent-rust)]/5 border-[var(--accent-rust)]/30 text-[var(--accent-rust)]"
                     : "bg-[var(--text-secondary)]/5 border-[var(--text-secondary)]/30 text-[var(--text-secondary)]"
                   }`}>
@@ -967,7 +967,7 @@ export default function Home() {
               <div className="text-[10px] font-mono-anthropic uppercase text-[var(--text-secondary)]">Technologies Used</div>
               <div className="flex flex-wrap gap-1.5">
                 {selectedProject.tech.map(t => (
-                  <span key={t} className="text-[10px] font-sans-anthropic bg-[var(--bg-warm)]/40 border border-[var(--border-light)]/30 px-2.5 py-0.5 rounded-full text-[var(--text-secondary)]">
+                  <span key={t} className="text-[10px] md:text-[11px] font-sans-anthropic bg-[var(--bg-warm)]/40 border border-[var(--border-light)]/30 px-2.5 py-0.5 rounded-full text-[var(--text-secondary)]">
                     {t}
                   </span>
                 ))}
