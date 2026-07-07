@@ -6,6 +6,12 @@ import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasOpened, setHasOpened] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+    if (!hasOpened) setHasOpened(true);
+  };
 
   const menuItems = [
     { label: "Home", href: "/#hero" },
@@ -41,30 +47,36 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button with Animated CSS Hamburger Icon */}
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-[var(--text-charcoal)] hover:text-[var(--accent-rust)] transition-colors focus:outline-none z-50"
+          onClick={handleToggle}
+          className="md:hidden flex flex-col justify-between w-6 h-[16px] text-[var(--text-charcoal)] hover:text-[var(--accent-rust)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] focus:outline-none z-50 relative group"
           aria-label="Toggle navigation menu"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <span className={`w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+          <span className={`w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "opacity-0 scale-x-0" : ""}`} />
+          <span className={`w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
         </button>
 
-        {/* Mobile Dropdown Menu */}
-        {isOpen && (
-          <div className="absolute top-[61px] left-0 right-0 bg-[var(--bg-warm)] border-b border-[var(--border-light)] p-6 flex flex-col space-y-4 md:hidden shadow-md animate-in slide-in-from-top-4 duration-200 z-40">
-            {menuItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="font-mono-anthropic text-[13px] font-semibold tracking-[0.06em] uppercase text-[var(--text-charcoal)] hover:text-[var(--accent-rust)] py-2 border-b border-[var(--border-light)]/30 last:border-b-0 transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        )}
+        {/* Mobile Dropdown Menu with Expanding Motion-Blur Animation */}
+        <div className={`absolute top-[61px] left-0 right-0 bg-[var(--bg-warm)]/95 backdrop-blur-[12px] border-b border-[var(--border-light)] p-6 flex flex-col space-y-4 md:hidden shadow-md z-40 ${
+          !hasOpened 
+            ? "opacity-0 pointer-events-none hidden" 
+            : isOpen 
+            ? "animate-menu-open" 
+            : "animate-menu-close"
+        }`}>
+          {menuItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className="font-mono-anthropic text-[13px] font-semibold tracking-[0.06em] uppercase text-[var(--text-charcoal)] hover:text-[var(--accent-rust)] py-2 border-b border-[var(--border-light)]/30 last:border-b-0 transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </header>
   );

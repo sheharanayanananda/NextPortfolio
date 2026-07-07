@@ -12,7 +12,7 @@ export default function Footer() {
               Thineth Shehara
             </h3>
             <p className="text-sm text-[var(--color-cloud-medium)] leading-relaxed max-w-sm font-sans-anthropic font-normal">
-              Associate Software Engineer specializing in building full-stack platforms with Laravel and cross-platform mobile apps with Flutter and Swift.
+              Software Engineer at TAMK specializing in full-stack web platforms with Laravel/Next.js and cross-platform mobile apps with Flutter/Swift.
             </p>
           </div>
 

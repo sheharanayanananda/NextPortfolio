@@ -144,19 +144,82 @@ export default function SlateShowcase() {
       `}</style>
 
       {/* FULL-SCREEN SLATE SHOWCASE */}
-      <section id="projects-slate" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-12 md:pt-18 pb-25 relative">
-        <div className="w-full min-h-[calc(100vh-160px)] bg-[#f5e6ce] rounded-[32px] p-8 md:p-16 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
+      <section id="projects-slate" className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20 pt-6 pb-12 md:pt-12 lg:pb-25 relative">
+        <div className="w-full lg:min-h-[500px] xl:min-h-[600px] bg-[#f5e6ce] rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
           
           {/* Left Column | Editorial Info */}
-          <div className="flex flex-col justify-center items-center text-center gap-5 z-10 max-w-md w-full">
-            <h1 className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[2]">
-              Announcing <br />
-              <span className='text-6xl'>Slate Agentic</span>
+          <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left gap-6 z-10 max-w-md lg:max-w-lg xl:max-w-xl w-full">
+            <h1 className="font-serif-anthropic font-normal leading-[1.1] text-center lg:text-left text-[var(--text-charcoal)]">
+              <span className="text-3xl md:text-4xl lg:text-5xl block mb-2 opacity-90">Announcing</span>
+              <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl block font-normal leading-[1.05]">Slate Agentic</span>
             </h1>
-            <p className="text-sm] text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
+
+            {/* Mobile/Tablet Butterflies "S" Shape (shown under heading, hidden on lg+) */}
+            <div className="lg:hidden relative w-full max-w-[260px] sm:max-w-[300px] aspect-[696/1024] mx-auto z-10 justify-self-center" style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}>
+              {butterflies.map((b) => {
+                const behaviorId = b.id % 4;
+                const duration = (4.0 + (b.id % 5) * 1.5).toFixed(1);
+                const delay = ((b.id % 7) * -1.8).toFixed(1);
+
+                return (
+                  <div
+                    key={`mob-${b.id}`}
+                    className={`absolute butterfly-flat-container butterfly-flap-${behaviorId}`}
+                    style={{
+                      left: b.left,
+                      top: b.top,
+                      width: b.width,
+                      transformStyle: 'preserve-3d',
+                    }}
+                  >
+                    {/* Left Wing */}
+                    <div
+                      className="relative w-full h-auto butterfly-wing-left"
+                      style={{
+                        clipPath: `polygon(0% 0%, ${b.cx}% 0%, ${b.cx}% 100%, 0% 100%)`,
+                        transformOrigin: `${b.cx}% ${b.cy}%`,
+                        ['--angle' as any]: `${b.angle}deg`,
+                        ['--neg-angle' as any]: `${-b.angle}deg`,
+                        ['--animation-duration' as any]: `${duration}s`,
+                        ['--animation-delay' as any]: `${delay}s`,
+                      }}
+                    >
+                      <img
+                        src={`/butterflies_extracted/butterfly_${b.id}.png`}
+                        alt={`Butterfly ${b.id} Left Wing`}
+                        className="w-full h-auto object-contain pointer-events-none"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    {/* Right Wing */}
+                    <div
+                      className="absolute inset-0 w-full h-full butterfly-wing-right"
+                      style={{
+                        clipPath: `polygon(${b.cx}% 0%, 100% 0%, 100% 100%, ${b.cx}% 100%)`,
+                        transformOrigin: `${b.cx}% ${b.cy}%`,
+                        ['--angle' as any]: `${b.angle}deg`,
+                        ['--neg-angle' as any]: `${-b.angle}deg`,
+                        ['--animation-duration' as any]: `${duration}s`,
+                        ['--animation-delay' as any]: `${delay}s`,
+                      }}
+                    >
+                      <img
+                        src={`/butterflies_extracted/butterfly_${b.id}.png`}
+                        alt={`Butterfly ${b.id} Right Wing`}
+                        className="w-full h-auto object-contain pointer-events-none"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <p className="text-sm md:text-base lg:text-lg text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
               Revolutionize the way you take notes
             </p>
-            <div className="pt-4">
+            <div className="pt-2">
               <a
                 href="/slate"
                 className="flex items-center justify-center bg-black text-white hover:bg-black/90 px-5 py-3 rounded-lg font-sans-anthropic text-sm transition-all duration-200"
@@ -166,8 +229,8 @@ export default function SlateShowcase() {
             </div>
           </div>
 
-          {/* Right Column | Animated Butterflies "S" Shape */}
-          <div className="relative w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[340px] xl:max-w-[380px] aspect-[696/1024] mx-auto z-10 justify-self-center" style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}>
+          {/* Right Column | Animated Butterflies "S" Shape (Desktop, hidden below lg) */}
+          <div className="hidden lg:block relative w-full max-w-[340px] xl:max-w-[440px] 2xl:max-w-[500px] aspect-[696/1024] mx-auto z-10 justify-self-center" style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}>
             {butterflies.map((b) => {
               // Distribute behavior types randomly/sequentially
               const behaviorId = b.id % 4;
@@ -178,7 +241,7 @@ export default function SlateShowcase() {
 
               return (
                 <div
-                  key={b.id}
+                  key={`desk-${b.id}`}
                   className={`absolute butterfly-flat-container butterfly-flap-${behaviorId}`}
                   style={{
                     left: b.left,

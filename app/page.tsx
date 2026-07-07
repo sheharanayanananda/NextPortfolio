@@ -43,15 +43,29 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (mounted && tabsContainerRef.current) {
-      const activeEl = tabsContainerRef.current.querySelector('[data-active="true"]') as HTMLElement;
+    if (!mounted || !tabsContainerRef.current) return;
+
+    const container = tabsContainerRef.current;
+
+    const updateActiveRect = () => {
+      const activeEl = container.querySelector('[data-active="true"]') as HTMLElement;
       if (activeEl) {
         setActiveRect({
           left: activeEl.offsetLeft,
           width: activeEl.offsetWidth,
         });
       }
-    }
+    };
+
+    updateActiveRect();
+
+    // Use ResizeObserver to dynamically update active pill bounds as layout shifts
+    const observer = new ResizeObserver(updateActiveRect);
+    observer.observe(container);
+    const buttons = container.querySelectorAll("button");
+    buttons.forEach((btn) => observer.observe(btn));
+
+    return () => observer.disconnect();
   }, [activeTab, mounted]);
 
   useEffect(() => {
@@ -198,7 +212,7 @@ export default function Home() {
       <Header />
 
       {/* HERO / WELCOME SECTION */}
-      <section id="hero" className="flex-1 min-h-[calc(100vh-69px)] flex items-center w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 scroll-mt-[69px]">
+      <section id="hero" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-16 md:py-28 lg:py-36 scroll-mt-[69px]">
         <div className="w-full flex flex-col md:flex-row items-center gap-8">
 
           {/* Left | Content */}
@@ -228,6 +242,8 @@ export default function Home() {
                 Shehara
               </h1>
             </div>
+
+
 
             <p className="font-sans-anthropic text-xl text-[var(--text-charcoal)] leading-[1.7] font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mt-7">
               Freelance Software Engineer and Software Engineering student at TAMK designing and shipping high-performance mobile apps, full-stack systems, and real-time APIs.
@@ -279,10 +295,10 @@ export default function Home() {
           </div>
 
           {/* Right | Arc Card + floating buttons */}
-          <div className="relative self-stretch flex-shrink-0 flex items-center justify-center md:justify-end w-full md:w-auto md:pl-4 lg:pl-8 xl:pl-12 2xl:pl-28 mt-8 md:mt-0" style={{ minWidth: "200px" }}>
+          <div className="hidden md:flex relative self-stretch flex-shrink-0 flex items-center justify-end md:w-auto md:pl-4 lg:pl-8 xl:pl-12 2xl:pl-28 mt-8 md:mt-0" style={{ minWidth: "200px" }}>
 
             {/* Wrapper for Card and Buttons (relative to card boundaries) */}
-            <div className="relative w-[240px] h-[360px] lg:w-auto lg:h-full mx-auto lg:mx-0" style={{ aspectRatio: "2/3" }}>
+            <div className="relative md:w-auto md:h-full" style={{ aspectRatio: "2/3" }}>
 
               {/* Floating buttons | Desktop (lg and above) */}
               {/* Email Me */}
@@ -332,7 +348,7 @@ export default function Home() {
       <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pt-5 pb-16 gap-16 lg:gap-20 xl:gap-24 2xl:gap-25">
 
         {/* ABOUT SECTION */}
-        <section id="about" className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto gap-12 min-h-[calc(100vh-69px)] scroll-mt-[69px]">
+        <section id="about" className="flex flex-col items-center text-center max-w-5xl mx-auto gap-12 py-16 md:py-28 lg:py-36 scroll-mt-[69px]">
           <div className="flex flex-col items-center gap-4 mb-4">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Background
@@ -380,14 +396,14 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Proudly
             </h2>
-            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-2xl sm:text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               SELECTED WORKS
             </div>
           </div>
 
           {/* Subheading & Filter Switcher */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12">
-            <div className="flex flex-col items-center md:items-start gap-1 text-center md:text-left">
+            <div className="hidden md:flex flex-col items-center md:items-start gap-1 text-center md:text-left">
               <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">
                 {activeTab === "featured"
                   ? "Featured Deployments"
@@ -506,7 +522,7 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               CHRONOLOGY
             </h2>
-            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-2xl sm:text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               PROFESSIONAL PATH
             </div>
           </div>
@@ -544,7 +560,7 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY Sports Ecosystem:</strong> Stabilized, refactored, and optimized a multi-platform sports application (catering to NBA, WNBA, NFL, and NCAA fans) built on Flutter and Python/Flask. Leveraged Provider and go_router for modular app state and navigation, implemented WebSockets live scoreboards and chat systems, integrated media streaming and push notifications, optimized PostgreSQL queries and Redis caching under high load, and integrated Stripe secure payment flows.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY Sports Ecosystem:</strong> Stabilized, refactored, and optimized a multi-platform sports app (NBA/NFL) built on Flutter and Python/Flask. Leveraged Provider and go_router for modular state, implemented WebSockets live scoreboards, integrated Stripe payments, and optimized queries under high load.
                     </p>
                   </div>
                 </div>
@@ -577,13 +593,13 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Led development of a PHP/Laravel-based inventory management platform for a Dutch retailer, syncing stock, pricing, and orders for 50,000+ products across 5+ WooCommerce stores in real time using REST APIs with rate-limiting and retry logic. Stabilized and refactored the buggy legacy codebase around best practices (service classes, repositories, and thin controllers), replaced SQL search with Meilisearch for typo-tolerant full-text indexing, and automated fulfillment workflows by integrating DHL/GLS shipping APIs and Dropbox cloud document printing to warehouse devices, working in a strict staging/production PR testing workflow.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Led development of a PHP/Laravel inventory platform syncing stock and orders for 50,000+ products across 5+ WooCommerce stores. Stabilized codebase using best practices, integrated Meilisearch full-text indexing, automated warehouse logistics using DHL/GLS APIs, and integrated remote document printing.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore (Web &amp; Mobile):</strong> Engineered a backend automation and logistics platform (BetonStorten.nl) managing orders, machinery, personnel routing, and inventory tracking. Developed the core business logic and concrete computations using PHP and Laravel with database schema optimizations for heavy query load, alongside WebSocket-powered real-time sync. Built the complete companion mobile application from scratch with Flutter and Dart, integrating real-time work order handling, client updates, and fluid mobile workflows while keeping core business rules server-side.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore (Web &amp; Mobile):</strong> Engineered a backend logistics and automation platform (BetonStorten.nl) managing orders, routing, and inventory. Developed core business rules in Laravel, optimized heavy database schemas, and built a Flutter companion app for real-time driver tracking.
                     </p>
                   </div>
                 </div>
@@ -616,13 +632,13 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Portals:</strong> Architected and developed responsive database-driven web platforms using PHP, Laravel, MySQL, Tailwind CSS, and JavaScript. Notable deliveries include the Bright Achievers migration consultancy site, which streamlined client intake and inquiry routing, and a photographer portfolio featuring a custom content management admin panel for client-managed media galleries.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Portals:</strong> Architected responsive database-driven web platforms using PHP, Laravel, and MySQL, including a migration consultancy site with client onboarding flows and a photographer portfolio with a custom administrative media panel.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Engineering:</strong> Engineered custom business management desktop systems in C# and the .NET Framework, including the Pubudhu Pharmacy inventory control system and a dual-application supermarket solution (cashier interface and manager portal) sharing a unified SQL database to maintain real-time inventory synchronization.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Engineering:</strong> Engineered custom pharmacy inventory controls and a dual-app supermarket POS/management solution in C# and .NET using shared SQL server databases for real-time synchronization.
                     </p>
                   </div>
                 </div>
@@ -639,7 +655,7 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               ACADEMIA
             </h2>
-            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-2xl sm:text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               STUDIES &amp; DEGREES
             </div>
           </div>
@@ -675,7 +691,7 @@ export default function Home() {
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Admitted to the B.Eng. in Software Engineering, a 240-ECTS professional engineering degree programme starting in August 2026. The curriculum begins with core engineering mathematics, physics, and programming fundamentals (Java, Python, Javascript), progressing into web and cross-platform mobile architectures. Advanced modules focus on cloud systems (AWS/Azure), DevOps automation, REST/GraphQL API design, cybersecurity foundations, big data analytics, and artificial intelligence/machine learning integrations, concluding with practical software projects and a final engineering thesis.
+                    A 240-ECTS professional engineering degree programme starting in August 2026. The curriculum covers core engineering mathematics, object-oriented programming (Java/Python), cross-platform mobile architectures, cloud engineering (AWS/Azure), DevOps workflows, API design, and machine learning integrations.
                   </p>
                 </div>
               </div>
@@ -705,7 +721,7 @@ export default function Home() {
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Completed the Pearson BTEC Level 5 Higher National Diploma in Computing with a specialization in Software Engineering, graduating with an overall Merit grade. The intensive curriculum covered core computer science topics including software development lifecycles, data structures, discrete mathematics, and database design, achieving final course Distinctions in Website Design &amp; Development and User Experience &amp; Interface Design.
+                    Graduated with a Merit in Software Engineering, covering core computer science topics including data structures, database designs, discrete mathematics, and SDLC. Achieved final course Distinctions in Website Design &amp; Development and User Experience &amp; Interface Design.
                   </p>
                   <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
                     QN: 603/7596/6 &middot; Registration No: RG 10904
@@ -738,7 +754,7 @@ export default function Home() {
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Completed the IELTS Academic examination, achieving an overall band score of 6.5 (CEFR B2 level). This certifies full english language proficiency, with individual band scores of 7.5 in Listening, 7.0 in Reading, 6.0 in Writing, and 5.5 in Speaking.
+                    Certified English language proficiency (CEFR B2 level) with an Overall Band Score of 6.5. Individual band scores: Listening 7.5, Reading 7.0, Writing 6.0, Speaking 5.5.
                   </p>
                   <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
                     TRF Number: 25LK505172HEWT012A
@@ -771,7 +787,7 @@ export default function Home() {
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Completed the 1,200-hour Pearson Assured Level 3 Diploma in Information Technology (DiTEC), graduating with an overall Merit grade. The curriculum provided a solid technical foundation, covering computer hardware, networking, database design with SQL, Python programming, and C# development, concluding with a final practical software project.
+                    A 1,200-hour technical program completed with a Merit. Covered computer hardware, networking foundations, SQL database design, Python development, C# programming, and a final practical software project.
                   </p>
                   <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
                     Pearson ID: SF96401 &middot; ESOFT ID: E176422
@@ -804,7 +820,7 @@ export default function Home() {
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Completed the Level 3 Diploma in English (DiE), a communicative skills-based programme focused on advanced grammar, professional writing, and public speaking, culminating in a presentation and viva voce examination.
+                    A communicative English skills program focusing on advanced grammar, professional writing, and public speaking, concluding with a final presentation and viva voce examination.
                   </p>
                   <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
                     Registration ID: 00148929 &middot; Reference No: GAM0170214
@@ -853,7 +869,7 @@ export default function Home() {
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               CURRENTLY
             </h2>
-            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+            <div className="font-serif-anthropic text-2xl sm:text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               ONGOING ENDEAVORS
             </div>
           </div>

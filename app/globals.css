@@ -220,6 +220,50 @@ body {
   animation: breathing-pulse 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
+/* Mobile Menu Expansion with Motion-Blur */
+@keyframes header-expand-animation {
+  0% {
+    transform: translateY(-12px) scaleY(0.92);
+    opacity: 0;
+    filter: blur(6px);
+  }
+  30% {
+    filter: blur(3px);
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes header-collapse-animation {
+  0% {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+  60% {
+    filter: blur(3px);
+  }
+  100% {
+    transform: translateY(-12px) scaleY(0.92);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+.animate-menu-open {
+  animation: header-expand-animation 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top;
+}
+
+.animate-menu-close {
+  animation: header-collapse-animation 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top;
+  pointer-events: none;
+}
+
 /* Tab switching motion-blur and slide animations */
 @keyframes slide-blur-right {
   0% {
