@@ -149,11 +149,11 @@ export default function SlateShowcase() {
           
           {/* Left Column — Editorial Info */}
           <div className="flex flex-col justify-center items-center text-center gap-5 z-10 max-w-md w-full">
-            <h1 className="font-serif-anthropic text-6xl font-normal text-[var(--text-charcoal)] leading-[1.2]">
+            <h1 className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[2]">
               Announcing <br />
-              Slate App
+              <span className='text-6xl'>Slate Agentic</span>
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
+            <p className="text-sm] text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
               Revolutionize the way you take notes
             </p>
             <div className="pt-4">

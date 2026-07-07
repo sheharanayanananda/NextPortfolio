@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { AtSign, Linkedin, Github, MapPin, Download, ArrowRight, ChevronRight, X } from "lucide-react";
+import { AtSign, Linkedin, Github, MapPin, Download, ArrowRight, X } from "lucide-react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import SlateShowcase from "./components/SlateShowcase";
@@ -361,7 +361,7 @@ export default function Home() {
         {/* PROJECTS SECTION */}
         <section id="projects" className="pt-0 space-y-12">
           {/* Header */}
-          <div className="flex flex-col items-center gap-4 mb-18 text-center max-w-3xl mx-auto">
+          <div className="flex flex-col items-center gap-4 mb-10 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Proudly
             </h2>
@@ -433,8 +433,8 @@ export default function Home() {
                       setSelectedProject(proj);
                     }
                   }}
-                  className={`group flex flex-col justify-between border border-[var(--border-light)] rounded-2xl p-6 bg-[var(--card-bg)] transition-all duration-300 space-y-6 ${isClickable
-                      ? "cursor-pointer hover:bg-[var(--card-hover-bg)] hover:border-[var(--text-charcoal)]"
+                  className={`group flex flex-col justify-between border border-[var(--border-light)]/40 rounded-3xl p-7 bg-[var(--card-bg)] transition-all duration-300 ease-out space-y-6 ${isClickable
+                      ? "cursor-pointer hover:bg-[var(--card-hover-bg)] hover:border-[var(--text-secondary)]/60 hover:-translate-y-1"
                       : ""
                     }`}
                 >
@@ -443,11 +443,11 @@ export default function Home() {
                       <h4 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                         {proj.title}
                       </h4>
-                      <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-none uppercase font-semibold border bg-transparent ${proj.repoStatus === "public"
-                          ? "border-[var(--accent-rust)] text-[var(--accent-rust)]"
+                      <span className={`shrink-0 whitespace-nowrap text-[9px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-medium border ${proj.repoStatus === "public"
+                          ? "bg-[var(--accent-rust)]/5 border-[var(--accent-rust)]/30 text-[var(--accent-rust)]"
                           : proj.repoStatus === "private"
-                            ? "border-[var(--text-secondary)] text-[var(--text-secondary)]"
-                            : "border-[var(--border-light)] text-[var(--text-secondary)]"
+                            ? "bg-[var(--text-secondary)]/5 border-[var(--text-secondary)]/30 text-[var(--text-secondary)]"
+                            : "bg-[var(--border-light)]/10 border-[var(--border-light)]/50 text-[var(--text-secondary)]"
                         }`}>
                         {proj.repoStatus === "public"
                           ? "Public"
@@ -462,20 +462,14 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="flex justify-between items-center pt-4 border-t border-[var(--border-light)]/50">
-                    <div className="flex flex-wrap gap-1.5">
+                  <div className="pt-2">
+                    <div className="flex flex-wrap gap-1.5 w-full">
                       {proj.tech.map(t => (
-                        <span key={t} className="text-[10px] font-sans-anthropic bg-[var(--bg-warm)] border border-[var(--border-light)] px-2 py-0.5 rounded-none text-[var(--text-charcoal)]">
+                        <span key={t} className="text-[10px] font-sans-anthropic bg-[var(--bg-warm)]/40 border border-[var(--border-light)]/30 px-2.5 py-0.5 rounded-full text-[var(--text-secondary)] transition-colors group-hover:bg-[var(--card-bg)] group-hover:border-[var(--border-light)]/70">
                           {t}
                         </span>
                       ))}
                     </div>
-                    {isClickable && (
-                      <span className="text-xs font-sans-anthropic text-[var(--text-secondary)] group-hover:text-[var(--accent-rust)] transition-colors flex items-center gap-1">
-                        Details
-                        <ChevronRight className="w-3 h-3" />
-                      </span>
-                    )}
                   </div>
                 </div>
               );
@@ -486,96 +480,129 @@ export default function Home() {
         {/* EXPERIENCE TIMELINE */}
         <section id="experience" className="pt-12 md:pt-24 space-y-16">
           {/* Header */}
-          <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
-              Experience
+          <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
+            <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
+              CHRONOLOGY
             </h2>
-            <div className="font-serif-anthropic text-3xl md:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
-              Professional Chronology
+            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+              PROFESSIONAL PATH
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)] pl-8 space-y-16 py-4">
+          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
             {/* Job 1 (Freelance Software Engineer) */}
-            <div className="relative space-y-4">
-              {/* Timeline Dot */}
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] transition-colors duration-300" />
+            <div className="relative group">
+              {/* Timeline Dot (Blinking Orange Button for Current) */}
+              <div className="absolute -left-[40px] top-2 flex items-center justify-center h-4 w-4">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-rust)]" />
+              </div>
 
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
-                    Freelance Software Engineer
-                  </h3>
-                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
-                    Upwork &amp; Private Contracts &nbsp; &middot; &nbsp; Remote
-                  </p>
+              <div className="space-y-3">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--accent-rust)] font-bold">
+                      Upwork &amp; Private Contracts
+                    </span>
+                    <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      Freelance Software Engineer
+                    </h3>
+                    <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote
+                    </p>
+                  </div>
+                  <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
+                    01/2026 &mdash; Present
+                  </div>
                 </div>
-                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
-                  01/2026 &mdash; Present
+                <div className="space-y-3 pt-2">
+                  <div className="flex gap-2.5 items-start">
+                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
+                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY Sports Ecosystem:</strong> Stabilized and extended a multi-platform Flutter app for NBA, WNBA, NFL, and NCAA fanbases. Engineered real-time WebSocket chatrooms and scoreboards, rich push notifications, and custom NFC &ldquo;Baller Band&rdquo; integrations connected to a Python/Flask API.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <ul className="text-sm text-[var(--text-charcoal)] space-y-4 leading-relaxed list-disc pl-4 font-sans-anthropic">
-                <li>
-                  <strong>UNiFY Sports Ecosystem:</strong> Stabilized and extended a multi-platform Flutter app for NBA, WNBA, NFL, and NCAA fanbases. Engineered real-time WebSocket chatrooms and scoreboards, rich push notifications, and custom NFC &ldquo;Baller Band&rdquo; integrations connected to a Python/Flask API.
-                </li>
-              </ul>
             </div>
 
             {/* Job 2 (Associate Software Engineer) */}
-            <div className="relative space-y-4">
+            <div className="relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
+              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
-                    Associate Software Engineer
-                  </h3>
-                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
-                    DayZ Solutions (Pvt.) Ltd. &nbsp; &middot; &nbsp; Nittambuwa, Sri Lanka
-                  </p>
+              <div className="space-y-3">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                      DayZ Solutions (Pvt.) Ltd.
+                    </span>
+                    <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      Associate Software Engineer
+                    </h3>
+                    <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Nittambuwa, Sri Lanka
+                    </p>
+                  </div>
+                  <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
+                    05/2025 &mdash; 07/2026
+                  </div>
                 </div>
-                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
-                  05/2025 &mdash; 07/2026
+                <div className="space-y-3 pt-2">
+                  <div className="flex gap-2.5 items-start">
+                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
+                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Acted as lead engineer for an e-commerce inventory management system. Automated order synchronizations across external platform APIs using Laravel, Livewire, Alpine.js, and MySQL. Rebuilding V2 panels using Filament tables and Flux UI.
+                    </p>
+                  </div>
+                  <div className="flex gap-2.5 items-start">
+                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
+                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore Web &amp; Mobile:</strong> Implemented concrete transit calculations, driver routing, and resource logging for BetonStorten.nl using Laravel backends. Designed real-time APIs consumed by a Flutter mobile interface for synchronizing orders and driver coordinates.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <ul className="text-sm text-[var(--text-charcoal)] space-y-4 leading-relaxed list-disc pl-4 font-sans-anthropic">
-                <li>
-                  <strong>Deurbeslag Gigant (Lead Engineer):</strong> Acted as lead engineer for an e-commerce inventory management system. Automated order synchronizations across external platform APIs using Laravel, Livewire, Alpine.js, and MySQL. Rebuilding V2 panels using Filament tables and Flux UI.
-                </li>
-                <li>
-                  <strong>ECore Web &amp; Mobile:</strong> Implemented concrete transit calculations, driver routing, and resource logging for BetonStorten.nl using Laravel backends. Designed real-time APIs consumed by a Flutter mobile interface for synchronizing orders and driver coordinates.
-                </li>
-              </ul>
             </div>
 
-            {/* Job 3 */}
-            <div className="relative space-y-4">
+            {/* Job 3 (Web & Desktop Developer) */}
+            <div className="relative group">
               {/* Timeline Dot */}
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
+              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
-                    Web & Desktop Developer
-                  </h3>
-                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
-                    Freelance Solutions &nbsp; &middot; &nbsp; Hybrid
-                  </p>
+              <div className="space-y-3">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                      Freelance Solutions
+                    </span>
+                    <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      Web &amp; Desktop Developer
+                    </h3>
+                    <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Hybrid
+                    </p>
+                  </div>
+                  <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
+                    10/2022 &mdash; 06/2025
+                  </div>
                 </div>
-                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
-                  10/2022 &mdash; 06/2025
+                <div className="space-y-3 pt-2">
+                  <div className="flex gap-2.5 items-start">
+                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
+                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Portals:</strong> Created the Bright Achievers Migration platform and Photographer Portfolio CMS engines using Laravel, TailwindCSS, and MySQL to automate client onboarding and showcase galleries.
+                    </p>
+                  </div>
+                  <div className="flex gap-2.5 items-start">
+                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
+                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Engineering:</strong> Developed pharmacy inventory trackers (Pubudhu System) and supermarket cashier systems utilizing C#, the .NET Framework, and SQL databases.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <ul className="text-sm text-[var(--text-charcoal)] space-y-4 leading-relaxed list-disc pl-4 font-sans-anthropic">
-                <li>
-                  <strong>Web Portals:</strong> Created the Bright Achievers Migration platform and Photographer Portfolio CMS engines using Laravel, TailwindCSS, and MySQL to automate client onboarding and showcase galleries.
-                </li>
-                <li>
-                  <strong>Desktop Engineering:</strong> Developed pharmacy inventory trackers (Pubudhu System) and supermarket cashier systems utilizing C#, the .NET Framework, and SQL databases.
-                </li>
-              </ul>
             </div>
 
           </div>
@@ -584,120 +611,168 @@ export default function Home() {
         {/* EDUCATION SECTION */}
         <section id="education" className="pt-12 md:pt-24 space-y-16">
           {/* Header */}
-          <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
-              Education
+          <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
+            <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
+              ACADEMIA
             </h2>
-            <div className="font-serif-anthropic text-3xl md:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
-              Academic Qualifications
+            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+              STUDIES &amp; DEGREES
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)] pl-8 space-y-16 py-4">
+          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
-            {/* Degree 1 */}
-            <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--accent-rust)] transition-colors duration-300" />
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
-                    Bachelor of Engineering in Software Engineering
-                  </h3>
-                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
-                    Tampere University of Applied Sciences (TAMK) &nbsp; &middot; &nbsp; Tampere, Finland
+            {/* Degree 1 (TAMK - Current) */}
+            <div className="relative group">
+              {/* Timeline Dot (Blinking Orange Button for Current) */}
+              <div className="absolute -left-[40px] top-2 flex items-center justify-center h-4 w-4">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-rust)]" />
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--accent-rust)] font-bold">
+                      Tampere University of Applied Sciences (TAMK)
+                    </span>
+                    <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      Bachelor of Engineering in Software Engineering
+                    </h3>
+                    <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Tampere, Finland
+                    </p>
+                  </div>
+                  <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
+                    08/2026 &mdash; Present
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                    A 240-ECTS, four-year programme focused on modern software development, web and mobile applications, and practical, project-based learning for international software engineering roles.
                   </p>
                 </div>
-                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
-                  08/2026 &mdash; Present
-                </div>
               </div>
-              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
-                A 240-ECTS, four-year programme focused on modern software development, web and mobile applications, and practical, project-based learning for international software engineering roles.
-              </p>
             </div>
 
-            {/* Degree 2 */}
-            <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
-                    Pearson BTEC Level 5 HND in Computing
-                  </h3>
-                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
-                    ESOFT Metro Campus &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
+            {/* Degree 2 (HND) */}
+            <div className="relative group">
+              {/* Timeline Dot */}
+              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+
+              <div className="space-y-3">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                      ESOFT Metro Campus
+                    </span>
+                    <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      Pearson BTEC Level 5 HND in Computing
+                    </h3>
+                    <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
+                    </p>
+                  </div>
+                  <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
+                    02/2023 &mdash; 02/2025
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                    Specialized in Software Engineering. Graduated with a <strong>Merit</strong>. Covered programming, databases, networking, security, software development lifecycles (SDLC), data structures and algorithms (DSA), web development, and UX/UI. Ofqual-regulated qualification (QN 603/7596/6).
                   </p>
                 </div>
-                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
-                  02/2023 &mdash; 02/2025
-                </div>
               </div>
-              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
-                Specialized in Software Engineering. Graduated with a <strong>Merit</strong>. Covered programming, databases, networking, security, software development lifecycles (SDLC), data structures and algorithms (DSA), web development, and UX/UI. Ofqual-regulated qualification (QN 603/7596/6).
-              </p>
             </div>
 
-            {/* Degree 3 */}
-            <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
-                    Pearson Assured Level 3 Diploma in IT (DiTEC)
-                  </h3>
-                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
-                    ESOFT Metro Campus &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
+            {/* Degree 3 (Diploma IT) */}
+            <div className="relative group">
+              {/* Timeline Dot */}
+              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+
+              <div className="space-y-3">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                      ESOFT Metro Campus
+                    </span>
+                    <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      Pearson Assured Level 3 Diploma in IT
+                    </h3>
+                    <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
+                    </p>
+                  </div>
+                  <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
+                    07/2022 &mdash; 08/2023
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                    Graduated with a <strong>Merit</strong>. A 1,200-hour programme (DiTEC) covering IT concepts, computer hardware, networking, internet and web design, graphics and multimedia, Python, SQL databases, C# programming, and a final practical project.
                   </p>
                 </div>
-                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
-                  07/2022 &mdash; 08/2023
-                </div>
               </div>
-              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
-                Graduated with a <strong>Merit</strong>. A 1,200-hour programme covering IT concepts, computer hardware, networking, internet and web design, graphics and multimedia, Python, SQL databases, C# programming, and a final practical project.
-              </p>
             </div>
 
-            {/* Degree 4 */}
-            <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
-                    Pearson Assured Level 3 Diploma in English (DiE)
-                  </h3>
-                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
-                    ESOFT Metro Campus &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
+            {/* Degree 4 (Diploma English) */}
+            <div className="relative group">
+              {/* Timeline Dot */}
+              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+
+              <div className="space-y-3">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                      ESOFT Metro Campus
+                    </span>
+                    <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      Pearson Assured Level 3 Diploma in English
+                    </h3>
+                    <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
+                    </p>
+                  </div>
+                  <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
+                    07/2022 &mdash; 08/2023
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                    Completed with a <strong>Pass</strong> grade. A communicative, skills-based programme (DiE) covering grammar, vocabulary, reading, writing, listening, speaking, presentations, and viva.
                   </p>
                 </div>
-                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
-                  07/2022 &mdash; 08/2023
-                </div>
               </div>
-              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
-                Completed with a <strong>Pass</strong> grade. A communicative, skills-based programme covering grammar, vocabulary, reading, writing, listening, speaking, presentations, and viva.
-              </p>
             </div>
 
-            {/* Degree 5 */}
-            <div className="relative space-y-3">
-              <div className="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-[var(--bg-warm)] bg-[var(--border-light)] transition-colors duration-300" />
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                <div className="space-y-1">
-                  <h3 className="font-serif-anthropic text-xl lg:text-2xl font-normal text-[var(--text-charcoal)]">
-                    G.C.E. Ordinary Level Examination
-                  </h3>
-                  <p className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)]">
-                    Henegama Central College &nbsp; &middot; &nbsp; Gampaha, Sri Lanka
+            {/* Degree 5 (O/L) */}
+            <div className="relative group">
+              {/* Timeline Dot */}
+              <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
+
+              <div className="space-y-3">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <span className="font-mono-anthropic text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                      Henegama Central College
+                    </span>
+                    <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
+                      G.C.E. Ordinary Level Examination
+                    </h3>
+                    <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
+                    </p>
+                  </div>
+                  <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
+                    2022
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                    Passed with top distinctions: A in Information &amp; Communication Technology, A in English, B in Mathematics, B in Science, and B in Sinhala.
                   </p>
                 </div>
-                <div className="text-xs font-sans-anthropic font-semibold tracking-[-0.08px] uppercase text-[var(--text-secondary)] whitespace-nowrap">
-                  2022
-                </div>
               </div>
-              <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
-                Passed with top distinctions: A in Information &amp; Communication Technology, A in English, B in Mathematics, B in Science, and B in Sinhala.
-              </p>
             </div>
 
           </div>
@@ -706,18 +781,18 @@ export default function Home() {
         {/* UPDATES SECTION */}
         <section id="updates" className="pt-12 md:pt-24 space-y-16">
           {/* Header */}
-          <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <h2 className="font-sans-anthropic text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]">
-              Updates
+          <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
+            <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
+              CURRENTLY
             </h2>
-            <div className="font-serif-anthropic text-3xl md:text-4xl xl:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
-              Current Endeavors
+            <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
+              ONGOING ENDEAVORS
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-6xl mx-auto pt-6 items-stretch">
             {/* Card 1: iOS & Swift (Left) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)] bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--accent-rust)] transition-all duration-300 group">
+            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
               <div className="space-y-4">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
                   iOS &amp; Swift
@@ -725,29 +800,29 @@ export default function Home() {
                 <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Slate Notes Application
                 </h3>
-                <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
+                <p className="text-sm text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
                   Designing Slate V1 and V2 notes engines, implementing autonomous context-aware note processing, high-fidelity markdown/LaTeX render passes, and offline local-first database models.
                 </p>
               </div>
             </div>
 
             {/* Card 2: TAMK / Finland (Center - Highlighted) */}
-            <div className="flex flex-col justify-between border-2 border-[var(--accent-rust)] bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl z-10 transition-all duration-300 group">
+            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[#f5e3c7] p-6 md:p-8 rounded-3xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--text-secondary)]/30 group">
               <div className="space-y-4">
-                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--accent-rust)] tracking-widest font-bold">
+                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--accent-rust-hover)] tracking-widest font-bold">
                   TAMK / Finland
                 </span>
                 <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Academic Relocation
                 </h3>
-                <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
+                <p className="text-sm text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
                   Commencing undergraduate studies in the Bachelor of Engineering in Software Engineering at Tampere University of Applied Sciences (TAMK) in Tampere, Finland.
                 </p>
               </div>
             </div>
 
             {/* Card 3: Open to Gigs (Right) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)] bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--accent-rust)] transition-all duration-300 group">
+            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
               <div className="space-y-4">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
                   Open to Gigs
@@ -755,7 +830,7 @@ export default function Home() {
                 <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Freelance &amp; Remote Projects
                 </h3>
-                <p className="text-sm text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
+                <p className="text-sm text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
                   Actively accepting contracts for backend integrations (Laravel/PHP) and cross-platform native apps (Flutter/Swift/Dart) globally.
                 </p>
               </div>
@@ -771,7 +846,7 @@ export default function Home() {
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs transition-opacity" onClick={() => setSelectedProject(null)}>
           <div
-            className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-2xl p-8 space-y-6 transition-transform animate-in fade-in zoom-in-95 duration-200"
+            className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-3xl p-8 space-y-6 transition-transform animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -786,9 +861,9 @@ export default function Home() {
             {/* Header */}
             <div className="space-y-2 pr-12">
               <div className="flex items-center gap-3">
-                <span className={`shrink-0 whitespace-nowrap text-[10px] font-mono-anthropic px-2 py-0.5 rounded-none uppercase font-semibold border bg-transparent ${selectedProject.repoStatus === "public"
-                    ? "border-[var(--accent-rust)] text-[var(--accent-rust)]"
-                    : "border-[var(--text-secondary)] text-[var(--text-secondary)]"
+                <span className={`shrink-0 whitespace-nowrap text-[9px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-medium border ${selectedProject.repoStatus === "public"
+                    ? "bg-[var(--accent-rust)]/5 border-[var(--accent-rust)]/30 text-[var(--accent-rust)]"
+                    : "bg-[var(--text-secondary)]/5 border-[var(--text-secondary)]/30 text-[var(--text-secondary)]"
                   }`}>
                   {selectedProject.repoStatus === "public" ? "Public" : "Private"}
                 </span>
@@ -808,7 +883,7 @@ export default function Home() {
               <div className="text-[10px] font-mono-anthropic uppercase text-[var(--text-secondary)]">Technologies Used</div>
               <div className="flex flex-wrap gap-1.5">
                 {selectedProject.tech.map(t => (
-                  <span key={t} className="text-[10px] font-sans-anthropic bg-[var(--card-bg)] border border-[var(--border-light)] px-2 py-0.5 rounded-none text-[var(--text-charcoal)]">
+                  <span key={t} className="text-[10px] font-sans-anthropic bg-[var(--bg-warm)]/40 border border-[var(--border-light)]/30 px-2.5 py-0.5 rounded-full text-[var(--text-secondary)]">
                     {t}
                   </span>
                 ))}
