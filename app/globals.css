@@ -69,6 +69,9 @@
   --card-bg: #faf9f5;
   --card-hover-bg: #f0eee6;
 
+  --color-cloud-medium: #b0aea5;
+  --color-cloud-dark: #87867f;
+
   /* Font Families */
   --font-serif: 'Anthropic Serif', Georgia, ui-serif, serif;
   --font-sans: 'Anthropic Sans', Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;

@@ -11,46 +11,46 @@ export default function Header() {
           Shehara
         </Link>
 
-        <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 font-medium tracking-tight">
+        <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
           <Link
             href="/#hero"
-            className="underline-hover text-sm font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-charcoal)] opacity-60 hover:opacity-100 transition-all duration-300"
+            className="font-mono-anthropic text-[12px] font-medium tracking-[0.04em] uppercase text-[var(--color-cloud-dark)] hover:text-[var(--text-charcoal)] transition-colors duration-300 underline-hover"
           >
             Home
           </Link>
           <Link
             href="/#about"
-            className="underline-hover text-sm font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-charcoal)] opacity-60 hover:opacity-100 transition-all duration-300"
+            className="font-mono-anthropic text-[12px] font-medium tracking-[0.04em] uppercase text-[var(--color-cloud-dark)] hover:text-[var(--text-charcoal)] transition-colors duration-300 underline-hover"
           >
             About
           </Link>
           <Link
             href="/slate"
-            className="underline-hover text-sm font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-charcoal)] opacity-60 hover:opacity-100 transition-all duration-300"
+            className="font-mono-anthropic text-[12px] font-medium tracking-[0.04em] uppercase text-[var(--color-cloud-dark)] hover:text-[var(--text-charcoal)] transition-colors duration-300 underline-hover"
           >
             Slate
           </Link>
           <Link
             href="/#projects"
-            className="underline-hover text-sm font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-charcoal)] opacity-60 hover:opacity-100 transition-all duration-300"
+            className="font-mono-anthropic text-[12px] font-medium tracking-[0.04em] uppercase text-[var(--color-cloud-dark)] hover:text-[var(--text-charcoal)] transition-colors duration-300 underline-hover"
           >
             Projects
           </Link>
           <Link
             href="/#experience"
-            className="underline-hover text-sm font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-charcoal)] opacity-60 hover:opacity-100 transition-all duration-300"
+            className="font-mono-anthropic text-[12px] font-medium tracking-[0.04em] uppercase text-[var(--color-cloud-dark)] hover:text-[var(--text-charcoal)] transition-colors duration-300 underline-hover"
           >
             Experience
           </Link>
           <Link
             href="/#education"
-            className="underline-hover text-sm font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-charcoal)] opacity-60 hover:opacity-100 transition-all duration-300"
+            className="font-mono-anthropic text-[12px] font-medium tracking-[0.04em] uppercase text-[var(--color-cloud-dark)] hover:text-[var(--text-charcoal)] transition-colors duration-300 underline-hover"
           >
             Education
           </Link>
           <Link
             href="/#updates"
-            className="underline-hover text-sm font-sans-anthropic font-semibold tracking-[-0.24px] uppercase text-[var(--text-charcoal)] opacity-60 hover:opacity-100 transition-all duration-300"
+            className="font-mono-anthropic text-[12px] font-medium tracking-[0.04em] uppercase text-[var(--color-cloud-dark)] hover:text-[var(--text-charcoal)] transition-colors duration-300 underline-hover"
           >
             Updates
           </Link>

@@ -124,21 +124,21 @@ export default function SlateShowcase() {
           }
         }
 
-        /* Animation 3: Deep Resting (mostly folded closed, brief openings) */
+        /* Animation 3: Slow Deep Folding (mostly open, brief deep fold) */
         @keyframes flap-closed-left {
-          0%, 15%, 85%, 100% {
-            transform: rotate(var(--angle)) rotateY(72deg) rotate(var(--neg-angle));
-          }
-          45%, 55% {
+          0%, 70%, 100% {
             transform: rotate(var(--angle)) rotateY(8deg) rotate(var(--neg-angle));
+          }
+          82%, 88% {
+            transform: rotate(var(--angle)) rotateY(65deg) rotate(var(--neg-angle));
           }
         }
         @keyframes flap-closed-right {
-          0%, 15%, 85%, 100% {
-            transform: rotate(var(--angle)) rotateY(-72deg) rotate(var(--neg-angle));
-          }
-          45%, 55% {
+          0%, 70%, 100% {
             transform: rotate(var(--angle)) rotateY(-8deg) rotate(var(--neg-angle));
+          }
+          82%, 88% {
+            transform: rotate(var(--angle)) rotateY(-65deg) rotate(var(--neg-angle));
           }
         }
       `}</style>
