@@ -144,12 +144,12 @@ export default function SlateShowcase() {
       `}</style>
 
       {/* FULL-SCREEN SLATE SHOWCASE */}
-      <section id="projects-slate" className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20 py-16 md:py-28 lg:py-36 relative">
+      <section id="projects-slate" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-16 md:py-0 md:pt-18 md:pb-25 relative">
         <div className="w-full lg:min-h-[500px] xl:min-h-[600px] bg-[#f5e6ce] rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
           
           {/* Left Column | Editorial Info */}
-          <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left gap-6 z-10 max-w-md lg:max-w-lg xl:max-w-xl w-full">
-            <h1 className="font-serif-anthropic font-normal leading-[1.1] text-center lg:text-left text-[var(--text-charcoal)]">
+          <div className="flex flex-col justify-center items-center text-center gap-5 z-10 max-w-md lg:max-w-lg xl:max-w-xl w-full">
+            <h1 className="font-serif-anthropic font-normal leading-[1.1] text-center text-[var(--text-charcoal)]">
               <span className="text-3xl md:text-4xl lg:text-5xl block mb-2 opacity-90">Announcing</span>
               <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl block font-normal leading-[1.05]">Slate Agentic</span>
             </h1>

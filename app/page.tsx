@@ -345,10 +345,10 @@ export default function Home() {
       </section>
 
       {/* Main Container */}
-      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-0">
+      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-0 md:pt-5 md:pb-16 md:gap-16 lg:gap-20 xl:gap-24 2xl:gap-25">
 
         {/* ABOUT SECTION */}
-        <section id="about" className="flex flex-col items-center text-center max-w-5xl mx-auto gap-12 py-16 md:py-28 lg:py-36 scroll-mt-[69px]">
+        <section id="about" className="flex flex-col items-center text-center max-w-5xl mx-auto gap-12 py-16 md:py-0 md:min-h-[calc(100vh-69px)] md:justify-center scroll-mt-[69px]">
           <div className="flex flex-col items-center gap-4 mb-4">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               Background
@@ -387,10 +387,10 @@ export default function Home() {
       <SlateShowcase />
 
       {/* Main Container for rest of projects & experience */}
-      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-0 gap-0">
+      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-0 gap-0 md:pt-6 md:pt-8 md:gap-16 lg:gap-20 xl:gap-24 2xl:gap-25">
         
         {/* PROJECTS SECTION */}
-        <section id="projects" className="py-16 md:py-28 lg:py-36 space-y-12 scroll-mt-[69px]">
+        <section id="projects" className="py-16 md:py-0 md:pt-24 space-y-12 scroll-mt-[69px]">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-10 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -516,7 +516,7 @@ export default function Home() {
         </section>
 
         {/* EXPERIENCE TIMELINE */}
-        <section id="experience" className="py-16 md:py-28 lg:py-36 space-y-16 scroll-mt-[69px]">
+        <section id="experience" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px]">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -527,7 +527,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
+          <div className="max-w-3xl lg:max-w-5xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
             {/* Job 1 (Freelance Software Engineer) */}
             <div className="relative group">
@@ -649,7 +649,7 @@ export default function Home() {
         </section>
 
         {/* EDUCATION SECTION */}
-        <section id="education" className="py-16 md:py-28 lg:py-36 space-y-16 scroll-mt-[69px]">
+        <section id="education" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px]">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -660,7 +660,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
+          <div className="max-w-3xl lg:max-w-5xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
             {/* Degree 1 (TAMK - Current) */}
             <div className="relative group">
@@ -863,7 +863,7 @@ export default function Home() {
         </section>
 
         {/* UPDATES SECTION */}
-        <section id="updates" className="py-16 md:py-28 lg:py-36 space-y-16 scroll-mt-[69px]">
+        <section id="updates" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px]">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -874,7 +874,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-6xl mx-auto pt-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto pt-6 items-stretch">
             {/* Card 1: iOS & Swift (Left) */}
             <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
               <div className="space-y-4">
