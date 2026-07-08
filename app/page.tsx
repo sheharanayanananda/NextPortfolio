@@ -188,7 +188,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-3xl lg:max-w-5xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
+          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
             {/* Job 1 (Freelance Software Engineer) */}
             <div className="relative group">
@@ -321,7 +321,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-3xl lg:max-w-5xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
+          <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
             {/* Degree 1 (TAMK - Current) */}
             <div className="relative group">
