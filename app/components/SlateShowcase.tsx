@@ -143,7 +143,7 @@ export default function SlateShowcase() {
 
       {/* FULL-SCREEN SLATE SHOWCASE */}
       <section id="projects-slate" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-12 md:py-16 lg:py-12 relative">
-        <div className="w-full lg:min-h-[400px] xl:min-h-[460px] bg-[#f5e6ce] rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:py-12 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
+        <div className="w-full lg:min-h-[400px] xl:min-h-[460px] bg-[#f5e6ce] rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:py-25 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
           
           {/* Left Column | Editorial Info */}
           <div className="flex flex-col justify-center items-center text-center gap-4 md:gap-5 lg:gap-6 z-10 max-w-md lg:max-w-2xl w-full">
