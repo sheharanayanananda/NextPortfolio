@@ -3,27 +3,27 @@
 import React from 'react';
 
 const butterflies = [
-  { id: 1, left: "29.7%", top: "6.7%", width: "41.4%", angle: -3.67, cx: 50.15, cy: 41.59 },
-  { id: 2, left: "68.5%", top: "9.1%", width: "24.3%", angle: 36.7, cx: 41.3, cy: 57.47 },
-  { id: 3, left: "20.7%", top: "11.4%", width: "23.7%", angle: 31.82, cx: 42.63, cy: 55.52 },
-  { id: 4, left: "57.9%", top: "14.9%", width: "15.1%", angle: 63.72, cx: 46.66, cy: 55.13 },
-  { id: 5, left: "12.1%", top: "20.6%", width: "28.4%", angle: 40.98, cx: 41.05, cy: 54.16 },
-  { id: 6, left: "30.3%", top: "21.9%", width: "16.7%", angle: -29.26, cx: 53.71, cy: 52.9 },
-  { id: 7, left: "68.4%", top: "21.9%", width: "16.2%", angle: 13.52, cx: 49.89, cy: 52.84 },
-  { id: 8, left: "31.5%", top: "35.7%", width: "15.1%", angle: 45.5, cx: 40.65, cy: 59.02 },
-  { id: 9, left: "14.7%", top: "38.8%", width: "18.4%", angle: 20.9, cx: 46.38, cy: 51.15 },
-  { id: 10, left: "39.9%", top: "42.2%", width: "16.8%", angle: -51.65, cx: 48.65, cy: 58.28 },
-  { id: 11, left: "53.9%", top: "42.6%", width: "32.5%", angle: 28.78, cx: 42.54, cy: 51.19 },
-  { id: 12, left: "23.6%", top: "45.3%", width: "18.7%", angle: -32.5, cx: 56.56, cy: 53.16 },
-  { id: 13, left: "72.1%", top: "55.0%", width: "14.9%", angle: -28.25, cx: 56.16, cy: 54.46 },
-  { id: 14, left: "65.4%", top: "60.5%", width: "24.3%", angle: 45.36, cx: 42.85, cy: 57.36 },
-  { id: 15, left: "11.2%", top: "66.9%", width: "11.4%", angle: -53.75, cx: 55.0, cy: 54.93 },
-  { id: 16, left: "58.6%", top: "70.6%", width: "23.4%", angle: 44.54, cx: 43.1, cy: 55.15 },
-  { id: 17, left: "5.3%", top: "71.5%", width: "22.4%", angle: -16.17, cx: 56.67, cy: 54.13 },
-  { id: 18, left: "25.4%", top: "72.0%", width: "25.1%", angle: 37.25, cx: 38.66, cy: 56.82 },
-  { id: 19, left: "39.9%", top: "80.6%", width: "24.9%", angle: -27.46, cx: 55.25, cy: 53.75 },
-  { id: 20, left: "15.8%", top: "83.8%", width: "12.4%", angle: 4.86, cx: 48.36, cy: 51.12 },
-  { id: 21, left: "27.0%", top: "87.5%", width: "14.1%", angle: -21.05, cx: 52.98, cy: 53.07 }
+  { id: 1, left: "29.7%", top: "6.7%", width: "41.4%", angle: -3.67, cx: 50.15, cy: 41.59, w_px: 288, h_px: 190 },
+  { id: 2, left: "68.5%", top: "9.1%", width: "24.3%", angle: 36.7, cx: 41.3, cy: 57.47, w_px: 169, h_px: 161 },
+  { id: 3, left: "20.7%", top: "11.4%", width: "23.7%", angle: 31.82, cx: 42.63, cy: 55.52, w_px: 165, h_px: 158 },
+  { id: 4, left: "57.9%", top: "14.9%", width: "15.1%", angle: 63.72, cx: 46.66, cy: 55.13, w_px: 105, h_px: 117 },
+  { id: 5, left: "12.1%", top: "20.6%", width: "28.4%", angle: 40.98, cx: 41.05, cy: 54.16, w_px: 198, h_px: 212 },
+  { id: 6, left: "30.3%", top: "21.9%", width: "16.7%", angle: -29.26, cx: 53.71, cy: 52.9, w_px: 116, h_px: 84 },
+  { id: 7, left: "68.4%", top: "21.9%", width: "16.2%", angle: 13.52, cx: 49.89, cy: 52.84, w_px: 113, h_px: 111 },
+  { id: 8, left: "31.5%", top: "35.7%", width: "15.1%", angle: 45.5, cx: 40.65, cy: 59.02, w_px: 105, h_px: 105 },
+  { id: 9, left: "14.7%", top: "38.8%", width: "18.4%", angle: 20.9, cx: 46.38, cy: 51.15, w_px: 128, h_px: 124 },
+  { id: 10, left: "39.9%", top: "42.2%", width: "16.8%", angle: -51.65, cx: 48.65, cy: 58.28, w_px: 117, h_px: 117 },
+  { id: 11, left: "53.9%", top: "42.6%", width: "32.5%", angle: 28.78, cx: 42.54, cy: 51.19, w_px: 226, h_px: 197 },
+  { id: 12, left: "23.6%", top: "45.3%", width: "18.7%", angle: -32.5, cx: 56.56, cy: 53.16, w_px: 130, h_px: 116 },
+  { id: 13, left: "72.1%", top: "55.0%", width: "14.9%", angle: -28.25, cx: 56.16, cy: 54.46, w_px: 104, h_px: 101 },
+  { id: 14, left: "65.4%", top: "60.5%", width: "24.3%", angle: 45.36, cx: 42.85, cy: 57.36, w_px: 169, h_px: 170 },
+  { id: 15, left: "11.2%", top: "66.9%", width: "11.4%", angle: -53.75, cx: 55.0, cy: 54.93, w_px: 79, h_px: 87 },
+  { id: 16, left: "58.6%", top: "70.6%", width: "23.4%", angle: 44.54, cx: 43.1, cy: 55.15, w_px: 163, h_px: 168 },
+  { id: 17, left: "5.3%", top: "71.5%", width: "22.4%", angle: -16.17, cx: 56.67, cy: 54.13, w_px: 156, h_px: 130 },
+  { id: 18, left: "25.4%", top: "72.0%", width: "25.1%", angle: 37.25, cx: 38.66, cy: 56.82, w_px: 175, h_px: 188 },
+  { id: 19, left: "39.9%", top: "80.6%", width: "24.9%", angle: -27.46, cx: 55.25, cy: 53.75, w_px: 173, h_px: 163 },
+  { id: 20, left: "15.8%", top: "83.8%", width: "12.4%", angle: 4.86, cx: 48.36, cy: 51.12, w_px: 86, h_px: 79 },
+  { id: 21, left: "27.0%", top: "87.5%", width: "14.1%", angle: -21.05, cx: 52.98, cy: 53.07, w_px: 98, h_px: 75 }
 ];
 
 export default function SlateShowcase() {
@@ -174,23 +174,21 @@ export default function SlateShowcase() {
                   >
                     {/* Left Wing */}
                     <div
-                      className="relative w-full h-auto butterfly-wing-left"
+                      className="relative w-full butterfly-wing-left"
                       style={{
+                        aspectRatio: `${b.w_px} / ${b.h_px}`,
                         clipPath: `polygon(0% 0%, ${b.cx}% 0%, ${b.cx}% 100%, 0% 100%)`,
                         transformOrigin: `${b.cx}% ${b.cy}%`,
+                        backgroundImage: `url(/butterflies_webp/butterfly_${b.id}.webp)`,
+                        backgroundSize: '100% 100%',
+                        backgroundPosition: '0% 0%',
+                        backgroundRepeat: "no-repeat",
                         ['--angle' as any]: `${b.angle}deg`,
                         ['--neg-angle' as any]: `${-b.angle}deg`,
                         ['--animation-duration' as any]: `${duration}s`,
                         ['--animation-delay' as any]: `${delay}s`,
                       }}
-                    >
-                      <img
-                        src={`/butterflies_extracted/butterfly_${b.id}.png`}
-                        alt={`Butterfly ${b.id} Left Wing`}
-                        className="w-full h-auto object-contain pointer-events-none"
-                        loading="lazy"
-                      />
-                    </div>
+                    />
 
                     {/* Right Wing */}
                     <div
@@ -198,19 +196,16 @@ export default function SlateShowcase() {
                       style={{
                         clipPath: `polygon(${b.cx}% 0%, 100% 0%, 100% 100%, ${b.cx}% 100%)`,
                         transformOrigin: `${b.cx}% ${b.cy}%`,
+                        backgroundImage: `url(/butterflies_webp/butterfly_${b.id}.webp)`,
+                        backgroundSize: '100% 100%',
+                        backgroundPosition: '0% 0%',
+                        backgroundRepeat: "no-repeat",
                         ['--angle' as any]: `${b.angle}deg`,
                         ['--neg-angle' as any]: `${-b.angle}deg`,
                         ['--animation-duration' as any]: `${duration}s`,
                         ['--animation-delay' as any]: `${delay}s`,
                       }}
-                    >
-                      <img
-                        src={`/butterflies_extracted/butterfly_${b.id}.png`}
-                        alt={`Butterfly ${b.id} Right Wing`}
-                        className="w-full h-auto object-contain pointer-events-none"
-                        loading="lazy"
-                      />
-                    </div>
+                    />
                   </div>
                 );
               })}
@@ -252,23 +247,21 @@ export default function SlateShowcase() {
                 >
                   {/* Left Wing (Relative to preserve sizing) */}
                   <div
-                    className="relative w-full h-auto butterfly-wing-left"
+                    className="relative w-full butterfly-wing-left"
                     style={{
+                      aspectRatio: `${b.w_px} / ${b.h_px}`,
                       clipPath: `polygon(0% 0%, ${b.cx}% 0%, ${b.cx}% 100%, 0% 100%)`,
                       transformOrigin: `${b.cx}% ${b.cy}%`,
+                      backgroundImage: `url(/butterflies_webp/butterfly_${b.id}.webp)`,
+                      backgroundSize: '100% 100%',
+                      backgroundPosition: '0% 0%',
+                      backgroundRepeat: "no-repeat",
                       ['--angle' as any]: `${b.angle}deg`,
                       ['--neg-angle' as any]: `${-b.angle}deg`,
                       ['--animation-duration' as any]: `${duration}s`,
                       ['--animation-delay' as any]: `${delay}s`,
                     }}
-                  >
-                    <img
-                      src={`/butterflies_extracted/butterfly_${b.id}.png`}
-                      alt={`Butterfly ${b.id} Left Wing`}
-                      className="w-full h-auto object-contain pointer-events-none"
-                      loading="lazy"
-                    />
-                  </div>
+                  />
 
                   {/* Right Wing (Absolute overlays left wing) */}
                   <div
@@ -276,19 +269,16 @@ export default function SlateShowcase() {
                     style={{
                       clipPath: `polygon(${b.cx}% 0%, 100% 0%, 100% 100%, ${b.cx}% 100%)`,
                       transformOrigin: `${b.cx}% ${b.cy}%`,
+                      backgroundImage: `url(/butterflies_webp/butterfly_${b.id}.webp)`,
+                      backgroundSize: '100% 100%',
+                      backgroundPosition: '0% 0%',
+                      backgroundRepeat: "no-repeat",
                       ['--angle' as any]: `${b.angle}deg`,
                       ['--neg-angle' as any]: `${-b.angle}deg`,
                       ['--animation-duration' as any]: `${duration}s`,
                       ['--animation-delay' as any]: `${delay}s`,
                     }}
-                  >
-                    <img
-                      src={`/butterflies_extracted/butterfly_${b.id}.png`}
-                      alt={`Butterfly ${b.id} Right Wing`}
-                      className="w-full h-auto object-contain pointer-events-none"
-                      loading="lazy"
-                    />
-                  </div>
+                  />
                 </div>
               );
             })}

@@ -1,61 +1,6 @@
 @import "tailwindcss";
 
-/* Anthropic Custom Web Fonts */
-@font-face {
-  font-family: 'Anthropic Sans';
-  src: url('/fonts/AnthropicSans-Roman-Web.woff2') format('woff2');
-  font-weight: 300 800;
-  font-style: normal;
-  font-display: swap;
-}
 
-@font-face {
-  font-family: 'Anthropic Sans';
-  src: url('/fonts/AnthropicSans-Italic-Web.woff2') format('woff2');
-  font-weight: 300 800;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Anthropic Serif';
-  src: url('/fonts/AnthropicSerif-Roman-Web.woff2') format('woff2');
-  font-weight: 300 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Anthropic Serif';
-  src: url('/fonts/AnthropicSerif-Italic-Web.woff2') format('woff2');
-  font-weight: 300 800;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Anthropic Mono';
-  src: url('/fonts/AnthropicMono-Roman-Web.woff2') format('woff2');
-  font-weight: 300 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Anthropic Mono';
-  src: url('/fonts/AnthropicMono-Italic-Web.woff2') format('woff2');
-  font-weight: 300 800;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'JetBrains Mono Custom';
-  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 :root {
   /* Colors - Anthropic Light Theme (Warm Parchment) */
@@ -73,9 +18,9 @@
   --color-cloud-dark: #87867f;
 
   /* Font Families */
-  --font-serif: 'Anthropic Serif', Georgia, ui-serif, serif;
-  --font-sans: 'Anthropic Sans', Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Anthropic Mono', 'JetBrains Mono Custom', ui-monospace, monospace;
+  --font-serif: var(--font-anthropic-serif), Georgia, ui-serif, serif;
+  --font-sans: var(--font-anthropic-sans), Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-anthropic-mono), ui-monospace, monospace;
 }
 
 ::selection {

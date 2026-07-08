@@ -238,7 +238,7 @@ export default function SlatePage() {
                 style={{ borderRadius: "24px" }}
               >
                 <Image
-                  src="/slate_origin.png"
+                  src="/slate_origin.webp"
                   alt={activeVersion === "origin" ? "Slate Origin — iOS App" : "Slate Agentic — iOS App"}
                   fill
                   sizes="(max-width: 768px) 100vw, 420px"
