@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { logoutAction } from './actions';
 import type { DashboardStats } from '@/app/lib/analytics';
-import { RefreshCw, LogOut } from 'lucide-react';
+import { RefreshCw, LogOut, BarChart3, Users, Search, Activity, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // ─────────────────────────────────────────────
 // Types
@@ -245,11 +245,36 @@ function SEOStatusBadge({ status }: { status: SEOCheck['status'] }) {
 // Main Dashboard Client Component
 // ─────────────────────────────────────────────
 
-export default function DashboardClient({ stats, sysInfo, envFlags }: Props) {
+export default function DashboardClient({ stats: initialStats, sysInfo, envFlags }: Props) {
+  const [liveStats, setLiveStats] = useState<DashboardStats>(initialStats);
+  const stats = liveStats;
+
   const [activeTab, setActiveTab] = useState<Tab>('analytics');
   const [trafficView, setTrafficView] = useState<'24h' | '30d'>('24h');
   const [isPending, startTransition] = useTransition();
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const router = useRouter();
+
+  // Automatic real-time refreshing cycle
+  useEffect(() => {
+    let active = true;
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch('/api/analytics/stats');
+        if (res.ok && active) {
+          const data = await res.json();
+          setLiveStats(data);
+        }
+      } catch (err) {
+        console.error('Failed to fetch live stats:', err);
+      }
+    }, 3000);
+
+    return () => {
+      active = false;
+      clearInterval(interval);
+    };
+  }, []);
 
   const handleLogout = () => {
     startTransition(async () => { await logoutAction(); });
@@ -267,101 +292,110 @@ export default function DashboardClient({ stats, sysInfo, envFlags }: Props) {
   const totalOses = stats.oses.reduce((s, d) => s + d.count, 0);
   const totalCountries = stats.countries.reduce((s, c) => s + c.visitors, 0);
 
-  const TABS: { id: Tab; label: string }[] = [
-    { id: 'analytics', label: 'Analytics' },
-    { id: 'audience', label: 'Audience' },
-    { id: 'seo', label: 'SEO Audit' },
-    { id: 'system', label: 'System' },
-    { id: 'config', label: 'Config' },
-  ];
+  const TABS = [
+    { id: 'analytics', label: 'Analytics', icon: BarChart3 },
+    { id: 'audience', label: 'Audience', icon: Users },
+    { id: 'seo', label: 'SEO Audit', icon: Search },
+    { id: 'system', label: 'System', icon: Activity },
+    { id: 'config', label: 'Config', icon: Settings },
+  ] as const;
 
   return (
-    <div className="min-h-screen bg-[var(--bg-warm)]">
+    <div className="flex min-h-screen bg-[var(--bg-warm)]">
 
-      {/* ── Top nav ───────────────────────────── */}
-      <header className="border-b border-[var(--border-light)] bg-[var(--card-bg)] sticky top-0 z-30">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="font-sans-anthropic text-sm tracking-[0.15em] font-black uppercase text-[var(--text-charcoal)]">
-              SHEHARA
-            </span>
-            <span className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)] uppercase tracking-wider hidden sm:block">
-              / admin
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            {/* Refresh */}
+      {/* ── Sidebar ───────────────────────────── */}
+      <aside className={`bg-[var(--card-bg)] border-r border-[var(--border-light)] flex flex-col justify-between sticky top-0 h-screen transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-30 ${isCollapsed ? 'w-20' : 'w-64'}`}>
+        <div className="flex flex-col flex-1 overflow-y-auto">
+          {/* Sidebar Header */}
+          <div className="h-16 flex items-center justify-between px-6 border-b border-[var(--border-light)] flex-shrink-0">
+            <div className={`flex items-center gap-2 truncate transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isCollapsed ? 'opacity-0 blur-sm scale-95 pointer-events-none w-0' : 'opacity-100 blur-0 scale-100 w-auto'}`}>
+              <span className="font-sans-anthropic text-sm tracking-[0.15em] font-black uppercase text-[var(--text-charcoal)]">
+                SHEHARA
+              </span>
+              <span className="font-mono-anthropic text-[10px] text-[var(--color-cloud-medium)] uppercase tracking-wider">
+                / admin
+              </span>
+            </div>
             <button
-              id="admin-refresh"
-              onClick={() => router.refresh()}
-              title="Refresh Data"
-              className="p-2 border border-[var(--border-light)] text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] hover:border-[var(--text-secondary)] rounded-xl transition-all duration-200 active:scale-95"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+              title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+              className={`p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] active:scale-95 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] aspect-square flex items-center justify-center ${isCollapsed ? 'mx-auto' : ''}`}
             >
-              <RefreshCw className="w-4 h-4" />
+              <ChevronLeft className={`w-4 h-4 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isCollapsed ? 'rotate-180' : ''}`} />
             </button>
-            {/* Logout */}
+          </div>
+
+          {/* Sidebar Navigation */}
+          <nav className="flex-1 px-3 py-6 space-y-2 flex flex-col items-center">
+            {TABS.map(tab => {
+              const IconComponent = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  id={`admin-tab-${tab.id}`}
+                  onClick={() => setActiveTab(tab.id)}
+                  title={isCollapsed ? tab.label : undefined}
+                  className={`flex items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98] ${
+                    isCollapsed 
+                      ? 'gap-0 w-12 h-12 justify-center rounded-xl aspect-square flex-shrink-0' 
+                      : 'gap-3 w-full px-3 py-3 rounded-xl'
+                  } ${
+                    isActive
+                      ? 'bg-[var(--accent-rust)] text-[var(--bg-warm)]'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] hover:bg-[var(--bg-warm)]'
+                  }`}
+                >
+                  <IconComponent className="w-4 h-4 flex-shrink-0" />
+                  <span className={`font-sans-anthropic text-xs font-semibold uppercase tracking-wider truncate transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isCollapsed ? 'opacity-0 blur-sm scale-90 pointer-events-none w-0' : 'opacity-100 blur-0 scale-100 w-auto'}`}>
+                    {tab.label}
+                  </span>
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+
+        {/* Sidebar Footer */}
+        <div className="p-4 border-t border-[var(--border-light)] flex-shrink-0">
+          {/* Actions */}
+          <div className="flex justify-center px-2">
             <button
               id="admin-logout"
               onClick={handleLogout}
               disabled={isPending}
               title="Sign Out"
-              className="p-2 border border-[var(--border-light)] text-[var(--text-secondary)] hover:text-[var(--accent-rust)] hover:border-[var(--accent-rust)] rounded-xl transition-all duration-200 disabled:opacity-50 active:scale-95 animate-none"
+              className="p-2.5 text-[var(--text-secondary)] hover:text-[var(--accent-rust)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] disabled:opacity-50 active:scale-95 aspect-square rounded-xl flex items-center justify-center mx-auto"
             >
-              <LogOut className="w-4 h-4" />
+              <LogOut className="w-4.5 h-4.5" />
             </button>
           </div>
         </div>
-      </header>
+      </aside>
 
-      {/* ── Live bar ──────────────────────────── */}
-      <div className="border-b border-[var(--border-light)] bg-[var(--bg-warm)] px-6 md:px-10 py-2.5 max-w-7xl mx-auto flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2.5">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-rust)]" />
-          </span>
-          <span className="font-mono-anthropic text-xs text-[var(--text-charcoal)]">
-            <span className="font-semibold">{stats.activeNow}</span> online now
-          </span>
-          <span className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)] hidden sm:block">
-            · last 5 minutes
-          </span>
-        </div>
-        <span className="font-mono-anthropic text-[10px] text-[var(--color-cloud-medium)] hidden md:block">
-          Updated · {new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
-        </span>
-      </div>
+      {/* ── Main Content Area ─────────────────── */}
+      <div className="flex-1 flex flex-col min-w-0 min-h-screen">
 
-      {/* ── Page body ─────────────────────────── */}
-      <main className="max-w-7xl mx-auto px-6 md:px-10 py-8 space-y-8">
-
-        {/* Page title */}
-        <div className="space-y-1">
-          <h1 className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)]">
-            Dashboard
-          </h1>
-          <p className="font-sans-anthropic text-sm text-[var(--text-secondary)]">
-            Analytics, audience insights, SEO and system overview.
-          </p>
-        </div>
-
-        {/* ── Tab nav ─────────────────────────── */}
-        <div className="border-b border-[var(--border-light)] flex gap-0 overflow-x-auto">
-          {TABS.map(tab => (
-            <button
-              key={tab.id}
-              id={`admin-tab-${tab.id}`}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex-shrink-0 font-sans-anthropic text-xs font-semibold uppercase tracking-wider px-4 py-3 border-b-2 transition-all duration-200 ${
-                activeTab === tab.id
-                  ? 'border-[var(--accent-rust)] text-[var(--text-charcoal)]'
-                  : 'border-transparent text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        {/* Main View Container */}
+        <main className="flex-1 p-6 md:p-10 space-y-8 overflow-y-auto max-w-7xl w-full mx-auto">
+          {/* Header section with page title */}
+          <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-4 border-b border-[var(--border-light)] pb-4 flex-shrink-0">
+            <div className="space-y-1">
+              <h1 className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)]">
+                {TABS.find(t => t.id === activeTab)?.label}
+              </h1>
+              <p className="font-sans-anthropic text-sm text-[var(--text-secondary)]">
+                {activeTab === 'analytics' && 'Traffic views, visitor trends, and device distributions.'}
+                {activeTab === 'audience' && 'Geographical splits, screen resolutions, and scrolling interactions.'}
+                {activeTab === 'seo' && 'Codebase tags hierarchy, images accessibility audits, and indexing parameters.'}
+                {activeTab === 'system' && 'Node processes heap, logs storage allocation, and uptime details.'}
+                {activeTab === 'config' && 'Setup specifications, environment flags, and database deployment details.'}
+              </p>
+            </div>
+            <div className="font-mono-anthropic text-[11px] text-[var(--color-cloud-dark)]">
+              Updated · {new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+            </div>
+          </div>
 
         {/* ══════════════════════════════════════
             TAB 1 — Analytics
@@ -859,7 +893,8 @@ export default function DashboardClient({ stats, sysInfo, envFlags }: Props) {
           </div>
         )}
 
-      </main>
+        </main>
+      </div>
     </div>
   );
 }
