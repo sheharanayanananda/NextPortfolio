@@ -136,16 +136,43 @@ const anthropicMono = localFont({
   preload: false,
 });
 export const metadata: Metadata = {
-  title: "Thineth Shehara",
+  title: {
+    default: "Thineth Shehara",
+    template: "%s | Thineth Shehara",
+  },
   description: "Portfolio of Thineth Shehara (Shehara Nayanananda), Software Engineer studying Software Engineering at Tampere University of Applied Sciences (TAMK), Finland.",
+  metadataBase: new URL("https://shehara.dayzsolutions.com"),
   icons: {
     icon: [
+      { url: "/logo.png", type: "image/png" },
+      { url: "/logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/logo.png", sizes: "180x180", type: "image/png" }
+    ],
+  },
+  openGraph: {
+    title: "Thineth Shehara",
+    description: "Portfolio of Thineth Shehara (Shehara Nayanananda), Software Engineer studying Software Engineering at Tampere University of Applied Sciences (TAMK), Finland.",
+    url: "https://shehara.dayzsolutions.com",
+    siteName: "Thineth Shehara",
+    images: [
       {
-        url: "/logo.png",
-        href: "/logo.png",
-        type: "image/png",
+        url: "/me.jpg",
+        width: 800,
+        height: 800,
+        alt: "Thineth Shehara Portrait",
       },
     ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Thineth Shehara",
+    description: "Portfolio of Thineth Shehara (Shehara Nayanananda), Software Engineer studying Software Engineering at Tampere University of Applied Sciences (TAMK), Finland.",
+    images: ["/me.jpg"],
   },
 };
 
@@ -157,6 +184,45 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full scroll-smooth ${anthropicSans.variable} ${anthropicSerif.variable} ${anthropicMono.variable}`}>
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://shehara.dayzsolutions.com/#website",
+                  "url": "https://shehara.dayzsolutions.com",
+                  "name": "Thineth Shehara",
+                  "alternateName": ["Shehara Nayanananda", "Thineth Shehara Nayanananda"],
+                  "publisher": {
+                    "@id": "https://shehara.dayzsolutions.com/#person"
+                  }
+                },
+                {
+                  "@type": "Person",
+                  "@id": "https://shehara.dayzsolutions.com/#person",
+                  "name": "Thineth Shehara",
+                  "alternateName": "Shehara Nayanananda",
+                  "url": "https://shehara.dayzsolutions.com",
+                  "image": "https://shehara.dayzsolutions.com/me.jpg",
+                  "description": "Software Engineer specializing in mobile applications, fluid animations, modular systems, and robust offline architectures.",
+                  "sameAs": [
+                    "https://linkedin.com/in/thineth-nayanananda-54815b228/",
+                    "https://github.com/sheharanayanananda",
+                    "mailto:sheharanayanananda@gmail.com"
+                  ],
+                  "jobTitle": "Software Engineer",
+                  "alumniOf": {
+                    "@type": "EducationalOrganization",
+                    "name": "Tampere University of Applied Sciences (TAMK)"
+                  }
+                }
+              ]
+            })
+          }}
+        />
         <AnalyticsTracker />
         {children}
       </body>
