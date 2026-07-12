@@ -222,7 +222,7 @@ function readTodayEntries(): LogEntry[] {
 // ─────────────────────────────────────────────
 
 export function computeStats(): DashboardStats {
-  const rawAll = readAllEntries(30);
+  const rawAll = readAllEntries(365);
   const rawTodayAll = readTodayEntries();
 
   // Exclude all admin-related logs

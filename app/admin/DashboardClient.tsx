@@ -2,7 +2,7 @@
 
 import { useState, useTransition, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { logoutAction } from './actions';
+import { logoutAction, readLogFileAction } from './actions';
 import type { DashboardStats } from '@/app/lib/analytics';
 import { RefreshCw, LogOut, BarChart3, Users, Search, Activity, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -33,7 +33,7 @@ interface Props {
   envFlags: EnvFlags;
 }
 
-type Tab = 'analytics' | 'audience' | 'seo' | 'system' | 'config';
+type Tab = 'analytics' | 'audience' | 'seo' | 'system';
 
 // ─────────────────────────────────────────────
 // Helpers
@@ -62,26 +62,274 @@ function fmtBytes(bytes: number): string {
 // SVG Charts
 // ─────────────────────────────────────────────
 
-function AreaChart({ data, label }: { data: number[]; label: string }) {
+function AreaChart({ data, label, dates }: { data: number[]; label: string; dates?: string[] }) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   const max = Math.max(...data, 1);
-  const W = 600; const H = 80;
-  const pts = data.map((v, i) => ({
-    x: (i / (data.length - 1)) * W,
-    y: H - (v / max) * H * 0.9,
-  }));
-  const linePath = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
-  const areaPath = linePath + ` L ${W} ${H} L 0 ${H} Z`;
+  const W = 800;
+  const H = 260;
+  const paddingLeft = 45;
+  const paddingRight = 25;
+  const paddingTop = 25;
+  const paddingBottom = 35;
+
+  const chartW = W - paddingLeft - paddingRight;
+  const chartH = H - paddingTop - paddingBottom;
+  const baseline = paddingTop + chartH;
+
+  const pts = data.map((v, i) => {
+    const x = paddingLeft + (i / Math.max(data.length - 1, 1)) * chartW;
+    const y = baseline - (v / max) * chartH;
+    return { x, y, val: v, index: i };
+  });
+
+  // Calculate smooth Bezier line path connecting points organically
+  const linePath = (() => {
+    if (pts.length === 0) return '';
+    if (pts.length === 1) return `M ${pts[0].x} ${pts[0].y}`;
+
+    let path = `M ${pts[0].x} ${pts[0].y}`;
+    const smoothing = 0.16; // organic curvature ratio
+
+    for (let i = 0; i < pts.length - 1; i++) {
+      const curr = pts[i];
+      const next = pts[i + 1];
+      const prev = pts[i - 1] || curr;
+      const nextNext = pts[i + 2] || next;
+
+      // Control points with slope smoothing
+      const cp1x = curr.x + (next.x - prev.x) * smoothing;
+      const cp1y = Math.max(paddingTop, Math.min(baseline, curr.y + (next.y - prev.y) * smoothing));
+
+      const cp2x = next.x - (nextNext.x - curr.x) * smoothing;
+      const cp2y = Math.max(paddingTop, Math.min(baseline, next.y - (nextNext.y - curr.y) * smoothing));
+
+      path += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${next.x} ${next.y}`;
+    }
+    return path;
+  })();
+
+  const areaPath = pts.length > 0
+    ? `${linePath} L ${pts[pts.length - 1].x} ${baseline} L ${pts[0].x} ${baseline} Z`
+    : '';
+
+  const yGridValues = [0, 0.25, 0.5, 0.75, 1];
+
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-20" aria-label={label}>
-      <defs>
-        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d97757" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#d97757" stopOpacity="0.02" />
-        </linearGradient>
-      </defs>
-      <path d={areaPath} fill="url(#areaGrad)" />
-      <path d={linePath} fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinejoin="round" />
-    </svg>
+    <div className="relative group w-full bg-[var(--bg-warm)]/40 rounded-2xl p-4 border border-[var(--border-light)]/40">
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto overflow-visible select-none" aria-label={label}>
+        <defs>
+          {/* Vertical stem gradient capsules */}
+          <linearGradient id="stemGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--accent-rust)" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="var(--accent-rust)" stopOpacity="0.0" />
+          </linearGradient>
+          {/* Area under curve gradient */}
+          <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--accent-rust)" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="var(--accent-rust)" stopOpacity="0.0" />
+          </linearGradient>
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Horizontal Grid lines */}
+        {(() => {
+          // Calculate neat integer grid levels directly
+          const gridLevels: number[] = [0];
+          if (max <= 4) {
+            for (let i = 1; i <= max; i++) {
+              gridLevels.push(i);
+            }
+          } else {
+            const step = Math.ceil(max / 4);
+            for (let i = step; i < max; i += step) {
+              gridLevels.push(i);
+            }
+            if (!gridLevels.includes(max)) {
+              gridLevels.push(max);
+            }
+          }
+
+          return gridLevels.map((gridVal, idx) => {
+            const y = baseline - (gridVal / max) * chartH;
+            return (
+              <g key={idx} className="opacity-30">
+                <line
+                  x1={paddingLeft}
+                  y1={y}
+                  x2={W - paddingRight}
+                  y2={y}
+                  stroke="var(--border-light)"
+                  strokeWidth="0.75"
+                  strokeDasharray="3 5"
+                />
+                <text
+                  x={paddingLeft - 10}
+                  y={y + 3}
+                  textAnchor="end"
+                  className="font-mono-anthropic text-[9px] fill-[var(--text-secondary)] font-semibold"
+                >
+                  {gridVal}
+                </text>
+              </g>
+            );
+          });
+        })()}
+
+        {/* Area under the curves */}
+        {pts.length > 0 && (
+          <path
+            d={areaPath}
+            fill="url(#areaGrad)"
+            className="transition-all duration-500 ease-in-out"
+          />
+        )}
+
+        {/* Glowing trace line */}
+        {pts.length > 1 && (
+          <path
+            d={linePath}
+            fill="none"
+            stroke="var(--accent-rust)"
+            strokeWidth="4.5"
+            opacity="0.15"
+            filter="url(#glow)"
+            className="transition-all duration-500 ease-in-out"
+          />
+        )}
+
+        {/* Main curve line */}
+        {pts.length > 1 && (
+          <path
+            d={linePath}
+            fill="none"
+            stroke="var(--accent-rust)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="transition-all duration-500 ease-in-out"
+          />
+        )}
+
+        {/* Stems, Rays, and Nodes */}
+        {pts.map((p, i) => {
+          const isHovered = hoveredIndex === i;
+          const stemHeight = baseline - p.y;
+          return (
+            <g key={i} className="transition-all duration-300">
+              {/* Soft vertical gradient ray capsule on hover */}
+              <rect
+                x={p.x - 7}
+                y={p.y}
+                width="14"
+                height={stemHeight}
+                fill="url(#stemGrad)"
+                rx="3"
+                className={`transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+              />
+
+              {/* Vertical Needle/Stem on hover only */}
+              <line
+                x1={p.x}
+                y1={baseline}
+                x2={p.x}
+                y2={p.y}
+                stroke="var(--accent-rust)"
+                strokeWidth="1.5"
+                className={`transition-opacity duration-300 ${isHovered ? 'opacity-70' : 'opacity-0'}`}
+              />
+
+              {/* Clay node tip */}
+              <circle
+                cx={p.x}
+                cy={p.y}
+                r={isHovered ? 6 : (data.length >= 40 ? 0 : 3.5)}
+                fill={isHovered ? 'var(--bg-warm)' : 'var(--accent-rust)'}
+                stroke="var(--accent-rust)"
+                strokeWidth={isHovered ? 3 : 1.5}
+                className="transition-all duration-300 cursor-pointer"
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              />
+
+              {/* Invisible interaction bar to make hovering easy */}
+              <rect
+                x={p.x - 12}
+                y={paddingTop}
+                width="24"
+                height={chartH}
+                fill="transparent"
+                className="cursor-pointer"
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              />
+            </g>
+          );
+        })}
+
+        {/* X-axis labels at the bottom of the SVG */}
+        {(() => {
+          if (pts.length === 0) return null;
+          // Render 5 evenly spaced date labels
+          const indices: number[] = [0];
+          if (pts.length > 4) {
+            indices.push(
+              Math.floor(pts.length * 0.25),
+              Math.floor(pts.length * 0.5),
+              Math.floor(pts.length * 0.75),
+              pts.length - 1
+            );
+          } else if (pts.length > 1) {
+            for (let i = 1; i < pts.length; i++) {
+              indices.push(i);
+            }
+          }
+          return indices.map((idxVal) => {
+            const p = pts[idxVal];
+            if (!p) return null;
+            const dateLabel = dates && dates[idxVal] ? dates[idxVal] : ``;
+            // If date is ISO format YYYY-MM-DD, format it to MM-DD for cleaner fit
+            const formattedLabel = dateLabel.length === 10 ? dateLabel.slice(5) : dateLabel;
+            return (
+              <text
+                key={idxVal}
+                x={p.x}
+                y={baseline + 18}
+                textAnchor="middle"
+                className="font-mono-anthropic text-[9px] fill-[var(--text-secondary)] opacity-80"
+              >
+                {formattedLabel}
+              </text>
+            );
+          });
+        })()}
+      </svg>
+
+      {/* Floating HTML Tooltip */}
+      {hoveredIndex !== null && pts[hoveredIndex] && (
+        <div
+          className="absolute z-10 bg-[var(--card-bg)] border border-[var(--border-light)] rounded-xl p-3 shadow-xl pointer-events-none transition-opacity duration-200"
+          style={{
+            left: `${(pts[hoveredIndex].x / W) * 100}%`,
+            top: `${(pts[hoveredIndex].y / H) * 100 - 15}%`,
+            transform: 'translate(-50%, -100%)',
+          }}
+        >
+          <div className="font-mono-anthropic text-[9px] text-[var(--text-secondary)] uppercase tracking-wider whitespace-nowrap">
+            {dates && dates[hoveredIndex] ? dates[hoveredIndex] : `Point ${hoveredIndex + 1}`}
+          </div>
+          <div className="font-serif-anthropic text-sm font-semibold text-[var(--text-charcoal)] mt-0.5 whitespace-nowrap">
+            {pts[hoveredIndex].val} views
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -250,10 +498,15 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
   const stats = liveStats;
 
   const [activeTab, setActiveTab] = useState<Tab>('analytics');
-  const [trafficView, setTrafficView] = useState<'24h' | '30d'>('24h');
+  const [trafficView, setTrafficView] = useState<'24h' | '7d' | '1mo' | '6mo' | '1yr'>('24h');
   const [isPending, startTransition] = useTransition();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const router = useRouter();
+
+  // State for interactive log viewer
+  const [activeLogName, setActiveLogName] = useState<string | null>(null);
+  const [activeLogContent, setActiveLogContent] = useState<string | null>(null);
+  const [isReadingLog, setIsReadingLog] = useState(false);
 
   // Automatic real-time refreshing cycle
   useEffect(() => {
@@ -283,9 +536,28 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
   const seoChecks = getSEOChecks();
   const seoCats = [...new Set(seoChecks.map(c => c.category))];
 
-  const chartData = trafficView === '24h'
-    ? stats.hourlyViews
-    : stats.dailyViews.map(d => d.views);
+  const getFilteredViews = () => {
+    if (trafficView === '24h') {
+      return {
+        data: stats.hourlyViews,
+        dates: Array.from({ length: 24 }, (_, i) => `${String(i).padStart(2, '0')}:00`)
+      };
+    }
+    const daysMap = {
+      '7d': 7,
+      '1mo': 30,
+      '6mo': 180,
+      '1yr': 365
+    };
+    const days = daysMap[trafficView];
+    const sliced = stats.dailyViews.slice(-days);
+    return {
+      data: sliced.map(d => d.views),
+      dates: sliced.map(d => d.date)
+    };
+  };
+
+  const { data: chartData, dates: chartDates } = getFilteredViews();
 
   const totalDevices = stats.devices.reduce((s, d) => s + d.count, 0);
   const totalBrowsers = stats.browsers.reduce((s, d) => s + d.count, 0);
@@ -297,7 +569,6 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
     { id: 'audience', label: 'Audience', icon: Users },
     { id: 'seo', label: 'SEO Audit', icon: Search },
     { id: 'system', label: 'System', icon: Activity },
-    { id: 'config', label: 'Config', icon: Settings },
   ] as const;
 
   return (
@@ -389,7 +660,6 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
                 {activeTab === 'audience' && 'Geographical splits, screen resolutions, and scrolling interactions.'}
                 {activeTab === 'seo' && 'Codebase tags hierarchy, images accessibility audits, and indexing parameters.'}
                 {activeTab === 'system' && 'Node processes heap, logs storage allocation, and uptime details.'}
-                {activeTab === 'config' && 'Setup specifications, environment flags, and database deployment details.'}
               </p>
             </div>
             <div className="font-mono-anthropic text-[11px] text-[var(--color-cloud-dark)]">
@@ -402,6 +672,36 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
         ══════════════════════════════════════ */}
         {activeTab === 'analytics' && (
           <div className="space-y-8">
+
+            {/* Traffic chart */}
+            <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-4">
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <h2 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)]">Traffic Over Time</h2>
+                <div className="flex gap-1 flex-wrap">
+                  {(['24h', '7d', '1mo', '6mo', '1yr'] as const).map(v => (
+                    <button
+                      key={v}
+                      id={`admin-traffic-${v}`}
+                      onClick={() => setTrafficView(v)}
+                      className={`font-mono-anthropic text-[10px] sm:text-xs uppercase tracking-wider px-2 sm:px-3 py-1 rounded-lg border transition-all duration-200 ${
+                        trafficView === v
+                          ? 'bg-[var(--accent-rust)] text-[var(--bg-warm)] border-[var(--accent-rust)]'
+                          : 'border-[var(--border-light)] text-[var(--text-secondary)] hover:border-[var(--text-secondary)]'
+                      }`}
+                    >
+                      {v}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {chartData.some(v => v > 0) ? (
+                <AreaChart data={chartData} label="Traffic over time" dates={chartDates} />
+              ) : (
+                <div className="h-20 flex items-center justify-center">
+                  <span className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No data yet — visit the portfolio to record hits</span>
+                </div>
+              )}
+            </div>
 
             {/* Summary cards */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -423,44 +723,6 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
                 <div className="font-serif-anthropic text-3xl text-[var(--text-charcoal)]">{fmt(stats.newVisitors)}</div>
                 <div className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">Last 7 days</div>
               </div>
-            </div>
-
-            {/* Traffic chart */}
-            <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-4">
-              <div className="flex items-center justify-between flex-wrap gap-3">
-                <h2 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)]">Traffic Over Time</h2>
-                <div className="flex gap-1">
-                  {(['24h', '30d'] as const).map(v => (
-                    <button
-                      key={v}
-                      id={`admin-traffic-${v}`}
-                      onClick={() => setTrafficView(v)}
-                      className={`font-mono-anthropic text-xs uppercase tracking-wider px-3 py-1 rounded-lg border transition-all duration-200 ${
-                        trafficView === v
-                          ? 'bg-[var(--accent-rust)] text-[var(--bg-warm)] border-[var(--accent-rust)]'
-                          : 'border-[var(--border-light)] text-[var(--text-secondary)] hover:border-[var(--text-secondary)]'
-                      }`}
-                    >
-                      {v === '24h' ? 'Last 24h' : 'Last 30d'}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              {chartData.some(v => v > 0) ? (
-                <AreaChart data={chartData} label="Traffic over time" />
-              ) : (
-                <div className="h-20 flex items-center justify-center">
-                  <span className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No data yet — visit the portfolio to record hits</span>
-                </div>
-              )}
-              {/* X-axis labels */}
-              {trafficView === '24h' && (
-                <div className="flex justify-between">
-                  {[0, 6, 12, 18, 23].map(h => (
-                    <span key={h} className="font-mono-anthropic text-[10px] text-[var(--color-cloud-medium)]">{String(h).padStart(2, '0')}:00</span>
-                  ))}
-                </div>
-              )}
             </div>
 
             {/* Top pages + Top referrers */}
@@ -689,12 +951,6 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
         ══════════════════════════════════════ */}
         {activeTab === 'seo' && (
           <div className="space-y-6">
-            <div>
-              <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">SEO Audit</h2>
-              <p className="font-sans-anthropic text-sm text-[var(--text-secondary)] mt-1">
-                Static analysis of the portfolio codebase and metadata configuration.
-              </p>
-            </div>
 
             {/* Score summary */}
             <div className="grid grid-cols-3 gap-4">
@@ -745,7 +1001,6 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
         ══════════════════════════════════════ */}
         {activeTab === 'system' && (
           <div className="space-y-6">
-            <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">System Diagnostics</h2>
 
             {/* Runtime info */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -826,11 +1081,28 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
                   </thead>
                   <tbody>
                     {stats.logFiles.map((f, i) => (
-                      <tr key={i} className="border-b border-[var(--border-light)]/50 hover:bg-[var(--card-hover-bg)] transition-colors">
-                        <td className="font-mono-anthropic text-xs text-[var(--text-charcoal)] py-2 pr-4">{f.filename}</td>
-                        <td className="font-mono-anthropic text-xs text-[var(--text-secondary)] py-2 pr-4">{f.date}</td>
-                        <td className="font-mono-anthropic text-xs text-[var(--text-secondary)] py-2 pr-4">{fmt(f.entries)}</td>
-                        <td className="font-mono-anthropic text-xs text-[var(--text-secondary)] py-2">{fmtBytes(f.sizeBytes)}</td>
+                      <tr 
+                        key={i}
+                        onClick={async () => {
+                          if (isReadingLog) return;
+                          setIsReadingLog(true);
+                          try {
+                            const content = await readLogFileAction(f.filename);
+                            setActiveLogName(f.filename);
+                            setActiveLogContent(content);
+                          } catch (err) {
+                            alert("Failed to read log file: " + (err instanceof Error ? err.message : String(err)));
+                          } finally {
+                            setIsReadingLog(false);
+                          }
+                        }}
+                        className="border-b border-[var(--border-light)]/50 hover:bg-[var(--card-hover-bg)] transition-colors cursor-pointer select-none"
+                        title="Click to view file contents"
+                      >
+                        <td className="font-mono-anthropic text-xs text-[var(--text-charcoal)] py-2.5 pr-4 font-semibold">{f.filename}</td>
+                        <td className="font-mono-anthropic text-xs text-[var(--text-secondary)] py-2.5 pr-4">{f.date}</td>
+                        <td className="font-mono-anthropic text-xs text-[var(--text-secondary)] py-2.5 pr-4">{fmt(f.entries)}</td>
+                        <td className="font-mono-anthropic text-xs text-[var(--text-secondary)] py-2.5">{fmtBytes(f.sizeBytes)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -841,60 +1113,50 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
           </div>
         )}
 
-        {/* ══════════════════════════════════════
-            TAB 5 — Config
-        ══════════════════════════════════════ */}
-        {activeTab === 'config' && (
-          <div className="space-y-6 max-w-2xl">
-            <div>
-              <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Configuration Guide</h2>
-              <p className="font-sans-anthropic text-sm text-[var(--text-secondary)] mt-1">
-                Reference for credentials, sessions, and data persistence.
-              </p>
-            </div>
-
-            {[
-              {
-                title: 'Setting Credentials',
-                body: 'Add these to your .env.local file (never commit it to Git):',
-                code: 'ADMIN_USERNAME=your_username\nADMIN_PASSWORD=your_strong_password\nSESSION_SECRET=your_32_char_random_secret',
-              },
-              {
-                title: 'Generating a SESSION_SECRET',
-                body: 'Run this in your terminal to generate a cryptographically secure secret:',
-                code: 'openssl rand -base64 32',
-              },
-              {
-                title: 'Data Persistence on Vercel',
-                body: "Vercel's filesystem is ephemeral — log files reset on each deployment. For persistent analytics on Vercel, consider writing logs to Vercel KV, PlanetScale, or Turso instead of the local filesystem.",
-                code: null,
-              },
-              {
-                title: 'Log File Location',
-                body: 'Traffic is stored locally in append-only JSONL files, one per day:',
-                code: 'data/analytics/logs/traffic-YYYY-MM-DD.jsonl',
-              },
-              {
-                title: 'Resetting a Session',
-                body: 'To force a logout, clear the admin_session cookie in your browser DevTools (Application → Cookies → Delete), or simply click Sign Out.',
-                code: null,
-              },
-            ].map(({ title, body, code }) => (
-              <div key={title} className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-3">
-                <h3 className="font-serif-anthropic text-lg font-normal text-[var(--text-charcoal)]">{title}</h3>
-                <p className="font-sans-anthropic text-sm text-[var(--text-secondary)] leading-relaxed">{body}</p>
-                {code && (
-                  <pre className="bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-xl px-4 py-3 font-mono-anthropic text-xs text-[var(--text-charcoal)] overflow-x-auto leading-relaxed whitespace-pre-wrap">
-                    {code}
-                  </pre>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-
         </main>
       </div>
+
+      {/* Log Content Modal Overlay */}
+      {activeLogName && (
+        <div className="fixed inset-0 z-50 bg-[var(--text-charcoal)]/30 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300">
+          <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-3xl max-w-4xl w-full max-h-[85vh] flex flex-col p-6 shadow-2xl transition-all duration-300">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-[var(--border-light)] pb-4 flex-shrink-0">
+              <div className="space-y-0.5">
+                <h3 className="font-serif-anthropic text-lg font-normal text-[var(--text-charcoal)]">
+                  Log Viewer
+                </h3>
+                <p className="font-mono-anthropic text-[10px] text-[var(--text-secondary)] uppercase tracking-wider">
+                  {activeLogName}
+                </p>
+              </div>
+              <button
+                onClick={() => {
+                  setActiveLogName(null);
+                  setActiveLogContent(null);
+                }}
+                className="text-xs uppercase tracking-wider font-sans-anthropic font-semibold text-[var(--text-secondary)] hover:text-[var(--accent-rust)] transition-colors p-2 rounded-xl"
+              >
+                Close
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="flex-1 overflow-y-auto mt-4 rounded-xl bg-[var(--bg-warm)] border border-[var(--border-light)] p-4">
+              {activeLogContent ? (
+                <pre className="font-mono-anthropic text-xs text-[var(--text-charcoal)] whitespace-pre overflow-x-auto leading-relaxed select-text">
+                  {activeLogContent}
+                </pre>
+              ) : (
+                <div className="flex items-center justify-center h-40">
+                  <span className="font-sans-anthropic text-sm text-[var(--text-secondary)]">Empty file</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

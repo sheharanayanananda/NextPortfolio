@@ -11,11 +11,10 @@ function getSecret(): Buffer {
   if (raw && raw.length >= 32) {
     return Buffer.from(raw.slice(0, 32), 'utf8');
   }
-  // Ephemeral fallback: stable per process instance but not across restarts
-  if (!(globalThis as any).__adminSecret) {
-    (globalThis as any).__adminSecret = crypto.randomBytes(32);
-  }
-  return (globalThis as any).__adminSecret as Buffer;
+  // Auto-generate stable key derived from expected credentials
+  const expectedUser = process.env.ADMIN_USERNAME || 'admin';
+  const expectedPass = process.env.ADMIN_PASSWORD || 'admin';
+  return crypto.createHash('sha256').update(`${expectedUser}:${expectedPass}`).digest();
 }
 
 // ─────────────────────────────────────────────
