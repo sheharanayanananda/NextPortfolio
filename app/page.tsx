@@ -136,10 +136,10 @@ export default function Home() {
         <section id="about" className="flex flex-col items-center text-center max-w-5xl mx-auto gap-12 py-16 md:py-0 md:min-h-[calc(100vh-69px)] md:justify-center scroll-mt-[69px]">
           <div className="flex flex-col items-center gap-4 mb-4">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
-              Background
+              BIO
             </h2>
             <div className="font-serif-anthropic text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
-              PHILOSOPHY & STACK
+              ETHOS & STACK
             </div>
           </div>
 
@@ -181,7 +181,7 @@ export default function Home() {
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
-              CHRONOLOGY
+              JOURNEY
             </h2>
             <div className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               PROFESSIONAL PATH
@@ -528,7 +528,7 @@ export default function Home() {
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
-              CURRENTLY
+              JOURNAL
             </h2>
             <div className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
               ONGOING ENDEAVORS

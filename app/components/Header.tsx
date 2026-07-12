@@ -14,13 +14,13 @@ export default function Header() {
   };
 
   const menuItems = [
-    { label: "Home", href: "/#hero" },
-    { label: "About", href: "/#about" },
+    { label: "Intro", href: "/#hero" },
+    { label: "Bio", href: "/#about" },
     { label: "Slate", href: "/slate" },
-    { label: "Projects", href: "/#projects" },
-    { label: "Experience", href: "/#experience" },
-    { label: "Education", href: "/#education" },
-    { label: "Updates", href: "/#updates" }
+    { label: "Craft", href: "/#projects" },
+    { label: "Journey", href: "/#experience" },
+    { label: "Academia", href: "/#education" },
+    { label: "Journal", href: "/#updates" }
   ];
 
   return (

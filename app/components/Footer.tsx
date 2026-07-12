@@ -27,27 +27,37 @@ export default function Footer() {
             <ul className="space-y-3 text-sm font-sans-anthropic font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
               <li>
                 <Link href="/#hero" className="hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                  Home
+                  Intro
                 </Link>
               </li>
               <li>
                 <Link href="/#about" className="hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                  About
+                  Bio
+                </Link>
+              </li>
+              <li>
+                <Link href="/slate" className="hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                  Slate
                 </Link>
               </li>
               <li>
                 <Link href="/#projects" className="hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                  Projects
+                  Craft
                 </Link>
               </li>
               <li>
                 <Link href="/#experience" className="hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                  Experience
+                  Journey
                 </Link>
               </li>
               <li>
                 <Link href="/#education" className="hover:text-[var(--text-charcoal)] transition-colors duration-300">
-                  Education
+                  Academia
+                </Link>
+              </li>
+              <li>
+                <Link href="/#updates" className="hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                  Journal
                 </Link>
               </li>
             </ul>

@@ -27,7 +27,7 @@ export default function ProjectsShowcaseStatic() {
       {/* Header */}
       <div className="flex flex-col items-center gap-4 mb-10 text-center max-w-3xl mx-auto">
         <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
-          Proudly
+          CRAFT
         </h2>
         <div className="font-serif-anthropic text-3xl md:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
           SELECTED WORKS
