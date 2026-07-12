@@ -174,6 +174,17 @@ export const metadata: Metadata = {
     description: "Portfolio of Thineth Shehara (Shehara Nayanananda), Software Engineer studying Software Engineering at Tampere University of Applied Sciences (TAMK), Finland.",
     images: ["/me.jpg"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  alternates: {
+    canonical: "https://shehara.dayzsolutions.com",
+  },
 };
 
 export default function RootLayout({
@@ -191,13 +202,29 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
+                  "@type": "Organization",
+                  "@id": "https://shehara.dayzsolutions.com/#organization",
+                  "name": "Thineth Shehara",
+                  "url": "https://shehara.dayzsolutions.com",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://shehara.dayzsolutions.com/logo.png",
+                    "width": 512,
+                    "height": 512
+                  },
+                  "sameAs": [
+                    "https://linkedin.com/in/thineth-nayanananda-54815b228/",
+                    "https://github.com/sheharanayanananda"
+                  ]
+                },
+                {
                   "@type": "WebSite",
                   "@id": "https://shehara.dayzsolutions.com/#website",
                   "url": "https://shehara.dayzsolutions.com",
                   "name": "Thineth Shehara",
                   "alternateName": ["Shehara Nayanananda", "Thineth Shehara Nayanananda"],
                   "publisher": {
-                    "@id": "https://shehara.dayzsolutions.com/#person"
+                    "@id": "https://shehara.dayzsolutions.com/#organization"
                   }
                 },
                 {

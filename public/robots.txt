@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block admin routes from search engines
+Disallow: /admin
+Disallow: /admin/
+
+Sitemap: https://shehara.dayzsolutions.com/sitemap.xml
