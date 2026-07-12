@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import AnalyticsTracker from "./components/AnalyticsTracker";
 
 const anthropicSans = localFont({
   src: [
@@ -155,7 +156,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full scroll-smooth ${anthropicSans.variable} ${anthropicSerif.variable} ${anthropicMono.variable}`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <AnalyticsTracker />
+        {children}
+      </body>
     </html>
   );
 }
