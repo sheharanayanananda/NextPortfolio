@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { logoutAction, readLogFileAction } from './actions';
 import type { DashboardStats } from '@/app/lib/analytics';
 import { RefreshCw, LogOut, BarChart3, Users, Search, Activity, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
+import WorldMap from './WorldMap';
 
 // ─────────────────────────────────────────────
 // Types
@@ -805,23 +806,29 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
         {activeTab === 'audience' && (
           <div className="space-y-8">
 
-            {/* Countries */}
-            <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-4">
-              <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Countries</h2>
+            {/* Countries — world map + ranked list */}
+            <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-6">
+              <div>
+                <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Visitor World Map</h2>
+                <p className="font-sans-anthropic text-sm text-[var(--text-secondary)] mt-1">Geographic distribution of your visitors.</p>
+              </div>
               {stats.countries.length === 0 ? (
-                <p className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No geo data yet. Geo resolution requires deployment on Vercel / Cloudflare.</p>
+                <p className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No geo data yet. Geo resolution requires deployment on Vercel / Cloudflare, or a live server with outbound HTTP access.</p>
               ) : (
-                <div className="space-y-3">
-                  {stats.countries.map((c, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <span className="font-mono-anthropic text-xs text-[var(--text-secondary)] w-4 flex-shrink-0">{i + 1}</span>
-                      <span className="text-base flex-shrink-0">{c.flag}</span>
-                      <span className="font-sans-anthropic text-sm text-[var(--text-charcoal)] flex-1 min-w-0 truncate">{c.name}</span>
-                      <ProgressBar value={c.visitors} max={stats.countries[0]?.visitors || 1} />
-                      <span className="font-mono-anthropic text-xs text-[var(--text-secondary)] flex-shrink-0 w-10 text-right">{fmt(c.visitors)}</span>
-                    </div>
-                  ))}
-                </div>
+                <>
+                  <WorldMap countries={stats.countries} />
+                  <div className="space-y-3 pt-4 border-t border-[var(--border-light)]">
+                    {stats.countries.map((c, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <span className="font-mono-anthropic text-xs text-[var(--text-secondary)] w-4 flex-shrink-0">{i + 1}</span>
+                        <span className="text-base flex-shrink-0">{c.flag}</span>
+                        <span className="font-sans-anthropic text-sm text-[var(--text-charcoal)] flex-1 min-w-0 truncate">{c.name}</span>
+                        <ProgressBar value={c.visitors} max={stats.countries[0]?.visitors || 1} />
+                        <span className="font-mono-anthropic text-xs text-[var(--text-secondary)] flex-shrink-0 w-10 text-right">{fmt(c.visitors)}</span>
+                      </div>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
 
