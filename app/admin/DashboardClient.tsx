@@ -508,6 +508,7 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
   const [activeLogName, setActiveLogName] = useState<string | null>(null);
   const [activeLogContent, setActiveLogContent] = useState<string | null>(null);
   const [isReadingLog, setIsReadingLog] = useState(false);
+  const [isMapStatsExpanded, setIsMapStatsExpanded] = useState(true);
 
   // Automatic real-time refreshing cycle
   useEffect(() => {
@@ -806,106 +807,112 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
         {activeTab === 'audience' && (
           <div className="space-y-8">
 
-            {/* Countries — world map + ranked list */}
-            <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-6">
-              <div>
-                <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Visitor World Map</h2>
-                <p className="font-sans-anthropic text-sm text-[var(--text-secondary)] mt-1">Geographic distribution of your visitors.</p>
-              </div>
-              {stats.countries.length === 0 ? (
-                <p className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No geo data yet. Geo resolution requires deployment on Vercel / Cloudflare, or a live server with outbound HTTP access.</p>
-              ) : (
-                <>
-                  <WorldMap countries={stats.countries} />
-                  <div className="space-y-3 pt-4 border-t border-[var(--border-light)]">
+            {/* Standalone borderless World Map */}
+            <div className="relative w-full h-fit">
+              <WorldMap countries={stats.countries} />
+            </div>
+
+            {/* 2-Column Grid for key audience statistics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Card 1: Visitor Stats */}
+              <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-4">
+                <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Visitor Stats</h2>
+                {stats.countries.length === 0 ? (
+                  <p className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No geo data yet. Geo resolution requires deployment or live traffic.</p>
+                ) : (
+                  <div className="space-y-3">
                     {stats.countries.map((c, i) => (
                       <div key={i} className="flex items-center gap-3">
                         <span className="font-mono-anthropic text-xs text-[var(--text-secondary)] w-4 flex-shrink-0">{i + 1}</span>
-                        <span className="text-base flex-shrink-0">{c.flag}</span>
+                        <span className="text-base flex-shrink-0 leading-none">{c.flag}</span>
                         <span className="font-sans-anthropic text-sm text-[var(--text-charcoal)] flex-1 min-w-0 truncate">{c.name}</span>
                         <ProgressBar value={c.visitors} max={stats.countries[0]?.visitors || 1} />
                         <span className="font-mono-anthropic text-xs text-[var(--text-secondary)] flex-shrink-0 w-10 text-right">{fmt(c.visitors)}</span>
                       </div>
                     ))}
                   </div>
-                </>
-              )}
-            </div>
+                )}
+              </div>
 
-            {/* Screen resolutions */}
-            <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-4">
-              <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Screen Resolutions</h2>
-              {stats.screenResolutions.length === 0 ? (
-                <p className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No data yet.</p>
-              ) : (
-                <div className="space-y-3">
-                  {stats.screenResolutions.map((r, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <span className="font-mono-anthropic text-xs text-[var(--text-charcoal)] flex-shrink-0 w-28">{r.label}</span>
-                      <ProgressBar value={r.count} max={stats.screenResolutions[0]?.count || 1} />
-                      <span className="font-mono-anthropic text-xs text-[var(--text-secondary)] flex-shrink-0">{fmt(r.count)}</span>
+              {/* Card 2: Screen Resolutions */}
+              <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-4">
+                <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Screen Resolutions</h2>
+                {stats.screenResolutions.length === 0 ? (
+                  <p className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No data yet.</p>
+                ) : (
+                  <div className="space-y-3">
+                    {stats.screenResolutions.map((r, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <span className="font-mono-anthropic text-xs text-[var(--text-charcoal)] flex-shrink-0 w-28">{r.label}</span>
+                        <ProgressBar value={r.count} max={stats.screenResolutions[0]?.count || 1} />
+                        <span className="font-mono-anthropic text-xs text-[var(--text-secondary)] flex-shrink-0">{fmt(r.count)}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Card 3: Scroll Depth */}
+              <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-6">
+                <div>
+                  <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Scroll Depth</h2>
+                  <p className="font-sans-anthropic text-sm text-[var(--text-secondary)] mt-1">How far visitors scroll down the page.</p>
+                </div>
+                <div className="space-y-4">
+                  {stats.scrollDepth.map((s, i) => (
+                    <div key={i} className="space-y-1.5">
+                      <div className="flex items-center justify-between">
+                        <span className="font-sans-anthropic text-sm font-semibold text-[var(--text-charcoal)]">Reached {s.pct}%</span>
+                        <div className="flex items-center gap-3">
+                          <span className="font-mono-anthropic text-xs text-[var(--text-secondary)]">{fmt(s.reach)} visitors</span>
+                          <span className="font-mono-anthropic text-sm font-semibold text-[var(--text-charcoal)]">{s.ratio}%</span>
+                        </div>
+                      </div>
+                      <div className="h-2 bg-[var(--border-light)] rounded-full overflow-hidden">
+                        <div
+                          className="h-full rounded-full transition-all duration-700"
+                          style={{
+                            width: `${s.ratio}%`,
+                            background: `hsl(${16 + i * 4}, ${65 - i * 5}%, ${50 + i * 3}%)`,
+                          }}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
-              )}
-            </div>
-
-            {/* Scroll depth */}
-            <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-6">
-              <div>
-                <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Scroll Depth</h2>
-                <p className="font-sans-anthropic text-sm text-[var(--text-secondary)] mt-1">How far visitors scroll down the page.</p>
               </div>
-              <div className="space-y-4">
-                {stats.scrollDepth.map((s, i) => (
-                  <div key={i} className="space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <span className="font-sans-anthropic text-sm font-semibold text-[var(--text-charcoal)]">Reached {s.pct}%</span>
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono-anthropic text-xs text-[var(--text-secondary)]">{fmt(s.reach)} visitors</span>
-                        <span className="font-mono-anthropic text-sm font-semibold text-[var(--text-charcoal)]">{s.ratio}%</span>
-                      </div>
-                    </div>
-                    <div className="h-2 bg-[var(--border-light)] rounded-full overflow-hidden">
-                      <div
-                        className="h-full rounded-full transition-all duration-700"
-                        style={{
-                          width: `${s.ratio}%`,
-                          background: `hsl(${16 + i * 4}, ${65 - i * 5}%, ${50 + i * 3}%)`,
-                        }}
-                      />
-                    </div>
+
+              {/* Card 4: Outbound Clicks */}
+              <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-4">
+                <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Outbound Clicks</h2>
+                {stats.outboundClicks.length === 0 ? (
+                  <p className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No click data yet.</p>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b border-[var(--border-light)]">
+                          {['Link', 'Clicks', 'Last Clicked'].map(h => (
+                            <th key={h} className="font-sans-anthropic text-[10px] font-bold uppercase tracking-wider text-[var(--text-secondary)] pb-2 text-left pr-4">{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {stats.outboundClicks.map((c, i) => (
+                          <tr key={i} className="border-b border-[var(--border-light)]/50 hover:bg-[var(--card-hover-bg)] transition-colors">
+                            <td className="font-sans-anthropic text-sm text-[var(--text-charcoal)] py-3 pr-4 font-semibold">
+                              <div className="truncate max-w-[120px]" title={c.label}>{c.label}</div>
+                              <div className="font-mono-anthropic text-[10px] text-[var(--color-cloud-medium)] truncate max-w-[120px]" title={c.href}>{c.href}</div>
+                            </td>
+                            <td className="font-mono-anthropic text-sm text-[var(--text-charcoal)] py-3 pr-4 font-semibold">{fmt(c.count)}</td>
+                            <td className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)] py-3">{timeAgo(c.lastTs)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
-                ))}
+                )}
               </div>
-            </div>
-
-            {/* Outbound clicks */}
-            <div className="bg-[var(--card-bg)] border border-[var(--border-light)] rounded-2xl p-6 space-y-4">
-              <h2 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">Outbound Clicks</h2>
-              {stats.outboundClicks.length === 0 ? (
-                <p className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No click data yet.</p>
-              ) : (
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-[var(--border-light)]">
-                      {['Link', 'Destination', 'Clicks', 'Last Clicked'].map(h => (
-                        <th key={h} className="font-sans-anthropic text-[10px] font-bold uppercase tracking-wider text-[var(--text-secondary)] pb-2 text-left pr-4">{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {stats.outboundClicks.map((c, i) => (
-                      <tr key={i} className="border-b border-[var(--border-light)]/50 hover:bg-[var(--card-hover-bg)] transition-colors">
-                        <td className="font-sans-anthropic text-sm text-[var(--text-charcoal)] py-3 pr-4 font-semibold">{c.label}</td>
-                        <td className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)] py-3 pr-4 truncate max-w-[160px]">{c.href}</td>
-                        <td className="font-mono-anthropic text-sm text-[var(--text-charcoal)] py-3 pr-4 font-semibold">{fmt(c.count)}</td>
-                        <td className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)] py-3">{timeAgo(c.lastTs)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
             </div>
 
             {/* Page load performance */}
