@@ -26,7 +26,9 @@ interface HoveredInfo {
 export default function WorldMap({ countries }: Props) {
   const [svgContent, setSvgContent] = useState<string>('');
   const [hovered, setHovered] = useState<HoveredInfo | null>(null);
+  
   const containerRef = useRef<HTMLDivElement>(null);
+  const activeCountryCodeRef = useRef<string | null>(null);
 
   // Fetch the detailed world map SVG once on mount
   useEffect(() => {
@@ -64,6 +66,7 @@ export default function WorldMap({ countries }: Props) {
   const countryLookup = new Map(countries.map((c) => [c.code.toLowerCase(), c]));
 
   // Generate dynamic CSS to color individual countries based on traffic (rust accent palette)
+  // Also generates corresponding :hover states with identical specificity to ensure pure CSS transitions
   const stylingRules = countries
     .map((c) => {
       const code = c.code.toLowerCase();
@@ -71,13 +74,18 @@ export default function WorldMap({ countries }: Props) {
       const fill = `rgba(217, 119, 87, ${0.15 + intensity * 0.85})`;
       const stroke = `rgba(217, 119, 87, ${0.4 + intensity * 0.6})`;
       
-      // Target paths directly with this ID or nested inside a group with this ID
       return `
         #world-map #${code} path,
         #world-map path#${code} {
           fill: ${fill} !important;
           stroke: ${stroke} !important;
           stroke-width: 0.6px !important;
+        }
+        #world-map #${code}:hover path,
+        #world-map path#${code}:hover {
+          fill: #dedcd4 !important;
+          stroke: #9b8a78 !important;
+          stroke-width: 0.8px !important;
         }
       `;
     })
@@ -89,48 +97,66 @@ export default function WorldMap({ countries }: Props) {
     const path = target.closest('path');
     if (!path || !containerRef.current) {
       setHovered(null);
+      activeCountryCodeRef.current = null;
       return;
     }
 
     const id = path.id || path.parentElement?.id;
     if (!id) {
       setHovered(null);
+      activeCountryCodeRef.current = null;
       return;
     }
 
     const code = id.toLowerCase();
-    const info = countryLookup.get(code);
 
-    // Get position relative to the container
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    // Only update position/state when entering a new country boundary to snap to centroid
+    if (code !== activeCountryCodeRef.current) {
+      activeCountryCodeRef.current = code;
+      const info = countryLookup.get(code);
 
-    if (info) {
-      setHovered({
-        code: info.code,
-        name: info.name,
-        flag: info.flag,
-        visitors: info.visitors,
-        x,
-        y,
-      });
-    } else {
-      // Resolve unvisited country names and flags natively
-      const uppercaseCode = code.toUpperCase();
-      setHovered({
-        code: uppercaseCode,
-        name: COUNTRY_NAMES[uppercaseCode] || uppercaseCode,
-        flag: countryFlag(uppercaseCode),
-        visitors: 0,
-        x,
-        y,
-      });
+      // Measure the centroid of the country's geometry (mainland or island group)
+      const rect = containerRef.current.getBoundingClientRect();
+      const element = path.parentElement?.id ? path.parentElement : path;
+      const bbox = (element as unknown as SVGGraphicsElement).getBBox();
+      
+      const svgMinX = -10;
+      const svgMinY = 180;
+      const svgWidth = 860;
+      const svgHeight = 520;
+
+      const svgCenterX = bbox.x + bbox.width / 2;
+      const svgCenterY = bbox.y + bbox.height / 2;
+
+      const x = ((svgCenterX - svgMinX) / svgWidth) * rect.width;
+      const y = ((svgCenterY - svgMinY) / svgHeight) * rect.height;
+
+      if (info) {
+        setHovered({
+          code: info.code,
+          name: info.name,
+          flag: info.flag,
+          visitors: info.visitors,
+          x,
+          y,
+        });
+      } else {
+        const uppercaseCode = code.toUpperCase();
+        setHovered({
+          code: uppercaseCode,
+          name: COUNTRY_NAMES[uppercaseCode] || uppercaseCode,
+          flag: countryFlag(uppercaseCode),
+          visitors: 0,
+          x,
+          y,
+        });
+      }
     }
   };
 
   const handleMouseLeave = () => {
     setHovered(null);
+    activeCountryCodeRef.current = null;
   };
 
   return (
@@ -147,9 +173,11 @@ export default function WorldMap({ countries }: Props) {
           stroke: #c3c2be;
           stroke-width: 0.6px;
           paint-order: stroke fill; /* Renders borders underneath fill to merge adjacent lines to exactly 1 border width */
-          transition: fill 0.15s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: fill 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), stroke 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), stroke-width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
           cursor: pointer;
         }
+        /* Pure CSS hover rules for non-traffic landmasses (mainland + islands synced via group hover) */
+        #world-map g[id]:hover path,
         #world-map path:hover {
           fill: #dedcd4 !important;
           stroke: #9b8a78 !important;
@@ -158,7 +186,7 @@ export default function WorldMap({ countries }: Props) {
         @keyframes tooltip-in {
           from {
             opacity: 0;
-            transform: translate(-50%, -95%) scale(0.95);
+            transform: translate(-50%, -92%) scale(0.96);
           }
           to {
             opacity: 1;
@@ -166,7 +194,9 @@ export default function WorldMap({ countries }: Props) {
           }
         }
         .tooltip-animate {
-          animation: tooltip-in 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: tooltip-in 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+          /* Smoothly animate sliding transitions when hovering between adjacent countries */
+          transition: left 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         ${stylingRules}
       `}} />
@@ -185,13 +215,13 @@ export default function WorldMap({ countries }: Props) {
           </div>
         )}
 
-        {/* Hover Tooltip */}
+        {/* Hover Tooltip - Snaps dynamically to country centroid with a liquid sliding transition */}
         {hovered && (
           <div
             style={{
               position: 'absolute',
-              left: hovered.x,
-              top: hovered.y - 12,
+              left: `${hovered.x}px`,
+              top: `${hovered.y - 12}px`,
               pointerEvents: 'none',
               zIndex: 50,
             }}
