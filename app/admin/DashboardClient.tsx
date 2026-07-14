@@ -504,6 +504,15 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
   const [isCollapsed, setIsCollapsed] = useState(false);
   const router = useRouter();
 
+  // Mobile layout state
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hasMobileMenuOpened, setHasMobileMenuOpened] = useState(false);
+
+  const handleMobileToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    if (!hasMobileMenuOpened) setHasMobileMenuOpened(true);
+  };
+
   // State for interactive log viewer
   const [activeLogName, setActiveLogName] = useState<string | null>(null);
   const [activeLogContent, setActiveLogContent] = useState<string | null>(null);
@@ -577,7 +586,7 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
     <div className="flex min-h-screen bg-[var(--bg-warm)]">
 
       {/* ── Sidebar ───────────────────────────── */}
-      <aside className={`bg-[var(--card-bg)] border-r border-[var(--border-light)] flex flex-col justify-between sticky top-0 h-screen transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-30 ${isCollapsed ? 'w-20' : 'w-64'}`}>
+      <aside className={`hidden md:flex flex-col bg-[var(--card-bg)] border-r border-[var(--border-light)] justify-between sticky top-0 h-screen transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-30 ${isCollapsed ? 'w-20' : 'w-64'}`}>
         <div className="flex flex-col flex-1 overflow-y-auto">
           {/* Sidebar Header */}
           <div className="h-16 flex items-center justify-between px-6 border-b border-[var(--border-light)] flex-shrink-0">
@@ -648,6 +657,75 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
 
       {/* ── Main Content Area ─────────────────── */}
       <div className="flex-1 flex flex-col min-w-0 min-h-screen">
+
+        {/* Mobile Sticky Top-Bar Navigation */}
+        <header className="sticky top-0 z-40 bg-[var(--bg-warm)] md:hidden border-b border-[var(--border-light)] flex-shrink-0">
+          <div className="w-full px-6 py-4 flex items-center justify-between relative h-16">
+            <div className="flex items-center gap-2">
+              <span className="font-sans-anthropic text-sm tracking-[0.15em] font-black uppercase text-[var(--text-charcoal)]">
+                SHEHARA
+              </span>
+              <span className="font-mono-anthropic text-[10px] text-[var(--color-cloud-medium)] uppercase tracking-wider">
+                / admin
+              </span>
+            </div>
+
+            {/* Mobile Menu Button with Animated CSS Hamburger Icon */}
+            <button
+              onClick={handleMobileToggle}
+              className="flex flex-col justify-between w-6 h-[16px] text-[var(--text-charcoal)] hover:text-[var(--accent-rust)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] focus:outline-none z-50 relative group"
+              aria-label="Toggle navigation menu"
+            >
+              <span className={`w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${isMobileMenuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+              <span className={`w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${isMobileMenuOpen ? "opacity-0 scale-x-0" : ""}`} />
+              <span className={`w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${isMobileMenuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+            </button>
+
+            {/* Mobile Dropdown Menu with Expanding Motion-Blur Animation */}
+            <div className={`absolute top-[63px] left-0 right-0 bg-[var(--bg-warm)]/95 backdrop-blur-[12px] border-b border-[var(--border-light)] p-6 flex flex-col space-y-4 shadow-md z-40 ${
+              !hasMobileMenuOpened 
+                ? "opacity-0 pointer-events-none hidden" 
+                : isMobileMenuOpen 
+                ? "animate-menu-open" 
+                : "animate-menu-close"
+            }`}>
+              {TABS.map((tab) => {
+                const isActive = activeTab === tab.id;
+                const IconComponent = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      setActiveTab(tab.id);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`flex items-center gap-3 font-mono-anthropic text-[13px] font-semibold tracking-[0.06em] uppercase py-3 px-2 border-b border-[var(--border-light)]/30 last:border-b-0 transition-colors text-left ${
+                      isActive 
+                        ? "text-[var(--accent-rust)]" 
+                        : "text-[var(--text-charcoal)] hover:text-[var(--accent-rust)]"
+                    }`}
+                  >
+                    <IconComponent className="w-4 h-4 flex-shrink-0" />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
+              
+              {/* Mobile Logout Button */}
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  handleLogout();
+                }}
+                disabled={isPending}
+                className="flex items-center gap-3 font-mono-anthropic text-[13px] font-semibold tracking-[0.06em] uppercase py-3 px-2 text-[var(--text-secondary)] hover:text-[var(--accent-rust)] disabled:opacity-50 transition-colors text-left w-full cursor-pointer border-b border-[var(--border-light)]/30 last:border-b-0"
+              >
+                <LogOut className="w-4 h-4 flex-shrink-0" />
+                <span>Sign Out</span>
+              </button>
+            </div>
+          </div>
+        </header>
 
         {/* Main View Container */}
         <main className="flex-1 p-6 md:p-10 space-y-8 overflow-y-auto max-w-7xl w-full mx-auto">

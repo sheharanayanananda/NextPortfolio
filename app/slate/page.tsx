@@ -9,8 +9,8 @@ import Header from "../components/Header";
 
 export default function SlatePage() {
   const [mounted, setMounted] = useState(false);
-  const [activeVersion, setActiveVersion] = useState<"origin" | "agentic">("origin");
-  const [prevVersion, setPrevVersion] = useState<"origin" | "agentic">("origin");
+  const [activeVersion, setActiveVersion] = useState<"origin" | "agentic">("agentic");
+  const [prevVersion, setPrevVersion] = useState<"origin" | "agentic">("agentic");
   const [animDir, setAnimDir] = useState<"right" | "left">("right");
   const featureRef = useRef<HTMLDivElement>(null);
   const switcherContainerRef = useRef<HTMLDivElement>(null);
@@ -40,10 +40,37 @@ export default function SlatePage() {
 
   const switchVersion = (v: "origin" | "agentic") => {
     if (v === activeVersion) return;
-    setAnimDir(v === "agentic" ? "right" : "left");
+    setAnimDir(v === "origin" ? "right" : "left");
     setPrevVersion(activeVersion);
     setActiveVersion(v);
   };
+
+  const agenticFeatures = [
+    {
+      index: "01",
+      title: "AI Chat Command Centre",
+      description:
+        "A clean chat view that connects directly to all your notes. Ask the assistant questions, ask it to summarize a thread, or draft new ideas from your saved info.",
+    },
+    {
+      index: "02",
+      title: "Generative UI on Demand",
+      description:
+        "Tailored specifically to your current task. The assistant renders interactive, custom-fit UI modules inline to visualize data, run calculations, or manage checksheets dynamically.",
+    },
+    {
+      index: "03",
+      title: "Cloud LLM Presets",
+      description:
+        "Quickly swap model settings for what you need. Choose from Balanced, Deep Reasoning, Creative Drafts, or Quick Fixes to match the task.",
+    },
+    {
+      index: "04",
+      title: "Rich File Attachments",
+      description:
+        "Drop in PDFs, Word docs, images, or ZIP files. The custom parser extracts the text instantly so your AI assistant can read and discuss them.",
+    },
+  ];
 
   const originFeatures = [
     {
@@ -72,40 +99,7 @@ export default function SlatePage() {
     },
   ];
 
-  const agenticFeatures = [
-    {
-      index: "01",
-      title: "AI Chat Command Centre",
-      description:
-        "A clean chat view that connects directly to all your notes. Ask the assistant questions, ask it to summarize a thread, or draft new ideas from your saved info.",
-    },
-    {
-      index: "02",
-      title: "Cloud LLM Presets",
-      description:
-        "Quickly swap model settings for what you need. Choose from Balanced, Deep Reasoning, Creative Drafts, or Quick Fixes to match the task.",
-    },
-    {
-      index: "03",
-      title: "Rich File Attachments",
-      description:
-        "Drop in PDFs, Word docs, images, or ZIP files. The custom parser extracts the text instantly so your AI assistant can read and discuss them.",
-    },
-    {
-      index: "04",
-      title: "Formatted AI Output",
-      description:
-        "Everything renders cleanly with full Markdown and LaTeX support. Complex equations, tables, and code blocks scroll smoothly.",
-    },
-  ];
-
-  const currentFeatures = activeVersion === "origin" ? originFeatures : agenticFeatures;
-
-  const originStats = [
-    { value: "iOS 17+", label: "Platform" },
-    { value: "Swift", label: "Language" },
-    { value: "MIT", label: "License" },
-  ];
+  const currentFeatures = activeVersion === "agentic" ? agenticFeatures : originFeatures;
 
   const agenticStats = [
     { value: "iOS 17+", label: "Platform" },
@@ -113,15 +107,21 @@ export default function SlatePage() {
     { value: "Private", label: "License" },
   ];
 
-  const currentStats = activeVersion === "origin" ? originStats : agenticStats;
+  const originStats = [
+    { value: "iOS 17+", label: "Platform" },
+    { value: "Swift", label: "Language" },
+    { value: "MIT", label: "License" },
+  ];
 
-  const originPullQuote =
-    "A simple, clean note taking workflow where your data is stored locally and stays yours.";
+  const currentStats = activeVersion === "agentic" ? agenticStats : originStats;
+
   const agenticPullQuote =
     "A workspace that acts as a second brain, turning static text into active conversations.";
+  const originPullQuote =
+    "A simple, clean note taking workflow where your data is stored locally and stays yours.";
 
-  const originTechStack = "Swift · SwiftUI · SwiftData · VisionKit · PDFKit";
   const agenticTechStack = "Swift · SwiftUI · MathJax · Ollama · SwiftData";
+  const originTechStack = "Swift · SwiftUI · SwiftData · VisionKit · PDFKit";
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-warm)] text-[var(--text-charcoal)] font-sans-anthropic">
@@ -153,22 +153,22 @@ export default function SlatePage() {
           {/* CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-2">
             <a
-              href="https://github.com/sheharanayanananda/Slate"
+              href="https://github.com/sheharanayanananda/Slate/tree/v2"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] border border-[var(--text-charcoal)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 hover:bg-transparent hover:text-[var(--text-charcoal)] rounded-xl"
             >
               <Github className="w-3.5 h-3.5" />
-              View Origin
+              View Agentic
             </a>
             <a
-              href="https://github.com/sheharanayanananda/Slate-V2"
+              href="https://github.com/sheharanayanananda/Slate"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-[var(--text-charcoal)] text-[var(--text-charcoal)] bg-transparent px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 hover:bg-[var(--text-charcoal)] hover:text-[var(--bg-warm)] rounded-xl"
             >
               <Github className="w-3.5 h-3.5" />
-              View Agentic
+              View Origin
             </a>
           </div>
 
@@ -194,17 +194,6 @@ export default function SlatePage() {
               }}
             />
             <button
-              onClick={() => switchVersion("origin")}
-              data-active={activeVersion === "origin"}
-              className={`relative z-10 px-5 py-2 font-sans-anthropic font-semibold text-[11px] tracking-[0.04em] uppercase transition-colors duration-300 rounded-full ${
-                activeVersion === "origin"
-                  ? "text-[var(--bg-warm)]"
-                  : "text-[#b0aea5] hover:text-[var(--text-charcoal)]"
-              }`}
-            >
-              Origin
-            </button>
-            <button
               onClick={() => switchVersion("agentic")}
               data-active={activeVersion === "agentic"}
               className={`relative z-10 px-5 py-2 font-sans-anthropic font-semibold text-[11px] tracking-[0.04em] uppercase transition-colors duration-300 rounded-full ${
@@ -214,6 +203,17 @@ export default function SlatePage() {
               }`}
             >
               Agentic
+            </button>
+            <button
+              onClick={() => switchVersion("origin")}
+              data-active={activeVersion === "origin"}
+              className={`relative z-10 px-5 py-2 font-sans-anthropic font-semibold text-[11px] tracking-[0.04em] uppercase transition-colors duration-300 rounded-full ${
+                activeVersion === "origin"
+                  ? "text-[var(--bg-warm)]"
+                  : "text-[#b0aea5] hover:text-[var(--text-charcoal)]"
+              }`}
+            >
+              Origin
             </button>
           </div>
         </div>
@@ -246,16 +246,30 @@ export default function SlatePage() {
                   priority
                 />
                 {activeVersion === "agentic" && (
-                  <div className="absolute inset-0 bg-[var(--bg-warm)]/75 backdrop-blur-md flex flex-col items-center justify-center gap-4">
-                    <div className="font-mono-anthropic text-[10px] tracking-[0.18em] uppercase text-[var(--text-charcoal)]">
-                      In development
+                  <div className="absolute inset-0 bg-[#141413]/90 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center text-[#f0eee6]">
+                    <div className="font-mono-anthropic text-[10px] tracking-[0.2em] uppercase text-[var(--accent-rust)] mb-2 font-bold">
+                      SLATE V2
                     </div>
-                    <div className="font-serif-anthropic text-3xl font-normal text-[var(--text-charcoal)]">
-                      Coming soon
+                    <div className="font-serif-anthropic text-2xl font-normal mb-3 text-white">
+                      Agentic Command Center
                     </div>
-                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)] opacity-60 text-center max-w-[220px] leading-relaxed">
-                      Preview images will be available at launch.
+                    <p className="font-serif-anthropic text-xs opacity-80 max-w-[280px] leading-relaxed mb-6">
+                      A physics-based glass capsule, multi-model reasoning engines, and custom document extraction workspace. Media preview coming soon.
                     </p>
+                    <div className="w-full max-w-[280px] space-y-2.5 text-left border-t border-white/10 pt-4 font-sans-anthropic text-[11px] tracking-wide text-white/70">
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
+                        <span>Multi-session chat history</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
+                        <span>Interactive Markdown &amp; LaTeX</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
+                        <span>Generative UIs on demand</span>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
@@ -275,15 +289,15 @@ export default function SlatePage() {
                 }`}
               >
                 <div className="font-mono-anthropic text-[10px] tracking-[0.18em] uppercase text-[var(--text-charcoal)]">
-                  {activeVersion === "origin" ? "Open Source · MIT License" : "Proprietary · Coming Soon"}
+                  {activeVersion === "origin" ? "Open Source · MIT License" : "Proprietary · Source-Available"}
                 </div>
                 <h2 className="font-serif-anthropic text-4xl lg:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
                   Slate {activeVersion === "origin" ? "Origin" : "Agentic"}
                 </h2>
                 <p className="font-serif-anthropic text-lg font-normal text-[var(--text-charcoal)] opacity-70 leading-[1.7] max-w-sm">
                   {activeVersion === "origin"
-                    ? "The original Slate. A fast, private notes app for iOS. Completely offline-first, markdown-native, and fully open source."
-                    : "Rebuilt for the AI era. Slate Agentic brings a helper right into your workspace that knows your notes and can research, organize, and summarize them."}
+                    ? "The original Slate. A fast, private notes app for iOS with local-first storage and cloud-powered AI assistance."
+                    : "Rebuilt for the AI era. Slate Agentic integrates a cloud-hosted LLM assistant directly into your local-first workspace to research, organize, and summarize notes."}
                 </p>
               </div>
 
@@ -427,13 +441,13 @@ export default function SlatePage() {
             {/* Right: actions */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <a
-                href="https://github.com/sheharanayanananda/Slate"
+                href="https://github.com/sheharanayanananda/Slate/tree/v2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[var(--accent-rust)] hover:bg-[var(--accent-rust-hover)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-white transition-colors rounded-xl"
               >
                 <Github className="w-3.5 h-3.5" />
-                Slate Origin on GitHub
+                Slate Agentic on GitHub
               </a>
               <Link
                 href="/"
