@@ -44,9 +44,9 @@ export default function WorldMap({ countries }: Props) {
           .replace(/<!DOCTYPE[^>]*>/i, '')
           .replace(/<title>[^<]*<\/title>/i, '');
         
-        // Dynamically widen viewBox to ensure zero cropping on Alaska, Siberia, or South America
+        // Dynamically widen viewBox to ensure zero cropping on Alaska, Siberia, or South America (detailed map native viewBox is 0 0 1010 666)
         clean = clean
-          .replace(/viewBox="[^"]*"/i, 'viewBox="-10 180 860 520"')
+          .replace(/viewBox="[^"]*"/i, 'viewBox="-20 -20 1050 706"')
           .replace(/width="[^"]*"/i, 'width="100%"')
           .replace(/height="[^"]*"/i, 'height="100%"');
 
@@ -120,10 +120,10 @@ export default function WorldMap({ countries }: Props) {
       const element = path.parentElement?.id ? path.parentElement : path;
       const bbox = (element as unknown as SVGGraphicsElement).getBBox();
       
-      const svgMinX = -10;
-      const svgMinY = 180;
-      const svgWidth = 860;
-      const svgHeight = 520;
+      const svgMinX = -20;
+      const svgMinY = -20;
+      const svgWidth = 1050;
+      const svgHeight = 706;
 
       const svgCenterX = bbox.x + bbox.width / 2;
       const svgCenterY = bbox.y + bbox.height / 2;
@@ -171,8 +171,10 @@ export default function WorldMap({ countries }: Props) {
         #world-map path {
           fill: #e6e4dc;
           stroke: #c3c2be;
-          stroke-width: 0.6px;
-          paint-order: stroke fill; /* Renders borders underneath fill to merge adjacent lines to exactly 1 border width */
+          stroke-width: 0.45px;
+          shape-rendering: geometricPrecision; /* Forces high-quality anti-aliased rendering of vector shapes */
+          stroke-linecap: round;
+          stroke-linejoin: round; /* Smooths path joins and prevents jagged corners */
           transition: fill 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), stroke 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), stroke-width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
           cursor: pointer;
         }
