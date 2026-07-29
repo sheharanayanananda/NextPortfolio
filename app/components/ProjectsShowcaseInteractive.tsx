@@ -18,24 +18,32 @@ const projects: Project[] = [
   {
     title: "UNiFY",
     tech: ["Flutter", "Dart", "Python", "Flask", "PostgreSQL", "WebSockets", "Redis", "AWS", "Stripe", "NFC"],
-    description: "Backend and Mobile engineer for a multi-platform sports app (NBA, WNBA, NFL, NCAA). Refactored key modules, built real-time WebSocket messaging and scores, and integrated NFC 'Baller Band' support.",
-    longDescription: "Collaborated on building a real-time sports ecosystem supporting a massive US fanbase across multiple sports. Focused on implementing low-latency features including live score boards and chatrooms via WebSockets, refactoring modular components in Flutter, and developing REST APIs using Flask. High-volume database workflows were optimized using PostgreSQL and Redis caching. Source code is restricted under commercial IP protections.",
+    description: "Backend and Mobile developer for a multi-platform sports app (NBA, WNBA, NFL, NCAA). Refactored key modules using Provider and go_router, built real-time WebSocket messaging and scores, and integrated NFC 'Baller Band' support.",
+    longDescription: "Mobile and backend developer on UNiFY, a multi-platform sports ecosystem for NBA, WNBA, NFL, and NCAA fans built with Flutter and Python/Flask. Joined to stabilize and extend an inherited codebase. Implemented Provider state management, go_router navigation, low-latency WebSockets for live scores & chat, media streaming, push notifications, NFC 'Baller Band' fan interaction, PostgreSQL/Redis pipelines, and Stripe payments on AWS.",
     repoStatus: "private",
     featured: true
   },
   {
     title: "Deurbeslag Gigant",
-    tech: ["PHP", "Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "MySQL"],
-    description: "Centralized e-commerce inventory and order management system for a Dutch retail platform. Automated legacy workflows, synchronized real-time stocks across external APIs, and designed filament-driven V2 interfaces.",
-    longDescription: "As the lead developer, I refactored the core logistics and inventory tracking system of a large Dutch e-commerce storefront. The platform integrates with external vendor shipping APIs and local retail inventory networks, automating processes that previously required hours of manual labor. Built entirely on Laravel with Livewire and Filament panels to manage high-throughput operations. The source code is commercial IP and closed for proprietary protection.",
+    tech: ["PHP", "Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "MySQL", "Meilisearch", "WooCommerce API", "GLS API", "DHL API"],
+    description: "Centralized e-commerce inventory and order management system for a Dutch retailer. Synchronized real-time stocks across 5+ WooCommerce stores and Bol.com API, with Meilisearch and GLS/DHL label printing automation.",
+    longDescription: "As the lead full-stack developer, I built Empire—a centralized inventory and order management system for a Dutch retailer handling 50,000+ products and syncing stock across 5+ WooCommerce stores and Bol.com API in real time. Replaced slow SQL searches with Meilisearch for typo-tolerant full-text search, automated fulfillment with GLS/DHL label printing, and automated Dropbox document delivery to warehouse printers.",
     repoStatus: "private",
     featured: true
   },
   {
     title: "ECore Web & Mobile Automation",
-    tech: ["PHP", "Laravel", "Flutter", "Dart", "MySQL", "REST APIs"],
+    tech: ["Flutter", "Dart", "PHP", "Laravel", "MySQL", "REST APIs", "WebSockets", "Livewire 3"],
     description: "Enterprise system for BetonStorten.nl automating concrete order logistics, heavy machinery, work orders, and personnel planning with custom algorithmic tracking and real-time syncing.",
-    longDescription: "An end-to-end automation application handling logistics, driver routing, concrete volume calculations, and personnel workflow schedules. Built the core web portals using Laravel and matching mobile components in Flutter to support remote transit tracking. To safeguard intellectual property, the active repository remains set to private status.",
+    longDescription: "Served as Lead Developer for the companion mobile app (Flutter/Dart) of ECore—a backend automation platform for BetonStorten.nl managing orders, inventory, machinery, and personnel—and contributed to the core Laravel web app. Delivered real-time order tracking, worker coordination, and live machinery status over REST APIs and WebSockets.",
+    repoStatus: "private",
+    featured: true
+  },
+  {
+    title: "BusinessLabels.nl (BBNL)",
+    tech: ["React", "Next.js", "Tailwind CSS", "Radix UI", "Laravel REST API", "Node.js", "PM2"],
+    description: "Dutch B2B e-commerce platform for industrial label printers and custom label media, connecting a modern React frontend to a Laravel REST API backend across 50,000+ product combinations.",
+    longDescription: "Participated in the full-scale website rebuild of BusinessLabels.nl, a Dutch B2B e-commerce platform for industrial label printers and custom media. Translated Figma designs into responsive React/Tailwind/Radix UI components, integrated Next.js pages with Laravel REST APIs for customer accounts and dynamic material listings, resolved cart/payment bugs, and handled deployment with Node.js and PM2.",
     repoStatus: "private",
     featured: true
   },

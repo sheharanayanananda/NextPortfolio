@@ -145,10 +145,10 @@ export default function Home() {
 
           <div className="space-y-8 text-xl leading-[1.7] text-[var(--text-secondary)]/80 font-sans-anthropic max-w-3xl mx-auto font-normal">
             <p>
-              I specialize in engineering mobile applications with a focus on fluid animations, modular systems, and robust offline architectures. Whether developing natively or leveraging cross-platform frameworks, my focus is on bridging platform capabilities with high-fidelity, intuitive interfaces.
+              I am a Software Engineer with a strong track record building and shipping both mobile and web applications end to end. I develop cross-platform and native mobile apps with Flutter and Swift, and build secure, scalable web applications across the stack—from PHP and Laravel to modern JavaScript frameworks like Next.js.
             </p>
             <p>
-              Beyond mobile architectures, I design web applications and backend infrastructures. By organizing relational databases, optimizing APIs, and assembling responsive interfaces, I build scalable systems that handle high data volumes and support clean, modern user workflows.
+              Comfortable owning features from API and database design (PostgreSQL, MySQL, Redis) through to polished user-facing interfaces, I apply modern architecture patterns, clean state management, and robust real-time APIs (WebSockets, REST) to deliver reliable, high-performance products.
             </p>
 
             <blockquote className="border-l-3 border-[var(--accent-rust)] pl-6 py-2 my-10 text-left italic font-serif-anthropic font-medium text-[var(--text-charcoal)] max-w-2xl mx-auto">
@@ -204,13 +204,13 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
                     <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--accent-rust)] font-bold">
-                      Upwork & Private Contracts
+                      Freelance (Upwork &amp; Private Contracts)
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Freelance Software Engineer
+                      Software Engineer
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Hybrid, Finland
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote - EU, EEA, USA
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
@@ -221,7 +221,7 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY Sports Ecosystem:</strong> Stabilized, refactored, and optimized a multi-platform sports app (NBA/NFL) built on Flutter and Python/Flask. Leveraged Provider and go_router for modular state, implemented WebSockets live scoreboards, integrated Stripe payments, and optimized queries under high load.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY (USA Based Contract):</strong> Stabilized, refactored, and extended a multi-platform sports ecosystem (NBA, WNBA, NFL, NCAA) with a Flutter frontend and Python/Flask backend. Implemented Provider state management, go_router navigation, WebSockets live scores &amp; chat, media streaming, push notifications, NFC "Baller Band" fan integration, PostgreSQL/Redis data pipelines, and Stripe payments on AWS.
                     </p>
                   </div>
                 </div>
@@ -254,13 +254,19 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Led development of a PHP/Laravel inventory platform syncing stock and orders for 50,000+ products across 5+ WooCommerce stores. Stabilized codebase using best practices, integrated Meilisearch full-text indexing, automated warehouse logistics using DHL/GLS APIs, and integrated remote document printing.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Led full-stack development of Empire, a centralized inventory and order management system for a Dutch retailer syncing 50,000+ products across 5+ WooCommerce stores and Bol.com API in real time. Integrated Meilisearch full-text search, automated fulfillment via GLS/DHL label printing, and automated Dropbox document delivery.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore (Web &amp; Mobile):</strong> Engineered a backend logistics and automation platform (BetonStorten.nl) managing orders, routing, and inventory. Developed core business rules in Laravel, optimized heavy database schemas, and built a Flutter companion app for real-time driver tracking.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore (Web &amp; Mobile):</strong> Served as Lead Developer for the companion mobile app (Flutter/Dart) and core Laravel web backend for BetonStorten.nl, delivering real-time order tracking, worker coordination, and machinery status via REST APIs and WebSockets.
+                    </p>
+                  </div>
+                  <div className="flex gap-2.5 items-start">
+                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
+                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">BusinessLabels.nl (BBNL):</strong> Participated in the full-scale website rebuild of a Dutch B2B industrial label e-commerce platform. Built modular React components with Tailwind CSS and Radix UI, integrated Next.js pages with Laravel REST APIs for 50,000+ product combinations, and configured PM2 Node.js daemon deployments.
                     </p>
                   </div>
                 </div>
