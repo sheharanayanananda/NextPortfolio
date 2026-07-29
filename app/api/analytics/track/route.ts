@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       req.headers.get('x-real-ip') ||
       '0.0.0.0';
 
-    // Resolve geo country — CDN headers first (Vercel / Cloudflare)
+    // Resolve geo country: CDN headers first (Vercel / Cloudflare)
     let country =
       req.headers.get('x-vercel-ip-country') ||
       req.headers.get('cf-ipcountry') ||

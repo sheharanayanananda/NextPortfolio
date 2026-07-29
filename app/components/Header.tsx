@@ -24,8 +24,8 @@ export default function Header() {
   ];
 
   return (
-    <header className={`sticky top-0 z-50 bg-[var(--bg-warm)] transition-colors duration-300 ${
-      isOpen ? "border-b border-transparent" : "border-b border-[var(--border-light)]"
+    <header className={`sticky top-0 z-50 bg-[var(--bg-warm)]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[var(--bg-warm)]/75 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.03)] ${
+      isOpen ? "border-b border-transparent" : "border-b border-[var(--border-light)]/70"
     }`}>
       <div className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-4 flex items-center justify-between relative">
         <Link

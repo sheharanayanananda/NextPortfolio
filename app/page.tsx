@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import SlateShowcase from "./components/SlateShowcase";
 import TypingGreeting from "./components/TypingGreeting";
 import ProjectsShowcase from "./components/ProjectsShowcase";
+import ArcCardInteractive from "./components/ArcCardInteractive";
 
 export default function Home() {
   return (
@@ -31,10 +32,10 @@ export default function Home() {
 
 
             <p className="font-sans-anthropic text-xl text-[var(--text-charcoal)] leading-[1.7] font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mt-7">
-              Freelance Software Engineer and Software Engineering student at TAMK designing and shipping high-performance mobile apps, full-stack systems, and real-time APIs.
+              Building apps that people love to use. Software Engineer and student at TAMK crafting fast mobile apps, simple web tools, and reliable real-time systems with care.
             </p>
 
-            {/* Inline contact icons — shown below lg, hidden on lg+ where floating buttons appear */}
+            {/* Inline contact icons: shown below lg, hidden on lg+ where floating buttons appear */}
             <div className="flex lg:hidden items-center gap-6 mt-6 text-[var(--text-charcoal)]">
               <a
                 href="mailto:sheharanayanananda@gmail.com"
@@ -119,10 +120,8 @@ export default function Home() {
 
 
 
-              {/* Arc Card */}
-              <div className="absolute inset-0 overflow-hidden border border-[var(--border-light)] bg-[var(--card-bg)] z-10" style={{ borderRadius: "16px" }}>
-                <Image src="/arc_card.svg" alt="Arc Card, Thineth Shehara, Software Engineer" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
-              </div>
+              {/* Arc Card with 3D Push-Away Reaction */}
+              <ArcCardInteractive />
             </div>
           </div>
 
@@ -145,10 +144,10 @@ export default function Home() {
 
           <div className="space-y-8 text-xl leading-[1.7] text-[var(--text-secondary)]/80 font-sans-anthropic max-w-3xl mx-auto font-normal">
             <p>
-              I am a Software Engineer with a strong track record building and shipping both mobile and web applications end to end. I develop cross-platform and native mobile apps with Flutter and Swift, and build secure, scalable web applications across the stack—from PHP and Laravel to modern JavaScript frameworks like Next.js.
+              I build mobile and web applications with a focus on simplicity, speed, and clean design. Whether creating a mobile app for iOS and Android or a full web platform, I turn complex ideas into reliable products that run smoothly for real people.
             </p>
             <p>
-              Comfortable owning features from API and database design (PostgreSQL, MySQL, Redis) through to polished user-facing interfaces, I apply modern architecture patterns, clean state management, and robust real-time APIs (WebSockets, REST) to deliver reliable, high-performance products.
+              From database design to polished interfaces, I take pride in making things easy to use, fast to load, and built to last.
             </p>
 
             <blockquote className="border-l-3 border-[var(--accent-rust)] pl-6 py-2 my-10 text-left italic font-serif-anthropic font-medium text-[var(--text-charcoal)] max-w-2xl mx-auto">
@@ -221,7 +220,7 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY (USA Based Contract):</strong> Stabilized, refactored, and extended a multi-platform sports ecosystem (NBA, WNBA, NFL, NCAA) with a Flutter frontend and Python/Flask backend. Implemented Provider state management, go_router navigation, WebSockets live scores &amp; chat, media streaming, push notifications, NFC "Baller Band" fan integration, PostgreSQL/Redis data pipelines, and Stripe payments on AWS.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY (USA Based Contract):</strong> Mobile and backend developer for UNiFY, a sports app for NBA, WNBA, NFL, and NCAA fans built with Flutter and Python/Flask. Improved app speed, built real-time live scores and instant chatrooms, added video streaming, push notifications, NFC Baller Band fan integration, and secure payments so thousands of fans stay connected effortlessly during live games.
                     </p>
                   </div>
                 </div>
@@ -254,19 +253,19 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Led full-stack development of Empire, a centralized inventory and order management system for a Dutch retailer syncing 50,000+ products across 5+ WooCommerce stores and Bol.com API in real time. Integrated Meilisearch full-text search, automated fulfillment via GLS/DHL label printing, and automated Dropbox document delivery.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Led full-stack development of Empire, a central inventory system for a Dutch retailer. Synced stock, pricing, and orders for 50,000+ products across 5+ WooCommerce stores and Bol.com in real time. Added instant typo-tolerant search with Meilisearch, automated DHL/GLS shipping label printing, and automated warehouse document delivery.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore (Web &amp; Mobile):</strong> Served as Lead Developer for the companion mobile app (Flutter/Dart) and core Laravel web backend for BetonStorten.nl, delivering real-time order tracking, worker coordination, and machinery status via REST APIs and WebSockets.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore (Web &amp; Mobile):</strong> Served as Lead Developer for the companion mobile app (Flutter) and core Laravel web platform for BetonStorten.nl. Built real-time order tracking, driver routing, and machinery status over WebSockets and REST APIs, giving managers and workers total peace of mind.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">BusinessLabels.nl (BBNL):</strong> Participated in the full-scale website rebuild of a Dutch B2B industrial label e-commerce platform. Built modular React components with Tailwind CSS and Radix UI, integrated Next.js pages with Laravel REST APIs for 50,000+ product combinations, and configured PM2 Node.js daemon deployments.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">BusinessLabels.nl (BBNL):</strong> Rebuilt a Dutch B2B e-commerce store for industrial printers and custom labels. Created responsive React components with Tailwind CSS and Radix UI, connected Next.js pages to a Laravel API across 50,000+ product combos, and set up continuous server uptime with PM2.
                     </p>
                   </div>
                 </div>
@@ -299,13 +298,13 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Portals:</strong> Architected responsive database-driven web platforms using PHP, Laravel, and MySQL, including a migration consultancy site with client onboarding flows and a photographer portfolio with a custom administrative media panel.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Portals:</strong> Built responsive database-driven websites using PHP, Laravel, and MySQL, including a migration consultancy platform with client onboarding flows and a photographer portfolio with a custom media panel.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Engineering:</strong> Engineered custom pharmacy inventory controls and a dual-app supermarket POS/management solution in C# and .NET using shared SQL server databases for real-time synchronization.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Engineering:</strong> Built custom desktop software in C# and .NET, including a pharmacy inventory manager and a two-part supermarket checkout system sharing a single database for real-time stock sync.
                     </p>
                   </div>
                 </div>
@@ -542,17 +541,17 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto pt-6 items-stretch">
-            {/* Card 1: iOS & Swift (Left) */}
+            {/* Card 1: Mobile & Backend (Left) */}
             <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
-                  iOS &amp; Swift
+                  Mobile &amp; Backend
                 </span>
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
-                  Slate Notes Application
+                  UNiFY &amp; Mobile Contracts
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
-                  Designing Slate V1 and V2 notes engines, implementing autonomous context-aware note processing, high-fidelity markdown/LaTeX render passes, and offline local-first database models.
+                  Building real-time sports apps, WebSocket scoreboards, and smooth mobile experiences for users across iOS and Android.
                 </p>
               </div>
             </div>
@@ -564,10 +563,10 @@ export default function Home() {
                   TAMK / Finland
                 </span>
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
-                  Academic Relocation
+                  Software Engineering B.Eng
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
-                  Commencing undergraduate studies in the Bachelor of Engineering in Software Engineering at Tampere University of Applied Sciences (TAMK) in Tampere, Finland.
+                  Commencing undergraduate studies in Software Engineering at Tampere University of Applied Sciences (TAMK) in Tampere, Finland.
                 </p>
               </div>
             </div>
@@ -582,7 +581,7 @@ export default function Home() {
                   Freelance &amp; Remote Projects
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
-                  Actively accepting contracts for backend integrations (Laravel/PHP) and cross-platform native apps (Flutter/Swift/Dart) globally.
+                  Actively accepting contracts for web platforms (Laravel/PHP/Next.js) and mobile apps (Flutter/Swift) worldwide.
                 </p>
               </div>
             </div>

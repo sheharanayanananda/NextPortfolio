@@ -5,25 +5,25 @@ export default function ProjectsShowcaseStatic() {
     {
       title: "UNiFY",
       tech: ["Flutter", "Dart", "Python", "Flask", "PostgreSQL", "WebSockets", "Redis", "AWS", "Stripe", "NFC"],
-      description: "Backend and Mobile developer for a multi-platform sports app (NBA, WNBA, NFL, NCAA). Refactored key modules using Provider and go_router, built real-time WebSocket messaging and scores, and integrated NFC 'Baller Band' support.",
+      description: "Bringing excitement to sports fans with real-time live scores, fast chat, and connected wearable bands for NBA, WNBA, NFL, and NCAA games.",
       repoStatus: "private"
     },
     {
       title: "Deurbeslag Gigant",
       tech: ["PHP", "Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "MySQL", "Meilisearch", "WooCommerce API", "GLS API", "DHL API"],
-      description: "Centralized e-commerce inventory and order management system for a Dutch retailer. Synchronized real-time stocks across 5+ WooCommerce stores and Bol.com API, with Meilisearch and GLS/DHL label printing automation.",
+      description: "Making online shopping effortless for a Dutch store by keeping 50,000+ products perfectly in sync and shipping automatically.",
       repoStatus: "private"
     },
     {
       title: "ECore Web & Mobile Automation",
       tech: ["Flutter", "Dart", "PHP", "Laravel", "MySQL", "REST APIs", "WebSockets", "Livewire 3"],
-      description: "Enterprise system for BetonStorten.nl automating concrete order logistics, heavy machinery, work orders, and personnel planning with custom algorithmic tracking and real-time syncing.",
+      description: "Giving drivers and managers peace of mind with real-time tracking for concrete orders, work schedules, and heavy machinery.",
       repoStatus: "private"
     },
     {
       title: "BusinessLabels.nl (BBNL)",
       tech: ["React", "Next.js", "Tailwind CSS", "Radix UI", "Laravel REST API", "Node.js", "PM2"],
-      description: "Dutch B2B e-commerce platform for industrial label printers and custom label media, connecting a modern React frontend to a Laravel REST API backend across 50,000+ product combinations.",
+      description: "Creating a smooth, fast shopping experience for industrial label printers and custom print media across 50,000+ product choices.",
       repoStatus: "private"
     }
   ];

@@ -15,7 +15,7 @@ export default function Footer() {
               SHEHARA
             </Link>
             <p className="text-base text-[var(--text-secondary)]/80 leading-relaxed max-w-sm font-sans-anthropic font-normal">
-              Software Engineer at TAMK specializing in full-stack web platforms with Laravel/Next.js and cross-platform mobile apps with Flutter/Swift.
+              Software Engineer at TAMK crafting fast mobile apps, simple web tools, and reliable real-time systems with care.
             </p>
           </div>
 
@@ -88,7 +88,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-[var(--border-light)] pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-sans-anthropic uppercase tracking-wider font-semibold text-[var(--text-secondary)]/60">
+        <div className="border-t border-[var(--border-light)] pt-8 flex items-center justify-center text-center text-xs font-sans-anthropic uppercase tracking-wider font-semibold text-[var(--text-secondary)]/60">
           <p>© 2026 Thineth Shehara. All rights reserved.</p>
         </div>
 

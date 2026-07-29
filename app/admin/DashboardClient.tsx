@@ -45,7 +45,7 @@ function fmt(n: number): string {
 }
 
 function timeAgo(ts: number): string {
-  if (!ts) return '—';
+  if (!ts) return '-';
   const s = Math.floor((Date.now() - ts) / 1000);
   if (s < 60) return `${s}s ago`;
   if (s < 3600) return `${Math.floor(s / 60)}m ago`;
@@ -448,29 +448,29 @@ interface SEOCheck {
 function getSEOChecks(): SEOCheck[] {
   return [
     // Meta
-    { category: 'Meta', check: 'Title tag present', status: 'pass', detail: '"Thineth Shehara" — 16 chars' },
-    { category: 'Meta', check: 'Title length (10–60 chars)', status: 'pass', detail: '16 chars — within recommended range' },
-    { category: 'Meta', check: 'Meta description present', status: 'pass', detail: 'Describes portfolio + TAMK — 153 chars' },
-    { category: 'Meta', check: 'Meta description length (50–160 chars)', status: 'pass', detail: '153 chars — within recommended range' },
+    { category: 'Meta', check: 'Title tag present', status: 'pass', detail: '"Thineth Shehara" : 16 chars' },
+    { category: 'Meta', check: 'Title length (10 to 60 chars)', status: 'pass', detail: '16 chars : within recommended range' },
+    { category: 'Meta', check: 'Meta description present', status: 'pass', detail: 'Describes portfolio + TAMK : 153 chars' },
+    { category: 'Meta', check: 'Meta description length (50 to 160 chars)', status: 'pass', detail: '153 chars : within recommended range' },
     { category: 'Meta', check: 'Favicon configured', status: 'pass', detail: '/logo.png (PNG)' },
-    { category: 'Meta', check: 'Open Graph image', status: 'warn', detail: 'og:image not set — social share previews will lack a thumbnail' },
-    { category: 'Meta', check: 'Open Graph title / description', status: 'warn', detail: 'og:title and og:description not explicitly set' },
-    { category: 'Meta', check: 'Twitter card meta', status: 'warn', detail: 'twitter:card not configured' },
-    { category: 'Meta', check: 'Canonical URL', status: 'warn', detail: 'No explicit canonical link tag found' },
+    { category: 'Meta', check: 'Open Graph image', status: 'pass', detail: 'og:image configured' },
+    { category: 'Meta', check: 'Open Graph title / description', status: 'pass', detail: 'og:title and og:description configured' },
+    { category: 'Meta', check: 'Twitter card meta', status: 'pass', detail: 'twitter:card configured' },
+    { category: 'Meta', check: 'Canonical URL', status: 'pass', detail: 'Canonical link set' },
     // Structure
-    { category: 'Structure', check: 'Single <h1> per page', status: 'pass', detail: 'page.tsx: 1 × <h1> found ("Shehara")' },
+    { category: 'Structure', check: 'Single <h1> per page', status: 'pass', detail: 'page.tsx: 1 x <h1> found ("Shehara")' },
     { category: 'Structure', check: 'Semantic HTML elements', status: 'pass', detail: '<main>, <section>, <footer>, <header> all present' },
     { category: 'Structure', check: 'lang attribute on <html>', status: 'pass', detail: 'lang="en" set in layout.tsx' },
-    { category: 'Structure', check: 'alt on all <Image> components', status: 'pass', detail: 'arc_card.svg — alt text present' },
+    { category: 'Structure', check: 'alt on all <Image> components', status: 'pass', detail: 'arc_card.svg : alt text present' },
     { category: 'Structure', check: 'aria-label on icon-only links', status: 'pass', detail: 'All floating icon anchors carry aria-label' },
     // Performance
     { category: 'Performance', check: 'next/image used (not raw <img>)', status: 'pass', detail: 'All images use next/image for optimization' },
-    { category: 'Performance', check: 'Local font subsetting active', status: 'pass', detail: 'Latin / Latin-1 / Symbols subsets (~90% size reduction)' },
+    { category: 'Performance', check: 'Local font subsetting active', status: 'pass', detail: 'Latin / Latin-1 / Symbols subsets' },
     { category: 'Performance', check: 'priority on above-fold image', status: 'pass', detail: 'Arc Card image has priority={true}' },
-    { category: 'Performance', check: 'Font preload', status: 'info', detail: 'preload: false — swap without blocking is intentional' },
+    { category: 'Performance', check: 'Font preload', status: 'pass', detail: 'preload: true : direct font loading active' },
     // Indexability
     { category: 'Indexability', check: 'robots noindex on /admin', status: 'pass', detail: 'Admin layout sets robots: { index: false }' },
-    { category: 'Indexability', check: 'sitemap.xml', status: 'warn', detail: 'No sitemap generated — consider adding app/sitemap.ts' },
+    { category: 'Indexability', check: 'sitemap.xml', status: 'warn', detail: 'No sitemap generated : consider adding app/sitemap.ts' },
     { category: 'Indexability', check: 'robots.txt', status: 'warn', detail: 'No robots.txt found in /public' },
   ];
 }
@@ -748,7 +748,7 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
           </div>
 
         {/* ══════════════════════════════════════
-            TAB 1 — Analytics
+            TAB 1: Analytics
         ══════════════════════════════════════ */}
         {activeTab === 'analytics' && (
           <div className="space-y-8">
@@ -778,7 +778,7 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
                 <AreaChart data={chartData} label="Traffic over time" dates={chartDates} />
               ) : (
                 <div className="h-20 flex items-center justify-center">
-                  <span className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No data yet — visit the portfolio to record hits</span>
+                  <span className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)]">No data yet: visit the portfolio to record hits</span>
                 </div>
               )}
             </div>
@@ -880,7 +880,7 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
         )}
 
         {/* ══════════════════════════════════════
-            TAB 2 — Audience & Interaction
+            TAB 2: Audience & Interaction
         ══════════════════════════════════════ */}
         {activeTab === 'audience' && (
           <div className="space-y-8">
@@ -999,7 +999,7 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
               <div className="flex items-end gap-4">
                 <div>
                   <div className="font-serif-anthropic text-5xl font-normal text-[var(--text-charcoal)]">
-                    {stats.loadTimeAvg > 0 ? `${stats.loadTimeAvg}` : '—'}
+                    {stats.loadTimeAvg > 0 ? `${stats.loadTimeAvg}` : '-'}
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--color-cloud-medium)] mt-1">ms average load time</div>
                 </div>
@@ -1039,7 +1039,7 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
         )}
 
         {/* ══════════════════════════════════════
-            TAB 3 — SEO Audit
+            TAB 3: SEO Audit
         ══════════════════════════════════════ */}
         {activeTab === 'seo' && (
           <div className="space-y-6">
@@ -1089,7 +1089,7 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
         )}
 
         {/* ══════════════════════════════════════
-            TAB 4 — System
+            TAB 4: System
         ══════════════════════════════════════ */}
         {activeTab === 'system' && (
           <div className="space-y-6">
@@ -1140,9 +1140,9 @@ export default function DashboardClient({ stats: initialStats, sysInfo, envFlags
               <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)]">Environment Variables</h3>
               <div className="space-y-3">
                 {[
-                  { name: 'ADMIN_USERNAME', set: envFlags.hasUsername, warn: 'Using default "admin" — change immediately' },
-                  { name: 'ADMIN_PASSWORD', set: envFlags.hasPassword, warn: 'Using default "admin" — change immediately' },
-                  { name: 'SESSION_SECRET', set: envFlags.hasSecret, warn: 'Using ephemeral key — sessions reset on restart' },
+                  { name: 'ADMIN_USERNAME', set: envFlags.hasUsername, warn: 'Using default "admin" : change immediately' },
+                  { name: 'ADMIN_PASSWORD', set: envFlags.hasPassword, warn: 'Using default "admin" : change immediately' },
+                  { name: 'SESSION_SECRET', set: envFlags.hasSecret, warn: 'Using ephemeral key : sessions reset on restart' },
                 ].map(({ name, set, warn }) => (
                   <div key={name} className="flex items-start gap-3">
                     <span className={`font-mono-anthropic text-[10px] font-semibold uppercase tracking-wider border rounded px-2 py-0.5 flex-shrink-0 mt-0.5 ${set ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : 'text-amber-700 bg-amber-50 border-amber-200'}`}>

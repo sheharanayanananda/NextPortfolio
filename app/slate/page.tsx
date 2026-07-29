@@ -239,7 +239,7 @@ export default function SlatePage() {
               >
                 <Image
                   src="/slate_origin.webp"
-                  alt={activeVersion === "origin" ? "Slate Origin — iOS App" : "Slate Agentic — iOS App"}
+                  alt={activeVersion === "origin" ? "Slate Origin: iOS App" : "Slate Agentic: iOS App"}
                   fill
                   sizes="(max-width: 768px) 100vw, 420px"
                   className="object-cover"
@@ -356,7 +356,7 @@ export default function SlatePage() {
               </h2>
             </div>
 
-            {/* Feature list — no card boxes, pure typography */}
+            {/* Feature list: no card boxes, pure typography */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
               {currentFeatures.map((feature, i) => (
                 <div

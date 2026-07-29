@@ -51,8 +51,8 @@ const anthropicSans = localFont({
     },
   ],
   variable: "--font-anthropic-sans",
-  display: "swap",
-  preload: false,
+  display: "block",
+  preload: true,
 });
 
 const anthropicSerif = localFont({
@@ -103,8 +103,8 @@ const anthropicSerif = localFont({
     },
   ],
   variable: "--font-anthropic-serif",
-  display: "swap",
-  preload: false,
+  display: "block",
+  preload: true,
 });
 
 const anthropicMono = localFont({
@@ -132,15 +132,15 @@ const anthropicMono = localFont({
     },
   ],
   variable: "--font-anthropic-mono",
-  display: "swap",
-  preload: false,
+  display: "block",
+  preload: true,
 });
 export const metadata: Metadata = {
   title: {
-    default: "Thineth Shehara",
+    default: "Thineth Shehara | Software Engineer",
     template: "%s | Thineth Shehara",
   },
-  description: "Portfolio of Thineth Shehara (Shehara Nayanananda), Software Engineer studying Software Engineering at Tampere University of Applied Sciences (TAMK), Finland.",
+  description: "Portfolio of Thineth Shehara. Building fast mobile apps, simple web tools, and reliable real-time backends with care and precision in Tampere, Finland.",
   metadataBase: new URL("https://shehara.dayzsolutions.com"),
   icons: {
     icon: [
@@ -194,6 +194,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full scroll-smooth ${anthropicSans.variable} ${anthropicSerif.variable} ${anthropicMono.variable}`}>
+      <head>
+        <link rel="preload" href="/fonts/AnthropicSans-Roman-Web.latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/AnthropicSerif-Roman-Web.latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      </head>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
