@@ -1,11 +1,11 @@
-import Image from "next/image";
 import { MapPin, Download, AtSign, Linkedin, Github } from "lucide-react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import SlateShowcase from "./components/SlateShowcase";
+import SlateShowcaseLazy from "./components/SlateShowcaseLazy";
 import TypingGreeting from "./components/TypingGreeting";
 import ProjectsShowcase from "./components/ProjectsShowcase";
 import ArcCardInteractive from "./components/ArcCardInteractive";
+import FloatingArcButton from "./components/FloatingArcButton";
 
 export default function Home() {
   return (
@@ -86,37 +86,34 @@ export default function Home() {
             {/* Wrapper for Card and Buttons (relative to card boundaries) */}
             <div className="relative md:w-auto md:h-full" style={{ aspectRatio: "2/3" }}>
 
-              {/* Floating buttons | Desktop (lg and above) */}
-              {/* Email Me */}
-              <a
+              {/* Floating buttons | Desktop (lg and above) with 3D liquid LERP reaction */}
+              <FloatingArcButton
                 href="mailto:sheharanayanananda@gmail.com"
-                className="hidden lg:flex absolute z-10 items-center justify-center text-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[104px] h-[46px] bottom-[280px] -left-[145px] rotate-[20deg] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px] 2xl:rotate-[25deg]"
-                aria-label="Email Me"
-              >
-                Email Me
-              </a>
+                label="Email Me"
+                ariaLabel="Email Me"
+                baseRotation={20}
+                className="w-[104px] h-[46px] bottom-[280px] -left-[145px] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px]"
+              />
 
-              {/* LinkedIn */}
-              <a
+              <FloatingArcButton
                 href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center text-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
-                aria-label="LinkedIn Profile"
-              >
-                LinkedIn
-              </a>
+                label="LinkedIn"
+                ariaLabel="LinkedIn Profile"
+                baseRotation={0}
+                className="w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
+              />
 
-              {/* GitHub */}
-              <a
+              <FloatingArcButton
                 href="https://github.com/sheharanayanananda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex absolute z-10 items-center justify-center text-center bg-[var(--card-bg)] text-[var(--text-charcoal)] rounded-xl font-sans-anthropic font-semibold text-xs uppercase transition-all duration-300 hover:scale-105 active:scale-95 border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] w-[90px] h-[46px] bottom-[45px] -left-[130px] -rotate-[20deg] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px] 2xl:-rotate-[30deg]"
-                aria-label="GitHub Profile"
-              >
-                GitHub
-              </a>
+                label="GitHub"
+                ariaLabel="GitHub Profile"
+                baseRotation={-20}
+                className="w-[90px] h-[46px] bottom-[45px] -left-[130px] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px]"
+              />
 
 
 
@@ -168,7 +165,7 @@ export default function Home() {
         </section>
       </main>
 
-      <SlateShowcase />
+      <SlateShowcaseLazy />
 
       {/* Main Container for rest of projects & experience */}
       <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-0 gap-0 md:pt-6 md:pt-8 md:gap-16 lg:gap-20 xl:gap-24 2xl:gap-25">
@@ -176,7 +173,7 @@ export default function Home() {
         <ProjectsShowcase />
 
         {/* EXPERIENCE TIMELINE */}
-        <section id="experience" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px]">
+        <section id="experience" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px] content-visibility-auto">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -315,7 +312,7 @@ export default function Home() {
         </section>
 
         {/* EDUCATION SECTION */}
-        <section id="education" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px]">
+        <section id="education" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px] content-visibility-auto">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -529,7 +526,7 @@ export default function Home() {
         </section>
 
         {/* UPDATES SECTION */}
-        <section id="updates" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px]">
+        <section id="updates" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px] content-visibility-auto">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">

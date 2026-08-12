@@ -243,3 +243,9 @@ body {
 .animate-slide-blur-left {
   animation: slide-blur-left 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
+
+/* Off-screen rendering optimization for below-fold sections */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}
