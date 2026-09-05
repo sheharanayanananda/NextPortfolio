@@ -138,18 +138,18 @@ const anthropicMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Thineth Shehara | Software Engineer",
-    template: "%s | Thineth Shehara",
+    default: "Thineth (Shei) | Software Developer",
+    template: "%s | Thineth",
   },
-  description: "Portfolio of Thineth Shehara. Building fast mobile apps, simple web tools, and reliable real-time backends with care and precision in Tampere, Finland.",
+  description: "Portfolio of Thineth Shehara (Shei). Building fast mobile apps, reliable real-time backends, and simple web tools in Tampere, Finland.",
   metadataBase: new URL("https://shehara.dayzsolutions.com"),
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
   },
   openGraph: {
-    title: "Thineth Shehara",
-    description: "Portfolio of Thineth Shehara (Shehara Nayanananda), Software Engineer studying Software Engineering at Tampere University of Applied Sciences (TAMK), Finland.",
+    title: "Thineth Shehara (Shei)",
+    description: "Portfolio of Thineth Shehara (Shei), Software Developer studying Software Engineering at Tampere University of Applied Sciences (TAMK), Finland.",
     url: "https://shehara.dayzsolutions.com",
     siteName: "Thineth Shehara",
     images: [
@@ -165,8 +165,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thineth Shehara",
-    description: "Portfolio of Thineth Shehara (Shehara Nayanananda), Software Engineer studying Software Engineering at Tampere University of Applied Sciences (TAMK), Finland.",
+    title: "Thineth Shehara (Shei)",
+    description: "Portfolio of Thineth Shehara (Shei), Software Developer studying Software Engineering at Tampere University of Applied Sciences (TAMK), Finland.",
     images: ["/me.jpg"],
   },
   robots: {
@@ -217,7 +217,7 @@ export default function RootLayout({
                   "@id": "https://shehara.dayzsolutions.com/#website",
                   "url": "https://shehara.dayzsolutions.com",
                   "name": "Thineth Shehara",
-                  "alternateName": ["Shehara Nayanananda", "Thineth Shehara Nayanananda"],
+                  "alternateName": ["Shei", "Thineth", "Shehara Nayanananda", "Thineth Shehara Nayanananda"],
                   "publisher": {
                     "@id": "https://shehara.dayzsolutions.com/#organization"
                   }
@@ -226,10 +226,10 @@ export default function RootLayout({
                   "@type": "Person",
                   "@id": "https://shehara.dayzsolutions.com/#person",
                   "name": "Thineth Shehara",
-                  "alternateName": "Shehara Nayanananda",
+                  "alternateName": ["Shei", "Thineth", "Shehara Nayanananda"],
                   "url": "https://shehara.dayzsolutions.com",
                   "image": "https://shehara.dayzsolutions.com/me.jpg",
-                  "description": "Software Engineer specializing in mobile applications, fluid animations, modular systems, and robust offline architectures.",
+                  "description": "Software Developer specializing in mobile applications, real-time WebSocket systems, high-volume inventory sync, and turning fragile codebases into reliable, production-ready products.",
                   "sameAs": [
                     "https://linkedin.com/in/thineth-nayanananda-54815b228/",
                     "https://github.com/sheharanayanananda",

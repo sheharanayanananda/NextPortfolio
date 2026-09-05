@@ -458,7 +458,7 @@ function getSEOChecks(): SEOCheck[] {
     { category: 'Meta', check: 'Twitter card meta', status: 'pass', detail: 'twitter:card configured' },
     { category: 'Meta', check: 'Canonical URL', status: 'pass', detail: 'Canonical link set' },
     // Structure
-    { category: 'Structure', check: 'Single <h1> per page', status: 'pass', detail: 'page.tsx: 1 x <h1> found ("Shehara")' },
+    { category: 'Structure', check: 'Single <h1> per page', status: 'pass', detail: 'page.tsx: 1 x <h1> found ("Thineth")' },
     { category: 'Structure', check: 'Semantic HTML elements', status: 'pass', detail: '<main>, <section>, <footer>, <header> all present' },
     { category: 'Structure', check: 'lang attribute on <html>', status: 'pass', detail: 'lang="en" set in layout.tsx' },
     { category: 'Structure', check: 'alt on all <Image> components', status: 'pass', detail: 'arc_card.svg : alt text present' },

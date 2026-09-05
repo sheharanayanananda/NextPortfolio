@@ -24,9 +24,14 @@ export default function Home() {
                 <TypingGreeting />
                 <span className="ml-3">I'm</span>
               </div>
-              <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-normal leading-[1.05]">
-                Shehara
-              </h1>
+              <div className="flex items-baseline gap-4 sm:gap-6 flex-wrap">
+                <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-normal leading-[1.05]">
+                  Thineth
+                </h1>
+                <span className="font-mono-anthropic text-xs md:text-sm text-[var(--text-secondary)] tracking-wider font-semibold uppercase bg-[var(--card-bg)] px-3.5 py-1.5 rounded-full border border-[var(--border-light)] self-start sm:self-center">
+                  aka <span className="text-[var(--accent-rust)] font-bold">Shei</span>
+                </span>
+              </div>
             </div>
 
 
@@ -141,10 +146,10 @@ export default function Home() {
 
           <div className="space-y-8 text-xl leading-[1.7] text-[var(--text-secondary)]/80 font-sans-anthropic max-w-3xl mx-auto font-normal">
             <p>
-              I build mobile and web applications with a focus on simplicity, speed, and clean design. Whether creating a mobile app for iOS and Android or a full web platform, I turn complex ideas into reliable products that run smoothly for real people.
+              I'm Thineth (known to teammates and friends as Shei). I build and ship mobile and web applications from idea all the way to production. Whether stabilizing a platform for thousands of live users or managing a catalog with 50,000+ products, I turn complex technical challenges into smooth, reliable tools that people love to use.
             </p>
             <p>
-              From database design to polished interfaces, I take pride in making things easy to use, fast to load, and built to last.
+              Teams often bring me in when a project is messy, fragile, or half-finished. With hands-on ownership across Flutter, Swift, Laravel, and Next.js, I step in, clear out technical debt, and transform tricky codebases into fast, dependable products that founders can trust.
             </p>
 
             <blockquote className="border-l-3 border-[var(--accent-rust)] pl-6 py-2 my-10 text-left italic font-serif-anthropic font-medium text-[var(--text-charcoal)] max-w-2xl mx-auto">
@@ -186,7 +191,7 @@ export default function Home() {
 
           <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
-            {/* Job 1 (Freelance Software Engineer) */}
+            {/* Job 1 (Associate Software Engineer - Freelance) */}
             <div className="relative group">
               {/* Timeline Dot (Blinking Orange Button for Current) */}
               <div className="absolute -left-[40px] top-2.5 flex items-center justify-center w-[16px] h-[16px]">
@@ -200,13 +205,13 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
                     <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--accent-rust)] font-bold">
-                      Freelance (Upwork &amp; Private Contracts)
+                      Freelance &amp; Contract Engineering
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Software Engineer
+                      Associate Software Engineer (Freelance)
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote - EU, EEA, USA
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote (USA &amp; International Clients)
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
@@ -217,14 +222,14 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY (USA Based Contract):</strong> Mobile and backend developer for UNiFY, a sports app for NBA, WNBA, NFL, and NCAA fans built with Flutter and Python/Flask. Improved app speed, built real-time live scores and instant chatrooms, added video streaming, push notifications, NFC Baller Band fan integration, and secure payments so thousands of fans stay connected effortlessly during live games.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY (USA Client Contract):</strong> Took over a crash-prone sports mobile application (Flutter &amp; Python/Flask) for NBA, WNBA, NFL, and NCAA fans and brought it to production-ready reliability by resolving critical bugs and client-backend mismatches. Built low-latency WebSocket infrastructure to handle thousands of concurrent fans with live scoreboards and instant chatrooms. Integrated NFC Baller Bands, automated push alerts, and built a secure AWS, Redis, PostgreSQL, and Stripe payment processing system.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Job 2 (Associate Software Engineer) */}
+            {/* Job 2 (Associate Software Engineer - DayZ Solutions) */}
             <div className="relative group">
               {/* Timeline Dot */}
               <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
@@ -243,26 +248,26 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    05/2025 - 07/2026
+                    05/2025 - 06/2026
                   </div>
                 </div>
                 <div className="space-y-4 pt-2">
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant:</strong> Led full-stack development of Empire, a central inventory system for a Dutch retailer. Synced stock, pricing, and orders for 50,000+ products across 5+ WooCommerce stores and Bol.com in real time. Added instant typo-tolerant search with Meilisearch, automated DHL/GLS shipping label printing, and automated warehouse document delivery.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant (Netherlands):</strong> Took ownership of a live Laravel platform and led its architecture refactor around service classes, repositories, and thin controllers, cutting heavy technical debt. Prevented inventory overselling across 5+ WooCommerce stores and 50,000+ products through a custom Bol.com REST integration with rate limiting and automated retries. Replaced slow SQL queries with Meilisearch for instant typo-tolerant catalog search, automated order fulfillment with GLS/DHL shipping labels, and streamlined Dropbox document routing.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore (Web &amp; Mobile):</strong> Served as Lead Developer for the companion mobile app (Flutter) and core Laravel web platform for BetonStorten.nl. Built real-time order tracking, driver routing, and machinery status over WebSockets and REST APIs, giving managers and workers total peace of mind.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore Logistics (Netherlands):</strong> Served as sole mobile lead developing a complete Flutter/Dart application from scratch, owning all technical decisions in close collaboration with engineering leadership and the Director. Designed clean scheduling workflows to manage complex field logistics (heavy machinery, work orders, staff assignments), backed by a real-time REST and WebSocket layer for live tracking.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">BusinessLabels.nl (BBNL):</strong> Rebuilt a Dutch B2B e-commerce store for industrial printers and custom labels. Created responsive React components with Tailwind CSS and Radix UI, connected Next.js pages to a Laravel API across 50,000+ product combos, and set up continuous server uptime with PM2.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">BusinessLabels.nl (Netherlands):</strong> Rebuilt the frontend for a Dutch B2B label printing supplier with 50,000+ products. Built responsive React components using Tailwind CSS and Radix UI directly from Figma specs, synchronized Next.js with the Laravel REST API for accounts and catalog data, fixed a critical checkout bug, and stabilized production deployments using PM2.
                     </p>
                   </div>
                 </div>
@@ -281,10 +286,10 @@ export default function Home() {
                       Freelance Development
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Freelance Software Developer
+                      Software Developer (Freelance)
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Hybrid, Sri Lanka
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote / Sri Lanka
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
@@ -295,13 +300,13 @@ export default function Home() {
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Portals:</strong> Built responsive database-driven websites using PHP, Laravel, and MySQL, including a migration consultancy platform with client onboarding flows and a photographer portfolio with a custom media panel.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Platforms:</strong> Built custom Laravel and MySQL web platforms with client management workflows and administrative control panels for local businesses, turning self-driven student work into successful paid client projects.
                     </p>
                   </div>
                   <div className="flex gap-2.5 items-start">
                     <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Engineering:</strong> Built custom desktop software in C# and .NET, including a pharmacy inventory manager and a two-part supermarket checkout system sharing a single database for real-time stock sync.
+                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Systems:</strong> Engineered custom C# and .NET desktop inventory solutions, including a dual-terminal retail cashier and inventory system sharing a live SQL database for real-time stock sync.
                     </p>
                   </div>
                 </div>
@@ -354,7 +359,7 @@ export default function Home() {
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    A 240-ECTS professional engineering degree programme starting in August 2026. The curriculum covers core engineering mathematics, object-oriented programming (Java/Python), cross-platform mobile architectures, cloud engineering (AWS/Azure), DevOps workflows, API design, and machine learning integrations.
+                    A 240-ECTS professional engineering degree programme in Tampere, Finland (EQF Level 6). Covers software architecture, core programming languages (C++, Java, JavaScript), web and mobile systems (frontend, backend, APIs), usability and UX, cloud computing, cybersecurity, data analytics, and applied machine learning.
                   </p>
                 </div>
               </div>
@@ -372,7 +377,7 @@ export default function Home() {
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Pearson BTEC Level 5 HND in Computing
+                      Pearson BTEC Level 5 HND in Computing - Software Engineering
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
@@ -382,13 +387,24 @@ export default function Home() {
                     02/2023 - 02/2025
                   </div>
                 </div>
-                <div className="pt-2">
+                <div className="pt-2 space-y-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Graduated with a Merit in Software Engineering, covering core computer science topics including data structures, database designs, discrete mathematics, and SDLC. Achieved final course Distinctions in Website Design &amp; Development and User Experience &amp; Interface Design.
+                    Graduated with a Merit in Software Engineering (UK RQF Level 5 / EQF Level 5, 240 credits). Covered software design principles, data structures and algorithms, database design, discrete mathematics, SDLC, systems analysis, UX/UI, networking, and applied research methods.
                   </p>
-                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
+                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
                     QN: 603/7596/6 &middot; Registration No: RG 10904
                   </p>
+                  <div>
+                    <a
+                      href="https://drive.google.com/file/d/1ZAwjdSv9AWJQyzqDpoZVj3GTZ6dKqwZH/view?usp=drive_link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-mono-anthropic text-xs text-[var(--accent-rust)] hover:underline"
+                    >
+                      <span>View Verified Certificate</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -448,13 +464,24 @@ export default function Home() {
                     07/2022 - 08/2023
                   </div>
                 </div>
-                <div className="pt-2">
+                <div className="pt-2 space-y-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    A 1,200-hour technical program completed with a Merit. Covered computer hardware, networking foundations, SQL database design, Python development, C# programming, and a final practical software project.
+                    Completed with a Merit. Covered programming fundamentals in Python and C#, relational database development with SQL, computer networking, and core software engineering principles.
                   </p>
-                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
+                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
                     Pearson ID: SF96401 &middot; ESOFT ID: E176422
                   </p>
+                  <div>
+                    <a
+                      href="https://drive.google.com/file/d/14Mx1xfqCYiUH9z-i7SSDEb7MTd1bbPKd/view?usp=drive_link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-mono-anthropic text-xs text-[var(--accent-rust)] hover:underline"
+                    >
+                      <span>View Verified Certificate</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -481,13 +508,24 @@ export default function Home() {
                     07/2022 - 08/2023
                   </div>
                 </div>
-                <div className="pt-2">
+                <div className="pt-2 space-y-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    A communicative English skills program focusing on advanced grammar, professional writing, and public speaking, concluding with a final presentation and viva voce examination.
+                    A communicative English skills program focusing on advanced grammar, professional business writing, workplace communication, and presentation delivery.
                   </p>
-                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
+                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
                     Registration ID: 00148929 &middot; Reference No: GAM0170214
                   </p>
+                  <div>
+                    <a
+                      href="https://drive.google.com/file/d/1cZVGt-vtf_1HPxMUTHoK-ZtRUtLXxY5J/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-mono-anthropic text-xs text-[var(--accent-rust)] hover:underline"
+                    >
+                      <span>View Verified Certificate</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -501,7 +539,7 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
                     <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
-                      Henegama Central College
+                      Henegama Central College - National School
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                       G.C.E. Ordinary Level Examination
@@ -516,7 +554,7 @@ export default function Home() {
                 </div>
                 <div className="pt-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Passed the G.C.E. Ordinary Level examination with top distinctions, including an A grade in Information &amp; Communication Technology and an A grade in English, alongside B grades in Mathematics, Science, and Sinhala.
+                    Passed general secondary education successfully with top distinctions, including Distinction (A) grades in Information &amp; Communication Technology and English, alongside B grades in Mathematics, Science, and Sinhala.
                   </p>
                 </div>
               </div>
@@ -563,7 +601,7 @@ export default function Home() {
                   Software Engineering B.Eng
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
-                  Commencing undergraduate studies in Software Engineering at Tampere University of Applied Sciences (TAMK) in Tampere, Finland.
+                  Currently studying Software Engineering at Tampere University of Applied Sciences (TAMK) in Tampere, Finland.
                 </p>
               </div>
             </div>

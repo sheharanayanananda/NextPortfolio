@@ -33,7 +33,7 @@ export default function Header() {
           onClick={() => setIsOpen(false)}
           className="font-sans-anthropic text-lg font-bold tracking-widest uppercase hover:text-[var(--accent-rust)] transition-colors ease-in-out duration-300 z-50"
         >
-          Shehara
+          Thineth
         </Link>
 
         {/* Desktop Navigation */}

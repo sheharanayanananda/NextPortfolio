@@ -18,32 +18,32 @@ const projects: Project[] = [
   {
     title: "UNiFY",
     tech: ["Flutter", "Dart", "Python", "Flask", "PostgreSQL", "WebSockets", "Redis", "AWS", "Stripe", "NFC"],
-    description: "Bringing excitement to sports fans with real-time live scores, fast chat, and connected wearable bands for NBA, WNBA, NFL, and NCAA games.",
-    longDescription: "Mobile and backend developer for UNiFY, a multi-platform sports application. Focused on making live games exciting and interactive by building real-time live scoreboards, instant chatrooms, video streaming, push notifications, and NFC Baller Band fan integration.",
+    description: "Contracted by a USA-based sports startup client. Powering NBA, WNBA, NFL, and NCAA fan communities with real-time live scoreboards, low-latency chat, and NFC wearables.",
+    longDescription: "Contracted as mobile and backend developer for UNiFY, a USA-based sports client. Stepped into a crash-prone Flutter and Python/Flask codebase, resolved critical data mismatches, and brought the platform to production-ready stability. Engineered real-time WebSocket live scoreboards and instant chatrooms for thousands of concurrent fans, alongside NFC Baller Band wearables, push notifications, and secure Stripe payment processing on AWS.",
     repoStatus: "private",
     featured: true
   },
   {
     title: "Deurbeslag Gigant",
     tech: ["PHP", "Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "MySQL", "Meilisearch", "WooCommerce API", "GLS API", "DHL API"],
-    description: "Making online shopping effortless for a Dutch store by keeping 50,000+ products perfectly in sync and shipping automatically.",
-    longDescription: "Built Empire, a central inventory platform for a Dutch hardware retailer. Kept 50,000+ products perfectly in sync across 5+ WooCommerce stores and Bol.com in real time. Added instant search with Meilisearch and automated warehouse shipping label printing so orders arrive faster.",
+    description: "Central inventory system for a Dutch hardware retailer, syncing 50,000+ products across 5+ WooCommerce stores and Bol.com without overselling.",
+    longDescription: "Led the full-stack architecture refactor of Empire, a central inventory platform for a Dutch hardware retailer. Engineered robust REST integrations with the Bol.com API featuring rate limiting and retry logic to prevent overselling across 5+ WooCommerce stores and 50,000+ catalog items. Integrated Meilisearch for instant typo-tolerant product searches and automated warehouse fulfillment with GLS and DHL shipping labels.",
     repoStatus: "private",
     featured: true
   },
   {
     title: "ECore Web & Mobile Automation",
     tech: ["Flutter", "Dart", "PHP", "Laravel", "MySQL", "REST APIs", "WebSockets", "Livewire 3"],
-    description: "Giving drivers and managers peace of mind with real-time tracking for concrete orders, work schedules, and heavy machinery.",
-    longDescription: "Served as Lead Developer for the mobile app (Flutter) and web platform for BetonStorten.nl. Built real-time order tracking, worker coordination, and live machinery status over WebSockets so managers and field workers stay in sync.",
+    description: "Sole mobile lead for a Dutch logistics platform, giving field operators and managers live machinery tracking and workflow scheduling.",
+    longDescription: "Served as sole mobile lead developing the Flutter mobile application from scratch for BetonStorten.nl in the Netherlands. Designed scheduling interfaces turning complex machinery, work order, and crew logistics into a clean interface. Integrated a real-time REST and WebSocket layer enabling live order tracking and equipment monitoring.",
     repoStatus: "private",
     featured: true
   },
   {
     title: "BusinessLabels.nl (BBNL)",
     tech: ["React", "Next.js", "Tailwind CSS", "Radix UI", "Laravel REST API", "Node.js", "PM2"],
-    description: "Creating a smooth, fast shopping experience for industrial label printers and custom print media across 50,000+ product choices.",
-    longDescription: "Helped rebuild the BBNL B2B e-commerce platform for industrial label printers. Created responsive React components with Tailwind CSS and Radix UI, connected Next.js pages to a Laravel API, and optimized server uptime so customers can find and order printing materials easily.",
+    description: "High-performance B2B shopping platform for industrial printers and custom labels across 50,000+ product options.",
+    longDescription: "Built responsive React components using Tailwind CSS and Radix UI directly from Figma specifications for a Dutch B2B label platform. Connected Next.js with a Laravel REST API across 50,000+ product combinations, resolved a critical checkout bug, and ensured continuous server uptime with PM2.",
     repoStatus: "private",
     featured: true
   },

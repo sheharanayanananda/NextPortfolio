@@ -12,7 +12,7 @@ export default function Footer() {
               href="/#hero"
               className="inline-block font-sans-anthropic text-base tracking-[0.2em] font-black uppercase text-[var(--text-charcoal)] hover:opacity-80 transition-opacity"
             >
-              SHEHARA
+              THINETH
             </Link>
             <p className="text-base text-[var(--text-secondary)]/80 leading-relaxed max-w-sm font-sans-anthropic font-normal">
               Software Engineer at TAMK crafting fast mobile apps, simple web tools, and reliable real-time systems with care.

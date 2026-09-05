@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Admin Panel · Shehara',
+  title: 'Admin Panel · Thineth',
   description: 'Private administrative dashboard for the portfolio.',
   robots: { index: false, follow: false },
 };
