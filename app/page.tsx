@@ -6,6 +6,7 @@ import TypingGreeting from "./components/TypingGreeting";
 import ProjectsShowcase from "./components/ProjectsShowcase";
 import ArcCardInteractive from "./components/ArcCardInteractive";
 import FloatingArcButton from "./components/FloatingArcButton";
+import HangingNameBadge from "./components/HangingNameBadge";
 
 export default function Home() {
   return (
@@ -24,14 +25,17 @@ export default function Home() {
                 <TypingGreeting />
                 <span className="ml-3">I'm</span>
               </div>
-              <div className="flex items-baseline gap-4 sm:gap-6 flex-wrap">
-                <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-normal leading-[1.05]">
-                  Thineth
-                </h1>
-                <span className="font-mono-anthropic text-xs md:text-sm text-[var(--text-secondary)] tracking-wider font-semibold uppercase bg-[var(--card-bg)] px-3.5 py-1.5 rounded-full border border-[var(--border-light)] self-start sm:self-center">
-                  aka <span className="text-[var(--accent-rust)] font-bold">Shei</span>
+              <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-normal leading-[1.05]">
+                <span className="sr-only">Thineth</span>
+                <span aria-hidden="true" className="inline-block relative">
+                  Th
+                  <span className="relative inline-block">
+                    i
+                    <HangingNameBadge />
+                  </span>
+                  neth
                 </span>
-              </div>
+              </h1>
             </div>
 
 
