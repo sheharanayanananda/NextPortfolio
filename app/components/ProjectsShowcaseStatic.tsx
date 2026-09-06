@@ -3,27 +3,57 @@ import React from "react";
 export default function ProjectsShowcaseStatic() {
   const featuredProjects = [
     {
+      title: "Slate Agentic",
+      category: "Native iOS · GenUI",
+      heroTech: ["SwiftUI", "SwiftData", "Ollama Cloud", "GenUI"],
+      description: "Intelligent notes app for iOS built with SwiftUI. Powered by cloud models from Ollama with token-by-token streaming and dynamic Generative UI (GenUI) widgets.",
+      badge: "Active Priority",
+      badgeType: "priority",
+      repoStatus: "public"
+    },
+    {
       title: "UNiFY",
-      tech: ["Flutter", "Dart", "Python", "Flask", "PostgreSQL", "WebSockets", "Redis", "AWS", "Stripe", "NFC"],
+      category: "Mobile & Realtime · Sports",
+      heroTech: ["Flutter", "Python / Flask", "WebSockets", "AWS"],
       description: "Contracted by a USA-based sports startup client. Powering NBA, WNBA, NFL, and NCAA fan communities with real-time live scoreboards, low-latency chat, and NFC wearables.",
+      badge: "Client Platform",
+      badgeType: "client",
+      repoStatus: "private"
+    },
+    {
+      title: "Slate Origin",
+      category: "Native iOS · Local-First",
+      heroTech: ["SwiftUI", "SwiftData", "VisionKit", "Local-First"],
+      description: "Local-first native iOS writing and note-taking environment with encrypted storage and on-device document scanning. (Archived · Legacy Foundation)",
+      badge: "Archived Foundation",
+      badgeType: "archived",
+      repoStatus: "public"
+    },
+    {
+      title: "ECore Web & Mobile Automation",
+      category: "Logistics & Mobile Lead",
+      heroTech: ["Flutter", "Laravel", "WebSockets", "MySQL"],
+      description: "Sole mobile lead for a Dutch logistics platform, giving field operators and managers live machinery tracking and workflow scheduling.",
+      badge: "Client Platform",
+      badgeType: "client",
       repoStatus: "private"
     },
     {
       title: "Deurbeslag Gigant",
-      tech: ["PHP", "Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "MySQL", "Meilisearch", "WooCommerce API", "GLS API", "DHL API"],
+      category: "Enterprise Full-Stack",
+      heroTech: ["Laravel", "Livewire", "Meilisearch", "WooCommerce"],
       description: "Central inventory system for a Dutch hardware retailer, syncing 50,000+ products across 5+ WooCommerce stores and Bol.com without overselling.",
-      repoStatus: "private"
-    },
-    {
-      title: "ECore Web & Mobile Automation",
-      tech: ["Flutter", "Dart", "PHP", "Laravel", "MySQL", "REST APIs", "WebSockets", "Livewire 3"],
-      description: "Sole mobile lead for a Dutch logistics platform, giving field operators and managers live machinery tracking and workflow scheduling.",
+      badge: "Client Platform",
+      badgeType: "client",
       repoStatus: "private"
     },
     {
       title: "BusinessLabels.nl (BBNL)",
-      tech: ["React", "Next.js", "Tailwind CSS", "Radix UI", "Laravel REST API", "Node.js", "PM2"],
+      category: "B2B E-Commerce Frontend",
+      heroTech: ["React", "Next.js", "Radix UI", "Laravel API"],
       description: "High-performance B2B shopping platform for industrial printers and custom labels across 50,000+ product options.",
+      badge: "Client Platform",
+      badgeType: "client",
       repoStatus: "private"
     }
   ];
@@ -51,10 +81,11 @@ export default function ProjectsShowcaseStatic() {
         {/* Filter switcher capsule */}
         <div className="relative flex items-center gap-0.5 sm:gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--card-bg)]">
           {[
-            { id: "all", label: "All Work", mobileLabel: "All" },
             { id: "featured", label: "Featured", mobileLabel: "Featured", active: true },
-            { id: "laravel", label: "Laravel/PHP", mobileLabel: "Laravel" },
-            { id: "flutter", label: "Flutter", mobileLabel: "Flutter" }
+            { id: "swift", label: "Swift", mobileLabel: "Swift" },
+            { id: "flutter", label: "Flutter", mobileLabel: "Flutter" },
+            { id: "php", label: "PHP", mobileLabel: "PHP" },
+            { id: "all", label: "All Work", mobileLabel: "All" }
           ].map(tab => (
             <span
               key={tab.id}
@@ -71,37 +102,45 @@ export default function ProjectsShowcaseStatic() {
         </div>
       </div>
 
-      {/* Grid layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {featuredProjects.map(proj => {
+      {/* Center-Aligned Grid layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto justify-center">
+        {featuredProjects.map((proj) => {
           return (
             <div
               key={proj.title}
-              className="group flex flex-col justify-between border border-[var(--border-light)]/40 rounded-3xl p-6 md:p-8 lg:p-10 bg-[var(--card-bg)] transition-all duration-300 ease-out space-y-8 cursor-pointer hover:bg-[var(--card-hover-bg)] hover:border-[var(--text-secondary)]/60 hover:-translate-y-1"
+              className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer"
             >
-              <div className="space-y-5">
-                <div className="flex justify-between items-start gap-4">
-                  <h4 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                    {proj.title}
-                  </h4>
-                  <span className="shrink-0 whitespace-nowrap text-[9px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-medium border bg-[var(--text-secondary)]/5 border-[var(--text-secondary)]/30 text-[var(--text-secondary)]">
-                    Private
+              <div className="space-y-4">
+                {/* Category & Status */}
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
+                    {proj.category}
                   </span>
+                  {proj.badge && (
+                    <span className={`text-[10px] font-mono-anthropic uppercase tracking-wider ${
+                      proj.badgeType === "priority"
+                        ? "text-[var(--accent-rust)] font-bold"
+                        : "text-[var(--text-secondary)]/70"
+                    }`}>
+                      {proj.badge}
+                    </span>
+                  )}
                 </div>
 
-                <p className="text-base text-[var(--text-charcoal)] leading-relaxed font-sans-anthropic">
+                {/* Title */}
+                <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                  {proj.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
                   {proj.description}
                 </p>
               </div>
 
-              <div className="pt-2">
-                <div className="flex flex-wrap gap-1.5 w-full">
-                  {proj.tech.map(t => (
-                    <span key={t} className="text-[10px] font-sans-anthropic bg-[var(--bg-warm)]/40 border border-[var(--border-light)]/30 px-2.5 py-0.5 rounded-full text-[var(--text-secondary)] transition-colors group-hover:bg-[var(--card-bg)] group-hover:border-[var(--border-light)]/70">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              {/* Footer: Clean middle-dot separated tech stack */}
+              <div className="pt-6 font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
+                {proj.heroTech.join(" \u00b7 ")}
               </div>
             </div>
           );

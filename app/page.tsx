@@ -484,10 +484,24 @@ export default function Home() {
                     08/2026 - Present
                   </div>
                 </div>
-                <div className="pt-2">
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--accent-rust)]/10 text-[var(--accent-rust)] font-semibold uppercase tracking-wide">
+                      240 ECTS &middot; EQF Level 6
+                    </span>
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--text-secondary)]/10 text-[var(--text-secondary)] font-semibold uppercase tracking-wide">
+                      Undergraduate Degree
+                    </span>
+                  </div>
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    A 240-ECTS professional engineering degree programme in Tampere, Finland (EQF Level 6). Covers software architecture, core programming languages (C++, Java, JavaScript), web and mobile systems (frontend, backend, APIs), usability and UX, cloud computing, cybersecurity, data analytics, and applied machine learning.
+                    A 240-ECTS professional engineering degree programme in Tampere, Finland. Rigorous curriculum spanning full-stack software architecture, core languages (C++, Java, JavaScript/TypeScript), cloud infrastructure, cybersecurity, data analytics, and applied machine learning.
                   </p>
+                  <p className="font-serif-anthropic text-sm text-[var(--text-charcoal)]/80 leading-relaxed">
+                    Active member of <strong className="font-semibold text-[var(--text-charcoal)]">Source</strong> (TAMK Software Engineering Student Club) and <strong className="font-semibold text-[var(--text-charcoal)]">TIRO ry</strong> (Tampere Engineering Students Association).
+                  </p>
+                  <div className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
+                    Software Architecture &middot; C++ &middot; Java &middot; Cloud Systems &middot; Cybersecurity &middot; Machine Learning
+                  </div>
                 </div>
               </div>
             </div>
@@ -504,7 +518,7 @@ export default function Home() {
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Pearson BTEC Level 5 HND in Computing - Software Engineering
+                      Pearson BTEC Level 5 Higher National Diploma in Computing
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
@@ -514,14 +528,32 @@ export default function Home() {
                     02/2023 - 02/2025
                   </div>
                 </div>
-                <div className="pt-2 space-y-2">
+
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--accent-rust)]/10 text-[var(--accent-rust)] font-semibold uppercase tracking-wide">
+                      Grade: Merit
+                    </span>
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--text-secondary)]/10 text-[var(--text-secondary)] font-semibold uppercase tracking-wide">
+                      240 Credits &middot; UK RQF Level 5
+                    </span>
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--text-secondary)]/10 text-[var(--text-secondary)] font-semibold uppercase tracking-wide">
+                      Software Engineering Pathway
+                    </span>
+                  </div>
+
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Graduated with a Merit in Software Engineering (UK RQF Level 5 / EQF Level 5, 240 credits). Covered software design principles, data structures and algorithms, database design, discrete mathematics, SDLC, systems analysis, UX/UI, networking, and applied research methods.
+                    Completed a comprehensive 240-credit UK Higher National Diploma accredited by Pearson Education Ltd. Earned top Distinctions in User Experience &amp; Interface Design and Website Design &amp; Development, along with Merits in Software Development Lifecycles, Discrete Mathematics, Security, and Applied Programming Principles.
                   </p>
-                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
-                    QN: 603/7596/6 &middot; Registration No: RG 10904
-                  </p>
-                  <div>
+
+                  <div className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
+                    UX/UI Design (Distinction) &middot; Web Design &amp; Dev (Distinction) &middot; Data Structures &amp; Algorithms &middot; Systems Analysis &middot; Database Design
+                  </div>
+
+                  <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
+                    <span className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/60">
+                      QN: 603/7596/6 &middot; Reg: RG 10904
+                    </span>
                     <a
                       href="https://drive.google.com/file/d/1ZAwjdSv9AWJQyzqDpoZVj3GTZ6dKqwZH/view?usp=drive_link"
                       target="_blank"
@@ -558,14 +590,35 @@ export default function Home() {
                     01/2026
                   </div>
                 </div>
-                <div className="pt-2 space-y-2">
+
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--accent-rust)]/10 text-[var(--accent-rust)] font-semibold uppercase tracking-wide">
+                      Overall Band: 6.5
+                    </span>
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--text-secondary)]/10 text-[var(--text-secondary)] font-semibold uppercase tracking-wide">
+                      CEFR Level B2
+                    </span>
+                  </div>
+
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Certified English language proficiency (CEFR B2 level) with an Overall Band Score of 6.5. Individual band scores: Listening 7.5, Reading 7.0, Writing 6.0, Speaking 5.5.
+                    Certified English language proficiency for higher education and global technical collaboration. Achieved strong sub-scores across all core competencies.
                   </p>
-                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
-                    TRF Number: 25LK505172HEWT012A
-                  </p>
-                  <div>
+
+                  <div className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/80 flex items-center gap-3 flex-wrap">
+                    <span>Listening: <strong>7.5</strong></span>
+                    <span>&middot;</span>
+                    <span>Reading: <strong>7.0</strong></span>
+                    <span>&middot;</span>
+                    <span>Writing: <strong>6.0</strong></span>
+                    <span>&middot;</span>
+                    <span>Speaking: <strong>5.5</strong></span>
+                  </div>
+
+                  <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
+                    <span className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/60">
+                      TRF: 25LK505172HEWT012A
+                    </span>
                     <a
                       href="https://drive.google.com/file/d/1XM_8RdzOWwmVWNchACXFMif_yIwyoNrp/view?usp=sharing"
                       target="_blank"
@@ -592,24 +645,39 @@ export default function Home() {
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Pearson Assured Level 3 Diploma in IT
+                      Pearson Assured Diploma in Information Technology (DiTEC)
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    07/2022 - 08/2023
+                    07/2022 - 01/2024
                   </div>
                 </div>
-                <div className="pt-2 space-y-2">
+
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--accent-rust)]/10 text-[var(--accent-rust)] font-semibold uppercase tracking-wide">
+                      Grade: Merit
+                    </span>
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--text-secondary)]/10 text-[var(--text-secondary)] font-semibold uppercase tracking-wide">
+                      1,200 Guided Hours
+                    </span>
+                  </div>
+
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Completed with a Merit. Covered programming fundamentals in Python and C#, relational database development with SQL, computer networking, and core software engineering principles.
+                    1,200-hour comprehensive diploma covering core programming, systems, and network architecture. Achieved Distinctions in Computer Hardware, Network Technology, Multimedia, and IT Concepts, alongside Merits in Python, SQL Databases, and Web Design.
                   </p>
-                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
-                    Pearson ID: SF96401 &middot; ESOFT ID: E176422
-                  </p>
-                  <div>
+
+                  <div className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
+                    Python &middot; SQL Databases &middot; C# &middot; Computer Networks &middot; Hardware &middot; Web Design
+                  </div>
+
+                  <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
+                    <span className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/60">
+                      Pearson ID: SF96401 &middot; ESOFT ID: E176422
+                    </span>
                     <a
                       href="https://drive.google.com/file/d/14Mx1xfqCYiUH9z-i7SSDEb7MTd1bbPKd/view?usp=drive_link"
                       target="_blank"
@@ -636,24 +704,26 @@ export default function Home() {
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Pearson Assured Level 3 Diploma in English
+                      Diploma in English (DiE)
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    07/2022 - 08/2023
+                    07/2022 - 03/2023
                   </div>
                 </div>
-                <div className="pt-2 space-y-2">
+
+                <div className="space-y-3 pt-1">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    A communicative English skills program focusing on advanced grammar, professional business writing, workplace communication, and presentation delivery.
+                    15-unit communicative language programme emphasizing professional business correspondence, workplace presentation delivery, viva examinations, and technical communication.
                   </p>
-                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
-                    Registration ID: 00148929 &middot; Reference No: GAM0170214
-                  </p>
-                  <div>
+
+                  <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
+                    <span className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/60">
+                      Reg ID: 00148929 &middot; Ref: GAM0170214
+                    </span>
                     <a
                       href="https://drive.google.com/file/d/1cZVGt-vtf_1HPxMUTHoK-ZtRUtLXxY5J/view?usp=sharing"
                       target="_blank"
@@ -690,9 +760,9 @@ export default function Home() {
                     05/2022
                   </div>
                 </div>
-                <div className="pt-2">
+                <div className="space-y-2 pt-1">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                    Passed general secondary education successfully with top distinctions, including Distinction (A) grades in Information &amp; Communication Technology and English, alongside B grades in Mathematics, Science, and Sinhala.
+                    Passed secondary education with top honors, achieving Distinction (A) grades in Information &amp; Communication Technology and English, alongside B grades in Mathematics, Science, and Sinhala.
                   </p>
                 </div>
               </div>
@@ -713,23 +783,30 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto pt-6 items-stretch">
-            {/* Card 1: Mobile & Backend (Left) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto pt-6 items-stretch justify-center">
+            {/* Card 1: Slate Agentic */}
+            <a
+              href="/slate?v=agentic"
+              className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer"
+            >
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
-                  Mobile &amp; Backend
+                  Agentic AI &amp; iOS
                 </span>
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
-                  UNiFY &amp; Mobile Contracts
+                  Slate Agentic
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
-                  Building real-time sports apps, WebSocket scoreboards, and smooth mobile experiences for users across iOS and Android.
+                  Intelligent notes app for iOS built with SwiftUI, featuring dynamic Generative UI (GenUI widgets) and streaming inference powered by cloud models from Ollama.
                 </p>
               </div>
-            </div>
+              <div className="pt-6 font-mono-anthropic text-xs text-[var(--accent-rust)] flex items-center gap-1.5 group-hover:underline">
+                <span>Explore Version</span>
+                <span aria-hidden="true">&rarr;</span>
+              </div>
+            </a>
 
-            {/* Card 2: TAMK / Finland (Center - Highlighted) */}
+            {/* Card 2: TAMK / Finland (Highlighted) */}
             <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[#f5e3c7] p-6 md:p-8 lg:p-10 rounded-3xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--text-secondary)]/30 group">
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--accent-rust-hover)] tracking-widest font-bold">
@@ -739,23 +816,44 @@ export default function Home() {
                   Software Engineering B.Eng
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
-                  Currently studying Software Engineering at Tampere University of Applied Sciences (TAMK) in Tampere, Finland.
+                  Studying Software Engineering at TAMK in Tampere. Active member of <strong className="font-semibold text-[var(--text-charcoal)]">Source</strong> (TAMK SE Club) and <strong className="font-semibold text-[var(--text-charcoal)]">TIRO ry</strong> (Tampere Engineering Students Association).
                 </p>
               </div>
             </div>
 
-            {/* Card 3: Open to Gigs (Right) */}
+            {/* Card 3: Finnish Language Learning */}
             <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
-                  Open to Gigs
+                  Language Acquisition
                 </span>
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
-                  Freelance &amp; Remote Projects
+                  Finnish Fluency
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
-                  Actively accepting contracts for web platforms (Laravel/PHP/Next.js) and mobile apps (Flutter/Swift) worldwide.
+                  Actively improving Finnish language skills through TAMK language courses, Finnish YouTube immersion channels, and daily Duolingo practice.
                 </p>
+              </div>
+              <div className="pt-6 font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
+                Suomen kieli &middot; Daily Practice
+              </div>
+            </div>
+
+            {/* Card 4: Actively Available (Centered in row 2 on 3-col grid) */}
+            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group md:col-span-2 lg:col-span-1 lg:col-start-2">
+              <div className="space-y-5">
+                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
+                  Actively Available
+                </span>
+                <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
+                  Software Engineering Roles
+                </h3>
+                <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
+                  Actively seeking software engineering positions, internships, and contracts across full-stack web and mobile engineering (Flutter / Swift).
+                </p>
+              </div>
+              <div className="pt-6 font-mono-anthropic text-[11px] text-[var(--accent-rust)] font-medium">
+                Open for Hire
               </div>
             </div>
           </div>
