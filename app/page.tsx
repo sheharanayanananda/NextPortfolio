@@ -252,7 +252,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    05/2025 - 06/2026
+                    05/2025 - 07/2026
                   </div>
                 </div>
                 <div className="space-y-4 pt-2">
@@ -273,6 +273,59 @@ export default function Home() {
                     <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
                       <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">BusinessLabels.nl (Netherlands):</strong> Rebuilt the frontend for a Dutch B2B label printing supplier with 50,000+ products. Built responsive React components using Tailwind CSS and Radix UI directly from Figma specs, synchronized Next.js with the Laravel REST API for accounts and catalog data, fixed a critical checkout bug, and stabilized production deployments using PM2.
                     </p>
+                  </div>
+
+                  {/* Director Recommendation Quote */}
+                  <div className="mt-4 pt-4 border-t border-[var(--border-light)]/60">
+                    <blockquote className="font-serif-anthropic text-sm italic text-[var(--text-charcoal)]/85 border-l-2 border-[var(--accent-rust)] pl-3.5 py-0.5 leading-relaxed">
+                      &ldquo;What stood out to me was how much ownership he took of the problems he ran into; he didn&apos;t just patch things, he understood why they were breaking and fixed them properly.&rdquo;
+                    </blockquote>
+                    <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/80 mt-1.5 pl-3.5">
+                      Harshana Nishshanka &middot; Director, DayZ Solutions (Pvt.) Ltd.
+                    </p>
+                  </div>
+
+                  {/* Verified Documents */}
+                  <div className="pt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <span className="font-mono-anthropic text-[11px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold">
+                      Verified Documents:
+                    </span>
+                    <a
+                      href="https://drive.google.com/file/d/1aTwluCAS9PJSgIes0pNcFPUHCwH3VJrf/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-mono-anthropic text-xs text-[var(--accent-rust)] hover:underline"
+                    >
+                      <span>Recommendation Letter</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                    <a
+                      href="https://drive.google.com/file/d/1FTwdiPW2M2iCBrfZF_ulAANB_tUW8i-G/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-mono-anthropic text-xs text-[var(--accent-rust)] hover:underline"
+                    >
+                      <span>Service Letter</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                    <a
+                      href="https://drive.google.com/file/d/1sq4d84EfpV73hM_ToAsb4kaB00YSRd0I/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-mono-anthropic text-xs text-[var(--accent-rust)] hover:underline"
+                    >
+                      <span>Relieving Letter</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                    <a
+                      href="https://drive.google.com/drive/folders/1_R_Bae1sv5ZdoUmhsp2VRwUX7XDQ-EXd?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-mono-anthropic text-xs text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] hover:underline"
+                    >
+                      <span>All Documents (Folder)</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -435,13 +488,24 @@ export default function Home() {
                     01/2026
                   </div>
                 </div>
-                <div className="pt-2">
+                <div className="pt-2 space-y-2">
                   <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
                     Certified English language proficiency (CEFR B2 level) with an Overall Band Score of 6.5. Individual band scores: Listening 7.5, Reading 7.0, Writing 6.0, Speaking 5.5.
                   </p>
-                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 mt-2">
+                  <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70">
                     TRF Number: 25LK505172HEWT012A
                   </p>
+                  <div>
+                    <a
+                      href="https://drive.google.com/file/d/1XM_8RdzOWwmVWNchACXFMif_yIwyoNrp/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-mono-anthropic text-xs text-[var(--accent-rust)] hover:underline"
+                    >
+                      <span>View Verified Certificate</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
