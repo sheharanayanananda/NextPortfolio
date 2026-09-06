@@ -61,7 +61,7 @@ export default function Header() {
         </button>
 
         {/* Mobile Dropdown Menu with Expanding Motion-Blur Animation */}
-        <div className={`absolute top-full left-0 right-0 bg-[var(--bg-warm)]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[var(--bg-warm)]/75 border-b border-[var(--border-light)]/70 p-6 flex flex-col space-y-4 md:hidden shadow-[0_12px_24px_rgba(0,0,0,0.05)] z-40 ${
+        <div className={`absolute top-full left-0 right-0 glassmorphic-menu border-b border-[var(--border-light)]/70 p-6 flex flex-col space-y-4 md:hidden shadow-[0_12px_24px_rgba(0,0,0,0.05)] z-40 ${
           !hasOpened 
             ? "opacity-0 pointer-events-none hidden" 
             : isOpen 

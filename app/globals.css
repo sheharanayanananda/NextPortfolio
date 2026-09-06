@@ -170,15 +170,10 @@ body {
   0% {
     transform: translateY(-12px) scaleY(0.92);
     opacity: 0;
-    filter: blur(6px);
-  }
-  30% {
-    filter: blur(3px);
   }
   100% {
     transform: translateY(0) scaleY(1);
     opacity: 1;
-    filter: blur(0);
   }
 }
 
@@ -186,15 +181,10 @@ body {
   0% {
     transform: translateY(0) scaleY(1);
     opacity: 1;
-    filter: blur(0);
-  }
-  60% {
-    filter: blur(3px);
   }
   100% {
     transform: translateY(-12px) scaleY(0.92);
     opacity: 0;
-    filter: blur(6px);
   }
 }
 
@@ -248,4 +238,11 @@ body {
 .content-visibility-auto {
   content-visibility: auto;
   contain-intrinsic-size: 1px 600px;
+}
+
+/* Explicit mobile dropdown glassmorphism */
+.glassmorphic-menu {
+  background-color: rgba(240, 238, 230, 0.82) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
 }
