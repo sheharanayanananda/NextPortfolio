@@ -195,6 +195,7 @@ export default function Home() {
 
           <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
+
             {/* Job 1 (Associate Software Engineer - Freelance) */}
             <div className="relative group">
               {/* Timeline Dot (Blinking Orange Button for Current) */}
@@ -205,11 +206,11 @@ export default function Home() {
                 </span>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
                     <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--accent-rust)] font-bold">
-                      Freelance &amp; Contract Engineering
+                      Freelance &amp; Contract Based
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                       Associate Software Engineer (Freelance)
@@ -222,12 +223,35 @@ export default function Home() {
                     01/2026 - Present
                   </div>
                 </div>
-                <div className="space-y-3 pt-2">
-                  <div className="flex gap-2.5 items-start">
-                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
-                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">UNiFY (USA Client Contract):</strong> Took over a crash-prone sports mobile application (Flutter &amp; Python/Flask) for NBA, WNBA, NFL, and NCAA fans and brought it to production-ready reliability by resolving critical bugs and client-backend mismatches. Built low-latency WebSocket infrastructure to handle thousands of concurrent fans with live scoreboards and instant chatrooms. Integrated NFC Baller Bands, automated push alerts, and built a secure AWS, Redis, PostgreSQL, and Stripe payment processing system.
-                    </p>
+
+                {/* UNiFY Sports Contract */}
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                      UNiFY
+                    </span>
+                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--accent-rust)]/10 text-[var(--accent-rust)] font-semibold uppercase tracking-wide">
+                      USA Based Private Contract
+                    </span>
+                  </div>
+
+                  <ul className="space-y-2 text-sm md:text-[15px] font-serif-anthropic text-[var(--text-charcoal)]/90 leading-relaxed list-none">
+                    <li className="flex gap-2.5 items-start">
+                      <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                      <span>Stabilized sports mobile platform (Flutter &amp; Python/Flask backend) for NBA, WNBA, NFL, and NCAA fan communities to production reliability.</span>
+                    </li>
+                    <li className="flex gap-2.5 items-start">
+                      <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                      <span>Architected WebSocket channels for live scoreboards and chatrooms handling thousands of concurrent fans.</span>
+                    </li>
+                    <li className="flex gap-2.5 items-start">
+                      <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                      <span>Engineered live media streaming, automated push alerts, and NFC Baller Band payments via Stripe, backed by AWS, Redis, and PostgreSQL.</span>
+                    </li>
+                  </ul>
+
+                  <div className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 pt-1">
+                    Flutter &middot; Dart &middot; Python / Flask &middot; WebSockets &middot; PostgreSQL &middot; Redis &middot; AWS &middot; Stripe &middot; NFC
                   </div>
                 </div>
               </div>
@@ -238,7 +262,7 @@ export default function Home() {
               {/* Timeline Dot */}
               <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
-              <div className="space-y-3">
+              <div className="space-y-6">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
                     <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
@@ -255,24 +279,99 @@ export default function Home() {
                     05/2025 - 07/2026
                   </div>
                 </div>
-                <div className="space-y-4 pt-2">
-                  <div className="flex gap-2.5 items-start">
-                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
-                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Deurbeslag Gigant (Netherlands):</strong> Took ownership of a live Laravel platform and led its architecture refactor around service classes, repositories, and thin controllers, cutting heavy technical debt. Prevented inventory overselling across 5+ WooCommerce stores and 50,000+ products through a custom Bol.com REST integration with rate limiting and automated retries. Replaced slow SQL queries with Meilisearch for instant typo-tolerant catalog search, automated order fulfillment with GLS/DHL shipping labels, and streamlined Dropbox document routing.
-                    </p>
+
+                <div className="space-y-5">
+                  {/* Deurbeslag Gigant - Primary Responsibility */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                        Deurbeslag Gigant
+                      </span>
+                      <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--accent-rust)]/10 text-[var(--accent-rust)] font-semibold uppercase tracking-wide">
+                        Primary Responsibility
+                      </span>
+                    </div>
+
+                    <ul className="space-y-2 text-sm md:text-[15px] font-serif-anthropic text-[var(--text-charcoal)]/90 leading-relaxed list-none">
+                      <li className="flex gap-2.5 items-start">
+                        <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                        <span>Led full-stack architecture of a centralized inventory and order management system (Laravel), refactoring core modules into service and repository layers to eliminate technical debt.</span>
+                      </li>
+                      <li className="flex gap-2.5 items-start">
+                        <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                        <span>Automated real-time REST inventory sync across 5+ WooCommerce storefronts and Bol.com marketplace API with exponential retries, preventing overselling across 50,000+ products.</span>
+                      </li>
+                      <li className="flex gap-2.5 items-start">
+                        <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                        <span>Integrated Meilisearch for sub-50ms typo-tolerant search and automated warehouse fulfillment via GLS/DHL label APIs and Dropbox print pipelines.</span>
+                      </li>
+                    </ul>
+
+                    <div className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 pt-1">
+                      Laravel &middot; PHP &middot; Livewire &middot; MySQL &middot; Meilisearch &middot; Bol.com API &middot; WooCommerce REST API &middot; GLS / DHL
+                    </div>
                   </div>
-                  <div className="flex gap-2.5 items-start">
-                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
-                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">ECore Logistics (Netherlands):</strong> Served as sole mobile lead developing a complete Flutter/Dart application from scratch, owning all technical decisions in close collaboration with engineering leadership and the Director. Designed clean scheduling workflows to manage complex field logistics (heavy machinery, work orders, staff assignments), backed by a real-time REST and WebSocket layer for live tracking.
-                    </p>
+
+                  {/* ECore Logistics - Lead Mobile Engineer */}
+                  <div className="space-y-2 pt-2 border-t border-[var(--border-light)]/40">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                        ECore
+                      </span>
+                      <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--accent-rust)]/10 text-[var(--accent-rust)] font-semibold uppercase tracking-wide">
+                        Lead Mobile Engineer
+                      </span>
+                    </div>
+
+                    <ul className="space-y-2 text-sm md:text-[15px] font-serif-anthropic text-[var(--text-charcoal)]/90 leading-relaxed list-none">
+                      <li className="flex gap-2.5 items-start">
+                        <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                        <span>Spearheaded cross-platform Field Service Management (FSM) companion mobile app architecture in Flutter/Dart from scratch, directing mobile engineering alongside the dev team to integrate with the primary Laravel web ERP.</span>
+                      </li>
+                      <li className="flex gap-2.5 items-start">
+                        <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                        <span>Engineered real-time REST and WebSocket layer powering live vehicle tracking, concrete pump status, and dynamic worker dispatching for BetonStorten.nl.</span>
+                      </li>
+                      <li className="flex gap-2.5 items-start">
+                        <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                        <span>Also contributed to the core Laravel web ERP, implementing order processing logic, database query optimizations, and UI modernization to Livewire 3.</span>
+                      </li>
+                    </ul>
+
+                    <div className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 pt-1">
+                      Flutter &middot; Dart &middot; Laravel &middot; Livewire 3 &middot; MySQL &middot; WebSockets &middot; REST APIs &middot; FSM Logistics
+                    </div>
                   </div>
-                  <div className="flex gap-2.5 items-start">
-                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
-                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">BusinessLabels.nl (Netherlands):</strong> Rebuilt the frontend for a Dutch B2B label printing supplier with 50,000+ products. Built responsive React components using Tailwind CSS and Radix UI directly from Figma specs, synchronized Next.js with the Laravel REST API for accounts and catalog data, fixed a critical checkout bug, and stabilized production deployments using PM2.
-                    </p>
+
+                  {/* BusinessLabels.nl */}
+                  <div className="space-y-2 pt-2 border-t border-[var(--border-light)]/40">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
+                        BusinessLabels.nl
+                      </span>
+                      <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--text-secondary)]/10 text-[var(--text-charcoal)] font-semibold uppercase tracking-wide">
+                        Full-Stack Rebuild
+                      </span>
+                    </div>
+
+                    <ul className="space-y-2 text-sm md:text-[15px] font-serif-anthropic text-[var(--text-charcoal)]/90 leading-relaxed list-none">
+                      <li className="flex gap-2.5 items-start">
+                        <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                        <span>Rebuilt responsive B2B e-commerce platform with Next.js, React, and Tailwind CSS from Figma specs, engineering dynamic archive filters and navigation for 50,000+ catalog variations.</span>
+                      </li>
+                      <li className="flex gap-2.5 items-start">
+                        <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                        <span>Integrated Next.js with the Laravel REST API backend for account management and dynamic material catalogs, resolving critical cart glitches and background state bugs.</span>
+                      </li>
+                      <li className="flex gap-2.5 items-start">
+                        <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                        <span>Executed server migration and production deployments for both Next.js frontend and Laravel backend, configuring Node.js builds and PM2 daemon clustering for continuous uptime.</span>
+                      </li>
+                    </ul>
+
+                    <div className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 pt-1">
+                      Next.js &middot; React &middot; Tailwind CSS &middot; Radix UI &middot; Laravel REST API &middot; Node.js &middot; PM2 &middot; Linux Server
+                    </div>
                   </div>
 
                   {/* Director Recommendation Quote */}
@@ -286,7 +385,7 @@ export default function Home() {
                   </div>
 
                   {/* Verified Documents */}
-                  <div className="pt-2">
+                  <div className="pt-1">
                     <a
                       href="https://drive.google.com/drive/folders/1_R_Bae1sv5ZdoUmhsp2VRwUX7XDQ-EXd?usp=sharing"
                       target="_blank"
@@ -306,11 +405,11 @@ export default function Home() {
               {/* Timeline Dot */}
               <div className="absolute -left-[37px] top-2.5 w-2 h-2 rounded-full bg-[var(--border-light)] group-hover:bg-[var(--accent-rust)] transition-colors duration-300" />
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div className="space-y-0.5">
                     <span className="font-mono-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold">
-                      Freelance Development
+                      Freelance &amp; Client Projects
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
                       Software Developer (Freelance)
@@ -323,19 +422,20 @@ export default function Home() {
                     08/2022 - 06/2025
                   </div>
                 </div>
-                <div className="space-y-3 pt-2">
-                  <div className="flex gap-2.5 items-start">
-                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
-                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Web Platforms:</strong> Built custom Laravel and MySQL web platforms with client management workflows and administrative control panels for local businesses, turning self-driven student work into successful paid client projects.
-                    </p>
-                  </div>
-                  <div className="flex gap-2.5 items-start">
-                    <span className="text-[var(--accent-rust)] mt-1.5 font-bold select-none text-[10px]">&middot;</span>
-                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)]/90 leading-relaxed">
-                      <strong className="font-sans-anthropic text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold mr-1.5">Desktop Systems:</strong> Engineered custom C# and .NET desktop inventory solutions, including a dual-terminal retail cashier and inventory system sharing a live SQL database for real-time stock sync.
-                    </p>
-                  </div>
+
+                <ul className="space-y-2 text-sm md:text-[15px] font-serif-anthropic text-[var(--text-charcoal)]/90 leading-relaxed list-none pt-1">
+                  <li className="flex gap-2.5 items-start">
+                    <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                    <span>Delivered custom web applications with administrative portals and order workflows using PHP, Laravel, and MySQL for local commercial clients.</span>
+                  </li>
+                  <li className="flex gap-2.5 items-start">
+                    <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
+                    <span>Engineered custom C# / .NET desktop solutions, including pharmacy management and dual-terminal retail supermarket systems with live SQL synchronization.</span>
+                  </li>
+                </ul>
+
+                <div className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/70 pt-1">
+                  PHP &middot; Laravel &middot; MySQL &middot; JavaScript &middot; Tailwind CSS &middot; C# &middot; .NET Framework &middot; SQL Server
                 </div>
               </div>
             </div>
