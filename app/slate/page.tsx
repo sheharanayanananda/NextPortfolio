@@ -48,9 +48,9 @@ export default function SlatePage() {
   const agenticFeatures = [
     {
       index: "01",
-      title: "Streaming Agent & 6 Tuned Presets",
+      title: "Cloud Streaming & 6 Tuned Presets",
       description:
-        "Token-by-token async streaming over Ollama REST endpoints with URLSession.bytes. Six specialized personas tuned across context windows from 4K to 32K: Slate Lite, Flash, Creative, Scholar, Coder, and Pro.",
+        "Token-by-token async streaming powered by cloud models from Ollama via URLSession.bytes. Six specialized personas tuned across context windows from 4K to 32K: Slate Lite, Flash, Creative, Scholar, Coder, and Pro.",
     },
     {
       index: "02",
@@ -66,9 +66,9 @@ export default function SlatePage() {
     },
     {
       index: "04",
-      title: "Pure-Swift Document Engine & Physics Capsule",
+      title: "Pure-Swift Document Extraction",
       description:
-        "Hand-rolled pure-Swift ZIP decompressor extracting text from PDF, DOCX, and XLSX spreadsheets with zero external dependencies, paired with a rubber-band physics input capsule and multi-tier haptics.",
+        "Hand-rolled pure-Swift ZIP decompressor extracting structured text from PDF, DOCX, and XLSX spreadsheets with zero external dependencies, ready for immediate AI analysis.",
     },
   ];
 
@@ -120,7 +120,7 @@ export default function SlatePage() {
   const originPullQuote =
     "A local-first, distraction-free native writing environment where your thoughts are encrypted, private, and entirely yours.";
 
-  const agenticTechStack = "Swift · SwiftUI · SwiftData · Ollama · WebKit (LaTeX) · VisionKit · Apple Security";
+  const agenticTechStack = "Swift · SwiftUI · SwiftData · Ollama Cloud API · WebKit (LaTeX) · VisionKit · Apple Security";
   const originTechStack = "Swift · SwiftUI · SwiftData · VisionKit · PDFKit · Apple Security";
 
   return (
@@ -254,7 +254,7 @@ export default function SlatePage() {
                       Agentic Command Center
                     </div>
                     <p className="font-serif-anthropic text-xs opacity-80 max-w-[280px] leading-relaxed mb-6">
-                      A physics-based glass capsule, multi-model reasoning engines, and custom document extraction workspace.
+                      Powered by cloud models from Ollama, multi-model reasoning presets, and a custom document extraction workspace.
                     </p>
                     <div className="w-full max-w-[280px] space-y-2.5 text-left border-t border-white/10 pt-4 font-sans-anthropic text-[11px] tracking-wide text-white/70">
                       <div className="flex items-center gap-2">
@@ -297,7 +297,7 @@ export default function SlatePage() {
                 <p className="font-serif-anthropic text-lg font-normal text-[var(--text-charcoal)] opacity-70 leading-[1.7] max-w-sm">
                   {activeVersion === "origin"
                     ? "The foundational Slate experience. A local-first, distraction-free native iOS notebook built on SwiftData with Apple VisionKit camera scanning, a custom bidirectional Markdown editor with interactive checklist hit-testing, and an AI note organizer with typewriter streaming."
-                    : "Rebuilt from the ground up for autonomous knowledge workflows. Slate Agentic couples local-first SwiftData notes with an on-device or cloud Ollama AI agent, featuring inline Generative UI modules, rubber-band physics input, live LaTeX math rendering via MathJax/KaTeX, and pure-Swift multi-format document parsing."}
+                    : "Rebuilt from the ground up for autonomous knowledge workflows. Slate Agentic connects your SwiftData notes directly to cloud models from Ollama, featuring inline Generative UI modules, live LaTeX math rendering via MathJax/KaTeX, and pure-Swift multi-format document parsing."}
                 </p>
               </div>
 

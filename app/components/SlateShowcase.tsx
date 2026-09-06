@@ -212,7 +212,7 @@ export default function SlateShowcase() {
             </div>
 
             <p className="text-sm md:text-base text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
-              An autonomous AI agent ecosystem and local-first note platform for iOS.
+              An intelligent notes app for iOS powered by cloud models from Ollama.
             </p>
             <div className="pt-2 md:pt-4">
               <a
