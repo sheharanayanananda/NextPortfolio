@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import AnalyticsTracker from "./components/AnalyticsTracker";
+import CopyEmailToast from "./components/CopyEmailToast";
 
 const anthropicSans = localFont({
   src: [
@@ -138,7 +139,7 @@ const anthropicMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Thineth (Shei) | Software Developer",
+    default: "Thineth",
     template: "%s | Thineth",
   },
   description: "Portfolio of Thineth Shehara (Shei). Building fast mobile apps, reliable real-time backends, and simple web tools in Tampere, Finland.",
@@ -246,6 +247,7 @@ export default function RootLayout({
           }}
         />
         <AnalyticsTracker />
+        <CopyEmailToast />
         {children}
       </body>
     </html>

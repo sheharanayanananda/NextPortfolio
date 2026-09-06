@@ -7,6 +7,7 @@ import ProjectsShowcase from "./components/ProjectsShowcase";
 import ArcCardInteractive from "./components/ArcCardInteractive";
 import FloatingArcButton from "./components/FloatingArcButton";
 import HangingNameBadge from "./components/HangingNameBadge";
+import { HIRE_MAILTO_URL } from "./lib/email";
 
 export default function Home() {
   return (
@@ -47,7 +48,8 @@ export default function Home() {
             {/* Inline contact icons: shown below lg, hidden on lg+ where floating buttons appear */}
             <div className="flex lg:hidden items-center gap-6 mt-6 text-[var(--text-charcoal)]">
               <a
-                href="mailto:sheharanayanananda@gmail.com"
+                href={HIRE_MAILTO_URL}
+                data-contact-trigger="true"
                 className="hover:opacity-70 transition-all duration-300 hover:scale-110 active:scale-95"
                 aria-label="Email Me"
               >
@@ -79,13 +81,18 @@ export default function Home() {
                 <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>
               </div>
 
-              <div className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98]">
+              <a
+                href={HIRE_MAILTO_URL}
+                data-contact-trigger="true"
+                className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                aria-label="Open to work - email me"
+              >
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-blinker-glow absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent-rust)]"></span>
                 </span>
                 <span className="tracking-tight font-mono-anthropic">Open To Work</span>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -97,9 +104,10 @@ export default function Home() {
 
               {/* Floating buttons | Desktop (lg and above) with 3D liquid LERP reaction */}
               <FloatingArcButton
-                href="mailto:sheharanayanananda@gmail.com"
+                href={HIRE_MAILTO_URL}
                 label="Email Me"
                 ariaLabel="Email Me"
+                isContactTrigger={true}
                 baseRotation={20}
                 className="w-[104px] h-[46px] bottom-[280px] -left-[145px] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px]"
               />
@@ -840,7 +848,11 @@ export default function Home() {
             </div>
 
             {/* Card 4: Actively Available (Centered in row 2 on 3-col grid) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group md:col-span-2 lg:col-span-1 lg:col-start-2">
+            <a
+              href={HIRE_MAILTO_URL}
+              data-contact-trigger="true"
+              className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer md:col-span-2 lg:col-span-1 lg:col-start-2"
+            >
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
                   Actively Available
@@ -852,10 +864,11 @@ export default function Home() {
                   Actively seeking software engineering positions, internships, and contracts across full-stack web and mobile engineering (Flutter / Swift).
                 </p>
               </div>
-              <div className="pt-6 font-mono-anthropic text-[11px] text-[var(--accent-rust)] font-medium">
-                Open for Hire
+              <div className="pt-6 font-mono-anthropic text-[11px] text-[var(--accent-rust)] font-medium flex items-center gap-1.5 group-hover:underline">
+                <span>Open for Hire</span>
+                <span aria-hidden="true">&rarr;</span>
               </div>
-            </div>
+            </a>
           </div>
         </section>
 

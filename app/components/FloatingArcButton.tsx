@@ -11,6 +11,7 @@ interface FloatingArcButtonProps {
   baseRotation?: number; // Base tilt angle in degrees e.g. 20, 0, -20
   className?: string;
   children?: ReactNode;
+  isContactTrigger?: boolean;
 }
 
 export default function FloatingArcButton({
@@ -22,6 +23,7 @@ export default function FloatingArcButton({
   baseRotation = 0,
   className = "",
   children,
+  isContactTrigger,
 }: FloatingArcButtonProps) {
   const buttonRef = useRef<HTMLAnchorElement>(null);
   const isHoveredRef = useRef(false);
@@ -196,6 +198,7 @@ export default function FloatingArcButton({
       target={target}
       rel={rel}
       aria-label={ariaLabel}
+      data-contact-trigger={isContactTrigger ? "true" : undefined}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

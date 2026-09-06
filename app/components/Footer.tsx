@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HIRE_MAILTO_URL } from "../lib/email";
 
 export default function Footer() {
   return (
@@ -80,7 +81,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:sheharanayanananda@gmail.com" className="hover:text-[var(--text-charcoal)] transition-colors duration-300">
+                <a href={HIRE_MAILTO_URL} data-contact-trigger="true" className="hover:text-[var(--text-charcoal)] transition-colors duration-300">
                   Email
                 </a>
               </li>
