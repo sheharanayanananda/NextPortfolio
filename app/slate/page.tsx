@@ -48,54 +48,54 @@ export default function SlatePage() {
   const agenticFeatures = [
     {
       index: "01",
-      title: "AI Chat Command Centre",
+      title: "Streaming Agent & 6 Tuned Presets",
       description:
-        "A clean chat view that connects directly to all your notes. Ask the assistant questions, ask it to summarize a thread, or draft new ideas from your saved info.",
+        "Token-by-token async streaming over Ollama REST endpoints with URLSession.bytes. Six specialized personas tuned across context windows from 4K to 32K: Slate Lite, Flash, Creative, Scholar, Coder, and Pro.",
     },
     {
       index: "02",
-      title: "Generative UI on Demand",
+      title: "Dynamic Generative UI (GenUI)",
       description:
-        "Tailored specifically to your current task. The assistant renders interactive, custom-fit UI modules inline to visualize data, run calculations, or manage checksheets dynamically.",
+        "The AI dynamically constructs interactive SwiftUI widgets inside chat bubbles: live persistent checksheets, structured data-gathering forms with validation, and quick-action option grids.",
     },
     {
       index: "03",
-      title: "Cloud LLM Presets",
+      title: "Custom GFM Parser & LaTeX Engine",
       description:
-        "Quickly swap model settings for what you need. Choose from Balanced, Deep Reasoning, Creative Drafts, or Quick Fixes to match the task.",
+        "Single-pass Markdown parser with a 120ms staggered block reveal animation. Renders complex math via MathJax 3 and KaTeX in height-bridged WebViews, code diffs, and an LRU cache preventing scroll jitter.",
     },
     {
       index: "04",
-      title: "Rich File Attachments",
+      title: "Pure-Swift Document Engine & Physics Capsule",
       description:
-        "Drop in PDFs, Word docs, images, or ZIP files. The custom parser extracts the text instantly so your AI assistant can read and discuss them.",
+        "Hand-rolled pure-Swift ZIP decompressor extracting text from PDF, DOCX, and XLSX spreadsheets with zero external dependencies, paired with a rubber-band physics input capsule and multi-tier haptics.",
     },
   ];
 
   const originFeatures = [
     {
       index: "01",
-      title: "Rich Note Creation",
+      title: "Bidirectional Editor & Checkboxes",
       description:
-        "Format notes your way with Markdown support for headings, bold text, lists, and checklists you can toggle directly from the list view without opening the editor.",
+        "Custom UITextView wrapper with a bidirectional NSAttributedString serializer. Interactive SF Symbol checkboxes with surgical hit-testing to check and uncheck items directly in the text view.",
     },
     {
       index: "02",
       title: "Smart Lens Visual AI",
       description:
-        "Point your camera at any paper note, whiteboard, or receipt. On-device OCR grabs the text instantly and drops it into a clean, structured note.",
+        "Point your camera at paper notes, whiteboards, or receipts. VisionKit document scanning with automatic perspective correction, on-device OCR, and scene classification to create structured notes.",
     },
     {
       index: "03",
-      title: "AI Note Organiser",
+      title: "AI Note Organizer & Typewriter Streaming",
       description:
-        "Clean up messy drafts with a tap. Fix grammar mistakes, reorganize scattered thoughts, or summarize key ideas in place without leaving the editor.",
+        "One-tap AI restructuring that analyzes raw drafts, cleans up syntax, removes duplicates, and organizes thoughts into structured outlines with a live typewriter effect and soft haptic feedback.",
     },
     {
       index: "04",
-      title: "Multi-type Sharing",
+      title: "Local-First SwiftData & Native Export",
       description:
-        "Export notes as PDFs, formatted RTFs, or share them to other apps using the native share sheet. Dark mode colors format automatically when exporting.",
+        "Complete offline note persistence using SwiftData with zero cloud lock-in. Native multi-format export generating A4 PDFs via PDFKit, formatted Rich Text (RTF), or plain text with swift swipe actions.",
     },
   ];
 
@@ -104,24 +104,24 @@ export default function SlatePage() {
   const agenticStats = [
     { value: "iOS 17+", label: "Platform" },
     { value: "Swift", label: "Language" },
-    { value: "Private", label: "License" },
+    { value: "Source-Available", label: "License" },
   ];
 
   const originStats = [
     { value: "iOS 17+", label: "Platform" },
     { value: "Swift", label: "Language" },
-    { value: "MIT", label: "License" },
+    { value: "Source-Available", label: "License" },
   ];
 
   const currentStats = activeVersion === "agentic" ? agenticStats : originStats;
 
   const agenticPullQuote =
-    "A workspace that acts as a second brain, turning static text into active conversations.";
+    "A workspace that acts as an active second brain, synthesizing scattered documents into conversational knowledge and dynamic interfaces.";
   const originPullQuote =
-    "A simple, clean note taking workflow where your data is stored locally and stays yours.";
+    "A local-first, distraction-free native writing environment where your thoughts are encrypted, private, and entirely yours.";
 
-  const agenticTechStack = "Swift · SwiftUI · MathJax · Ollama · SwiftData";
-  const originTechStack = "Swift · SwiftUI · SwiftData · VisionKit · PDFKit";
+  const agenticTechStack = "Swift · SwiftUI · SwiftData · Ollama · WebKit (LaTeX) · VisionKit · Apple Security";
+  const originTechStack = "Swift · SwiftUI · SwiftData · VisionKit · PDFKit · Apple Security";
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-warm)] text-[var(--text-charcoal)] font-sans-anthropic">
@@ -254,20 +254,20 @@ export default function SlatePage() {
                       Agentic Command Center
                     </div>
                     <p className="font-serif-anthropic text-xs opacity-80 max-w-[280px] leading-relaxed mb-6">
-                      A physics-based glass capsule, multi-model reasoning engines, and custom document extraction workspace. Media preview coming soon.
+                      A physics-based glass capsule, multi-model reasoning engines, and custom document extraction workspace.
                     </p>
                     <div className="w-full max-w-[280px] space-y-2.5 text-left border-t border-white/10 pt-4 font-sans-anthropic text-[11px] tracking-wide text-white/70">
                       <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>Multi-session chat history</span>
+                        <span>6 tuned streaming presets (Lite to Pro)</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>Interactive Markdown &amp; LaTeX</span>
+                        <span>Dynamic GenUI checksheets &amp; forms</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>Generative UIs on demand</span>
+                        <span>Pure-Swift ZIP, PDF, DOCX &amp; XLSX parser</span>
                       </div>
                     </div>
                   </div>
@@ -289,15 +289,15 @@ export default function SlatePage() {
                 }`}
               >
                 <div className="font-mono-anthropic text-[10px] tracking-[0.18em] uppercase text-[var(--text-charcoal)]">
-                  {activeVersion === "origin" ? "Open Source · MIT License" : "Proprietary · Source-Available"}
+                  {activeVersion === "origin" ? "Proprietary · Source-Available" : "Proprietary · Source-Available"}
                 </div>
                 <h2 className="font-serif-anthropic text-4xl lg:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
                   Slate {activeVersion === "origin" ? "Origin" : "Agentic"}
                 </h2>
                 <p className="font-serif-anthropic text-lg font-normal text-[var(--text-charcoal)] opacity-70 leading-[1.7] max-w-sm">
                   {activeVersion === "origin"
-                    ? "The original Slate. A fast, private notes app for iOS with local-first storage and cloud-powered AI assistance."
-                    : "Rebuilt for the AI era. Slate Agentic integrates a cloud-hosted LLM assistant directly into your local-first workspace to research, organize, and summarize notes."}
+                    ? "The foundational Slate experience. A local-first, distraction-free native iOS notebook built on SwiftData with Apple VisionKit camera scanning, a custom bidirectional Markdown editor with interactive checklist hit-testing, and an AI note organizer with typewriter streaming."
+                    : "Rebuilt from the ground up for autonomous knowledge workflows. Slate Agentic couples local-first SwiftData notes with an on-device or cloud Ollama AI agent, featuring inline Generative UI modules, rubber-band physics input, live LaTeX math rendering via MathJax/KaTeX, and pure-Swift multi-format document parsing."}
                 </p>
               </div>
 
@@ -431,10 +431,10 @@ export default function SlatePage() {
             {/* Left: statement */}
             <div className="space-y-3 max-w-lg">
               <h2 className="font-serif-anthropic text-3xl lg:text-4xl font-normal leading-[1.15]" style={{ color: "#f0eee6" }}>
-                Built for iOS.<br />Open source.
+                Built for iOS.<br />Crafted with precision.
               </h2>
               <p className="font-serif-anthropic text-base leading-[1.7]" style={{ color: "#b0aea5" }}>
-                Slate Origin is fully open source. Slate Agentic is in the works and will be free when it launches.
+                Both Slate Origin and Slate Agentic are source-available for personal study, code inspection, and architectural evaluation. Explore the full implementations on GitHub.
               </p>
             </div>
 
@@ -449,12 +449,21 @@ export default function SlatePage() {
                 <Github className="w-3.5 h-3.5" />
                 Slate Agentic on GitHub
               </a>
+              <a
+                href="https://github.com/sheharanayanananda/Slate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-white transition-colors rounded-xl"
+              >
+                <Github className="w-3.5 h-3.5" />
+                Slate Origin on GitHub
+              </a>
               <Link
                 href="/"
                 className="underline-hover font-sans-anthropic font-medium text-xs tracking-[0.05em] uppercase transition-colors"
                 style={{ color: "#b0aea5" }}
               >
-                ← Back to Portfolio
+                &larr; Back to Portfolio
               </Link>
             </div>
 
