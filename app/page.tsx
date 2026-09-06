@@ -275,25 +275,27 @@ export default function Home() {
                     </p>
                   </div>
 
-                  {/* Director Recommendation Quote & Verified Docs */}
-                  <div className="mt-4 pt-4 border-t border-[var(--border-light)]/60 space-y-2.5">
+                  {/* Director Recommendation Quote */}
+                  <div className="mt-4 pt-4 border-t border-[var(--border-light)]/60">
                     <blockquote className="font-serif-anthropic text-sm italic text-[var(--text-charcoal)]/85 border-l-2 border-[var(--accent-rust)] pl-3.5 py-0.5 leading-relaxed">
                       &ldquo;What stood out to me was how much ownership he took of the problems he ran into; he didn&apos;t just patch things, he understood why they were breaking and fixed them properly.&rdquo;
                     </blockquote>
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pl-3.5 pt-0.5">
-                      <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/80">
-                        Harshana Nishshanka &middot; Director, DayZ Solutions (Pvt.) Ltd.
-                      </p>
-                      <a
-                        href="https://drive.google.com/drive/folders/1_R_Bae1sv5ZdoUmhsp2VRwUX7XDQ-EXd?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 font-mono-anthropic text-xs text-[var(--accent-rust)] hover:underline self-start sm:self-auto"
-                      >
-                        <span>View Verified Documents</span>
-                        <span aria-hidden="true">&rarr;</span>
-                      </a>
-                    </div>
+                    <p className="font-mono-anthropic text-[11px] text-[var(--text-secondary)]/80 mt-1.5 pl-3.5">
+                      Harshana Nishshanka &middot; Director, DayZ Solutions (Pvt.) Ltd.
+                    </p>
+                  </div>
+
+                  {/* Verified Documents */}
+                  <div className="pt-2">
+                    <a
+                      href="https://drive.google.com/drive/folders/1_R_Bae1sv5ZdoUmhsp2VRwUX7XDQ-EXd?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-mono-anthropic text-xs text-[var(--accent-rust)] hover:underline"
+                    >
+                      <span>View Verified Employment Documents</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
                   </div>
                 </div>
               </div>
