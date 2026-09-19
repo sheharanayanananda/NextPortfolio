@@ -37,6 +37,32 @@ const nextConfig: NextConfig = {
         },
       ],
     },
+    {
+      source: "/llms.txt",
+      headers: [
+        { key: "Access-Control-Allow-Origin", value: "*" },
+        { key: "Content-Type", value: "text/plain; charset=utf-8" },
+      ],
+    },
+    {
+      source: "/llms-full.txt",
+      headers: [
+        { key: "Access-Control-Allow-Origin", value: "*" },
+        { key: "Content-Type", value: "text/plain; charset=utf-8" },
+      ],
+    },
+    {
+      source: "/robots.txt",
+      headers: [
+        { key: "Access-Control-Allow-Origin", value: "*" },
+      ],
+    },
+    {
+      source: "/sitemap.xml",
+      headers: [
+        { key: "Access-Control-Allow-Origin", value: "*" },
+      ],
+    },
   ],
 };
 

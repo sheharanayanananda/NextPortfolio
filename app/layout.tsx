@@ -180,6 +180,12 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://shehara.dayzsolutions.com",
+    types: {
+      "text/markdown": [
+        { url: "https://shehara.dayzsolutions.com/llms.txt", title: "LLM Summary" },
+        { url: "https://shehara.dayzsolutions.com/llms-full.txt", title: "LLM Full Content" },
+      ],
+    },
   },
 };
 
@@ -190,6 +196,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full scroll-smooth ${anthropicSans.variable} ${anthropicSerif.variable} ${anthropicMono.variable}`}>
+      <head>
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Summary" />
+        <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="LLM Full Content" />
+      </head>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
@@ -197,6 +207,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@graph": [
+                {
+                  "@type": "ProfilePage",
+                  "@id": "https://shehara.dayzsolutions.com/#profilepage",
+                  "url": "https://shehara.dayzsolutions.com",
+                  "name": "Thineth Shehara (Shei) Portfolio & Developer Profile",
+                  "mainEntity": {
+                    "@id": "https://shehara.dayzsolutions.com/#person"
+                  }
+                },
                 {
                   "@type": "Organization",
                   "@id": "https://shehara.dayzsolutions.com/#organization",
@@ -231,16 +250,98 @@ export default function RootLayout({
                   "url": "https://shehara.dayzsolutions.com",
                   "image": "https://shehara.dayzsolutions.com/me.jpg",
                   "description": "Software Developer specializing in mobile applications, real-time WebSocket systems, high-volume inventory sync, and turning fragile codebases into reliable, production-ready products.",
+                  "knowsAbout": [
+                    "Software Engineering",
+                    "Flutter",
+                    "Dart",
+                    "Swift",
+                    "SwiftUI",
+                    "Next.js",
+                    "React",
+                    "Laravel",
+                    "PHP",
+                    "Python",
+                    "WebSockets",
+                    "MySQL",
+                    "PostgreSQL",
+                    "Meilisearch",
+                    "REST APIs"
+                  ],
                   "sameAs": [
                     "https://linkedin.com/in/thineth-nayanananda-54815b228/",
                     "https://github.com/sheharanayanananda",
                     "mailto:sheharanayanananda@gmail.com"
                   ],
                   "jobTitle": "Software Engineer",
-                  "alumniOf": {
-                    "@type": "EducationalOrganization",
-                    "name": "Tampere University of Applied Sciences (TAMK)"
-                  }
+                  "worksFor": {
+                    "@type": "Organization",
+                    "name": "Independent / Associate Software Engineer"
+                  },
+                  "alumniOf": [
+                    {
+                      "@type": "EducationalOrganization",
+                      "name": "Tampere University of Applied Sciences (TAMK)",
+                      "url": "https://www.tuni.fi/en/about-us/tamk"
+                    },
+                    {
+                      "@type": "EducationalOrganization",
+                      "name": "ESOFT Metro Campus"
+                    }
+                  ],
+                  "hasCredential": [
+                    {
+                      "@type": "EducationalOccupationalCredential",
+                      "name": "Bachelor of Engineering in Software Engineering (B.Eng)",
+                      "credentialCategory": "degree",
+                      "educationalLevel": "EQF Level 6 / 240 ECTS",
+                      "recognizedBy": {
+                        "@type": "EducationalOrganization",
+                        "name": "Tampere University of Applied Sciences (TAMK)"
+                      }
+                    },
+                    {
+                      "@type": "EducationalOccupationalCredential",
+                      "name": "Pearson BTEC Level 5 Higher National Diploma in Computing",
+                      "credentialCategory": "diploma",
+                      "educationalLevel": "UK RQF Level 5 / 240 Credits",
+                      "recognizedBy": {
+                        "@type": "EducationalOrganization",
+                        "name": "Pearson Education Ltd."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "ItemList",
+                  "@id": "https://shehara.dayzsolutions.com/#projects",
+                  "name": "Featured Software Projects",
+                  "itemListElement": [
+                    {
+                      "@type": "SoftwareApplication",
+                      "name": "Slate Agentic & Slate Origin",
+                      "operatingSystem": "iOS 17+",
+                      "applicationCategory": "ProductivityApplication",
+                      "description": "Intelligent notes app for iPhone built with SwiftUI, featuring cloud LLM streaming, GenUI widgets, live LaTeX rendering, and SwiftData persistence.",
+                      "url": "https://shehara.dayzsolutions.com/slate",
+                      "sameAs": "https://github.com/sheharanayanananda/Slate"
+                    },
+                    {
+                      "@type": "SoftwareApplication",
+                      "name": "UNiFY Sports Platform",
+                      "operatingSystem": "iOS, Android, Cloud",
+                      "applicationCategory": "SportsApplication",
+                      "description": "Cross-platform sports platform built with Flutter and Python/Flask backend, featuring real-time WebSockets scoreboards and NFC payments via Stripe.",
+                      "sameAs": "https://github.com/sheharanayanananda"
+                    },
+                    {
+                      "@type": "SoftwareApplication",
+                      "name": "Deurbeslag Gigant Central Inventory ERP",
+                      "operatingSystem": "Web, Linux Server",
+                      "applicationCategory": "BusinessApplication",
+                      "description": "Laravel centralized inventory and order management system synchronizing 50,000+ products across WooCommerce storefronts and Bol.com API with Meilisearch.",
+                      "url": "https://shehara.dayzsolutions.com"
+                    }
+                  ]
                 }
               ]
             })

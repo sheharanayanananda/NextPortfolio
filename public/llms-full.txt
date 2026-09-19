@@ -1,0 +1,134 @@
+# Thineth Shehara (Shei) - Complete Developer Specification & Portfolio Content
+
+## Summary & Ethos
+Thineth Shehara (known to teammates as Shei) is a Software Engineer based in Tampere, Finland, studying Software Engineering (B.Eng) at Tampere University of Applied Sciences (TAMK). He specializes in mobile application engineering (Flutter, Swift/SwiftUI), real-time backend infrastructure (WebSockets, Python/Flask, Laravel), inventory synchronization pipelines, and web applications.
+
+Teams bring Thineth in when projects are complex, fragile, or requiring cross-domain ownership. He bridges mobile apps, real-time services, cloud architectures, and user interfaces to ship fast, reliable, production-ready software.
+
+---
+
+## Contact & Links
+- **Full Name**: Thineth Shehara Nayanananda
+- **Preferred Name**: Thineth / Shei
+- **Email**: sheharanayanananda@gmail.com
+- **Website**: https://shehara.dayzsolutions.com
+- **GitHub**: https://github.com/sheharanayanananda
+- **LinkedIn**: https://linkedin.com/in/thineth-nayanananda-54815b228/
+- **Location**: Tampere, Finland
+- **Languages**: English (Fluent / IELTS 6.5), Finnish (Learning / Suomen kieli), Sinhala (Native)
+- **Work Status**: Open to Software Engineering positions, contracts, and internships in Finland and remotely.
+
+---
+
+## Technical Stack & Capabilities
+
+### Mobile Engineering
+- **Flutter & Dart**: Cross-platform architecture, state management (Provider/Riverpod/Bloc), custom UI components, native plugins, background sync, NFC integrations.
+- **Swift & SwiftUI**: Native iOS development, SwiftData local persistence, VisionKit OCR scanning, PDFKit, custom UITextView wrappers, Apple Security APIs.
+
+### Web & Backend Engineering
+- **Next.js & React**: App Router, Server Components, TypeScript, Tailwind CSS, performance optimization, SSR/SSG.
+- **PHP & Laravel**: Service & Repository pattern refactoring, Livewire 3, queue workers, REST APIs, database optimizations.
+- **Python**: Flask backend services, WebSockets, text processing, data scripts.
+- **Databases & Search**: PostgreSQL, MySQL, Redis caching, Meilisearch typo-tolerant sub-50ms search.
+- **Real-Time & API Integration**: WebSockets, REST APIs, Stripe Payment Gateways, NFC payment integration, Bol.com marketplace API, WooCommerce REST API, DHL/GLS API pipelines.
+
+---
+
+## Work Experience
+
+### 1. Associate Software Engineer (Freelance / Contract)
+**Duration**: 01/2026 - Present  
+**Location**: Remote (USA & International Clients)  
+**Client Project**: UNiFY Sports (USA Private Contract)  
+- Stabilized sports mobile platform built with Flutter and Python/Flask backend for NBA, WNBA, NFL, and NCAA fan communities.
+- Architected WebSocket channels for live scoreboards and chatrooms supporting thousands of concurrent users.
+- Engineered live media streaming, automated push alerts, and NFC Baller Band payments via Stripe backed by AWS, Redis, and PostgreSQL.
+- **Tech**: Flutter, Dart, Python/Flask, WebSockets, PostgreSQL, Redis, AWS, Stripe, NFC.
+
+### 2. Associate Software Engineer
+**Company**: DayZ Solutions (Pvt.) Ltd.  
+**Duration**: 05/2025 - 07/2026  
+**Location**: Nittambuwa, Sri Lanka  
+
+#### Key Accountabilities & Projects at DayZ Solutions:
+- **Deurbeslag Gigant (Primary Responsibility)**:
+  - Led full-stack architecture of centralized inventory & order management system in Laravel.
+  - Refactored core modules into clean Service and Repository layers to eliminate technical debt.
+  - Automated real-time REST inventory synchronization across 5+ WooCommerce storefronts and Bol.com marketplace API with exponential retries, managing 50,000+ SKUs without overselling.
+  - Integrated Meilisearch for sub-50ms typo-tolerant search and automated warehouse label generation via GLS/DHL APIs and Dropbox print pipelines.
+  - *Tech*: Laravel, PHP, Livewire, MySQL, Meilisearch, Bol.com API, WooCommerce REST API, GLS/DHL API.
+
+- **ECore Logistics (Lead Mobile Engineer)**:
+  - Spearheaded cross-platform Field Service Management (FSM) companion mobile app architecture in Flutter/Dart from scratch.
+  - Directed mobile engineering integrated with primary Laravel web ERP.
+  - Engineered real-time REST and WebSocket layer powering live vehicle tracking, concrete pump status, and dynamic worker dispatching for BetonStorten.nl.
+  - Contributed to core Laravel web ERP, database query optimizations, and UI modernization to Livewire 3.
+  - *Tech*: Flutter, Dart, Laravel, Livewire 3, MySQL, WebSockets, REST APIs.
+
+- **BusinessLabels.nl (Full-Stack Rebuild)**:
+  - Rebuilt responsive B2B e-commerce platform with Next.js, React, and Tailwind CSS from Figma specs.
+  - Engineered dynamic catalog archive filters for 50,000+ variations.
+  - Integrated Next.js frontend with Laravel REST backend, fixing cart state issues and server memory handling.
+  - Managed server deployment with Node.js builds and PM2 daemon clustering.
+  - *Tech*: Next.js, React, Tailwind CSS, Radix UI, Laravel REST API, Node.js, PM2.
+
+*Recommendation*: "What stood out to me was how much ownership he took of the problems he ran into; he didn't just patch things, he understood why they were breaking and fixed them properly." — Harshana Nishshanka, Director, DayZ Solutions (Pvt.) Ltd.
+
+### 3. Software Developer (Freelance)
+**Duration**: 08/2022 - 06/2025  
+**Location**: Remote / Sri Lanka  
+- Delivered custom web applications with administrative portals and order workflows using PHP, Laravel, and MySQL.
+- Engineered custom C# / .NET desktop solutions, including pharmacy management and dual-terminal retail supermarket systems with live SQL synchronization.
+- **Tech**: PHP, Laravel, MySQL, JavaScript, Tailwind CSS, C#, .NET, SQL Server.
+
+---
+
+## Detailed Project Showcase
+
+### 1. Slate Agentic & Slate Origin (iOS App)
+- **Overview**: Intelligent notes application for iPhone built with Swift and SwiftUI.
+- **Slate Agentic (v2)**: Rebuilt for autonomous knowledge workflows. Connects SwiftData notes to cloud LLM models (Ollama), features inline Generative UI (GenUI) checksheets & forms, custom GFM Markdown parser, live LaTeX math rendering via MathJax/KaTeX, and pure-Swift ZIP/PDF/DOCX/XLSX text extraction.
+- **Slate Origin (v1)**: Local-first native writing environment with SwiftData persistence, Apple VisionKit visual OCR scanning, custom bidirectional Markdown editor, and AI note organizer.
+- **Repository**: https://github.com/sheharanayanananda/Slate
+
+### 2. Deurbeslag Gigant E-Commerce ERP
+- Centralized inventory platform handling 50,000+ hardware products across multiple European webshops and Bol.com marketplace.
+
+### 3. UNiFY Sports Ecosystem
+- Mobile application providing live game feeds, community chatrooms, media streams, and physical NFC payment bracelets for sports enthusiasts.
+
+---
+
+## Academic Credentials & Education
+
+### 1. Tampere University of Applied Sciences (TAMK)
+- **Degree**: Bachelor of Engineering in Software Engineering (B.Eng)
+- **Duration**: 08/2026 - Present (Tampere, Finland)
+- **Credits**: 240 ECTS (EQF Level 6)
+- **Curriculum**: Software Architecture, C++, Java, Cloud Systems, Cybersecurity, Data Analytics, Applied Machine Learning.
+- **Affiliations**: Member of Source (TAMK Software Engineering Student Club) and TIRO ry (Tampere Engineering Students Association).
+
+### 2. Pearson BTEC Level 5 Higher National Diploma in Computing
+- **Institution**: ESOFT Metro Campus (Gampaha, Sri Lanka)
+- **Duration**: 02/2023 - 02/2025
+- **Grade**: Merit (240 Credits, UK RQF Level 5, Software Engineering Pathway)
+- **Distinctions**: User Experience & Interface Design, Website Design & Development.
+
+### 3. IELTS Academic English Test
+- **Overall Band**: 6.5 (CEFR Level B2)
+- **Scores**: Listening 7.5, Reading 7.0, Writing 6.0, Speaking 5.5
+
+### 4. Pearson Assured Diploma in Information Technology (DiTEC)
+- **Institution**: ESOFT Metro Campus
+- **Duration**: 07/2022 - 01/2024
+- **Grade**: Merit (1,200 Guided Hours)
+
+---
+
+## Automated Tool & AI Access Guidelines
+- **Canonical Site URL**: https://shehara.dayzsolutions.com
+- **Sitemap**: https://shehara.dayzsolutions.com/sitemap.xml
+- **Robots Policy**: Open crawl permitted for all standard search engine and AI crawlers (`GPTBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`, `Applebot-Extended`, etc.).
+- **LLM Text Summary**: https://shehara.dayzsolutions.com/llms.txt
+- **LLM Full Text**: https://shehara.dayzsolutions.com/llms-full.txt
