@@ -37,7 +37,7 @@ Teams bring Thineth in when projects are complex, fragile, or requiring cross-do
 
 ## Work Experience
 
-### 1. Associate Software Engineer (Freelance / Contract)
+### 1. Software Engineer (Freelance / Contract)
 **Duration**: 01/2026 - Present  
 **Location**: Remote (USA & International Clients)  
 **Client Project**: UNiFY Sports (USA Private Contract)  
@@ -48,14 +48,14 @@ Teams bring Thineth in when projects are complex, fragile, or requiring cross-do
 
 ### 2. Associate Software Engineer
 **Company**: DayZ Solutions (Pvt.) Ltd.  
-**Duration**: 05/2025 - 07/2026  
+**Duration**: 05/2025 - 06/2026  
 **Location**: Nittambuwa, Sri Lanka  
 
 #### Key Accountabilities & Projects at DayZ Solutions:
 - **Deurbeslag Gigant (Primary Responsibility)**:
   - Led full-stack architecture of centralized inventory & order management system in Laravel.
   - Refactored core modules into clean Service and Repository layers to eliminate technical debt.
-  - Automated real-time REST inventory synchronization across 5+ WooCommerce storefronts and Bol.com marketplace API with exponential retries, managing 50,000+ SKUs without overselling.
+  - Automated real-time REST inventory synchronization across 6+ WooCommerce stores and Bol.com marketplace API with exponential retries, managing 50,000+ SKUs without overselling.
   - Integrated Meilisearch for sub-50ms typo-tolerant search and automated warehouse label generation via GLS/DHL APIs and Dropbox print pipelines.
   - *Tech*: Laravel, PHP, Livewire, MySQL, Meilisearch, Bol.com API, WooCommerce REST API, GLS/DHL API.
 

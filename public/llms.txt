@@ -16,7 +16,7 @@
 ## Key Projects
 - [Slate Agentic & Origin](https://shehara.dayzsolutions.com/slate): Native iOS notes application built in Swift/SwiftUI featuring cloud LLM streaming, GenUI widgets, LaTeX math rendering, and SwiftData.
 - [UNiFY Sports](https://github.com/sheharanayanananda): USA-based sports mobile platform (Flutter & Python/Flask) handling real-time WebSocket scoreboards, live chat, NFC payments, and Stripe integration.
-- [Deurbeslag Gigant Inventory System](https://shehara.dayzsolutions.com): Centralized order & inventory management architecture in Laravel synchronizing 50,000+ SKUs across 5+ WooCommerce storefronts & Bol.com marketplace API with Meilisearch.
+- [Deurbeslag Gigant Inventory System](https://shehara.dayzsolutions.com): Centralized order & inventory management architecture in Laravel synchronizing 50,000+ SKUs across 6+ WooCommerce stores & Bol.com marketplace API with Meilisearch.
 - [ECore Logistics Companion App](https://shehara.dayzsolutions.com): Cross-platform Field Service Management (FSM) mobile app in Flutter integrated with real-time Laravel web ERP for live vehicle dispatching.
 - [BusinessLabels.nl E-Commerce](https://shehara.dayzsolutions.com): High-performance Next.js B2B e-commerce platform integrated with Laravel REST backend for 50,000+ catalog variations.
 

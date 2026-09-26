@@ -204,7 +204,7 @@ export default function Home() {
           <div className="max-w-3xl mx-auto relative border-l border-[var(--border-light)]/70 pl-8 space-y-14 py-4">
 
 
-            {/* Job 1 (Associate Software Engineer - Freelance) */}
+            {/* Job 1 (Software Engineer - Freelance) */}
             <div className="relative group">
               {/* Timeline Dot (Blinking Orange Button for Current) */}
               <div className="absolute -left-[40px] top-2.5 flex items-center justify-center w-[16px] h-[16px]">
@@ -221,7 +221,7 @@ export default function Home() {
                       Freelance &amp; Contract Based
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Associate Software Engineer (Freelance)
+                      Software Engineer (Freelance)
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote (USA &amp; International Clients)
@@ -284,7 +284,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
-                    05/2025 - 07/2026
+                    05/2025 - 06/2026
                   </div>
                 </div>
 
@@ -307,7 +307,7 @@ export default function Home() {
                       </li>
                       <li className="flex gap-2.5 items-start">
                         <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>
-                        <span>Automated real-time REST inventory sync across 5+ WooCommerce storefronts and Bol.com marketplace API with exponential retries, preventing overselling across 50,000+ products.</span>
+                        <span>Automated real-time REST inventory sync across 6+ WooCommerce stores and Bol.com marketplace API with exponential retries, preventing overselling across 50,000+ products.</span>
                       </li>
                       <li className="flex gap-2.5 items-start">
                         <span className="text-[var(--accent-rust)] mt-1 font-bold select-none text-[10px]">&middot;</span>

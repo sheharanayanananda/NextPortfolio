@@ -42,7 +42,7 @@ export default function ProjectsShowcaseStatic() {
       title: "Deurbeslag Gigant",
       category: "Enterprise Full-Stack",
       heroTech: ["Laravel", "Livewire", "Meilisearch", "WooCommerce"],
-      description: "Central inventory system for a Dutch hardware retailer, syncing 50,000+ products across 5+ WooCommerce stores and Bol.com without overselling.",
+      description: "Central inventory system for a Dutch hardware retailer, syncing 50,000+ products across 6+ WooCommerce stores and Bol.com without overselling.",
       badge: "Client Platform",
       badgeType: "client",
       repoStatus: "private"

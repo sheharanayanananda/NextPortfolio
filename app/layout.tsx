@@ -275,7 +275,7 @@ export default function RootLayout({
                   "jobTitle": "Software Engineer",
                   "worksFor": {
                     "@type": "Organization",
-                    "name": "Independent / Associate Software Engineer"
+                    "name": "Independent / Software Engineer"
                   },
                   "alumniOf": [
                     {
