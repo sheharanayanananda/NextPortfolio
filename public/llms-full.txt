@@ -86,10 +86,10 @@ Teams bring Thineth in when projects are complex, fragile, or requiring cross-do
 
 ## Detailed Project Showcase
 
-### 1. Slate Agentic & Slate Origin (iOS App)
+### 1. Slate Genesis & Slate Origin (iOS App)
 - **Overview**: Intelligent notes application for iPhone built with Swift and SwiftUI.
-- **Slate Agentic (v2)**: Rebuilt for autonomous knowledge workflows. Connects SwiftData notes to cloud LLM models (Ollama), features inline Generative UI (GenUI) checksheets & forms, custom GFM Markdown parser, live LaTeX math rendering via MathJax/KaTeX, and pure-Swift ZIP/PDF/DOCX/XLSX text extraction.
-- **Slate Origin (v1)**: Local-first native writing environment with SwiftData persistence, Apple VisionKit visual OCR scanning, custom bidirectional Markdown editor, and AI note organizer.
+- **Slate Genesis (v2)**: Rebuilt for modern AI-era note-taking. Features a hybrid block canvas cleanly separating natural writing from isolated visual cards (code with syntax highlighting and diffs, tables, offline KaTeX math, alerts) with selection focus rings and proxy backspace deletion. Connects to Ollama Cloud across 3 specialized model tiers (Slate Flash, Slate Creative, Slate Pro) with async token streaming, one-tap "Turn chat into notes" with emoji-free titles and persistent slateNoteId tracking, pure-Swift binary ZIP / DOCX / XLSX / PDF decompression via Apple's Compression framework (COMPRESSION_ZLIB), and zero external dependencies.
+- **Slate Origin (v1)**: Local-first native writing environment with SwiftData persistence, Apple VisionKit camera scanning with on-device OCR and scene classification (Smart Lens), custom bidirectional Markdown editor with interactive checklist hit-testing on UITextView, and an experimental Scribe voice dictation tool.
 - **Repository**: https://github.com/sheharanayanananda/Slate
 
 ### 2. Deurbeslag Gigant E-Commerce ERP

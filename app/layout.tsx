@@ -318,11 +318,11 @@ export default function RootLayout({
                   "itemListElement": [
                     {
                       "@type": "SoftwareApplication",
-                      "name": "Slate Agentic & Slate Origin",
-                      "operatingSystem": "iOS 17+",
+                      "name": "Slate Genesis & Slate Origin",
+                      "operatingSystem": "iOS 26+",
                       "applicationCategory": "ProductivityApplication",
-                      "description": "Intelligent notes app for iPhone built with SwiftUI, featuring cloud LLM streaming, GenUI widgets, live LaTeX rendering, and SwiftData persistence.",
-                      "url": "https://shehara.dayzsolutions.com/slate",
+                      "description": "Intelligent notes app for iPhone built with SwiftUI, featuring a hybrid block canvas, 3 tuned Ollama streaming tiers, offline KaTeX math, and SwiftData persistence.",
+                      "url": "https://shehara.dayzsolutions.com/slate?v=genesis",
                       "sameAs": "https://github.com/sheharanayanananda/Slate"
                     },
                     {

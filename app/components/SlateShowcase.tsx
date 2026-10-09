@@ -151,7 +151,7 @@ export default function SlateShowcase() {
           <div className="flex flex-col justify-center items-center text-center gap-4 md:gap-5 lg:gap-6 z-10 max-w-md lg:max-w-2xl w-full">
             <h1 className="font-serif-anthropic font-normal leading-[1.2] md:leading-[1.1] text-center text-[var(--text-charcoal)]">
               <span className="text-2xl md:text-3xl lg:text-4xl block mb-1.5 opacity-90">Announcing</span>
-              <span className="text-4xl md:text-5xl lg:text-6xl block font-normal whitespace-nowrap">Slate Agentic</span>
+              <span className="text-4xl md:text-5xl lg:text-6xl block font-normal whitespace-nowrap">Slate Genesis</span>
             </h1>
 
             {/* Mobile/Tablet Butterflies "S" Shape (shown under heading, hidden on lg+) */}
@@ -212,11 +212,11 @@ export default function SlateShowcase() {
             </div>
 
             <p className="text-sm md:text-base text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
-              An intelligent notes app for iOS powered by cloud models from Ollama.
+              An intelligent notes app for iOS built on a hybrid block canvas, with 3 tuned AI tiers and emerging GenUI capabilities.
             </p>
             <div className="pt-2 md:pt-4">
               <a
-                href="/slate"
+                href="/slate?v=genesis"
                 className="flex items-center justify-center bg-black text-white hover:bg-black/90 px-5 py-3 rounded-xl font-sans-anthropic text-sm transition-all duration-200"
               >
                 Explore Slate

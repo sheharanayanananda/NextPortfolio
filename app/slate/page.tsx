@@ -9,8 +9,8 @@ import Header from "../components/Header";
 
 export default function SlatePage() {
   const [mounted, setMounted] = useState(false);
-  const [activeVersion, setActiveVersion] = useState<"origin" | "agentic">("agentic");
-  const [prevVersion, setPrevVersion] = useState<"origin" | "agentic">("agentic");
+  const [activeVersion, setActiveVersion] = useState<"origin" | "genesis">("genesis");
+  const [prevVersion, setPrevVersion] = useState<"origin" | "genesis">("genesis");
   const [animDir, setAnimDir] = useState<"right" | "left">("right");
   const featureRef = useRef<HTMLDivElement>(null);
   const switcherContainerRef = useRef<HTMLDivElement>(null);
@@ -20,9 +20,12 @@ export default function SlatePage() {
     setMounted(true);
     const params = new URLSearchParams(window.location.search);
     const v = params.get("v");
-    if (v === "origin" || v === "agentic") {
-      setActiveVersion(v);
-      setPrevVersion(v);
+    if (v === "origin") {
+      setActiveVersion("origin");
+      setPrevVersion("origin");
+    } else if (v === "genesis" || v === "agentic") {
+      setActiveVersion("genesis");
+      setPrevVersion("genesis");
     }
   }, []);
 
@@ -38,37 +41,37 @@ export default function SlatePage() {
     }
   }, [activeVersion, mounted]);
 
-  const switchVersion = (v: "origin" | "agentic") => {
+  const switchVersion = (v: "origin" | "genesis") => {
     if (v === activeVersion) return;
     setAnimDir(v === "origin" ? "right" : "left");
     setPrevVersion(activeVersion);
     setActiveVersion(v);
   };
 
-  const agenticFeatures = [
+  const genesisFeatures = [
     {
       index: "01",
-      title: "Cloud Streaming & 6 Tuned Presets",
+      title: "Hybrid Block Canvas & Special Blocks",
       description:
-        "Token-by-token async streaming powered by cloud models from Ollama via URLSession.bytes. Six specialized personas tuned across context windows from 4K to 32K: Slate Lite, Flash, Creative, Scholar, Coder, and Pro.",
+        "Clean separation between natural writing in NativeTextView and isolated visual cards for code blocks with syntax highlighting & diffs, multi-column tables, offline KaTeX equations, and GitHub-style alerts with proxy backspace deletion.",
     },
     {
       index: "02",
-      title: "Dynamic Generative UI (GenUI)",
+      title: "Three Tuned Model Tiers (Flash, Creative, Pro)",
       description:
-        "The AI dynamically constructs interactive SwiftUI widgets inside chat bubbles: live persistent checksheets, structured data-gathering forms with validation, and quick-action option grids.",
+        "Token-by-token async streaming powered by cloud models from Ollama. Three specialized tiers: Slate Flash (8K context, 0.25 temp) for quick tasks, Slate Creative (16K context, 0.85 temp) for brainstorming, and Slate Pro (32K context, 0.15 temp) for deep reasoning.",
     },
     {
       index: "03",
-      title: "Custom GFM Parser & LaTeX Engine",
+      title: "One-Tap \"Turn Chat into Notes\"",
       description:
-        "Single-pass Markdown parser with a 120ms staggered block reveal animation. Renders complex math via MathJax 3 and KaTeX in height-bridged WebViews, code diffs, and an LRU cache preventing scroll jitter.",
+        "Converts any AI assistant response into a clean, permanent note with one tap. Strips conversational noise, enforces emoji-free titles (max 3 words), links persistent slateNoteId tracking, and pulses the Home tab with an unread badge.",
     },
     {
       index: "04",
-      title: "Pure-Swift Document Extraction",
+      title: "Pure-Swift Ingestion & Offline KaTeX",
       description:
-        "Hand-rolled pure-Swift ZIP decompressor extracting structured text from PDF, DOCX, and XLSX spreadsheets with zero external dependencies, ready for immediate AI analysis.",
+        "Hand-rolled pure-Swift binary ZIP decompressor using Apple's Compression framework (COMPRESSION_ZLIB) and SAX XML parsing for DOCX and XLSX spreadsheets without external packages, paired with bundled offline KaTeX equation rendering.",
     },
   ];
 
@@ -99,28 +102,28 @@ export default function SlatePage() {
     },
   ];
 
-  const currentFeatures = activeVersion === "agentic" ? agenticFeatures : originFeatures;
+  const currentFeatures = activeVersion === "genesis" ? genesisFeatures : originFeatures;
 
-  const agenticStats = [
-    { value: "iOS 17+", label: "Platform" },
+  const genesisStats = [
+    { value: "iOS 26+", label: "Platform" },
     { value: "Swift", label: "Language" },
     { value: "Source-Available", label: "License" },
   ];
 
   const originStats = [
-    { value: "iOS 17+", label: "Platform" },
+    { value: "iOS 26+", label: "Platform" },
     { value: "Swift", label: "Language" },
     { value: "Source-Available", label: "License" },
   ];
 
-  const currentStats = activeVersion === "agentic" ? agenticStats : originStats;
+  const currentStats = activeVersion === "genesis" ? genesisStats : originStats;
 
-  const agenticPullQuote =
-    "A workspace that acts as an active second brain, synthesizing scattered documents into conversational knowledge and dynamic interfaces.";
+  const genesisPullQuote =
+    "Notes shouldn't require manual formatting or complex syntax. Brainstorm with cloud AI, extract structured notes with a tap, and write on a distraction-free canvas.";
   const originPullQuote =
     "A local-first, distraction-free native writing environment where your thoughts are encrypted, private, and entirely yours.";
 
-  const agenticTechStack = "Swift · SwiftUI · SwiftData · Ollama Cloud API · WebKit (LaTeX) · VisionKit · Apple Security";
+  const genesisTechStack = "Swift · SwiftUI · SwiftData · Ollama Cloud API · WebKit (KaTeX) · Compression · PDFKit · Apple Security";
   const originTechStack = "Swift · SwiftUI · SwiftData · VisionKit · PDFKit · Apple Security";
 
   return (
@@ -159,7 +162,7 @@ export default function SlatePage() {
               className="inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] border border-[var(--text-charcoal)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 hover:bg-transparent hover:text-[var(--text-charcoal)] rounded-xl"
             >
               <Github className="w-3.5 h-3.5" />
-              View Agentic
+              View Genesis
             </a>
             <a
               href="https://github.com/sheharanayanananda/Slate"
@@ -194,15 +197,15 @@ export default function SlatePage() {
               }}
             />
             <button
-              onClick={() => switchVersion("agentic")}
-              data-active={activeVersion === "agentic"}
+              onClick={() => switchVersion("genesis")}
+              data-active={activeVersion === "genesis"}
               className={`relative z-10 px-5 py-2 font-sans-anthropic font-semibold text-[11px] tracking-[0.04em] uppercase transition-colors duration-300 rounded-full ${
-                activeVersion === "agentic"
+                activeVersion === "genesis"
                   ? "text-[var(--bg-warm)]"
                   : "text-[#b0aea5] hover:text-[var(--text-charcoal)]"
               }`}
             >
-              Agentic
+              Genesis
             </button>
             <button
               onClick={() => switchVersion("origin")}
@@ -239,35 +242,39 @@ export default function SlatePage() {
               >
                 <Image
                   src="/slate_origin.webp"
-                  alt={activeVersion === "origin" ? "Slate Origin: iOS App" : "Slate Agentic: iOS App"}
+                  alt={activeVersion === "origin" ? "Slate Origin: iOS App" : "Slate Genesis: iOS App"}
                   fill
                   sizes="(max-width: 768px) 100vw, 420px"
                   className="object-cover"
                   priority
                 />
-                {activeVersion === "agentic" && (
+                {activeVersion === "genesis" && (
                   <div className="absolute inset-0 bg-[#141413]/90 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center text-[#f0eee6]">
                     <div className="font-mono-anthropic text-[10px] tracking-[0.2em] uppercase text-[var(--accent-rust)] mb-2 font-bold">
                       SLATE V2
                     </div>
                     <div className="font-serif-anthropic text-2xl font-normal mb-3 text-white">
-                      Agentic Command Center
+                      Genesis Workspace
                     </div>
                     <p className="font-serif-anthropic text-xs opacity-80 max-w-[280px] leading-relaxed mb-6">
-                      Powered by cloud models from Ollama, multi-model reasoning presets, and a custom document extraction workspace.
+                      Powered by cloud models from Ollama, hybrid block editing, and an automated document ingestion engine.
                     </p>
                     <div className="w-full max-w-[280px] space-y-2.5 text-left border-t border-white/10 pt-4 font-sans-anthropic text-[11px] tracking-wide text-white/70">
                       <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>6 tuned streaming presets (Lite to Pro)</span>
+                        <span>Hybrid block canvas &amp; special cards</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>Dynamic GenUI checksheets &amp; forms</span>
+                        <span>3 tuned tiers (Flash, Creative, Pro)</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>Pure-Swift ZIP, PDF, DOCX &amp; XLSX parser</span>
+                        <span>One-tap turn chat into notes</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
+                        <span>Pure-Swift ZIP, DOCX, XLSX &amp; PDF</span>
                       </div>
                     </div>
                   </div>
@@ -292,12 +299,12 @@ export default function SlatePage() {
                   {activeVersion === "origin" ? "Proprietary · Source-Available" : "Proprietary · Source-Available"}
                 </div>
                 <h2 className="font-serif-anthropic text-4xl lg:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
-                  Slate {activeVersion === "origin" ? "Origin" : "Agentic"}
+                  Slate {activeVersion === "origin" ? "Origin" : "Genesis"}
                 </h2>
                 <p className="font-serif-anthropic text-lg font-normal text-[var(--text-charcoal)] opacity-70 leading-[1.7] max-w-sm">
                   {activeVersion === "origin"
                     ? "The foundational Slate experience. A local-first, distraction-free native iOS notebook built on SwiftData with Apple VisionKit camera scanning, a custom bidirectional Markdown editor with interactive checklist hit-testing, and an AI note organizer with typewriter streaming."
-                    : "Rebuilt from the ground up for autonomous knowledge workflows. Slate Agentic connects your SwiftData notes directly to cloud models from Ollama, featuring inline Generative UI modules, live LaTeX math rendering via MathJax/KaTeX, and pure-Swift multi-format document parsing."}
+                    : "Rebuilt from the ground up for modern AI knowledge workflows. Slate Genesis pairs a distraction-free hybrid block editor with cloud models from Ollama, one-tap note generation from conversation, offline KaTeX equations, and pure-Swift document ingestion."}
                 </p>
               </div>
 
@@ -347,12 +354,12 @@ export default function SlatePage() {
               }`}
             >
               <div className="font-mono-anthropic text-[10px] tracking-[0.18em] uppercase text-[var(--text-charcoal)]">
-                {activeVersion === "origin" ? "Core capabilities" : "Agentic capabilities"}
+                {activeVersion === "origin" ? "Core capabilities" : "Genesis capabilities"}
               </div>
               <h2 className="font-serif-anthropic text-3xl lg:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.15]">
                 {activeVersion === "origin"
                   ? "Intelligent notes, built for clarity."
-                  : "Your notes. Now with an AI agent."}
+                  : "Your notes. Rebuilt for the AI era."}
               </h2>
             </div>
 
@@ -411,11 +418,11 @@ export default function SlatePage() {
               }`}
               style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)" }}
             >
-              "{activeVersion === "origin" ? originPullQuote : agenticPullQuote}"
+              "{activeVersion === "origin" ? originPullQuote : genesisPullQuote}"
             </blockquote>
             <div className="border-t border-[var(--text-charcoal)]/15 pt-6">
               <div className="font-mono-anthropic text-[10px] tracking-[0.18em] uppercase text-[var(--text-charcoal)]">
-                {activeVersion === "origin" ? originTechStack : agenticTechStack}
+                {activeVersion === "origin" ? originTechStack : genesisTechStack}
               </div>
             </div>
           </div>
@@ -434,7 +441,7 @@ export default function SlatePage() {
                 Built for iOS.<br />Crafted with precision.
               </h2>
               <p className="font-serif-anthropic text-base leading-[1.7]" style={{ color: "#b0aea5" }}>
-                Both Slate Origin and Slate Agentic are source-available for personal study, code inspection, and architectural evaluation. Explore the full implementations on GitHub.
+                Both Slate Origin and Slate Genesis are source-available for personal study, code inspection, and architectural evaluation. Explore the full implementations on GitHub.
               </p>
             </div>
 
@@ -447,7 +454,7 @@ export default function SlatePage() {
                 className="inline-flex items-center gap-2 bg-[var(--accent-rust)] hover:bg-[var(--accent-rust-hover)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-white transition-colors rounded-xl"
               >
                 <Github className="w-3.5 h-3.5" />
-                Slate Agentic on GitHub
+                Slate Genesis on GitHub
               </a>
               <a
                 href="https://github.com/sheharanayanananda/Slate"

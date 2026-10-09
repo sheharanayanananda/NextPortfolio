@@ -3,10 +3,10 @@ import React from "react";
 export default function ProjectsShowcaseStatic() {
   const featuredProjects = [
     {
-      title: "Slate Agentic",
-      category: "Native iOS · GenUI",
-      heroTech: ["SwiftUI", "SwiftData", "Ollama Cloud", "GenUI"],
-      description: "Intelligent notes app for iOS built with SwiftUI. Powered by cloud models from Ollama with token-by-token streaming and dynamic Generative UI (GenUI) widgets.",
+      title: "Slate Genesis",
+      category: "Native iOS · Hybrid Block Editor · GenUI",
+      heroTech: ["SwiftUI", "SwiftData", "Ollama Cloud", "KaTeX"],
+      description: "Intelligent notes app for iOS rebuilt on a hybrid block canvas. Powered by cloud models from Ollama with 3 tuned tiers (Flash, Creative, Pro), offline KaTeX math, and pure-Swift document parsing.",
       badge: "Active Priority",
       badgeType: "priority",
       repoStatus: "public"
@@ -24,7 +24,7 @@ export default function ProjectsShowcaseStatic() {
       title: "Slate Origin",
       category: "Native iOS · Local-First",
       heroTech: ["SwiftUI", "SwiftData", "VisionKit", "Local-First"],
-      description: "Local-first native iOS writing and note-taking environment with encrypted storage and on-device document scanning. (Archived · Legacy Foundation)",
+      description: "Local-first native iOS writing and note-taking environment with encrypted storage, VisionKit document scanning, and Scribe voice dictation. (Archived · Legacy Foundation)",
       badge: "Archived Foundation",
       badgeType: "archived",
       repoStatus: "public"

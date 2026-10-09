@@ -14,7 +14,7 @@
 - **Portfolio Website**: https://shehara.dayzsolutions.com
 
 ## Key Projects
-- [Slate Agentic & Origin](https://shehara.dayzsolutions.com/slate): Native iOS notes application built in Swift/SwiftUI featuring cloud LLM streaming, GenUI widgets, LaTeX math rendering, and SwiftData.
+- [Slate Genesis & Origin](https://shehara.dayzsolutions.com/slate?v=genesis): Native iOS notes application built in Swift/SwiftUI featuring a hybrid block canvas, 3 Ollama Cloud streaming tiers (Flash, Creative, Pro), offline KaTeX math, one-tap chat note extraction, and pure-Swift document ingestion.
 - [UNiFY Sports](https://github.com/sheharanayanananda): USA-based sports mobile platform (Flutter & Python/Flask) handling real-time WebSocket scoreboards, live chat, NFC payments, and Stripe integration.
 - [Deurbeslag Gigant Inventory System](https://shehara.dayzsolutions.com): Centralized order & inventory management architecture in Laravel synchronizing 50,000+ SKUs across 6+ WooCommerce stores & Bol.com marketplace API with Meilisearch.
 - [ECore Logistics Companion App](https://shehara.dayzsolutions.com): Cross-platform Field Service Management (FSM) mobile app in Flutter integrated with real-time Laravel web ERP for live vehicle dispatching.

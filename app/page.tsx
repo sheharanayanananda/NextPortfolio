@@ -792,20 +792,20 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto pt-6 items-stretch justify-center">
-            {/* Card 1: Slate Agentic */}
+            {/* Card 1: Slate Genesis */}
             <a
-              href="/slate?v=agentic"
+              href="/slate?v=genesis"
               className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer"
             >
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
-                  Agentic AI &amp; iOS
+                  Hybrid Block Canvas &amp; AI
                 </span>
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
-                  Slate Agentic
+                  Slate Genesis
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
-                  Intelligent notes app for iOS built with SwiftUI, featuring dynamic Generative UI (GenUI widgets) and streaming inference powered by cloud models from Ollama.
+                  Intelligent notes app for iOS built with SwiftUI, featuring a hybrid block canvas, 3 tuned Ollama streaming tiers (Flash, Creative, Pro), offline KaTeX math, and emerging GenUI widgets.
                 </p>
               </div>
               <div className="pt-6 font-mono-anthropic text-xs text-[var(--accent-rust)] flex items-center gap-1.5 group-hover:underline">
