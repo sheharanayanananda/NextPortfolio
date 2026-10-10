@@ -145,8 +145,13 @@ export const metadata: Metadata = {
   description: "Portfolio of Thineth Shehara (Shei). Building fast mobile apps, reliable real-time backends, and simple web tools in Tampere, Finland.",
   metadataBase: new URL("https://shehara.dayzsolutions.com"),
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/logo.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   openGraph: {
     title: "Thineth Shehara (Shei)",
@@ -180,12 +185,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://shehara.dayzsolutions.com",
-    types: {
-      "text/markdown": [
-        { url: "https://shehara.dayzsolutions.com/llms.txt", title: "LLM Summary" },
-        { url: "https://shehara.dayzsolutions.com/llms-full.txt", title: "LLM Full Content" },
-      ],
-    },
   },
 };
 
@@ -196,10 +195,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full scroll-smooth ${anthropicSans.variable} ${anthropicSerif.variable} ${anthropicMono.variable}`}>
-      <head>
-        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Summary" />
-        <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="LLM Full Content" />
-      </head>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"

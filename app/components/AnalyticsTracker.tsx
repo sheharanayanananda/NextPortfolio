@@ -30,19 +30,8 @@ export default function AnalyticsTracker() {
   const loadSentRef = useRef(false);
   const currentPath = useRef(pathname);
 
-  // Helper to determine if current session is an admin
-  const isExcluded = () => {
-    if (pathname.startsWith('/admin')) return true;
-    if (typeof document !== 'undefined') {
-      const cookies = document.cookie.split(';');
-      return cookies.some(c => c.trim().startsWith('admin_session='));
-    }
-    return false;
-  };
-
   // ── Page view + performance ──────────────────
   useEffect(() => {
-    if (isExcluded()) return;
 
     const path = pathname;
     currentPath.current = path;
@@ -89,7 +78,6 @@ export default function AnalyticsTracker() {
 
   // ── Scroll depth tracking ────────────────────
   useEffect(() => {
-    if (isExcluded()) return;
     const milestones = [25, 50, 75, 100];
 
     const handleScroll = () => {
@@ -112,7 +100,6 @@ export default function AnalyticsTracker() {
 
   // ── Outbound link click tracking ─────────────
   useEffect(() => {
-    if (isExcluded()) return;
     const handlers: Array<{ el: Element; fn: EventListener }> = [];
 
     const attach = () => {
