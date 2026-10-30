@@ -6,7 +6,6 @@ import TypingGreeting from "./components/TypingGreeting";
 import ProjectsShowcase from "./components/ProjectsShowcase";
 import ArcCardInteractive from "./components/ArcCardInteractive";
 import FloatingArcButton from "./components/FloatingArcButton";
-import HangingNameBadge from "./components/HangingNameBadge";
 import { HIRE_MAILTO_URL } from "./lib/email";
 
 export default function Home() {
@@ -27,15 +26,7 @@ export default function Home() {
                 <span className="ml-3">I'm</span>
               </div>
               <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-normal leading-[1.05]">
-                <span className="sr-only">Thineth</span>
-                <span aria-hidden="true" className="inline-block relative">
-                  Th
-                  <span className="relative inline-block">
-                    i
-                    <HangingNameBadge />
-                  </span>
-                  neth
-                </span>
+                Thineth
               </h1>
             </div>
 
@@ -158,7 +149,7 @@ export default function Home() {
 
           <div className="space-y-8 text-xl leading-[1.7] text-[var(--text-secondary)]/80 font-sans-anthropic max-w-3xl mx-auto font-normal">
             <p>
-              I'm Thineth (known to teammates and friends as Shei). I build and ship mobile and web applications from idea all the way to production. Whether stabilizing a platform for thousands of live users or managing a catalog with 50,000+ products, I turn complex technical challenges into smooth, reliable tools that people love to use.
+              I'm Thineth. I build and ship mobile and web applications from idea all the way to production. Whether stabilizing a platform for thousands of live users or managing a catalog with 50,000+ products, I turn complex technical challenges into smooth, reliable tools that people love to use.
             </p>
             <p>
               Teams often bring me in when a project is messy, fragile, or half-finished. With hands-on ownership across Flutter, Swift, Laravel, and Next.js, I step in, clear out technical debt, and transform tricky codebases into fast, dependable products that founders can trust.
