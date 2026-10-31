@@ -272,7 +272,7 @@ export default function ProjectsShowcaseInteractive() {
           {/* Filter switcher capsule */}
           <div 
             ref={tabsContainerRef}
-            className="relative flex items-center gap-0.5 sm:gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--card-bg)]"
+            className="relative flex items-center gap-0.5 sm:gap-1 border border-[var(--border-light)]/70 p-1 rounded-full bg-[var(--bg-warm)]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[var(--bg-warm)]/75 shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
           >
             {/* Sliding Background Pill */}
             <div 
@@ -312,7 +312,7 @@ export default function ProjectsShowcaseInteractive() {
         {/* Center-Aligned Grid layout with motion transition */}
         <div 
           key={activeTab}
-          className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto justify-center ${
+          className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto p-2 pb-6 justify-center ${
             direction === "right" ? "animate-slide-blur-right" : "animate-slide-blur-left"
           }`}
         >
@@ -326,7 +326,7 @@ export default function ProjectsShowcaseInteractive() {
                     setSelectedProject(proj);
                   }
                 }}
-                className={`flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group ${
+                className={`flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group ${
                   isClickable ? "cursor-pointer" : ""
                 }`}
               >
@@ -359,7 +359,7 @@ export default function ProjectsShowcaseInteractive() {
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-3xl p-6 md:p-8 space-y-5 md:space-y-6 transition-transform animate-in fade-in zoom-in-95 duration-200"
+            className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-3xl p-6 md:p-8 space-y-5 md:space-y-6 transition-transform animate-in fade-in zoom-in-95 duration-200 shadow-[0_20px_50px_rgba(20,20,19,0.12)]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header: Title and Close Button in line */}

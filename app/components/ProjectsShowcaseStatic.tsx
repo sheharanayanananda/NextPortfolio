@@ -79,7 +79,7 @@ export default function ProjectsShowcaseStatic() {
         </div>
 
         {/* Filter switcher capsule */}
-        <div className="relative flex items-center gap-0.5 sm:gap-1 border border-[var(--border-light)] p-1 rounded-full bg-[var(--card-bg)]">
+        <div className="relative flex items-center gap-0.5 sm:gap-1 border border-[var(--border-light)]/70 p-1 rounded-full bg-[var(--bg-warm)]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[var(--bg-warm)]/75 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
           {[
             { id: "featured", label: "Featured", mobileLabel: "Featured", active: true },
             { id: "swift", label: "Swift", mobileLabel: "Swift" },
@@ -103,12 +103,12 @@ export default function ProjectsShowcaseStatic() {
       </div>
 
       {/* Center-Aligned Grid layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto p-2 pb-6 justify-center">
         {featuredProjects.map((proj) => {
           return (
             <div
               key={proj.title}
-              className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer"
+              className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer"
             >
               <div className="space-y-4">
                 {/* Title */}

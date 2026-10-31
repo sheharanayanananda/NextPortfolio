@@ -771,7 +771,7 @@ export default function Home() {
         </section>
 
         {/* UPDATES SECTION */}
-        <section id="updates" className="py-16 md:py-0 md:pt-24 space-y-16 scroll-mt-[69px] content-visibility-auto">
+        <section id="updates" className="pt-16 pb-4 md:pt-24 md:pb-4 space-y-16 scroll-mt-[69px] content-visibility-auto">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-12 text-center max-w-3xl mx-auto">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
@@ -782,11 +782,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto pt-6 items-stretch justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-7xl xl:max-w-[1400px] mx-auto p-2 pt-6 pb-2 items-stretch justify-center">
             {/* Card 1: Slate Genesis */}
             <a
               href="/slate?v=genesis"
-              className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer"
+              className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer"
             >
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
@@ -806,7 +806,7 @@ export default function Home() {
             </a>
 
             {/* Card 2: TAMK / Finland (Highlighted) */}
-            <div className="flex flex-col justify-between border border-[#749bd0]/30 bg-[#edf3fb] p-6 md:p-8 lg:p-10 rounded-3xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[#749bd0]/60 group">
+            <div className="flex flex-col justify-between border border-[#749bd0]/30 bg-[#749bd0]/10 p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#749bd0]/60 group">
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--accent-rust-hover)] tracking-widest font-bold">
                   TAMK / Finland
@@ -821,7 +821,7 @@ export default function Home() {
             </div>
 
             {/* Card 3: Finnish Language Learning */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
+            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
                   Language Acquisition
@@ -842,7 +842,7 @@ export default function Home() {
             <a
               href={HIRE_MAILTO_URL}
               data-contact-trigger="true"
-              className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer md:col-span-2 lg:col-span-1 lg:col-start-2"
+              className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer md:col-span-2 lg:col-span-1 lg:col-start-2"
             >
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">

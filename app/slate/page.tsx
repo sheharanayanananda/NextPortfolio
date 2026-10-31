@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Github } from "lucide-react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -186,11 +185,11 @@ export default function SlatePage() {
         <div className="sticky top-[69px] z-40 flex justify-center py-4 pointer-events-none">
           <div
             ref={switcherContainerRef}
-            className="relative inline-flex items-center gap-1 border border-[var(--border-light)] p-1 bg-[var(--bg-warm)]/90 backdrop-blur-sm pointer-events-auto rounded-full"
+            className="relative inline-flex items-center gap-1 border border-[var(--border-light)]/70 p-1 bg-[var(--bg-warm)]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[var(--bg-warm)]/75 shadow-[0_4px_20px_rgba(0,0,0,0.03)] pointer-events-auto rounded-full"
           >
             {/* Sliding background pill */}
             <div
-              className="absolute top-1 bottom-1 bg-[var(--text-charcoal)] rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+              className="absolute top-1 bottom-1 bg-[#749bd0] rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
               style={{
                 left: `${activeRect.left}px`,
                 width: `${activeRect.width}px`,
@@ -201,8 +200,8 @@ export default function SlatePage() {
               data-active={activeVersion === "genesis"}
               className={`relative z-10 px-5 py-2 font-sans-anthropic font-semibold text-[11px] tracking-[0.04em] uppercase transition-colors duration-300 rounded-full ${
                 activeVersion === "genesis"
-                  ? "text-[var(--bg-warm)]"
-                  : "text-[#b0aea5] hover:text-[var(--text-charcoal)]"
+                  ? "text-[#faf9f5]"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
               }`}
             >
               Genesis
@@ -212,8 +211,8 @@ export default function SlatePage() {
               data-active={activeVersion === "origin"}
               className={`relative z-10 px-5 py-2 font-sans-anthropic font-semibold text-[11px] tracking-[0.04em] uppercase transition-colors duration-300 rounded-full ${
                 activeVersion === "origin"
-                  ? "text-[var(--bg-warm)]"
-                  : "text-[#b0aea5] hover:text-[var(--text-charcoal)]"
+                  ? "text-[#faf9f5]"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-charcoal)]"
               }`}
             >
               Origin
@@ -403,8 +402,7 @@ export default function SlatePage() {
 
         {/* ─── PULL QUOTE / ARCHITECTURE STRIP ─── */}
         <section
-          className="px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20 lg:py-28"
-          style={{ backgroundColor: "#edf3fb" }}
+          className="px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20 lg:py-28 bg-[#749bd0]/10 border-y border-[#749bd0]/25"
         >
           <div className="max-w-3xl mx-auto space-y-8">
             <blockquote
@@ -437,10 +435,10 @@ export default function SlatePage() {
 
             {/* Left: statement */}
             <div className="space-y-3 max-w-lg">
-              <h2 className="font-serif-anthropic text-3xl lg:text-4xl font-normal leading-[1.15]" style={{ color: "#faf9f5" }}>
+              <h2 className="font-serif-anthropic text-3xl lg:text-4xl font-normal leading-[1.15] text-[#faf9f5]">
                 Built for iOS.<br />Crafted with precision.
               </h2>
-              <p className="font-serif-anthropic text-base leading-[1.7]" style={{ color: "#a8b0b8" }}>
+              <p className="font-serif-anthropic text-base leading-[1.7] text-[#faf9f5]/75">
                 Both Slate Origin and Slate Genesis are source-available for personal study, code inspection, and architectural evaluation. Explore the full implementations on GitHub.
               </p>
             </div>
@@ -451,10 +449,10 @@ export default function SlatePage() {
                 href="https://github.com/sheharanayanananda/Slate/tree/v2"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[var(--accent-rust)] hover:bg-[var(--accent-rust-hover)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-white transition-colors rounded-xl"
+                className="inline-flex items-center gap-2 bg-[#749bd0] hover:bg-[#5d85be] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-[#faf9f5] transition-colors rounded-xl"
               >
                 <Github className="w-3.5 h-3.5" />
-                Slate Genesis on GitHub
+                Slate Genesis
               </a>
               <a
                 href="https://github.com/sheharanayanananda/Slate"
@@ -463,15 +461,8 @@ export default function SlatePage() {
                 className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-white transition-colors rounded-xl"
               >
                 <Github className="w-3.5 h-3.5" />
-                Slate Origin on GitHub
+                Slate Origin
               </a>
-              <Link
-                href="/"
-                className="underline-hover font-sans-anthropic font-medium text-xs tracking-[0.05em] uppercase transition-colors"
-                style={{ color: "#a8b0b8" }}
-              >
-                &larr; Back to Portfolio
-              </Link>
             </div>
 
           </div>

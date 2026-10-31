@@ -49,7 +49,7 @@ export default function SlateShowcase() {
             <div className="pt-2 md:pt-4">
               <a
                 href="/slate?v=genesis"
-                className="flex items-center justify-center bg-[#141413] text-[#faf9f5] hover:bg-[#252524] px-5 py-3 rounded-xl font-sans-anthropic text-sm transition-all duration-200 shadow-sm"
+                className="flex items-center justify-center bg-[#141413] text-[#faf9f5] hover:bg-[#141413]/85 px-5 py-3 rounded-xl font-sans-anthropic text-sm transition-all duration-200 shadow-sm"
               >
                 Explore Slate
               </a>

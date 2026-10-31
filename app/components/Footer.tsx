@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { HIRE_MAILTO_URL } from "../lib/email";
 
-export default function Footer() {
+export default function Footer({ className = "" }: { className?: string } = {}) {
   return (
-    <footer id="footer" className="bg-[var(--bg-warm)] border-t border-[var(--border-light)] mt-16 md:mt-24">
+    <footer id="footer" className={`bg-[var(--bg-warm)] border-t border-[var(--border-light)] ${className || "mt-6 md:mt-8"}`}>
       <div className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-16 md:py-20 space-y-16">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 text-left">

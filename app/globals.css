@@ -3,19 +3,19 @@
 
 
 :root {
-  /* Colors - Dusk Theme (Dusk Sky Blue, Cloud White & Ink Black) */
+  /* Strictly 3 Colors: Dusk Sky Blue (#749bd0), Cloud White (#faf9f5) & Ink Black (#141413) */
   --bg-warm: #faf9f5;
   --text-charcoal: #141413;
-  --text-secondary: #393836;
-  --border-light: #e2e6eb;
+  --text-secondary: rgba(20, 20, 19, 0.70);
+  --border-light: rgba(20, 20, 19, 0.10);
   --accent-rust: #749bd0;
   --accent-rust-hover: #5d85be;
   --highlight-selection: rgba(116, 155, 208, 0.22);
-  --card-bg: #ffffff;
-  --card-hover-bg: #f3f6fa;
+  --card-bg: #faf9f5;
+  --card-hover-bg: rgba(116, 155, 208, 0.05);
 
-  --color-cloud-medium: #a8b0b8;
-  --color-cloud-dark: #6e7680;
+  --color-cloud-medium: rgba(20, 20, 19, 0.45);
+  --color-cloud-dark: rgba(20, 20, 19, 0.65);
 
   /* Font Families */
   --font-serif: var(--font-anthropic-serif), Georgia, ui-serif, serif;
