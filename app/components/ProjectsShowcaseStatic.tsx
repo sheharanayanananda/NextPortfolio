@@ -33,7 +33,7 @@ export default function ProjectsShowcaseStatic() {
       title: "ECore Web & Mobile",
       category: "Logistics & Mobile Lead",
       heroTech: ["Flutter", "Laravel", "WebSockets", "MySQL"],
-      description: "Sole mobile lead for a Dutch logistics platform, giving field operators and managers live machinery tracking and workflow scheduling.",
+      description: "Mobile lead for a Dutch logistics platform, giving field operators and managers live machinery tracking and workflow scheduling.",
       badge: "Client Platform",
       badgeType: "client",
       repoStatus: "private"
