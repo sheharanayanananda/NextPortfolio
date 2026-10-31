@@ -4,8 +4,9 @@ import Header from "./components/Header";
 import SlateShowcaseLazy from "./components/SlateShowcaseLazy";
 import TypingGreeting from "./components/TypingGreeting";
 import ProjectsShowcase from "./components/ProjectsShowcase";
-import ArcCardInteractive from "./components/ArcCardInteractive";
-import FloatingArcButton from "./components/FloatingArcButton";
+import MorningSkyHero from "./components/MorningSkyHero";
+import DuskMoon from "./components/DuskMoon";
+import TreeBranches from "./components/TreeBranches";
 import { HIRE_MAILTO_URL } from "./lib/email";
 
 export default function Home() {
@@ -15,129 +16,128 @@ export default function Home() {
       <Header />
 
       {/* HERO / WELCOME SECTION */}
-      <section id="hero" className="flex-1 min-h-[calc(100vh-69px)] flex items-center w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 scroll-mt-[69px]">
-        <div className="w-full flex flex-col md:flex-row items-center gap-8">
+      <section
+        id="hero"
+        className="relative flex-1 min-h-screen -mt-[69px] pt-[69px] pb-16 md:pb-20 flex items-center w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 scroll-mt-[69px] bg-[#749bd0]"
+      >
+        {/* Calm ambient floating effect for the dusk moon */}
+        <style>{`
+          @keyframes moon-drift {
+            0%, 100% {
+              transform: translate3d(0, 0, 0);
+            }
+            50% {
+              transform: translate3d(-3px, -10px, 0);
+            }
+          }
+          .moon-drift {
+            animation: moon-drift 9s ease-in-out infinite;
+            will-change: transform;
+          }
+        `}</style>
 
-          {/* Left | Content */}
-          <div className="flex-1 gap-3">
-            <div className="flex flex-col gap-8">
-              <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold tracking-tight text-[var(--text-secondary)] flex items-center flex-wrap">
-                <TypingGreeting />
-                <span className="ml-3">I'm</span>
-              </div>
-              <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-normal leading-[1.05]">
-                Thineth
-              </h1>
+        {/* Anthropic Dusk Blue Sky Background */}
+        <MorningSkyHero />
+
+        {/* Real Dusk Moon from Slate Banner */}
+        <div className="absolute top-24 sm:top-28 md:top-32 lg:top-36 right-8 sm:right-14 md:right-20 lg:right-28 xl:right-36 z-[5] pointer-events-none select-none">
+          <div className="moon-drift">
+            <DuskMoon
+              phase={0.76}
+              angle={-135}
+              opacity={0.68}
+              className="w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] md:w-[180px] md:h-[180px] lg:w-[210px] lg:h-[210px]"
+            />
+          </div>
+        </div>
+
+        {/* Out of focus foreground tree branches on the right */}
+        <TreeBranches />
+
+        <div className="relative z-10 w-full max-w-4xl py-12 md:py-20 flex flex-col gap-3">
+          <div className="flex flex-col gap-8">
+            <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold tracking-tight text-[#faf9f5]/85 flex items-center flex-wrap">
+              <TypingGreeting />
+              <span className="ml-3">I'm</span>
             </div>
-
-
-
-            <p className="font-sans-anthropic text-xl text-[var(--text-charcoal)] leading-[1.7] font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mt-7">
-              Building apps that people love to use. Software Engineer and student at TAMK crafting fast mobile apps, simple web tools, and reliable real-time systems with care.
-            </p>
-
-            {/* Inline contact icons: shown below lg, hidden on lg+ where floating buttons appear */}
-            <div className="flex lg:hidden items-center gap-6 mt-6 text-[var(--text-charcoal)]">
-              <a
-                href={HIRE_MAILTO_URL}
-                data-contact-trigger="true"
-                className="hover:opacity-70 transition-all duration-300 hover:scale-110 active:scale-95"
-                aria-label="Email Me"
-              >
-                <AtSign className="w-6 h-6" strokeWidth={2} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/thineth-nayanananda-54815b228/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-70 transition-all duration-300 hover:scale-110 active:scale-95"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="w-[22px] h-[22px]" strokeWidth={2} />
-              </a>
-              <a
-                href="https://github.com/sheharanayanananda"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-70 transition-all duration-300 hover:scale-110 active:scale-95"
-                aria-label="GitHub Profile"
-              >
-                <Github className="w-6 h-6" strokeWidth={2} />
-              </a>
-            </div>
-
-            <div className="flex flex-col gap-10 pt-14">
-              <div className="flex items-center gap-2 text-[var(--text-secondary)]">
-                <MapPin className="w-5 h-5 flex-shrink-0" />
-                <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>
-              </div>
-
-              <a
-                href={HIRE_MAILTO_URL}
-                data-contact-trigger="true"
-                className="inline-flex w-fit items-center gap-4 bg-[var(--text-charcoal)] text-[var(--bg-warm)] px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-                aria-label="Open to work - email me"
-              >
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-blinker-glow absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent-rust)]"></span>
-                </span>
-                <span className="tracking-tight font-mono-anthropic">Open To Work</span>
-              </a>
-            </div>
+            <h1 className="font-serif-anthropic text-[4.5rem] md:text-[5.5rem] lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[11.5rem] font-normal leading-[1.05] text-[#faf9f5]">
+              Thineth
+            </h1>
           </div>
 
-          {/* Right | Arc Card + floating buttons */}
-          <div className="hidden md:flex relative self-stretch flex-shrink-0 flex items-center justify-end md:w-auto md:pl-4 lg:pl-8 xl:pl-12 2xl:pl-28 mt-8 md:mt-0" style={{ minWidth: "200px" }}>
+          <p className="font-sans-anthropic text-xl text-[#faf9f5]/90 leading-[1.7] font-normal max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mt-7">
+            Building apps that people love to use. Software Engineer and student at TAMK crafting fast mobile apps, simple web tools, and reliable real-time systems with care.
+          </p>
 
-            {/* Wrapper for Card and Buttons (relative to card boundaries) */}
-            <div className="relative md:w-auto md:h-full" style={{ aspectRatio: "2/3" }}>
-
-              {/* Floating buttons | Desktop (lg and above) with 3D liquid LERP reaction */}
-              <FloatingArcButton
-                href={HIRE_MAILTO_URL}
-                label="Email Me"
-                ariaLabel="Email Me"
-                isContactTrigger={true}
-                baseRotation={20}
-                className="w-[104px] h-[46px] bottom-[280px] -left-[145px] 2xl:w-[112px] 2xl:h-[50px] 2xl:bottom-[300px] 2xl:-left-[160px]"
-              />
-
-              <FloatingArcButton
-                href="https://linkedin.com/in/thineth-nayanananda-54815b228/"
-                target="_blank"
-                rel="noopener noreferrer"
-                label="LinkedIn"
-                ariaLabel="LinkedIn Profile"
-                baseRotation={0}
-                className="w-[100px] h-[46px] bottom-[155px] -left-[200px] 2xl:w-[108px] 2xl:h-[50px] 2xl:bottom-[170px] 2xl:-left-[230px]"
-              />
-
-              <FloatingArcButton
-                href="https://github.com/sheharanayanananda"
-                target="_blank"
-                rel="noopener noreferrer"
-                label="GitHub"
-                ariaLabel="GitHub Profile"
-                baseRotation={-20}
-                className="w-[90px] h-[46px] bottom-[45px] -left-[130px] 2xl:w-[96px] 2xl:h-[50px] 2xl:bottom-[50px] 2xl:-left-[145px]"
-              />
-
-
-
-              {/* Arc Card with 3D Push-Away Reaction */}
-              <ArcCardInteractive />
-            </div>
+          {/* Inline contact icons: universal across all breakpoints */}
+          <div className="flex items-center gap-6 mt-6 text-[#faf9f5]">
+            <a
+              href={HIRE_MAILTO_URL}
+              data-contact-trigger="true"
+              className="hover:opacity-75 transition-all duration-300 hover:scale-110 active:scale-95"
+              aria-label="Email Me"
+            >
+              <AtSign className="w-6 h-6" strokeWidth={2} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/thineth-nayanananda-54815b228/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-75 transition-all duration-300 hover:scale-110 active:scale-95"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin className="w-[22px] h-[22px]" strokeWidth={2} />
+            </a>
+            <a
+              href="https://github.com/sheharanayanananda"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-75 transition-all duration-300 hover:scale-110 active:scale-95"
+              aria-label="GitHub Profile"
+            >
+              <Github className="w-6 h-6" strokeWidth={2} />
+            </a>
           </div>
 
+          <div className="flex flex-col gap-10 pt-14">
+            <div className="flex items-center gap-2 text-[#faf9f5]/85">
+              <MapPin className="w-5 h-5 flex-shrink-0" />
+              <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>
+            </div>
+
+            <a
+              href={HIRE_MAILTO_URL}
+              data-contact-trigger="true"
+              className="inline-flex w-fit items-center gap-4 bg-[#faf9f5] text-[#141413] hover:bg-white px-6 py-4 rounded-xl font-sans-anthropic font-semibold text-xs tracking-[-0.08px] uppercase transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-[0_8px_24px_rgba(20,40,70,0.18)]"
+              aria-label="Open to work - email me"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-blinker-glow absolute inline-flex h-full w-full rounded-full bg-[var(--accent-rust)] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent-rust)]"></span>
+              </span>
+              <span className="tracking-tight font-mono-anthropic">Open To Work</span>
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Main Container */}
-      <main className="flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-0 md:pt-5 md:pb-16 md:gap-16 lg:gap-20 xl:gap-24 2xl:gap-25">
+      <main className="relative flex flex-col w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-0 md:gap-16 lg:gap-20 xl:gap-24 2xl:gap-25 -mt-[1px]">
+        {/* Seamless Ultra-Smooth Sky Fadeout spanning from the end of Hero into Bio */}
+        <div
+          aria-hidden="true"
+          className="absolute -top-[240px] left-0 right-0 h-[740px] pointer-events-none select-none z-0"
+          style={{
+            background:
+              "linear-gradient(in oklab, #749bd0 0%, #749bd0 6%, #769cd0 11%, #7a9ed1 16%, #81a2d2 22%, #8aa8d4 28%, #94afd7 34%, #a0b6d9 40%, #adbfdd 46%, #b9c8e0 52%, #c5d0e3 58%, #d0d9e7 64%, #dae0ea 70%, #e3e7ed 76%, #eaedef 82%, #f0f1f1 87%, #f5f5f3 92%, #f8f7f4 95%, #f9f8f5 98%, #faf9f5 100%)",
+          }}
+        />
 
         {/* ABOUT SECTION */}
-        <section id="about" className="flex flex-col items-center text-center max-w-5xl mx-auto gap-12 py-16 md:py-0 md:min-h-[calc(100vh-69px)] md:justify-center scroll-mt-[69px]">
+        <section
+          id="about"
+          className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto gap-12 pt-16 md:pt-20 pb-16 md:pb-24 scroll-mt-[69px]"
+        >
           <div className="flex flex-col items-center gap-4 mb-4">
             <h2 className="font-sans-anthropic text-lg font-bold tracking-widest uppercase text-[var(--text-secondary)]">
               BIO

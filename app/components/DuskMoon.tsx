@@ -117,7 +117,7 @@ export default function DuskMoon({
   angle = -135,   // Sun at top-left, casting shadow bottom-right
   opacity = 0.68, // Ethereal translucent daytime/dusk sky atmosphere
   className = "",
-  size = 350,
+  size,
 }: DuskMoonProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [useFallback, setUseFallback] = useState(false);
@@ -258,7 +258,7 @@ export default function DuskMoon({
   return (
     <div
       className={`relative aspect-square flex items-center justify-center select-none pointer-events-none ${className}`}
-      style={{ width: size, height: size }}
+      style={size ? { width: `${size}px`, height: `${size}px` } : undefined}
     >
       {/* Soft atmospheric forward-scattering halo */}
       <div
