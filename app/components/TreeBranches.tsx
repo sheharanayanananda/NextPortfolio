@@ -6,91 +6,75 @@ export default function TreeBranches() {
   return (
     <>
       <style>{`
-        @keyframes gentleBranchSway {
-          0% {
-            transform: rotate(0deg) translate3d(0, 0, 0);
-          }
-          33% {
-            transform: rotate(0.9deg) translate3d(-2px, -3px, 0);
-          }
-          66% {
-            transform: rotate(-0.6deg) translate3d(2px, 1px, 0);
-          }
-          100% {
-            transform: rotate(0deg) translate3d(0, 0, 0);
-          }
-        }
-        @keyframes gentleSprigSway {
-          0% {
-            transform: rotate(0deg) translate3d(0, 0, 0);
-          }
-          40% {
-            transform: rotate(-1.1deg) translate3d(2px, -1px, 0);
-          }
-          75% {
-            transform: rotate(0.8deg) translate3d(-1px, 2px, 0);
-          }
-          100% {
-            transform: rotate(0deg) translate3d(0, 0, 0);
-          }
-        }
-        @keyframes gentleCanopySway {
-          0% {
-            transform: scaleX(-1) rotate(0deg) translate3d(0, 0, 0);
-          }
-          35% {
-            transform: scaleX(-1) rotate(1.2deg) translate3d(-2px, 2px, 0);
-          }
-          70% {
-            transform: scaleX(-1) rotate(-0.7deg) translate3d(2px, -1px, 0);
-          }
-          100% {
-            transform: scaleX(-1) rotate(0deg) translate3d(0, 0, 0);
-          }
-        }
-        @keyframes gentleLowerRightSway {
-          0% {
-            transform: rotate(0deg) translate3d(0, 0, 0);
-          }
-          45% {
-            transform: rotate(1deg) translate3d(-2px, -1px, 0);
-          }
-          80% {
-            transform: rotate(-0.8deg) translate3d(1px, 2px, 0);
-          }
-          100% {
-            transform: rotate(0deg) translate3d(0, 0, 0);
-          }
-        }
-        @keyframes gentleLowerLeftSway {
-          0% {
-            transform: scaleX(-1) rotate(0deg) translate3d(0, 0, 0);
+        /* 
+          Natural Branch Pivot Physics:
+          - Each branch pivots strictly from its stem anchor at the screen edge.
+          - The base has 0px movement; the outer tips experience smooth, continuous swing.
+          - Pure sine ease-in-out for calm, organic motion without unnatural warping or jerks.
+        */
+        @keyframes swayRightMain {
+          0%, 100% {
+            transform: rotate(0deg);
           }
           50% {
-            transform: scaleX(-1) rotate(-1.2deg) translate3d(2px, -2px, 0);
-          }
-          100% {
-            transform: scaleX(-1) rotate(0deg) translate3d(0, 0, 0);
+            transform: rotate(2.2deg);
           }
         }
+
+        @keyframes swayTopLeft {
+          0%, 100% {
+            transform: rotate(0deg);
+          }
+          50% {
+            transform: rotate(-2.6deg);
+          }
+        }
+
+        @keyframes swayTopRightCanopy {
+          0%, 100% {
+            transform: scaleX(-1) rotate(0deg);
+          }
+          50% {
+            transform: scaleX(-1) rotate(2.2deg);
+          }
+        }
+
+        @keyframes swayLowerRight {
+          0%, 100% {
+            transform: rotate(0deg);
+          }
+          50% {
+            transform: rotate(-2deg);
+          }
+        }
+
+        @keyframes swayLowerLeft {
+          0%, 100% {
+            transform: scaleX(-1) rotate(0deg);
+          }
+          50% {
+            transform: scaleX(-1) rotate(2.2deg);
+          }
+        }
+
         .tree-branch-container {
-          animation: gentleBranchSway 12s ease-in-out infinite;
+          animation: swayRightMain 9s ease-in-out infinite;
           will-change: transform;
         }
         .tree-sprig-container {
-          animation: gentleSprigSway 14s ease-in-out infinite;
+          animation: swayTopLeft 8.5s ease-in-out infinite;
           will-change: transform;
         }
         .tree-canopy-container {
-          animation: gentleCanopySway 16s ease-in-out infinite;
+          animation: swayTopRightCanopy 10.5s ease-in-out infinite;
           will-change: transform;
         }
         .tree-lower-right-container {
-          animation: gentleLowerRightSway 13s ease-in-out infinite;
+          animation: swayLowerRight 10s ease-in-out infinite;
           will-change: transform;
         }
         .tree-lower-left-container {
-          animation: gentleLowerLeftSway 15s ease-in-out infinite;
+          animation: swayLowerLeft 9.5s ease-in-out infinite;
           will-change: transform;
         }
       `}</style>

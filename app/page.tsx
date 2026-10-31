@@ -5,7 +5,7 @@ import SlateShowcaseLazy from "./components/SlateShowcaseLazy";
 import TypingGreeting from "./components/TypingGreeting";
 import ProjectsShowcase from "./components/ProjectsShowcase";
 import MorningSkyHero from "./components/MorningSkyHero";
-import DawnClouds from "./components/DawnClouds";
+import FallingAsteroids from "./components/FallingAsteroids";
 import DuskMoon from "./components/DuskMoon";
 import TreeBranches from "./components/TreeBranches";
 import { HIRE_MAILTO_URL } from "./lib/email";
@@ -40,16 +40,16 @@ export default function Home() {
         {/* Anthropic Dusk Blue Sky Background */}
         <MorningSkyHero />
 
-        {/* Realistic High-Altitude Dawn Cirrus Clouds */}
-        <DawnClouds />
+        {/* Occasional Falling Asteroids / Shooting Stars */}
+        <FallingAsteroids />
 
-        {/* Real Dusk Moon from Slate Banner */}
+        {/* Real Morning Moon from Slate Banner */}
         <div className="absolute top-24 sm:top-28 md:top-32 lg:top-36 right-8 sm:right-14 md:right-20 lg:right-28 xl:right-36 z-[5] pointer-events-none select-none">
           <div className="moon-drift">
             <DuskMoon
               phase={0.76}
-              angle={-135}
-              opacity={0.68}
+              angle={-45}
+              opacity={0.72}
               className="w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] md:w-[180px] md:h-[180px] lg:w-[210px] lg:h-[210px]"
             />
           </div>
@@ -73,37 +73,37 @@ export default function Home() {
             Building apps that people love to use. Software Engineer and student at TAMK crafting fast mobile apps, simple web tools, and reliable real-time systems with care.
           </p>
 
-          {/* Inline contact icons, location, and availability button */}
-          <div className="flex flex-col gap-10 mt-7">
-            <div className="flex items-center gap-6 text-[#faf9f5]">
-              <a
-                href={HIRE_MAILTO_URL}
-                data-contact-trigger="true"
-                className="hover:opacity-75 transition-all duration-300 hover:scale-110 active:scale-95"
-                aria-label="Email Me"
-              >
-                <AtSign className="w-6 h-6" strokeWidth={2} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/thineth-nayanananda-54815b228/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-75 transition-all duration-300 hover:scale-110 active:scale-95"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="w-[22px] h-[22px]" strokeWidth={2} />
-              </a>
-              <a
-                href="https://github.com/sheharanayanananda"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-75 transition-all duration-300 hover:scale-110 active:scale-95"
-                aria-label="GitHub Profile"
-              >
-                <Github className="w-6 h-6" strokeWidth={2} />
-              </a>
-            </div>
+          {/* Inline contact icons: universal across all breakpoints */}
+          <div className="flex items-center gap-6 mt-6 text-[#faf9f5]">
+            <a
+              href={HIRE_MAILTO_URL}
+              data-contact-trigger="true"
+              className="hover:opacity-75 transition-all duration-300 hover:scale-110 active:scale-95"
+              aria-label="Email Me"
+            >
+              <AtSign className="w-6 h-6" strokeWidth={2} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/thineth-nayanananda-54815b228/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-75 transition-all duration-300 hover:scale-110 active:scale-95"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin className="w-[22px] h-[22px]" strokeWidth={2} />
+            </a>
+            <a
+              href="https://github.com/sheharanayanananda"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-75 transition-all duration-300 hover:scale-110 active:scale-95"
+              aria-label="GitHub Profile"
+            >
+              <Github className="w-6 h-6" strokeWidth={2} />
+            </a>
+          </div>
 
+          <div className="flex flex-col gap-10 pt-14">
             <div className="flex items-center gap-2 text-[#faf9f5]/85">
               <MapPin className="w-5 h-5 flex-shrink-0" />
               <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>

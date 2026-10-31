@@ -91,18 +91,18 @@ const FS_SOURCE = `
     float mu0 = max(0.0, dot_bump);
     float lommel = mu0 / (mu0 + max(0.001, N_bump.z));
 
-    // Realistic terminator grazing penumbra
-    float terminator = clamp(dot_sphere / 0.12 + 0.5, 0.0, 1.0);
-    terminator = terminator * terminator * (3.0 - 2.0 * terminator);
+    // Natural atmospheric penumbra falloff across lunar craters into morning sky
+    float t = clamp((dot_sphere - (-0.14)) / (0.24 - (-0.14)), 0.0, 1.0);
+    float terminator = t * t * (3.0 - 2.0 * t);
 
-    float lit = clamp(lommel * 1.85, 0.0, 1.0) * terminator;
+    float lit = clamp(lommel * 1.65, 0.0, 1.0) * terminator;
 
-    // Bright sunlit moon: crisp brilliant white highlights, soft slate maria
-    vec3 sunlitWhite = vec3(255.0 / 255.0, 254.0 / 255.0, 252.0 / 255.0);
-    vec3 moonRgb = sunlitWhite * (0.72 + 0.28 * albedo);
+    // Natural chalk-white sunlit lunar regolith with delicate maria contrast
+    vec3 sunlitWhite = vec3(254.0 / 255.0, 253.0 / 255.0, 250.0 / 255.0);
+    vec3 moonRgb = sunlitWhite * (0.76 + 0.24 * albedo);
 
     // Sub-pixel smooth antialiased outer limb (seamless transition directly into sky)
-    float limb = clamp((1.0 - dist) / 0.005, 0.0, 1.0);
+    float limb = clamp((1.0 - dist) / 0.006, 0.0, 1.0);
     limb = limb * limb * (3.0 - 2.0 * limb);
 
     // Translucent see-through atmosphere alpha: blue sky permeates through the sunlit rock
@@ -260,16 +260,6 @@ export default function DuskMoon({
       className={`relative aspect-square flex items-center justify-center select-none pointer-events-none ${className}`}
       style={size ? { width: `${size}px`, height: `${size}px` } : undefined}
     >
-      {/* Soft atmospheric forward-scattering halo */}
-      <div
-        className="absolute inset-0 rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle at 45% 45%, rgba(255, 255, 255, 0.16) 0%, rgba(180, 210, 255, 0.06) 50%, transparent 72%)',
-          filter: 'blur(28px)',
-          transform: 'scale(1.15)',
-        }}
-      />
-
       {/* Real-time 3D Photometric WebGL Moon Canvas */}
       {!useFallback ? (
         <canvas
@@ -277,23 +267,17 @@ export default function DuskMoon({
           width={512}
           height={512}
           className="w-full h-full object-contain relative select-none"
-          style={{
-            filter: 'drop-shadow(0 0 16px rgba(255, 255, 255, 0.14))',
-          }}
-          aria-label="3D Realistic Dusk Moon"
+          aria-label="3D Realistic Morning Moon"
         />
       ) : (
         /* Pre-rendered 3D Physical Lighting Fallback */
         <img
           src="/moon_dusk.webp"
-          alt="3D Realistic Dusk Moon"
+          alt="3D Realistic Morning Moon"
           width={size}
           height={size}
           loading="lazy"
           className="w-full h-full object-contain relative select-none"
-          style={{
-            filter: 'drop-shadow(0 0 16px rgba(255, 255, 255, 0.14))',
-          }}
         />
       )}
     </div>
