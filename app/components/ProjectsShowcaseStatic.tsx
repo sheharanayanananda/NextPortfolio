@@ -30,7 +30,7 @@ export default function ProjectsShowcaseStatic() {
       repoStatus: "public"
     },
     {
-      title: "ECore Web & Mobile Automation",
+      title: "ECore Web & Mobile",
       category: "Logistics & Mobile Lead",
       heroTech: ["Flutter", "Laravel", "WebSockets", "MySQL"],
       description: "Sole mobile lead for a Dutch logistics platform, giving field operators and managers live machinery tracking and workflow scheduling.",
@@ -48,7 +48,7 @@ export default function ProjectsShowcaseStatic() {
       repoStatus: "private"
     },
     {
-      title: "BusinessLabels.nl (BBNL)",
+      title: "BusinessLabels.nl",
       category: "B2B E-Commerce Frontend",
       heroTech: ["React", "Next.js", "Radix UI", "Laravel API"],
       description: "High-performance B2B shopping platform for industrial printers and custom labels across 50,000+ product options.",

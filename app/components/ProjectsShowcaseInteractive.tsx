@@ -61,7 +61,7 @@ const projects: Project[] = [
     featured: true
   },
   {
-    title: "ECore Web & Mobile Automation",
+    title: "ECore Web & Mobile",
     category: "Logistics & Mobile Lead",
     heroTech: ["Flutter", "Laravel", "WebSockets", "MySQL"],
     tech: ["Flutter", "Dart", "PHP", "Laravel", "MySQL", "REST APIs", "WebSockets", "Livewire 3"],
@@ -85,7 +85,7 @@ const projects: Project[] = [
     featured: true
   },
   {
-    title: "BusinessLabels.nl (BBNL)",
+    title: "BusinessLabels.nl",
     category: "B2B E-Commerce Frontend",
     heroTech: ["React", "Next.js", "Radix UI", "Laravel API"],
     tech: ["React", "Next.js", "Tailwind CSS", "Radix UI", "Laravel REST API", "Node.js", "PM2"],
