@@ -213,7 +213,7 @@ export default function Home() {
                       Freelance &amp; Contract Based
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Software Engineer
+                      Software Engineer 
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote
