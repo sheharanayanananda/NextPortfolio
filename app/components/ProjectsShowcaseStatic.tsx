@@ -111,22 +111,6 @@ export default function ProjectsShowcaseStatic() {
               className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer"
             >
               <div className="space-y-4">
-                {/* Category & Status */}
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
-                    {proj.category}
-                  </span>
-                  {proj.badge && (
-                    <span className={`text-[10px] font-mono-anthropic uppercase tracking-wider ${
-                      proj.badgeType === "priority"
-                        ? "text-[var(--accent-rust)] font-bold"
-                        : "text-[var(--text-secondary)]/70"
-                    }`}>
-                      {proj.badge}
-                    </span>
-                  )}
-                </div>
-
                 {/* Title */}
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   {proj.title}

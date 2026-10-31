@@ -331,22 +331,6 @@ export default function ProjectsShowcaseInteractive() {
                 }`}
               >
                 <div className="space-y-4">
-                  {/* Category & Status */}
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
-                      {proj.category}
-                    </span>
-                    {proj.badge && (
-                      <span className={`text-[10px] font-mono-anthropic uppercase tracking-wider ${
-                        proj.badgeType === "priority"
-                          ? "text-[var(--accent-rust)] font-bold"
-                          : "text-[var(--text-secondary)]/70"
-                      }`}>
-                        {proj.badge}
-                      </span>
-                    )}
-                  </div>
-
                   {/* Title */}
                   <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                     {proj.title}
@@ -378,46 +362,18 @@ export default function ProjectsShowcaseInteractive() {
             className="relative w-full max-w-2xl bg-[var(--bg-warm)] border border-[var(--border-light)] rounded-3xl p-6 md:p-8 space-y-5 md:space-y-6 transition-transform animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-6 p-2 rounded-xl border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-all"
-              aria-label="Close modal"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            {/* Header */}
-            <div className="space-y-2 pr-12">
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="font-mono-anthropic text-xs text-[var(--text-secondary)]/70 uppercase tracking-wider font-semibold">
-                  {selectedProject.category}
-                </span>
-                <span className="text-[var(--border-light)] select-none">&middot;</span>
-                {selectedProject.badge && (
-                  <span className={`whitespace-nowrap text-[9px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-semibold border ${
-                    selectedProject.badgeType === "priority"
-                      ? "bg-[var(--accent-rust)]/10 border-[var(--accent-rust)]/30 text-[var(--accent-rust)]"
-                      : selectedProject.badgeType === "archived"
-                      ? "bg-[var(--border-light)]/30 border-[var(--border-light)]/70 text-[var(--text-secondary)]"
-                      : selectedProject.badgeType === "opensource"
-                      ? "bg-[var(--accent-rust)]/5 border-[var(--accent-rust)]/25 text-[var(--accent-rust)]"
-                      : "bg-[var(--text-secondary)]/5 border-[var(--text-secondary)]/25 text-[var(--text-secondary)]"
-                  }`}>
-                    {selectedProject.badge}
-                  </span>
-                )}
-                <span className={`shrink-0 whitespace-nowrap text-[9px] tracking-wider font-mono-anthropic px-2.5 py-0.5 rounded-full uppercase font-medium border ${
-                  selectedProject.repoStatus === "public"
-                    ? "bg-[var(--accent-rust)]/5 border-[var(--accent-rust)]/30 text-[var(--accent-rust)]"
-                    : "bg-[var(--text-secondary)]/5 border-[var(--text-secondary)]/30 text-[var(--text-secondary)]"
-                }`}>
-                  {selectedProject.repoStatus === "public" ? "Public" : "Private"}
-                </span>
-              </div>
+            {/* Header: Title and Close Button in line */}
+            <div className="flex items-center justify-between gap-4">
               <h3 className="font-serif-anthropic text-3xl md:text-4xl font-medium text-[var(--text-charcoal)]">
                 {selectedProject.title}
               </h3>
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="shrink-0 p-2 rounded-xl border border-[var(--border-light)] hover:bg-[var(--card-hover-bg)] text-[var(--text-secondary)] hover:text-[var(--text-charcoal)] transition-all"
+                aria-label="Close modal"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
 
             {/* Detailed Description */}

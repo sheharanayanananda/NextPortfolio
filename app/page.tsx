@@ -215,7 +215,7 @@ export default function Home() {
                       Software Engineer (Freelance)
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote (USA &amp; International Clients)
+                      <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Remote
                     </p>
                   </div>
                   <div className="font-mono-anthropic text-xs text-[var(--text-secondary)] font-medium md:text-right whitespace-nowrap self-start md:self-baseline">
