@@ -249,7 +249,7 @@ export default function SlatePage() {
                   priority
                 />
                 {activeVersion === "genesis" && (
-                  <div className="absolute inset-0 bg-[#141413]/90 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center text-[#f0eee6]">
+                  <div className="absolute inset-0 bg-[#141413]/90 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center text-[#faf9f5]">
                     <div className="font-mono-anthropic text-[10px] tracking-[0.2em] uppercase text-[var(--accent-rust)] mb-2 font-bold">
                       SLATE V2
                     </div>
@@ -404,7 +404,7 @@ export default function SlatePage() {
         {/* ─── PULL QUOTE / ARCHITECTURE STRIP ─── */}
         <section
           className="px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20 lg:py-28"
-          style={{ backgroundColor: "#f5e3c7" }}
+          style={{ backgroundColor: "#edf3fb" }}
         >
           <div className="max-w-3xl mx-auto space-y-8">
             <blockquote
@@ -437,10 +437,10 @@ export default function SlatePage() {
 
             {/* Left: statement */}
             <div className="space-y-3 max-w-lg">
-              <h2 className="font-serif-anthropic text-3xl lg:text-4xl font-normal leading-[1.15]" style={{ color: "#f0eee6" }}>
+              <h2 className="font-serif-anthropic text-3xl lg:text-4xl font-normal leading-[1.15]" style={{ color: "#faf9f5" }}>
                 Built for iOS.<br />Crafted with precision.
               </h2>
-              <p className="font-serif-anthropic text-base leading-[1.7]" style={{ color: "#b0aea5" }}>
+              <p className="font-serif-anthropic text-base leading-[1.7]" style={{ color: "#a8b0b8" }}>
                 Both Slate Origin and Slate Genesis are source-available for personal study, code inspection, and architectural evaluation. Explore the full implementations on GitHub.
               </p>
             </div>
@@ -468,7 +468,7 @@ export default function SlatePage() {
               <Link
                 href="/"
                 className="underline-hover font-sans-anthropic font-medium text-xs tracking-[0.05em] uppercase transition-colors"
-                style={{ color: "#b0aea5" }}
+                style={{ color: "#a8b0b8" }}
               >
                 &larr; Back to Portfolio
               </Link>

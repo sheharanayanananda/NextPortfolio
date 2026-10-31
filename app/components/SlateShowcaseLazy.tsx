@@ -11,10 +11,10 @@ const SlateShowcase = dynamic(() => import("./SlateShowcase"), {
 function SlateShowcaseSkeleton() {
   return (
     <section id="projects-slate" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-12 md:py-16 lg:py-12 relative">
-      <div className="w-full lg:min-h-[400px] xl:min-h-[460px] bg-[#f5e6ce]/60 rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:py-25 lg:px-16 flex flex-col items-center justify-center relative overflow-hidden animate-pulse">
-        <div className="h-6 w-32 bg-[#e2d2b8] rounded-md mb-4" />
-        <div className="h-10 w-64 sm:w-80 bg-[#e2d2b8] rounded-xl mb-6" />
-        <div className="h-4 w-48 bg-[#e2d2b8] rounded-md" />
+      <div className="w-full lg:min-h-[400px] xl:min-h-[460px] bg-[#749bd0]/30 rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:py-25 lg:px-16 flex flex-col items-center justify-center relative overflow-hidden animate-pulse">
+        <div className="h-6 w-32 bg-[#749bd0]/50 rounded-md mb-4" />
+        <div className="h-10 w-64 sm:w-80 bg-[#749bd0]/50 rounded-xl mb-6" />
+        <div className="h-4 w-48 bg-[#749bd0]/50 rounded-md" />
       </div>
     </section>
   );

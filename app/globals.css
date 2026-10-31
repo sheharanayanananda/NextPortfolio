@@ -3,19 +3,19 @@
 
 
 :root {
-  /* Colors - Anthropic Light Theme (Warm Parchment) */
-  --bg-warm: #f0eee6;
+  /* Colors - Dusk Theme (Dusk Sky Blue, Cloud White & Ink Black) */
+  --bg-warm: #faf9f5;
   --text-charcoal: #141413;
   --text-secondary: #393836;
-  --border-light: #cccbc8;
-  --accent-rust: #d97757;
-  --accent-rust-hover: #c6613f;
-  --highlight-selection: rgba(217, 119, 87, 0.12);
-  --card-bg: #faf9f5;
-  --card-hover-bg: #f0eee6;
+  --border-light: #e2e6eb;
+  --accent-rust: #749bd0;
+  --accent-rust-hover: #5d85be;
+  --highlight-selection: rgba(116, 155, 208, 0.22);
+  --card-bg: #ffffff;
+  --card-hover-bg: #f3f6fa;
 
-  --color-cloud-medium: #b0aea5;
-  --color-cloud-dark: #87867f;
+  --color-cloud-medium: #a8b0b8;
+  --color-cloud-dark: #6e7680;
 
   /* Font Families */
   --font-serif: var(--font-anthropic-serif), Georgia, ui-serif, serif;
@@ -126,19 +126,19 @@ body {
   animation-play-state: paused;
 }
 
-/* Status dot orange pulsing animation */
+/* Status dot dusk blue pulsing animation */
 @keyframes status-pulse {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(217, 119, 87, 0.7);
+    box-shadow: 0 0 0 0 rgba(116, 155, 208, 0.7);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 6px rgba(217, 119, 87, 0);
+    box-shadow: 0 0 0 6px rgba(116, 155, 208, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(217, 119, 87, 0);
+    box-shadow: 0 0 0 0 rgba(116, 155, 208, 0);
   }
 }
 
@@ -242,7 +242,7 @@ body {
 
 /* Explicit mobile dropdown glassmorphism */
 .glassmorphic-menu {
-  background-color: rgba(240, 238, 230, 0.82) !important;
+  background-color: rgba(250, 249, 245, 0.88) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   backdrop-filter: blur(24px) saturate(180%) !important;
 }

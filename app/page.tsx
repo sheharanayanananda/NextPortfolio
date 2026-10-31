@@ -806,7 +806,7 @@ export default function Home() {
             </a>
 
             {/* Card 2: TAMK / Finland (Highlighted) */}
-            <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[#f5e3c7] p-6 md:p-8 lg:p-10 rounded-3xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--text-secondary)]/30 group">
+            <div className="flex flex-col justify-between border border-[#749bd0]/30 bg-[#edf3fb] p-6 md:p-8 lg:p-10 rounded-3xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[#749bd0]/60 group">
               <div className="space-y-5">
                 <span className="text-[10px] font-sans-anthropic uppercase text-[var(--accent-rust-hover)] tracking-widest font-bold">
                   TAMK / Finland
