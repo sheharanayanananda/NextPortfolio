@@ -1,287 +1,71 @@
 "use client";
 
 import React from 'react';
-
-const butterflies = [
-  { id: 1, left: "29.7%", top: "6.7%", width: "41.4%", angle: -3.67, cx: 50.15, cy: 41.59, w_px: 288, h_px: 190 },
-  { id: 2, left: "68.5%", top: "9.1%", width: "24.3%", angle: 36.7, cx: 41.3, cy: 57.47, w_px: 169, h_px: 161 },
-  { id: 3, left: "20.7%", top: "11.4%", width: "23.7%", angle: 31.82, cx: 42.63, cy: 55.52, w_px: 165, h_px: 158 },
-  { id: 4, left: "57.9%", top: "14.9%", width: "15.1%", angle: 63.72, cx: 46.66, cy: 55.13, w_px: 105, h_px: 117 },
-  { id: 5, left: "12.1%", top: "20.6%", width: "28.4%", angle: 40.98, cx: 41.05, cy: 54.16, w_px: 198, h_px: 212 },
-  { id: 6, left: "30.3%", top: "21.9%", width: "16.7%", angle: -29.26, cx: 53.71, cy: 52.9, w_px: 116, h_px: 84 },
-  { id: 7, left: "68.4%", top: "21.9%", width: "16.2%", angle: 13.52, cx: 49.89, cy: 52.84, w_px: 113, h_px: 111 },
-  { id: 8, left: "31.5%", top: "35.7%", width: "15.1%", angle: 45.5, cx: 40.65, cy: 59.02, w_px: 105, h_px: 105 },
-  { id: 9, left: "14.7%", top: "38.8%", width: "18.4%", angle: 20.9, cx: 46.38, cy: 51.15, w_px: 128, h_px: 124 },
-  { id: 10, left: "39.9%", top: "42.2%", width: "16.8%", angle: -51.65, cx: 48.65, cy: 58.28, w_px: 117, h_px: 117 },
-  { id: 11, left: "53.9%", top: "42.6%", width: "32.5%", angle: 28.78, cx: 42.54, cy: 51.19, w_px: 226, h_px: 197 },
-  { id: 12, left: "23.6%", top: "45.3%", width: "18.7%", angle: -32.5, cx: 56.56, cy: 53.16, w_px: 130, h_px: 116 },
-  { id: 13, left: "72.1%", top: "55.0%", width: "14.9%", angle: -28.25, cx: 56.16, cy: 54.46, w_px: 104, h_px: 101 },
-  { id: 14, left: "65.4%", top: "60.5%", width: "24.3%", angle: 45.36, cx: 42.85, cy: 57.36, w_px: 169, h_px: 170 },
-  { id: 15, left: "11.2%", top: "66.9%", width: "11.4%", angle: -53.75, cx: 55.0, cy: 54.93, w_px: 79, h_px: 87 },
-  { id: 16, left: "58.6%", top: "70.6%", width: "23.4%", angle: 44.54, cx: 43.1, cy: 55.15, w_px: 163, h_px: 168 },
-  { id: 17, left: "5.3%", top: "71.5%", width: "22.4%", angle: -16.17, cx: 56.67, cy: 54.13, w_px: 156, h_px: 130 },
-  { id: 18, left: "25.4%", top: "72.0%", width: "25.1%", angle: 37.25, cx: 38.66, cy: 56.82, w_px: 175, h_px: 188 },
-  { id: 19, left: "39.9%", top: "80.6%", width: "24.9%", angle: -27.46, cx: 55.25, cy: 53.75, w_px: 173, h_px: 163 },
-  { id: 20, left: "15.8%", top: "83.8%", width: "12.4%", angle: 4.86, cx: 48.36, cy: 51.12, w_px: 86, h_px: 79 },
-  { id: 21, left: "27.0%", top: "87.5%", width: "14.1%", angle: -21.05, cx: 52.98, cy: 53.07, w_px: 98, h_px: 75 }
-];
+import DuskMoon from './DuskMoon';
 
 export default function SlateShowcase() {
   return (
     <>
-      {/* 3D Flapping Animations for Landed Butterflies */}
+      {/* Calm ambient floating effect for the dusk moon */}
       <style>{`
-        .butterfly-flat-container {
-          pointer-events: none;
-          will-change: transform;
-        }
-        .butterfly-wing-left,
-        .butterfly-wing-right {
-          animation-duration: var(--animation-duration);
-          animation-delay: var(--animation-delay);
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-          transform-style: preserve-3d;
-          will-change: transform;
-        }
-
-        /* Map behaviors to subclasses */
-        .butterfly-flap-0 .butterfly-wing-left { animation-name: flap-basking-left; }
-        .butterfly-flap-0 .butterfly-wing-right { animation-name: flap-basking-right; }
-
-        .butterfly-flap-1 .butterfly-wing-left { animation-name: flap-quiver-left; }
-        .butterfly-flap-1 .butterfly-wing-right { animation-name: flap-quiver-right; }
-
-        .butterfly-flap-2 .butterfly-wing-left { animation-name: flap-rhythmic-left; }
-        .butterfly-flap-2 .butterfly-wing-right { animation-name: flap-rhythmic-right; }
-
-        .butterfly-flap-3 .butterfly-wing-left { animation-name: flap-closed-left; }
-        .butterfly-flap-3 .butterfly-wing-right { animation-name: flap-closed-right; }
-
-        /* Animation 0: Basking (mostly open, occasional slow deep fold) */
-        @keyframes flap-basking-left {
-          0%, 75%, 100% {
-            transform: rotate(var(--angle)) rotateY(0deg) rotate(var(--neg-angle));
-          }
-          85% {
-            transform: rotate(var(--angle)) rotateY(55deg) rotate(var(--neg-angle));
-          }
-          92% {
-            transform: rotate(var(--angle)) rotateY(10deg) rotate(var(--neg-angle));
-          }
-        }
-        @keyframes flap-basking-right {
-          0%, 75%, 100% {
-            transform: rotate(var(--angle)) rotateY(0deg) rotate(var(--neg-angle));
-          }
-          85% {
-            transform: rotate(var(--angle)) rotateY(-55deg) rotate(var(--neg-angle));
-          }
-          92% {
-            transform: rotate(var(--angle)) rotateY(-10deg) rotate(var(--neg-angle));
-          }
-        }
-
-        /* Animation 1: Quivering (highly active/alert, quivers wings rapidly) */
-        @keyframes flap-quiver-left {
-          0%, 35%, 65%, 100% {
-            transform: rotate(var(--angle)) rotateY(12deg) rotate(var(--neg-angle));
-          }
-          40%, 50%, 60% {
-            transform: rotate(var(--angle)) rotateY(38deg) rotate(var(--neg-angle));
-          }
-          45%, 55% {
-            transform: rotate(var(--angle)) rotateY(18deg) rotate(var(--neg-angle));
-          }
-        }
-        @keyframes flap-quiver-right {
-          0%, 35%, 65%, 100% {
-            transform: rotate(var(--angle)) rotateY(-12deg) rotate(var(--neg-angle));
-          }
-          40%, 50%, 60% {
-            transform: rotate(var(--angle)) rotateY(-38deg) rotate(var(--neg-angle));
-          }
-          45%, 55% {
-            transform: rotate(var(--angle)) rotateY(-18deg) rotate(var(--neg-angle));
-          }
-        }
-
-        /* Animation 2: Rhythmic Breathing (continuous calm breathing-like flapping) */
-        @keyframes flap-rhythmic-left {
+        @keyframes moon-drift {
           0%, 100% {
-            transform: rotate(var(--angle)) rotateY(2deg) rotate(var(--neg-angle));
+            transform: translateY(0px) scale(1);
           }
           50% {
-            transform: rotate(var(--angle)) rotateY(42deg) rotate(var(--neg-angle));
+            transform: translateY(-6px) scale(1.008);
           }
         }
-        @keyframes flap-rhythmic-right {
-          0%, 100% {
-            transform: rotate(var(--angle)) rotateY(-2deg) rotate(var(--neg-angle));
-          }
-          50% {
-            transform: rotate(var(--angle)) rotateY(-42deg) rotate(var(--neg-angle));
-          }
-        }
-
-        /* Animation 3: Slow Deep Folding (mostly open, brief deep fold) */
-        @keyframes flap-closed-left {
-          0%, 70%, 100% {
-            transform: rotate(var(--angle)) rotateY(8deg) rotate(var(--neg-angle));
-          }
-          82%, 88% {
-            transform: rotate(var(--angle)) rotateY(65deg) rotate(var(--neg-angle));
-          }
-        }
-        @keyframes flap-closed-right {
-          0%, 70%, 100% {
-            transform: rotate(var(--angle)) rotateY(-8deg) rotate(var(--neg-angle));
-          }
-          82%, 88% {
-            transform: rotate(var(--angle)) rotateY(-65deg) rotate(var(--neg-angle));
-          }
+        .moon-drift {
+          animation: moon-drift 9s ease-in-out infinite;
+          will-change: transform;
         }
       `}</style>
 
       {/* FULL-SCREEN SLATE SHOWCASE */}
       <section id="projects-slate" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-12 md:py-16 lg:py-12 relative">
-        <div className="w-full lg:min-h-[400px] xl:min-h-[460px] bg-[#f5e6ce] rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:py-25 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
+        <div className="w-full lg:min-h-[400px] xl:min-h-[460px] bg-[#749bd0] rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:py-25 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
           
           {/* Left Column | Editorial Info */}
           <div className="flex flex-col justify-center items-center text-center gap-4 md:gap-5 lg:gap-6 z-10 max-w-md lg:max-w-2xl w-full">
-            <h1 className="font-serif-anthropic font-normal leading-[1.2] md:leading-[1.1] text-center text-[var(--text-charcoal)]">
-              <span className="text-2xl md:text-3xl lg:text-4xl block mb-1.5 opacity-90">Announcing</span>
+            <h1 className="font-serif-anthropic font-normal leading-[1.2] md:leading-[1.1] text-center text-[#faf9f5] [text-shadow:0_4px_16px_rgba(20,40,70,0.14)]">
+              <span className="text-2xl md:text-3xl lg:text-4xl block mb-1.5 opacity-95">Announcing</span>
               <span className="text-4xl md:text-5xl lg:text-6xl block font-normal whitespace-nowrap">Slate Genesis</span>
             </h1>
 
-            {/* Mobile/Tablet Butterflies "S" Shape (shown under heading, hidden on lg+) */}
-            <div className="lg:hidden relative w-full max-w-[260px] sm:max-w-[300px] aspect-[696/1024] mx-auto z-10 justify-self-center" style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}>
-              {butterflies.map((b) => {
-                const behaviorId = b.id % 4;
-                const duration = (4.0 + (b.id % 5) * 1.5).toFixed(1);
-                const delay = ((b.id % 7) * -1.8).toFixed(1);
-
-                return (
-                  <div
-                    key={`mob-${b.id}`}
-                    className={`absolute butterfly-flat-container butterfly-flap-${behaviorId}`}
-                    style={{
-                      left: b.left,
-                      top: b.top,
-                      width: b.width,
-                      transformStyle: 'preserve-3d',
-                    }}
-                  >
-                    {/* Left Wing */}
-                    <img
-                      src={`/butterflies_webp/butterfly_${b.id}.webp`}
-                      alt=""
-                      loading="lazy"
-                      className="relative w-full butterfly-wing-left"
-                      style={{
-                        aspectRatio: `${b.w_px} / ${b.h_px}`,
-                        clipPath: `polygon(0% 0%, ${b.cx}% 0%, ${b.cx}% 100%, 0% 100%)`,
-                        transformOrigin: `${b.cx}% ${b.cy}%`,
-                        objectFit: 'fill',
-                        ['--angle' as any]: `${b.angle}deg`,
-                        ['--neg-angle' as any]: `${-b.angle}deg`,
-                        ['--animation-duration' as any]: `${duration}s`,
-                        ['--animation-delay' as any]: `${delay}s`,
-                      }}
-                    />
-
-                    {/* Right Wing */}
-                    <img
-                      src={`/butterflies_webp/butterfly_${b.id}.webp`}
-                      alt=""
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full butterfly-wing-right"
-                      style={{
-                        clipPath: `polygon(${b.cx}% 0%, 100% 0%, 100% 100%, ${b.cx}% 100%)`,
-                        transformOrigin: `${b.cx}% ${b.cy}%`,
-                        objectFit: 'fill',
-                        ['--angle' as any]: `${b.angle}deg`,
-                        ['--neg-angle' as any]: `${-b.angle}deg`,
-                        ['--animation-duration' as any]: `${duration}s`,
-                        ['--animation-delay' as any]: `${delay}s`,
-                      }}
-                    />
-                  </div>
-                );
-              })}
+            {/* Mobile/Tablet Real Dusk Moon (shown under heading, hidden on lg+) */}
+            <div className="lg:hidden mx-auto z-10 my-2 pointer-events-none flex items-center justify-center">
+              <DuskMoon
+                phase={0.76}
+                angle={-135}
+                opacity={0.68}
+                className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px]"
+              />
             </div>
 
-            <p className="text-sm md:text-base text-[var(--text-charcoal)]/80 leading-relaxed font-serif-anthropic">
+            <p className="text-sm md:text-base text-[#faf9f5]/90 leading-relaxed font-serif-anthropic [text-shadow:0_2px_12px_rgba(20,40,70,0.10)]">
               An intelligent notes app for iOS built on a hybrid block canvas, with 3 tuned AI tiers and emerging GenUI capabilities.
             </p>
             <div className="pt-2 md:pt-4">
               <a
                 href="/slate?v=genesis"
-                className="flex items-center justify-center bg-black text-white hover:bg-black/90 px-5 py-3 rounded-xl font-sans-anthropic text-sm transition-all duration-200"
+                className="flex items-center justify-center bg-[#141413] text-[#faf9f5] hover:bg-[#252524] px-5 py-3 rounded-xl font-sans-anthropic text-sm transition-all duration-200 shadow-sm"
               >
                 Explore Slate
               </a>
             </div>
           </div>
 
-          {/* Right Column | Animated Butterflies "S" Shape (Desktop, hidden below lg) */}
-          <div className="hidden lg:block relative w-full max-w-[280px] lg:max-w-[280px] xl:max-w-[320px] 2xl:max-w-[360px] aspect-[696/1024] mx-auto z-10 justify-self-center" style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}>
-            {butterflies.map((b) => {
-              // Distribute behavior types randomly/sequentially
-              const behaviorId = b.id % 4;
-              
-              // Unique duration and negative delay so they flap asynchronously
-              const duration = (4.0 + (b.id % 5) * 1.5).toFixed(1);
-              const delay = ((b.id % 7) * -1.8).toFixed(1);
-
-              return (
-                <div
-                  key={`desk-${b.id}`}
-                  className={`absolute butterfly-flat-container butterfly-flap-${behaviorId}`}
-                  style={{
-                    left: b.left,
-                    top: b.top,
-                    width: b.width,
-                    transformStyle: 'preserve-3d',
-                  }}
-                >
-                  {/* Left Wing (Relative to preserve sizing) */}
-                  <img
-                    src={`/butterflies_webp/butterfly_${b.id}.webp`}
-                    alt=""
-                    loading="lazy"
-                    className="relative w-full butterfly-wing-left"
-                    style={{
-                      aspectRatio: `${b.w_px} / ${b.h_px}`,
-                      clipPath: `polygon(0% 0%, ${b.cx}% 0%, ${b.cx}% 100%, 0% 100%)`,
-                      transformOrigin: `${b.cx}% ${b.cy}%`,
-                      objectFit: 'fill',
-                      ['--angle' as any]: `${b.angle}deg`,
-                      ['--neg-angle' as any]: `${-b.angle}deg`,
-                      ['--animation-duration' as any]: `${duration}s`,
-                      ['--animation-delay' as any]: `${delay}s`,
-                    }}
-                  />
-
-                  {/* Right Wing (Absolute overlays left wing) */}
-                  <img
-                    src={`/butterflies_webp/butterfly_${b.id}.webp`}
-                    alt=""
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full butterfly-wing-right"
-                    style={{
-                      clipPath: `polygon(${b.cx}% 0%, 100% 0%, 100% 100%, ${b.cx}% 100%)`,
-                      transformOrigin: `${b.cx}% ${b.cy}%`,
-                      objectFit: 'fill',
-                      ['--angle' as any]: `${b.angle}deg`,
-                      ['--neg-angle' as any]: `${-b.angle}deg`,
-                      ['--animation-duration' as any]: `${duration}s`,
-                      ['--animation-delay' as any]: `${delay}s`,
-                    }}
-                  />
-                </div>
-              );
-            })}
+          {/* Right Column | Real Dusk Moon (Desktop, hidden below lg) */}
+          <div className="hidden lg:flex relative w-full items-center justify-center z-10 pointer-events-none">
+            <div className="moon-drift">
+              <DuskMoon
+                phase={0.76}
+                angle={-135}
+                opacity={0.68}
+                className="w-[280px] h-[280px] xl:w-[320px] xl:h-[320px] 2xl:w-[350px] 2xl:h-[350px]"
+              />
+            </div>
           </div>
 
         </div>
