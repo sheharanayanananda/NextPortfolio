@@ -86,7 +86,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="flex flex-col gap-10 pt-14">
+          <div className="flex flex-col gap-10 mt-6">
             <div className="flex items-center gap-2 text-[#faf9f5]/85">
               <MapPin className="w-5 h-5 flex-shrink-0" />
               <span className="font-mono-anthropic tracking-tight">Tampere, Finland</span>

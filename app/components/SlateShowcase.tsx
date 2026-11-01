@@ -11,16 +11,6 @@ export default function SlateShowcase() {
       <section id="projects-slate" className="w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-12 md:py-16 lg:py-12 relative">
         <div className="w-full lg:min-h-[400px] xl:min-h-[460px] bg-[#749bd0] rounded-[32px] py-12 px-6 md:py-16 md:px-12 lg:py-25 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center justify-items-center relative overflow-hidden select-none">
           
-          {/* Right Column | Real Dawn Moon (Desktop, hidden below lg) */}
-          <div className="hidden lg:flex relative w-full items-center justify-center z-[1] pointer-events-none">
-            <DuskMoon
-              phase={0.76}
-              angle={-45}
-              opacity={0.72}
-              className="w-[280px] h-[280px] xl:w-[320px] xl:h-[320px] 2xl:w-[350px] 2xl:h-[350px]"
-            />
-          </div>
-
           {/* Falling Asteroids / Shooting stars in sky background (Layer 2, z-[2]) */}
           <FallingAsteroids className="z-[2]" />
 
@@ -52,6 +42,16 @@ export default function SlateShowcase() {
                 Explore Slate
               </a>
             </div>
+          </div>
+
+          {/* Right Column | Real Dawn Moon (Desktop, hidden below lg) */}
+          <div className="hidden lg:flex relative w-full items-center justify-center z-[1] pointer-events-none">
+            <DuskMoon
+              phase={0.76}
+              angle={-45}
+              opacity={0.72}
+              className="w-[280px] h-[280px] xl:w-[320px] xl:h-[320px] 2xl:w-[350px] 2xl:h-[350px]"
+            />
           </div>
 
         </div>
