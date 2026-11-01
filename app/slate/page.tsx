@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import { Github } from "lucide-react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import DuskMoon from "../components/DuskMoon";
+import ButterfliesS from "../components/ButterfliesS";
+import FallingAsteroids from "../components/FallingAsteroids";
 
 export default function SlatePage() {
   const [mounted, setMounted] = useState(false);
@@ -125,8 +127,16 @@ export default function SlatePage() {
   const genesisTechStack = "Swift · SwiftUI · SwiftData · Ollama Cloud API · WebKit (KaTeX) · Compression · PDFKit · Apple Security";
   const originTechStack = "Swift · SwiftUI · SwiftData · VisionKit · PDFKit · Apple Security";
 
+  const isGenesis = activeVersion === "genesis";
+
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg-warm)] text-[var(--text-charcoal)] font-sans-anthropic">
+    <div
+      className={`min-h-screen flex flex-col font-sans-anthropic transition-colors duration-700 ease-out ${
+        isGenesis
+          ? "bg-[#faf9f5] text-[#141413] selection:bg-[#749bd0]/25 selection:text-[#141413]"
+          : "bg-[#f0eee6] text-[#141413] selection:bg-[#d97757]/20 selection:text-[#141413]"
+      }`}
+    >
       <Header />
 
       <main className="flex-1">
@@ -136,7 +146,7 @@ export default function SlatePage() {
 
           {/* Eyebrow */}
           <div className="font-mono-anthropic text-[10px] tracking-[0.18em] uppercase text-[var(--text-charcoal)]">
-            For iPhone · Swift / SwiftUI
+            Built For iPhone With Swift
           </div>
 
           {/* Wordmark + subhead */}
@@ -158,7 +168,11 @@ export default function SlatePage() {
               href="https://github.com/sheharanayanananda/Slate/tree/v2"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[var(--text-charcoal)] text-[var(--bg-warm)] border border-[var(--text-charcoal)] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 hover:bg-transparent hover:text-[var(--text-charcoal)] rounded-xl"
+              className={`inline-flex items-center gap-2 px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 rounded-xl ${
+                isGenesis
+                  ? "bg-[#749bd0] text-[#faf9f5] hover:bg-[#5d85be] shadow-sm"
+                  : "bg-transparent text-[#141413] border border-[#141413] hover:bg-[#141413] hover:text-[#f0eee6]"
+              }`}
             >
               <Github className="w-3.5 h-3.5" />
               View Genesis
@@ -167,7 +181,11 @@ export default function SlatePage() {
               href="https://github.com/sheharanayanananda/Slate"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-[var(--text-charcoal)] text-[var(--text-charcoal)] bg-transparent px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 hover:bg-[var(--text-charcoal)] hover:text-[var(--bg-warm)] rounded-xl"
+              className={`inline-flex items-center gap-2 px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-all duration-300 rounded-xl ${
+                !isGenesis
+                  ? "bg-[#d97757] text-[#faf9f5] hover:bg-[#c6613f] shadow-sm"
+                  : "bg-transparent text-[#141413] border border-[#141413] hover:bg-[#141413] hover:text-[#faf9f5]"
+              }`}
             >
               <Github className="w-3.5 h-3.5" />
               View Origin
@@ -185,11 +203,17 @@ export default function SlatePage() {
         <div className="sticky top-[69px] z-40 flex justify-center py-4 pointer-events-none">
           <div
             ref={switcherContainerRef}
-            className="relative inline-flex items-center gap-1 border border-[var(--border-light)]/70 p-1 bg-[var(--bg-warm)]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[var(--bg-warm)]/75 shadow-[0_4px_20px_rgba(0,0,0,0.03)] pointer-events-auto rounded-full"
+            className={`relative inline-flex items-center gap-1 border p-1 shadow-[0_4px_20px_rgba(0,0,0,0.04)] pointer-events-auto rounded-full transition-colors duration-500 backdrop-blur-md ${
+              isGenesis
+                ? "border-[#749bd0]/30 bg-[#faf9f5]/85"
+                : "border-[#d97757]/30 bg-[#f0eee6]/85"
+            }`}
           >
             {/* Sliding background pill */}
             <div
-              className="absolute top-1 bottom-1 bg-[#749bd0] rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+              className={`absolute top-1 bottom-1 rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                isGenesis ? "bg-[#749bd0]" : "bg-[#d97757]"
+              }`}
               style={{
                 left: `${activeRect.left}px`,
                 width: `${activeRect.width}px`,
@@ -221,12 +245,16 @@ export default function SlatePage() {
         </div>
 
         {/* ─── PRODUCT IDENTITY ─── */}
-        <section className="bg-[var(--card-bg)] px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20 lg:py-28">
+        <section
+          className={`px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20 lg:py-28 transition-colors duration-700 ease-out ${
+            isGenesis ? "bg-[#faf9f5]" : "bg-[#f5e6ce]/40"
+          }`}
+        >
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-            {/* App image */}
+            {/* Left Visual: 3D Photometric Dusk Moon in Genesis vs. 3D Butterflies "S" in Origin */}
             <div
-              key={activeVersion + "-image"}
+              key={activeVersion + "-visual"}
               className={`relative w-full max-w-[420px] mx-auto lg:mx-0 aspect-square ${
                 mounted
                   ? animDir === "right"
@@ -235,50 +263,82 @@ export default function SlatePage() {
                   : ""
               }`}
             >
-              <div
-                className="relative w-full h-full overflow-hidden"
-                style={{ borderRadius: "24px" }}
-              >
-                <Image
-                  src="/slate_origin.webp"
-                  alt={activeVersion === "origin" ? "Slate Origin: iOS App" : "Slate Genesis: iOS App"}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 420px"
-                  className="object-cover"
-                  priority
-                />
-                {activeVersion === "genesis" && (
-                  <div className="absolute inset-0 bg-[#141413]/90 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center text-[#faf9f5]">
-                    <div className="font-mono-anthropic text-[10px] tracking-[0.2em] uppercase text-[var(--accent-rust)] mb-2 font-bold">
+              {isGenesis ? (
+                /* Genesis Visual: Dawn Sky Moon Frame */
+                <div className="relative w-full h-full rounded-[28px] overflow-hidden bg-[#749bd0] shadow-[0_8px_32px_rgba(116,155,208,0.22)] border border-[#749bd0]/30 flex flex-col items-center justify-between p-6 sm:p-7 select-none">
+                  {/* Layer 0: Sky background */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-b from-[#749bd0] via-[#749bd0] to-[#5d85be] pointer-events-none z-0"
+                  />
+
+                  {/* Layer 1: Moon (Celestial body) */}
+                  <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+                    <DuskMoon
+                      phase={0.76}
+                      angle={-45}
+                      opacity={0.88}
+                      className="w-[160px] h-[160px] sm:w-[190px] sm:h-[190px]"
+                    />
+                  </div>
+
+                  {/* Layer 2: Shooting stars / Asteroids (Atmospheric entry) */}
+                  <FallingAsteroids className="z-[2]" />
+
+                  {/* Layer 3: Letters and UI Text */}
+                  <div className="relative z-10 w-full flex items-center justify-between shrink-0">
+                    <span className="font-mono-anthropic text-[10px] tracking-[0.2em] uppercase text-[#faf9f5]/80 font-bold">
                       SLATE V2
-                    </div>
-                    <div className="font-serif-anthropic text-2xl font-normal mb-3 text-white">
+                    </span>
+                    <span className="font-mono-anthropic text-[10px] tracking-widest uppercase px-2.5 py-0.5 rounded-full bg-[#faf9f5]/15 text-[#faf9f5] font-semibold backdrop-blur-sm">
+                      Genesis
+                    </span>
+                  </div>
+
+                  {/* Center vertical spacer */}
+                  <div className="flex-1 w-full min-h-0" />
+
+                  {/* Footer Highlights */}
+                  <div className="relative z-10 w-full text-center space-y-1 shrink-0 pt-2">
+                    <div className="font-serif-anthropic text-lg sm:text-xl text-[#faf9f5] font-normal leading-tight">
                       Genesis Workspace
                     </div>
-                    <p className="font-serif-anthropic text-xs opacity-80 max-w-[280px] leading-relaxed mb-6">
-                      Powered by cloud models from Ollama, hybrid block editing, and an automated document ingestion engine.
-                    </p>
-                    <div className="w-full max-w-[280px] space-y-2.5 text-left border-t border-white/10 pt-4 font-sans-anthropic text-[11px] tracking-wide text-white/70">
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>Hybrid block canvas &amp; special cards</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>3 tuned tiers (Flash, Creative, Pro)</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>One-tap turn chat into notes</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-rust)]" />
-                        <span>Pure-Swift ZIP, DOCX, XLSX &amp; PDF</span>
-                      </div>
+                    <div className="font-mono-anthropic text-[10px] tracking-wider text-[#faf9f5]/75">
+                      Hybrid Block Canvas &middot; 3 AI Tiers
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                /* Origin Visual: Warm Academia Parchment with 3D Flapping Butterflies "S" */
+                <div className="relative w-full h-full rounded-[28px] overflow-hidden bg-[#f5e6ce] shadow-[0_8px_32px_rgba(20,20,19,0.06)] border border-[#d97757]/25 flex flex-col items-center justify-between p-6 sm:p-7 select-none">
+                  {/* Header Badge */}
+                  <div className="relative z-10 w-full flex items-center justify-between shrink-0">
+                    <span className="font-mono-anthropic text-[10px] tracking-[0.2em] uppercase text-[#d97757] font-bold">
+                      SLATE V1
+                    </span>
+                    <span className="font-mono-anthropic text-[10px] tracking-widest uppercase px-2.5 py-0.5 rounded-full bg-[#141413]/5 text-[#141413]/80 font-semibold">
+                      Origin
+                    </span>
+                  </div>
+
+                  {/* 3D Animated Butterflies "S" Centerpiece */}
+                  <div className="relative z-10 flex-1 w-full flex items-center justify-center min-h-0 py-1">
+                    <div className="w-[145px] sm:w-[165px]">
+                      <ButterfliesS />
+                    </div>
+                  </div>
+
+                  {/* Footer Highlights */}
+                  <div className="relative z-10 w-full text-center space-y-1 shrink-0 pt-2">
+                    <div className="font-serif-anthropic text-lg sm:text-xl text-[#141413] font-normal leading-tight">
+                      Foundational Notebook
+                    </div>
+                    <div className="font-mono-anthropic text-[10px] tracking-wider text-[#141413]/65">
+                      SwiftData &middot; VisionKit &middot; Offline First
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right: version identity */}
@@ -294,13 +354,17 @@ export default function SlatePage() {
                     : ""
                 }`}
               >
-                <div className="font-mono-anthropic text-[10px] tracking-[0.18em] uppercase text-[var(--text-charcoal)]">
-                  {activeVersion === "origin" ? "Proprietary · Source-Available" : "Proprietary · Source-Available"}
+                <div
+                  className={`font-mono-anthropic text-[10px] tracking-[0.18em] uppercase font-bold ${
+                    isGenesis ? "text-[#749bd0]" : "text-[#d97757]"
+                  }`}
+                >
+                  Proprietary &middot; Source-Available
                 </div>
                 <h2 className="font-serif-anthropic text-4xl lg:text-5xl font-normal text-[var(--text-charcoal)] leading-[1.1]">
                   Slate {activeVersion === "origin" ? "Origin" : "Genesis"}
                 </h2>
-                <p className="font-serif-anthropic text-lg font-normal text-[var(--text-charcoal)] opacity-70 leading-[1.7] max-w-sm">
+                <p className="font-serif-anthropic text-lg font-normal text-[var(--text-charcoal)] opacity-75 leading-[1.7] max-w-sm">
                   {activeVersion === "origin"
                     ? "The foundational Slate experience. A local-first, distraction-free native iOS notebook built on SwiftData with Apple VisionKit camera scanning, a custom bidirectional Markdown editor with interactive checklist hit-testing, and an AI note organizer with typewriter streaming."
                     : "Rebuilt from the ground up for modern AI knowledge workflows. Slate Genesis pairs a distraction-free hybrid block editor with cloud models from Ollama, one-tap note generation from conversation, offline KaTeX equations, and pure-Swift document ingestion."}
@@ -308,7 +372,11 @@ export default function SlatePage() {
               </div>
 
               {/* Hairline divider */}
-              <div className="border-t border-[var(--border-light)]" />
+              <div
+                className={`border-t ${
+                  isGenesis ? "border-[#749bd0]/25" : "border-[#d97757]/25"
+                }`}
+              />
 
               {/* Stats row */}
               <div
@@ -326,7 +394,7 @@ export default function SlatePage() {
                     <div className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)]">
                       {stat.value}
                     </div>
-                    <div className="font-mono-anthropic text-[10px] tracking-[0.16em] uppercase text-[var(--text-charcoal)]">
+                    <div className="font-mono-anthropic text-[10px] tracking-[0.16em] uppercase text-[var(--text-charcoal)] opacity-70">
                       {stat.label}
                     </div>
                   </div>
@@ -338,7 +406,11 @@ export default function SlatePage() {
         </section>
 
         {/* ─── FEATURES ─── */}
-        <section className="px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20 lg:py-28">
+        <section
+          className={`px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20 lg:py-28 transition-colors duration-700 ease-out ${
+            isGenesis ? "bg-[#faf9f5]" : "bg-[#f0eee6]"
+          }`}
+        >
           <div className="max-w-5xl mx-auto space-y-16">
 
             {/* Section header */}
@@ -352,7 +424,11 @@ export default function SlatePage() {
                   : ""
               }`}
             >
-              <div className="font-mono-anthropic text-[10px] tracking-[0.18em] uppercase text-[var(--text-charcoal)]">
+              <div
+                className={`font-mono-anthropic text-[10px] tracking-[0.18em] uppercase font-bold ${
+                  isGenesis ? "text-[#749bd0]" : "text-[#d97757]"
+                }`}
+              >
                 {activeVersion === "origin" ? "Core capabilities" : "Genesis capabilities"}
               </div>
               <h2 className="font-serif-anthropic text-3xl lg:text-4xl font-normal text-[var(--text-charcoal)] leading-[1.15]">
@@ -362,13 +438,19 @@ export default function SlatePage() {
               </h2>
             </div>
 
-            {/* Feature list: no card boxes, pure typography */}
+            {/* Feature list */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
               {currentFeatures.map((feature, i) => (
                 <div
                   key={feature.index}
-                  className={`py-8 pr-0 md:pr-12 border-t border-[var(--border-light)] ${
-                    i % 2 === 1 ? "md:border-l md:pl-12" : ""
+                  className={`py-8 pr-0 md:pr-12 border-t ${
+                    isGenesis ? "border-[#749bd0]/20" : "border-[var(--border-light)]"
+                  } ${
+                    i % 2 === 1
+                      ? isGenesis
+                        ? "md:border-l md:border-[#749bd0]/20 md:pl-12"
+                        : "md:border-l md:border-[var(--border-light)] md:pl-12"
+                      : ""
                   }`}
                 >
                   <div
@@ -381,20 +463,28 @@ export default function SlatePage() {
                         : ""
                     }`}
                   >
-                    <div className="font-mono-anthropic text-[10px] tracking-[0.16em] uppercase text-[var(--accent-rust)]">
+                    <div
+                      className={`font-mono-anthropic text-[10px] tracking-[0.16em] uppercase font-bold ${
+                        isGenesis ? "text-[#749bd0]" : "text-[#d97757]"
+                      }`}
+                    >
                       {feature.index}
                     </div>
                     <h3 className="font-serif-anthropic text-xl font-normal text-[var(--text-charcoal)]">
                       {feature.title}
                     </h3>
-                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)] opacity-70 leading-[1.7]">
+                    <p className="font-serif-anthropic text-base text-[var(--text-charcoal)] opacity-75 leading-[1.7]">
                       {feature.description}
                     </p>
                   </div>
                 </div>
               ))}
               {/* Bottom border line under all features */}
-              <div className="col-span-1 md:col-span-2 border-t border-[var(--border-light)]" />
+              <div
+                className={`col-span-1 md:col-span-2 border-t ${
+                  isGenesis ? "border-[#749bd0]/20" : "border-[var(--border-light)]"
+                }`}
+              />
             </div>
 
           </div>
@@ -402,7 +492,11 @@ export default function SlatePage() {
 
         {/* ─── PULL QUOTE / ARCHITECTURE STRIP ─── */}
         <section
-          className="px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20 lg:py-28 bg-[#749bd0]/10 border-y border-[#749bd0]/25"
+          className={`px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-20 lg:py-28 transition-colors duration-700 ease-out border-y ${
+            isGenesis
+              ? "bg-[#749bd0]/10 border-[#749bd0]/25"
+              : "bg-[#f5e6ce] border-[#d97757]/20"
+          }`}
         >
           <div className="max-w-3xl mx-auto space-y-8">
             <blockquote
@@ -418,7 +512,11 @@ export default function SlatePage() {
             >
               "{activeVersion === "origin" ? originPullQuote : genesisPullQuote}"
             </blockquote>
-            <div className="border-t border-[var(--text-charcoal)]/15 pt-6">
+            <div
+              className={`border-t pt-6 ${
+                isGenesis ? "border-[#749bd0]/25" : "border-[#141413]/15"
+              }`}
+            >
               <div className="font-mono-anthropic text-[10px] tracking-[0.18em] uppercase text-[var(--text-charcoal)]">
                 {activeVersion === "origin" ? originTechStack : genesisTechStack}
               </div>
@@ -449,7 +547,11 @@ export default function SlatePage() {
                 href="https://github.com/sheharanayanananda/Slate/tree/v2"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#749bd0] hover:bg-[#5d85be] px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-[#faf9f5] transition-colors rounded-xl"
+                className={`inline-flex items-center gap-2 px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-colors rounded-xl ${
+                  isGenesis
+                    ? "bg-[#749bd0] hover:bg-[#5d85be] text-[#faf9f5]"
+                    : "border border-white/20 hover:border-white/40 text-[#faf9f5]"
+                }`}
               >
                 <Github className="w-3.5 h-3.5" />
                 Slate Genesis
@@ -458,7 +560,11 @@ export default function SlatePage() {
                 href="https://github.com/sheharanayanananda/Slate"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase text-white transition-colors rounded-xl"
+                className={`inline-flex items-center gap-2 px-8 py-3 font-sans-anthropic font-semibold text-xs tracking-[0.05em] uppercase transition-colors rounded-xl ${
+                  !isGenesis
+                    ? "bg-[#d97757] hover:bg-[#c6613f] text-[#faf9f5]"
+                    : "border border-white/20 hover:border-white/40 text-[#faf9f5]"
+                }`}
               >
                 <Github className="w-3.5 h-3.5" />
                 Slate Origin

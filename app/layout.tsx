@@ -296,7 +296,7 @@ export default function RootLayout({
                     },
                     {
                       "@type": "EducationalOccupationalCredential",
-                      "name": "Pearson BTEC Level 5 Higher National Diploma in Computing",
+                      "name": "Pearson BTEC Level 5 HND in Software Engineering",
                       "credentialCategory": "diploma",
                       "educationalLevel": "UK RQF Level 5 / 240 Credits",
                       "recognizedBy": {

@@ -15,7 +15,7 @@ interface Meteor {
   maxLife: number;
 }
 
-export default function FallingAsteroids() {
+export default function FallingAsteroids({ className = "z-[2]" }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -195,7 +195,7 @@ export default function FallingAsteroids() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="absolute inset-0 w-full h-full pointer-events-none select-none z-[2]"
+      className={`absolute inset-0 w-full h-full pointer-events-none select-none ${className}`}
     />
   );
 }

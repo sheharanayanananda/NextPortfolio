@@ -21,43 +21,26 @@ export default function Home() {
         id="hero"
         className="relative flex-1 min-h-screen -mt-[69px] pt-[69px] pb-16 md:pb-20 flex items-center w-full px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 scroll-mt-[69px] bg-[#749bd0]"
       >
-        {/* Calm ambient floating effect for the dusk moon */}
-        <style>{`
-          @keyframes moon-drift {
-            0%, 100% {
-              transform: translate3d(0, 0, 0);
-            }
-            50% {
-              transform: translate3d(-3px, -10px, 0);
-            }
-          }
-          .moon-drift {
-            animation: moon-drift 9s ease-in-out infinite;
-            will-change: transform;
-          }
-        `}</style>
-
-        {/* Anthropic Dusk Blue Sky Background */}
-        <MorningSkyHero />
-
-        {/* Occasional Falling Asteroids / Shooting Stars */}
-        <FallingAsteroids />
-
-        {/* Real Morning Moon from Slate Banner */}
-        <div className="absolute top-24 sm:top-28 md:top-32 lg:top-36 right-8 sm:right-14 md:right-20 lg:right-28 xl:right-36 z-[5] pointer-events-none select-none">
-          <div className="moon-drift">
-            <DuskMoon
-              phase={0.76}
-              angle={-45}
-              opacity={0.72}
-              className="w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] md:w-[180px] md:h-[180px] lg:w-[210px] lg:h-[210px]"
-            />
-          </div>
+        {/* Layer 1: Moon (Furthest celestial body in deep space) */}
+        <div className="absolute top-24 sm:top-28 md:top-32 lg:top-36 right-8 sm:right-14 md:right-20 lg:right-28 xl:right-36 z-[1] pointer-events-none select-none">
+          <DuskMoon
+            phase={0.76}
+            angle={-45}
+            opacity={0.72}
+            className="w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] md:w-[180px] md:h-[180px] lg:w-[210px] lg:h-[210px]"
+          />
         </div>
 
-        {/* Out of focus foreground tree branches on the right */}
+        {/* Layer 2: Shooting stars / Meteors (Atmospheric entry in upper mesosphere, in front of moon) */}
+        <FallingAsteroids className="z-[2]" />
+
+        {/* Layer 3: Atmosphere / Morning Blue Sky background */}
+        <MorningSkyHero />
+
+        {/* Layer 4: Tree branches (Foreground natural bokeh framing) */}
         <TreeBranches />
 
+        {/* Layer 5: Letters and text typography */}
         <div className="relative z-10 w-full max-w-4xl py-12 md:py-20 flex flex-col gap-3">
           <div className="flex flex-col gap-8">
             <div className="font-mono-anthropic text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold tracking-tight text-[#faf9f5]/85 flex items-center flex-wrap">
@@ -524,7 +507,7 @@ export default function Home() {
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Pearson BTEC Level 5 Higher National Diploma in Computing
+                      Pearson BTEC Level 5 HND in Software Engineering
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
@@ -542,9 +525,6 @@ export default function Home() {
                     </span>
                     <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--text-secondary)]/10 text-[var(--text-secondary)] font-semibold uppercase tracking-wide">
                       240 Credits &middot; UK RQF Level 5
-                    </span>
-                    <span className="font-mono-anthropic text-[10px] px-2 py-0.5 rounded bg-[var(--text-secondary)]/10 text-[var(--text-secondary)] font-semibold uppercase tracking-wide">
-                      Software Engineering Pathway
                     </span>
                   </div>
 
@@ -651,7 +631,7 @@ export default function Home() {
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Pearson Assured Diploma in Information Technology (DiTEC)
+                      Pearson Assured Diploma in Information Technology
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
@@ -710,7 +690,7 @@ export default function Home() {
                       ESOFT Metro Campus
                     </span>
                     <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors">
-                      Diploma in English (DiE)
+                      Diploma in English
                     </h3>
                     <p className="font-sans-anthropic text-xs text-[var(--text-secondary)]/80 flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-[var(--text-secondary)]/50" /> Gampaha, Sri Lanka
@@ -795,10 +775,7 @@ export default function Home() {
               href="/slate?v=genesis"
               className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer"
             >
-              <div className="space-y-5">
-                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
-                  Hybrid Block Canvas &amp; AI
-                </span>
+              <div className="space-y-4">
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Slate Genesis
                 </h3>
@@ -814,12 +791,9 @@ export default function Home() {
 
             {/* Card 2: TAMK / Finland (Highlighted) */}
             <div className="flex flex-col justify-between border border-[#749bd0]/30 bg-[#749bd0]/10 p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#749bd0]/60 group">
-              <div className="space-y-5">
-                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--accent-rust-hover)] tracking-widest font-bold">
-                  TAMK / Finland
-                </span>
+              <div className="space-y-4">
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
-                  Software Engineering B.Eng
+                  TAMK B.Eng
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
                   Studying Software Engineering at TAMK in Tampere. Active member of <strong className="font-semibold text-[var(--text-charcoal)]">Source</strong> (TAMK SE Club) and <strong className="font-semibold text-[var(--text-charcoal)]">TIRO ry</strong> (Tampere Engineering Students Association).
@@ -829,10 +803,7 @@ export default function Home() {
 
             {/* Card 3: Finnish Language Learning */}
             <div className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group">
-              <div className="space-y-5">
-                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
-                  Language Acquisition
-                </span>
+              <div className="space-y-4">
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
                   Finnish Fluency
                 </h3>
@@ -851,12 +822,9 @@ export default function Home() {
               data-contact-trigger="true"
               className="flex flex-col justify-between border border-[var(--border-light)]/40 bg-[var(--card-bg)] p-6 md:p-8 lg:p-10 rounded-3xl shadow-[0_2px_16px_rgba(20,20,19,0.04)] hover:shadow-[0_8px_24px_rgba(20,20,19,0.07)] hover:border-[var(--text-secondary)]/30 hover:bg-[var(--card-hover-bg)]/20 transition-all duration-300 group cursor-pointer md:col-span-2 lg:col-span-1 lg:col-start-2"
             >
-              <div className="space-y-5">
-                <span className="text-[10px] font-sans-anthropic uppercase text-[var(--text-secondary)] tracking-widest font-bold">
-                  Actively Available
-                </span>
+              <div className="space-y-4">
                 <h3 className="font-serif-anthropic text-2xl font-normal text-[var(--text-charcoal)] group-hover:text-[var(--accent-rust)] transition-colors duration-300">
-                  Software Engineering Roles
+                  Available for Roles
                 </h3>
                 <p className="text-base text-[var(--text-charcoal)]/90 leading-relaxed font-serif-anthropic">
                   Actively seeking software engineering positions, internships, and contracts across full-stack web and mobile engineering (Flutter / Swift).
