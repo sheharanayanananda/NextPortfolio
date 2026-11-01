@@ -139,14 +139,15 @@ const anthropicMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Thineth",
-    template: "%s | Thineth",
+    default: "Thineth Shehara",
+    template: "%s | Thineth Shehara",
   },
   description: "Portfolio of Thineth Shehara. Building fast mobile apps, reliable real-time backends, and simple web tools in Tampere, Finland.",
   metadataBase: new URL("https://shehara.dayzsolutions.com"),
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/logo.png", sizes: "512x512", type: "image/png" },
     ],
     apple: [
